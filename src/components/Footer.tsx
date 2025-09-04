@@ -1,4 +1,5 @@
 import { Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -10,7 +11,10 @@ const Footer = () => {
             <span className="ml-2 font-semibold text-foreground">Ulrich Deschamp</span>
           </p>
           <p className="text-sm text-muted-foreground mt-2">
-            © {new Date().getFullYear()} Tous droits réservés
+            © {new Date().getFullYear()} Tous droits réservés • 
+            <Link to="/mentions-legales" className="text-primary hover:underline ml-1">
+              Mentions légales
+            </Link>
           </p>
         </div>
       </div>
