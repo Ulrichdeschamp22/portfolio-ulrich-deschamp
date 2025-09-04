@@ -9,6 +9,7 @@ import FAQ from '@/components/FAQ';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import Footer from '@/components/Footer';
 import AIAssistant from '@/components/AIAssistant';
+import LegalSection from '@/components/LegalSection';
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
       <Shop />
       <FAQ />
       <Contact />
+      <LegalSection />
       <Footer />
       <WhatsAppButton />
       <AIAssistant />
