@@ -15,14 +15,15 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { label: 'Accueil', href: '#hero' },
-    { label: 'À propos', href: '#about' },
-    { label: 'Compétences', href: '#skills' },
-    { label: 'Projets', href: '#projects' },
-    { label: 'Boutique', href: '#shop' },
-    { label: 'Contact', href: '#contact' },
-  ];
+const navItems = [
+  { label: 'Accueil', href: '#hero' },
+  { label: 'À propos', href: '#about' },
+  { label: 'Compétences', href: '#skills' },
+  { label: 'Projets', href: '#projects' },
+  { label: 'Boutique', href: '#shop' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Contact', href: '#contact' },
+];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
