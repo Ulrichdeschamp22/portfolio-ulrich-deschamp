@@ -4,7 +4,7 @@ import heroImage from '@/assets/hero-image.jpg';
 
 const Hero = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -18,7 +18,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 z-10 text-center relative">
-        <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in">
+        <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in mt-16 md:mt-20">
           <span className="text-gradient">Ulrich Deschamp</span>
         </h1>
         
