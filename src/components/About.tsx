@@ -42,9 +42,9 @@ const About = () => {
               <div className="relative transform hover:scale-[1.02] transition-all duration-500">
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-background">
                   <img 
-                    src="/lovable-uploads/ec13f022-afa1-4b5e-8489-f6566a0fc06d.png" 
+                    src="/lovable-uploads/354cc3db-27f6-4c6e-8032-de01a9893a78.png" 
                     alt="Ulrich Deschamp Professional" 
-                    className="w-full h-[400px] md:h-[500px] object-contain"
+                    className="w-full h-[400px] md:h-[500px] object-cover"
                   />
                   
                   {/* Gradient overlay */}
