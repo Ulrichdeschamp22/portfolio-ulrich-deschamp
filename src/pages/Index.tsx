@@ -8,6 +8,7 @@ import Contact from '@/components/Contact';
 import FAQ from '@/components/FAQ';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import Footer from '@/components/Footer';
+import AIAssistant from '@/components/AIAssistant';
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
       <Contact />
       <Footer />
       <WhatsAppButton />
+      <AIAssistant />
     </div>
   );
 };
