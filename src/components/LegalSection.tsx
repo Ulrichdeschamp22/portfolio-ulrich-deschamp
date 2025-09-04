@@ -127,8 +127,8 @@ const LegalSection = () => {
                 </div>
                 <p className="text-sm text-muted-foreground">
                   Pour exercer vos droits, contactez-nous à : 
-                  <a href="mailto:contact@ulrichdeschamp.com" className="text-primary hover:underline ml-1">
-                    contact@ulrichdeschamp.com
+                  <a href="mailto:support@ulrichdeschampkossonou.online" className="text-primary hover:underline ml-1">
+                    support@ulrichdeschampkossonou.online
                   </a>
                 </p>
               </div>
