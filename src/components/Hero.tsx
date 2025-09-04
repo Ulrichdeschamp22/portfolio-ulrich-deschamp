@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import heroImage from '@/assets/hero-image.jpg';
+import portfolio1 from '@/assets/portfolio-1.png';
 
 const Hero = () => {
   return (
@@ -18,10 +19,27 @@ const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 z-10 text-center relative">
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-fade-in">
+        <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in">
           <span className="text-gradient">Ulrich Deschamp</span>
         </h1>
-        <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8 animate-fade-in animation-delay-100">
+        
+        {/* Portfolio Image with stunning design */}
+        <div className="relative mb-8 animate-scale-in animation-delay-100">
+          <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto group">
+            <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500 animate-pulse"></div>
+            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
+              <img 
+                src={portfolio1} 
+                alt="Ulrich Deschamp Professional Portrait" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div className="absolute -inset-1 bg-gradient-primary rounded-full blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
+          </div>
+        </div>
+
+        <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8 animate-fade-in animation-delay-200">
           Développeur Web • Infographe • Photographe • Community Manager
         </h2>
         <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-8 animate-fade-in animation-delay-200">
