@@ -19,8 +19,7 @@ const LegalSection = () => {
       icon: <Server className="w-5 h-5" />,
       title: "Hébergement",
       content: {
-        hebergeur: "Lovable",
-        site: "lovable.dev"
+        description: "Ce site est hébergé sur une infrastructure cloud sécurisée garantissant une disponibilité optimale et la protection de vos données."
       }
     },
     data: {
@@ -105,23 +104,8 @@ const LegalSection = () => {
             <TabsContent value="hosting" className="space-y-4">
               <h3 className="text-xl font-bold mb-4 text-foreground">Hébergement</h3>
               <div className="space-y-3">
-                <p>
-                  <strong className="text-primary">Hébergeur :</strong>{" "}
-                  <span className="text-muted-foreground">{legalInfo.hosting.content.hebergeur}</span>
-                </p>
-                <p>
-                  <strong className="text-primary">Site web :</strong>{" "}
-                  <a 
-                    href={`https://${legalInfo.hosting.content.site}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-primary hover:underline"
-                  >
-                    {legalInfo.hosting.content.site}
-                  </a>
-                </p>
-                <p className="text-sm text-muted-foreground mt-4">
-                  Ce site est hébergé sur une infrastructure cloud sécurisée garantissant une disponibilité optimale et la protection de vos données.
+                <p className="text-muted-foreground leading-relaxed">
+                  {legalInfo.hosting.content.description}
                 </p>
               </div>
             </TabsContent>
