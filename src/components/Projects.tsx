@@ -30,13 +30,6 @@ const Projects = () => {
       url: "https://gestionpro.lovable.app/",
       tags: ["SaaS", "Dashboard", "Gestion"],
       type: "Application SaaS"
-    },
-    {
-      title: "Open Mind Shop",
-      description: "Boutique en ligne pour vente de formations, e-books et logiciels",
-      url: "https://open-mind.shop/",
-      tags: ["E-commerce", "Formations", "Digital"],
-      type: "Boutique en ligne"
     }
   ];
 

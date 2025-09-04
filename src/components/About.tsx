@@ -66,7 +66,7 @@ const About = () => {
           <p className="text-lg text-foreground/80 text-center leading-relaxed animate-fade-in animation-delay-100">
             Je suis <span className="text-primary font-semibold">Kossonou Kouassi N'Tobeni Ulrich Deschamp</span>, 
             un professionnel polyvalent basé à Abidjan, Côte d'Ivoire. 
-            Avec une approche créative et technique, j'aide mes clients à transformer leurs idées en solutions digitales innovantes 
+            Avec une approche créative et technique, j'aide les entreprises, organisations et les particuliers à transformer leurs idées en solutions digitales innovantes 
             qui génèrent des résultats concrets.
           </p>
         </div>
