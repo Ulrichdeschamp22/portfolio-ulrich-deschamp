@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
-      title: "Portfolio Personnel",
-      description: "Un portfolio moderne et interactif présentant mes compétences et réalisations",
+      title: "Portfolio Pasteur KOUADIO.G",
+      description: "Un portfolio moderne et interactif présentant le Pasteur KOUADIO GERMAIN",
       url: "https://germain-kouadio.lovable.app/",
       tags: ["React", "Tailwind", "Animations"],
       type: "Portfolio"

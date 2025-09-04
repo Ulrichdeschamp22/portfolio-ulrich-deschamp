@@ -5,7 +5,7 @@ const About = () => {
     {
       icon: GraduationCap,
       title: "Formation",
-      description: "Diplômé en Ressources Humaines, formé en Développement Web et Communication & Développement de Marques"
+      description: "Diplômé en Ressources Humaines & Communication, J'ai acquis une formation en Développement Web, Communication & Développement des Marques"
     },
     {
       icon: Briefcase,
@@ -20,7 +20,7 @@ const About = () => {
     {
       icon: Target,
       title: "Mission",
-      description: "Accompagner entreprises et particuliers à accroître leur productivité et développer leur image en ligne"
+      description: "Accompagner les entreprises, organisations et les particuliers à accroître leur productivité et développer leur image en ligne"
     }
   ];
 
