@@ -10,20 +10,10 @@ const Hero = () => {
         <img 
           src={heroImage} 
           alt="Ulrich Deschamp Portfolio Background" 
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-dark" />
-      </div>
-      
-      {/* Portrait image as background overlay */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center">
-        <img 
-          src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
-          alt="Ulrich Deschamp Background Portrait" 
-          className="h-full object-contain opacity-10 blur-sm"
-        />
-        <div className="absolute inset-0 bg-background/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-glow animate-pulse" />
       </div>
 
       {/* Content */}
@@ -32,6 +22,21 @@ const Hero = () => {
           <span className="text-gradient">Ulrich Deschamp</span>
         </h1>
         
+        {/* Portfolio Image with stunning design */}
+        <div className="relative mb-8 animate-scale-in animation-delay-100">
+          <div className="relative w-64 h-80 md:w-80 md:h-96 mx-auto group">
+            <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500 animate-pulse"></div>
+            <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
+              <img 
+                src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
+                alt="Ulrich Deschamp Professional Portrait" 
+                className="w-full h-full object-contain bg-background"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
+          </div>
+        </div>
 
         <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8 animate-fade-in animation-delay-200">
           Développeur Web • Infographe • Photographe • Community Manager
