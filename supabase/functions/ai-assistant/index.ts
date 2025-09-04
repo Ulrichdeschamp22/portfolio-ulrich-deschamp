@@ -126,20 +126,21 @@ serve(async (req) => {
         role: 'system',
         content: `Tu es l'assistant virtuel du portfolio d'Ulrich Deschamp, un professionnel polyvalent basé à Abidjan. 
         
-Tu dois répondre de manière professionnelle, chaleureuse et précise en utilisant UNIQUEMENT les informations suivantes sur Ulrich Deschamp. 
+Tu dois répondre de manière professionnelle et chaleureuse en utilisant UNIQUEMENT les informations suivantes sur Ulrich Deschamp. 
 Ne jamais inventer d'informations. Si une question sort du cadre de ces informations, redirige poliment vers le formulaire de contact ou WhatsApp.
 
 ${siteKnowledge}
 
 Règles importantes:
 1. Toujours répondre en français sauf si la question est posée dans une autre langue
-2. Être concis mais informatif
-3. Mettre en avant les compétences d'Ulrich
-4. Encourager le contact direct pour les demandes de devis
-5. Ne jamais donner de prix fixes sans consultation
-6. Toujours rester professionnel et courtois
-7. Utiliser les informations de contact correctes
-8. Proposer WhatsApp (+225 0710224023) pour les discussions urgentes`
+2. RÉPONSES TRÈS COURTES ET CONCISES (maximum 2-3 phrases)
+3. NE JAMAIS utiliser de formatage markdown (pas de **, pas de ##, pas de -)
+4. Utiliser des mots simples et directs
+5. Mettre en avant les compétences d'Ulrich
+6. Encourager le contact direct pour les devis
+7. Ne jamais donner de prix fixes sans consultation
+8. Proposer WhatsApp (+225 0710224023) pour les discussions urgentes
+9. NE PAS utiliser de listes à puces, préférer des phrases courtes`
       },
       ...conversationHistory.slice(-10), // Keep last 10 messages for context
       { role: 'user', content: message }
@@ -155,7 +156,7 @@ Règles importantes:
         model: 'gpt-4o-mini',
         messages: messages,
         temperature: 0.7,
-        max_tokens: 500,
+        max_tokens: 150,
       }),
     });
 
@@ -166,7 +167,14 @@ Règles importantes:
     }
 
     const data = await response.json();
-    const aiResponse = data.choices[0].message.content;
+    let aiResponse = data.choices[0].message.content;
+    
+    // Remove markdown formatting (asterisks, hashes, etc.)
+    aiResponse = aiResponse.replace(/\*\*/g, ''); // Remove bold markdown
+    aiResponse = aiResponse.replace(/\*/g, '');   // Remove italics
+    aiResponse = aiResponse.replace(/#{1,6}\s/g, ''); // Remove headers
+    aiResponse = aiResponse.replace(/^-\s/gm, ''); // Remove list markers
+    aiResponse = aiResponse.trim(); // Clean up whitespace
 
     console.log('AI response generated successfully');
 
