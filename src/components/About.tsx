@@ -1,5 +1,4 @@
 import { GraduationCap, Award, Briefcase, Target } from 'lucide-react';
-import portfolio2 from '@/assets/portfolio-2.png';
 
 const About = () => {
   const highlights = [
@@ -34,18 +33,18 @@ const About = () => {
         
         {/* Professional Portrait with stunning design */}
         <div className="relative mb-12 animate-fade-in">
-          <div className="max-w-sm mx-auto">
+          <div className="max-w-md mx-auto">
             <div className="relative group">
               {/* Glowing background effect */}
               <div className="absolute -inset-4 bg-gradient-primary opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-700"></div>
               
               {/* Image container with floating effect */}
               <div className="relative transform hover:scale-[1.02] transition-all duration-500">
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-background">
                   <img 
-                    src={portfolio2} 
+                    src="/lovable-uploads/ec13f022-afa1-4b5e-8489-f6566a0fc06d.png" 
                     alt="Ulrich Deschamp Professional" 
-                    className="w-full h-auto object-cover"
+                    className="w-full h-[400px] md:h-[500px] object-contain"
                   />
                   
                   {/* Gradient overlay */}
