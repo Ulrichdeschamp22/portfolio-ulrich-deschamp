@@ -17,12 +17,12 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 text-center">
+      <div className="container mx-auto px-4 z-10 text-center relative">
         <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-fade-in">
           <span className="text-gradient">Ulrich Deschamp</span>
         </h1>
         <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8 animate-fade-in animation-delay-100">
-          Développeur Web • Infographe • Photographe
+          Développeur Web • Infographe • Photographe • Community Manager
         </h2>
         <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-8 animate-fade-in animation-delay-200">
           Basé à Abidjan, j'accompagne entreprises et particuliers dans leur transformation digitale 
