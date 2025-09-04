@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
@@ -21,7 +21,6 @@ const navItems = [
   { label: 'Compétences', href: '#skills' },
   { label: 'Projets', href: '#projects' },
   { label: 'Boutique', href: '#shop' },
-  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -43,42 +42,73 @@ const navItems = [
         </div>
         
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-2 lg:space-x-4">
-          {navItems.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                onClick={() => setActiveItem(item.href)}
-                className={`relative px-4 py-2 rounded-full transition-all duration-300 ${
-                  activeItem === item.href 
-                    ? 'text-primary-foreground' 
-                    : 'text-foreground/80 hover:text-foreground'
-                } group`}
-              >
-                {activeItem === item.href && (
-                  <span className="absolute inset-0 bg-gradient-primary rounded-full animate-pulse"></span>
-                )}
-                <span className="relative z-10 font-medium">
-                  {item.label}
-                </span>
-                <span className="absolute inset-0 bg-gradient-primary rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
+          <ul className="flex space-x-2 lg:space-x-4">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  onClick={() => setActiveItem(item.href)}
+                  className={`relative px-4 py-2 rounded-full transition-all duration-300 ${
+                    activeItem === item.href 
+                      ? 'text-primary-foreground' 
+                      : 'text-foreground/80 hover:text-foreground'
+                  } group`}
+                >
+                  {activeItem === item.href && (
+                    <span className="absolute inset-0 bg-gradient-primary rounded-full animate-pulse"></span>
+                  )}
+                  <span className="relative z-10 font-medium">
+                    {item.label}
+                  </span>
+                  <span className="absolute inset-0 bg-gradient-primary rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          {/* Quote Button */}
+          <a
+            href="https://wa.me/2250710224023?text=Bonjour%20Ulrich,%20je%20souhaite%20obtenir%20un%20devis%20pour%20mon%20projet"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4"
+          >
+            <Button className="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-4 py-2 rounded-full flex items-center gap-2">
+              <MessageSquare className="w-4 h-4" />
+              Demander un devis
+            </Button>
+          </a>
+        </div>
 
         {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden relative group"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <div className="absolute inset-0 bg-gradient-primary rounded-lg blur-md opacity-0 group-hover:opacity-30 transition duration-300"></div>
-          <span className="relative">
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </span>
-        </Button>
+        <div className="flex md:hidden items-center gap-2">
+          {/* Mobile Quote Button */}
+          <a
+            href="https://wa.me/2250710224023?text=Bonjour%20Ulrich,%20je%20souhaite%20obtenir%20un%20devis%20pour%20mon%20projet"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button 
+              size="sm"
+              className="bg-violet-600 hover:bg-violet-700 text-white px-3 py-1.5 rounded-full"
+            >
+              <MessageSquare className="w-4 h-4" />
+            </Button>
+          </a>
+          
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative group"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <div className="absolute inset-0 bg-gradient-primary rounded-lg blur-md opacity-0 group-hover:opacity-30 transition duration-300"></div>
+            <span className="relative">
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </span>
+          </Button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
