@@ -31,37 +31,6 @@ const About = () => {
           <span className="text-gradient">À propos de moi</span>
         </h2>
         
-        {/* Professional Portrait with stunning design */}
-        <div className="relative mb-12 animate-fade-in">
-          <div className="max-w-md mx-auto">
-            <div className="relative group">
-              {/* Glowing background effect */}
-              <div className="absolute -inset-4 bg-gradient-primary opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-700"></div>
-              
-              {/* Image container with floating effect */}
-              <div className="relative transform hover:scale-[1.02] transition-all duration-500">
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-background">
-                  <img 
-                    src="/lovable-uploads/354cc3db-27f6-4c6e-8032-de01a9893a78.png" 
-                    alt="Ulrich Deschamp Professional" 
-                    className="w-full h-[400px] md:h-[500px] object-cover"
-                  />
-                  
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60"></div>
-                  
-                  {/* Animated border */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-primary/20 group-hover:border-primary/40 transition-colors duration-500"></div>
-                </div>
-                
-                {/* Decorative elements */}
-                <div className="absolute -top-2 -right-2 w-20 h-20 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
-                <div className="absolute -bottom-2 -left-2 w-24 h-24 bg-primary/10 rounded-full blur-2xl animate-pulse animation-delay-200"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
         <div className="max-w-4xl mx-auto mb-16">
           <p className="text-lg text-foreground/80 text-center leading-relaxed animate-fade-in animation-delay-100">
             Je suis <span className="text-primary font-semibold">Kossonou Kouassi N'Tobeni Ulrich Deschamp</span>, 
