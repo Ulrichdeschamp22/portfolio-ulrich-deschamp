@@ -9,8 +9,9 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
-          alt="Ulrich Deschamp Portfolio Background" 
+          alt="Développeur web Abidjan - Ulrich Deschamp KOSSONOU - Arrière-plan technologique moderne" 
           className="w-full h-full object-cover opacity-20"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-dark" />
         <div className="absolute inset-0 bg-gradient-glow animate-pulse" />
@@ -28,12 +29,12 @@ const Hero = () => {
             </h1>
             
             <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-6 animate-fade-in animation-delay-100">
-              Développeur Web • Infographe • Photographe • Community Manager
+              Développeur Web Abidjan • Infographe • Photographe • Community Manager Côte d'Ivoire
             </h2>
             
             <p className="text-base sm:text-lg lg:text-xl text-foreground/80 mb-8 animate-fade-in animation-delay-200">
-              Basé à Abidjan, j'accompagne entreprises et particuliers dans leur transformation digitale 
-              avec plus de 5 ans d'expérience en développement web, design et marketing digital.
+              Expert digital basé à Abidjan, j'accompagne entreprises et particuliers dans leur transformation digitale. 
+              Création site web Côte d'Ivoire avec plus de 5 ans d'expérience en développement web, design graphique et marketing digital.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in animation-delay-300">
@@ -53,8 +54,11 @@ const Hero = () => {
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                 <img 
                   src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
-                  alt="Ulrich Deschamp KOSSONOU Professional Portrait" 
+                  alt="Ulrich Deschamp KOSSONOU - Développeur Web et Expert Digital à Abidjan, Côte d'Ivoire - Portrait Professionnel" 
                   className="w-full h-full object-contain bg-background"
+                  loading="eager"
+                  width="448"
+                  height="512"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>

@@ -31,7 +31,7 @@ const navItems = [
         : 'bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm py-5'
     }`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="relative group">
+        <a href="/" className="relative group" aria-label="Ulrich Deschamp - Accueil Portfolio Développeur Web Abidjan">
           <div className="absolute -inset-2 bg-gradient-primary rounded-lg blur-lg opacity-0 group-hover:opacity-50 transition duration-500"></div>
           <div className="relative flex items-center space-x-2">
             <Sparkles className="w-5 h-5 text-primary animate-pulse" />
@@ -39,7 +39,7 @@ const navItems = [
               UD
             </span>
           </div>
-        </div>
+        </a>
         
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-2 lg:space-x-4">

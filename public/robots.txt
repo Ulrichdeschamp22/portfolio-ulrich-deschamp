@@ -1,8 +1,22 @@
+# Robots.txt pour Ulrich Deschamp Portfolio
+# Optimisé pour le SEO en Côte d'Ivoire et International
+
+# Autoriser tous les robots d'indexation
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Robots spécifiques pour une meilleure indexation
 User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +24,17 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: LinkedInBot
 Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Sitemap
+Sitemap: https://ulrichdeschampkossonou.online/sitemap.xml
+
+# Dossiers et fichiers à ne pas indexer
+Disallow: /admin
+Disallow: /api
+Disallow: /*.json$
+Disallow: /*.txt$

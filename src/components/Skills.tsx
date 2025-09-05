@@ -79,9 +79,13 @@ const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-card/20">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
           <span className="text-gradient">Mes Compétences</span>
         </h2>
+        <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+          Expertise technique en développement web, design graphique et marketing digital. 
+          Services professionnels pour entreprises à Abidjan et partout en Côte d'Ivoire.
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (

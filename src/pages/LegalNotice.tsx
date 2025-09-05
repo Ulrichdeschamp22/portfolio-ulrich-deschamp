@@ -106,6 +106,9 @@ const LegalNotice = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <title>Mentions Légales - Ulrich Deschamp KOSSONOU | Développeur Web Abidjan</title>
+      <meta name="description" content="Mentions légales du portfolio de Ulrich Deschamp KOSSONOU - Développeur web, infographe et photographe professionnel à Abidjan, Côte d'Ivoire" />
+      <meta name="robots" content="noindex, follow" />
       <Navigation />
       
       {/* Hero Section */}

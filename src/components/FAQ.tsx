@@ -116,7 +116,8 @@ const FAQ = () => {
             <span className="text-gradient">Questions Fréquentes</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tout ce que vous devez savoir sur mes services et ma façon de travailler
+            Trouvez rapidement des réponses à vos questions sur mes services de développement web, 
+            infographie et photographie à Abidjan, Côte d'Ivoire
           </p>
         </div>
 

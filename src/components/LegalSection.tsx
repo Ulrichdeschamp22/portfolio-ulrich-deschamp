@@ -42,7 +42,7 @@ const LegalSection = () => {
             Mentions Légales
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Informations légales et conditions d'utilisation de ce site web
+            Informations légales du portfolio de Ulrich Deschamp KOSSONOU - Développeur web professionnel à Abidjan, Côte d'Ivoire
           </p>
         </div>
 

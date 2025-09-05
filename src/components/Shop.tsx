@@ -30,17 +30,18 @@ const Shop = () => {
     <section id="shop" className="py-20 bg-card/20">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-          <span className="text-gradient">Ma Boutique</span>
+          <span className="text-gradient">Ma Boutique E-commerce</span>
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-          Découvrez mes formations, e-books et outils pour booster votre présence digitale
+          Formations en développement web Abidjan, e-books et outils digitaux pour booster votre présence en ligne en Côte d'Ivoire
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {products.map((product, index) => (
-            <div 
+            <article 
               key={index}
               className="glass-card p-6 hover-lift group relative overflow-hidden"
+              itemScope itemType="https://schema.org/Product"
             >
               {product.highlight && (
                 <span className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-primary/20 text-primary">
@@ -52,8 +53,8 @@ const Shop = () => {
                 <product.icon className="w-8 h-8 text-primary" />
               </div>
               
-              <h3 className="text-xl font-semibold mb-3">{product.title}</h3>
-              <p className="text-muted-foreground mb-6">{product.description}</p>
+              <h3 className="text-xl font-semibold mb-3" itemProp="name">{product.title}</h3>
+              <p className="text-muted-foreground mb-6" itemProp="description">{product.description}</p>
               
               <ul className="space-y-2 mb-6">
                 {product.features.map((feature, featureIndex) => (
@@ -63,7 +64,9 @@ const Shop = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+              <meta itemProp="brand" content="Ulrich Deschamp Digital" />
+              <meta itemProp="seller" content="Ulrich Deschamp KOSSONOU" />
+            </article>
           ))}
         </div>
         
@@ -74,6 +77,7 @@ const Shop = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center"
+              aria-label="Visiter la boutique e-commerce Open Mind Shop - Produits digitaux par Ulrich Deschamp"
             >
               <ShoppingBag className="w-5 h-5 mr-2" />
               Visiter la boutique

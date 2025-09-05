@@ -11,7 +11,7 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-8 left-8 z-50 group"
-      aria-label="Contactez-moi sur WhatsApp"
+      aria-label="Contactez Ulrich Deschamp sur WhatsApp - Développeur Web Abidjan Côte d'Ivoire"
     >
       <div className="relative">
         {/* Glow effect */}

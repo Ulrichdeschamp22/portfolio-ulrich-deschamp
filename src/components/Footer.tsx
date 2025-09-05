@@ -11,10 +11,13 @@ const Footer = () => {
             <span className="ml-2 font-semibold text-foreground">Ulrich Deschamp</span>
           </p>
           <p className="text-sm text-muted-foreground mt-2">
-            © {new Date().getFullYear()} Tous droits réservés • 
+            © {new Date().getFullYear()} Ulrich Deschamp KOSSONOU - Développeur Web Abidjan • Tous droits réservés • 
             <Link to="/mentions-legales" className="text-primary hover:underline ml-1">
               Mentions légales
             </Link>
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            Côte d'Ivoire | Abidjan | Services Digitaux Professionnels
           </p>
         </div>
       </div>
