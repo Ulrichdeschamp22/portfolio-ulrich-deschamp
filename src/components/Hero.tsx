@@ -10,48 +10,57 @@ const Hero = () => {
         <img 
           src={heroImage} 
           alt="Ulrich Deschamp Portfolio Background" 
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-dark" />
         <div className="absolute inset-0 bg-gradient-glow animate-pulse" />
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 text-center relative">
-        <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in mt-16 md:mt-20">
-          <span className="text-gradient">Ulrich Deschamp</span>
-        </h1>
-        
-        {/* Portfolio Image with stunning design */}
-        <div className="relative mb-8 animate-scale-in animation-delay-100">
-          <div className="relative w-64 h-80 md:w-80 md:h-96 mx-auto group">
-            <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500 animate-pulse"></div>
-            <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
-              <img 
-                src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
-                alt="Ulrich Deschamp Professional Portrait" 
-                className="w-full h-full object-contain bg-background"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div className="container mx-auto px-4 lg:px-8 z-10 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
+          
+          {/* Text Content - Left on Desktop, Below on Mobile/Tablet */}
+          <div className="order-2 lg:order-1 text-center lg:text-left animate-fade-in">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
+              <span className="text-gradient">Ulrich Deschamp</span>
+              <span className="text-gradient block lg:inline"> KOSSONOU</span>
+            </h1>
+            
+            <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-6 animate-fade-in animation-delay-100">
+              Développeur Web • Infographe • Photographe • Community Manager
+            </h2>
+            
+            <p className="text-base sm:text-lg lg:text-xl text-foreground/80 mb-8 animate-fade-in animation-delay-200">
+              Basé à Abidjan, j'accompagne entreprises et particuliers dans leur transformation digitale 
+              avec plus de 5 ans d'expérience en développement web, design et marketing digital.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in animation-delay-300">
+              <Button size="xl" variant="glow" asChild>
+                <a href="#projects">Voir mes projets</a>
+              </Button>
+              <Button size="xl" variant="outline" asChild>
+                <a href="#contact">Me contacter</a>
+              </Button>
             </div>
-            <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
           </div>
-        </div>
 
-        <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8 animate-fade-in animation-delay-200">
-          Développeur Web • Infographe • Photographe • Community Manager
-        </h2>
-        <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto mb-8 animate-fade-in animation-delay-200">
-          Basé à Abidjan, j'accompagne entreprises et particuliers dans leur transformation digitale 
-          avec plus de 5 ans d'expérience en développement web, design et marketing digital.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-300">
-          <Button size="xl" variant="glow" asChild>
-            <a href="#projects">Voir mes projets</a>
-          </Button>
-          <Button size="xl" variant="outline" asChild>
-            <a href="#contact">Me contacter</a>
-          </Button>
+          {/* Image - Right on Desktop, Top on Mobile/Tablet */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-scale-in animation-delay-100">
+            <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[28rem] xl:w-[28rem] xl:h-[32rem] group">
+              <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
+              <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                <img 
+                  src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
+                  alt="Ulrich Deschamp KOSSONOU Professional Portrait" 
+                  className="w-full h-full object-contain bg-background"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
+            </div>
+          </div>
         </div>
       </div>
 
