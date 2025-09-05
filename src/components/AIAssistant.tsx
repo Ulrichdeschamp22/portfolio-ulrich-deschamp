@@ -18,13 +18,7 @@ const AIAssistant = () => {
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: 'assistant',
-      content: "Bonjour ! Je suis l'assistant virtuel d'Ulrich Deschamp. Comment puis-je vous aider aujourd'hui ? 🚀",
-      timestamp: new Date()
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
@@ -130,12 +124,6 @@ const AIAssistant = () => {
     }
   };
 
-  const quickActions = [
-    "Quels sont vos services ?",
-    "Comment vous contacter ?",
-    "Voir vos projets",
-    "Demander un devis"
-  ];
 
   return (
     <>
@@ -192,30 +180,38 @@ const AIAssistant = () => {
               {/* Messages */}
               <ScrollArea ref={scrollAreaRef} className={`flex-1 p-3 md:p-4 ${getMessagesHeight()}`}>
                 <div className="space-y-3 md:space-y-4">
-                  {messages.map((message, index) => (
-                    <div
-                      key={index}
-                      className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                    >
-                      <div
-                        className={`${
-                          isMobile ? 'max-w-[85%]' : 'max-w-[80%]'
-                        } p-3 ${
-                          message.role === 'user'
-                            ? 'bg-primary text-primary-foreground rounded-2xl rounded-tr-sm'
-                            : 'bg-muted rounded-2xl rounded-tl-sm'
-                        } shadow-sm`}
-                      >
-                        <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                        <span className="text-xs opacity-70 mt-1 block">
-                          {message.timestamp.toLocaleTimeString('fr-FR', { 
-                            hour: '2-digit', 
-                            minute: '2-digit' 
-                          })}
-                        </span>
-                      </div>
+                  {messages.length === 0 ? (
+                    <div className="text-center text-muted-foreground text-sm p-4">
+                      <Bot className="w-12 h-12 mx-auto mb-4 text-primary/50" />
+                      <p>Bonjour ! Je suis l'assistant virtuel d'Ulrich Deschamp.</p>
+                      <p className="mt-2">Comment puis-je vous aider aujourd'hui ?</p>
                     </div>
-                  ))}
+                  ) : (
+                    messages.map((message, index) => (
+                      <div
+                        key={index}
+                        className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                      >
+                        <div
+                          className={`${
+                            isMobile ? 'max-w-[85%]' : 'max-w-[80%]'
+                          } p-3 ${
+                            message.role === 'user'
+                              ? 'bg-primary text-primary-foreground rounded-2xl rounded-tr-sm'
+                              : 'bg-muted rounded-2xl rounded-tl-sm'
+                          } shadow-sm`}
+                        >
+                          <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                          <span className="text-xs opacity-70 mt-1 block">
+                            {message.timestamp.toLocaleTimeString('fr-FR', { 
+                              hour: '2-digit', 
+                              minute: '2-digit' 
+                            })}
+                          </span>
+                        </div>
+                      </div>
+                    ))
+                  )}
                   {isLoading && (
                     <div className="flex justify-start">
                       <div className="bg-muted p-3 rounded-2xl rounded-tl-sm shadow-sm">
@@ -229,28 +225,6 @@ const AIAssistant = () => {
                   )}
                 </div>
               </ScrollArea>
-
-              {/* Quick Actions */}
-              {messages.length === 1 && (
-                <div className="px-3 md:px-4 pb-2">
-                  <div className="flex flex-wrap gap-2">
-                    {quickActions.map((action, index) => (
-                      <Button
-                        key={index}
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                          setInputMessage(action);
-                          sendMessage();
-                        }}
-                        className="text-xs"
-                      >
-                        {action}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               {/* Input */}
               <div className="p-3 md:p-4 border-t border-primary/20">

@@ -141,30 +141,34 @@ const FAQ = () => {
           ))}
         </div>
 
-        {/* FAQ Accordion */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <Accordion type="single" collapsible className="space-y-4">
-            {filteredFAQ.map((item, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`}
-                className="glass-card border-none overflow-hidden animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-primary/5 transition-colors">
-                  <div className="flex items-center gap-3 text-left">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                    <span className="text-base md:text-lg font-medium">{item.question}</span>
+        {/* FAQ Grid Layout */}
+        <div className="mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredFAQ.map((item, index) => {
+              const categoryIcon = categories.find(cat => cat.id === item.category)?.icon || FileText;
+              const Icon = categoryIcon;
+              
+              return (
+                <div
+                  key={index}
+                  className="glass-card p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 animate-fade-in group"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="font-semibold text-base flex-1">
+                      {item.question}
+                    </h3>
                   </div>
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6 pt-2">
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.answer}
                   </p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* CTA Section */}
