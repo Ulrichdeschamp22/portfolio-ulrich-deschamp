@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
     <!-- SEO Meta Tags -->
     <title>Ulrich Deschamp KOSSONOU - Développeur Web Abidjan | Infographe & Photographe Côte d'Ivoire</title>
     <meta name="description" content="Développeur web professionnel à Abidjan. Création site web, infographie, photographie et community management en Côte d'Ivoire. Plus de 5 ans d'expérience. Contactez-moi pour vos projets digitaux!" />
@@ -204,5 +207,28 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200,
+        once: true,
+        offset: 100
+      });
+    </script>
+    
+    <!-- Rellax Parallax Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+    <script>
+      var rellax = new Rellax('.rellax', {
+        speed: -2,
+        center: true,
+        wrapper: null,
+        round: true,
+        vertical: true,
+        horizontal: false
+      });
+    </script>
   </body>
 </html>

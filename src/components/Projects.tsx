@@ -45,9 +45,9 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" data-rellax-speed="1">
           <span className="text-gradient">Projets Réalisés</span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
@@ -59,7 +59,8 @@ const Projects = () => {
           {projects.map((project, index) => (
             <article 
               key={index}
-              className="glass-card overflow-hidden group hover-lift"
+              className={`glass-card overflow-hidden group hover-lift ${index % 2 === 0 ? 'rellax' : ''}`}
+              data-rellax-speed={index % 2 === 0 ? "3" : undefined}
               itemScope itemType="https://schema.org/CreativeWork"
             >
               <div className="p-6">

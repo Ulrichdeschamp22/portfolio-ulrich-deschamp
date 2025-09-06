@@ -25,9 +25,9 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-20 relative" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 rellax" data-rellax-speed="1">
           <span className="text-gradient">À propos de moi</span>
         </h2>
         

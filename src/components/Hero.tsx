@@ -4,7 +4,7 @@ import heroImage from '@/assets/hero-bg-tech.jpg';
 
 const Hero = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20" data-aos="fade-up" data-aos-duration="1500">
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -22,8 +22,8 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
           
           {/* Text Content - Left on Desktop, Below on Mobile/Tablet */}
-          <div className="order-2 lg:order-1 text-center lg:text-left animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6">
+          <div className="order-2 lg:order-1 text-center lg:text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 rellax" data-rellax-speed="1">
               <span className="text-gradient">Ulrich Deschamp</span>
               <span className="text-gradient block lg:inline"> KOSSONOU</span>
             </h1>
@@ -48,7 +48,7 @@ const Hero = () => {
           </div>
 
           {/* Image - Right on Desktop, Top on Mobile/Tablet */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-scale-in animation-delay-100">
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-scale-in animation-delay-100 rellax" data-rellax-speed="-2">
             <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[28rem] xl:w-[28rem] xl:h-[32rem] group">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">

@@ -103,7 +103,7 @@ const FAQ = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <section id="faq" className="min-h-screen py-20 relative overflow-hidden">
+    <section id="faq" className="min-h-screen py-20 relative overflow-hidden" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
       {/* Background gradient effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"></div>
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -112,7 +112,7 @@ const FAQ = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 rellax" data-rellax-speed="1">
             <span className="text-gradient">Questions Fréquentes</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

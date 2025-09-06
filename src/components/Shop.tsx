@@ -27,9 +27,9 @@ const Shop = () => {
   ];
 
   return (
-    <section id="shop" className="py-20 bg-card/20">
+    <section id="shop" className="py-20 bg-card/20" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" data-rellax-speed="1">
           <span className="text-gradient">Ma Boutique E-commerce</span>
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">

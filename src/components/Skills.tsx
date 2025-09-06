@@ -77,9 +77,9 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-card/20">
+    <section id="skills" className="py-20 bg-card/20" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" data-rellax-speed="1">
           <span className="text-gradient">Mes Compétences</span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
