@@ -27,12 +27,28 @@ const Shop = () => {
   ];
 
   return (
-    <section id="shop" className="py-20 bg-card/20" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" data-rellax-speed="1">
+    <section 
+      id="shop" 
+      className="py-20 bg-card/20 relative overflow-hidden" 
+      data-aos="fade-up" 
+      data-aos-duration="1200"
+    >
+      {/* Floating elements animation */}
+      <div className="absolute top-10 left-10 w-20 h-20 bg-primary/20 rounded-full animate-bounce"></div>
+      <div className="absolute bottom-10 right-10 w-32 h-32 bg-accent/20 rounded-full animate-bounce animation-delay-200"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 
+          className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
+          data-rellax-speed="1"
+        >
           <span className="text-gradient">Ma Boutique E-commerce</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+        <p 
+          className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Formations en développement web Abidjan, e-books et outils digitaux pour booster votre présence en ligne en Côte d'Ivoire
         </p>
         
@@ -40,16 +56,22 @@ const Shop = () => {
           {products.map((product, index) => (
             <article 
               key={index}
-              className="glass-card p-6 hover-lift group relative overflow-hidden"
-              itemScope itemType="https://schema.org/Product"
+              className="glass-card p-6 hover-lift group relative overflow-hidden rellax"
+              data-rellax-speed={index % 2 === 0 ? "-2" : "2"}
+              data-aos="flip-right"
+              data-aos-delay={100 + index * 150}
+              itemScope 
+              itemType="https://schema.org/Product"
             >
               {product.highlight && (
-                <span className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-primary/20 text-primary">
+                <span 
+                  className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-primary/20 text-primary animate-pulse"
+                >
                   {product.highlight}
                 </span>
               )}
               
-              <div className="p-4 rounded-lg bg-primary/10 w-fit mb-6 group-hover:bg-primary/20 transition-colors">
+              <div className="p-4 rounded-lg bg-primary/10 w-fit mb-6 group-hover:bg-primary/20 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                 <product.icon className="w-8 h-8 text-primary" />
               </div>
               
@@ -58,7 +80,12 @@ const Shop = () => {
               
               <ul className="space-y-2 mb-6">
                 {product.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm">
+                  <li 
+                    key={featureIndex} 
+                    className="flex items-center text-sm"
+                    data-aos="fade-right"
+                    data-aos-delay={300 + featureIndex * 50}
+                  >
                     <span className="text-primary mr-2">✓</span>
                     <span className="text-foreground/80">{feature}</span>
                   </li>
@@ -70,8 +97,12 @@ const Shop = () => {
           ))}
         </div>
         
-        <div className="text-center">
-          <Button size="xl" variant="glow" asChild>
+        <div 
+          className="text-center"
+          data-aos="zoom-in"
+          data-aos-delay="400"
+        >
+          <Button size="xl" variant="glow" asChild className="hover:scale-110 transition-transform duration-300">
             <a 
               href="https://open-mind.shop/" 
               target="_blank" 
@@ -79,7 +110,7 @@ const Shop = () => {
               className="inline-flex items-center"
               aria-label="Visiter la boutique e-commerce Open Mind Shop - Produits digitaux par Ulrich Deschamp"
             >
-              <ShoppingBag className="w-5 h-5 mr-2" />
+              <ShoppingBag className="w-5 h-5 mr-2 animate-bounce" />
               Visiter la boutique
             </a>
           </Button>

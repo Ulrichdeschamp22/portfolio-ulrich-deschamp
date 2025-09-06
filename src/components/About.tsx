@@ -25,14 +25,29 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 relative" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 rellax" data-rellax-speed="1">
+    <section 
+      id="about" 
+      className="py-20 relative overflow-hidden" 
+      data-aos="fade-right" 
+      data-aos-duration="1200"
+    >
+      {/* Animated background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 
+          className="text-4xl md:text-5xl font-bold text-center mb-12 rellax" 
+          data-rellax-speed="1"
+        >
           <span className="text-gradient">À propos de moi</span>
         </h2>
         
-        <div className="max-w-4xl mx-auto mb-16">
-          <p className="text-lg text-foreground/80 text-center leading-relaxed animate-fade-in animation-delay-100">
+        <div 
+          className="max-w-4xl mx-auto mb-16"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <p className="text-lg text-foreground/80 text-center leading-relaxed">
             Je suis <span className="text-primary font-semibold">Kossonou Kouassi N'Tobeni Ulrich Deschamp</span>, 
             développeur web et expert digital basé à Abidjan, Côte d'Ivoire. 
             Avec une approche créative et technique, j'aide les entreprises et particuliers à créer des sites web performants et transformer leurs idées en solutions digitales innovantes 
@@ -44,10 +59,13 @@ const About = () => {
           {highlights.map((item, index) => (
             <div 
               key={index}
-              className="glass-card p-6 hover-lift group"
+              className="glass-card p-6 hover-lift group rellax"
+              data-rellax-speed={index % 2 === 0 ? "2" : "-1"}
+              data-aos="zoom-in"
+              data-aos-delay={200 + index * 100}
             >
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-500 group-hover:scale-110">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>

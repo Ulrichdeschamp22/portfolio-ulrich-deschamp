@@ -77,12 +77,28 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-card/20" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" data-rellax-speed="1">
+    <section 
+      id="skills" 
+      className="py-20 bg-card/20 relative overflow-hidden" 
+      data-aos="fade-up" 
+      data-aos-duration="1200"
+    >
+      {/* Animated particles background */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse animation-delay-200"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 
+          className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
+          data-rellax-speed="1"
+        >
           <span className="text-gradient">Mes Compétences</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+        <p 
+          className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Expertise technique en développement web, design graphique et marketing digital. 
           Services professionnels pour entreprises à Abidjan et partout en Côte d'Ivoire.
         </p>
@@ -92,9 +108,12 @@ const Skills = () => {
             <div 
               key={index}
               className="glass-card p-6 hover-lift group"
+              data-aos="flip-left"
+              data-aos-delay={100 + index * 100}
+              data-aos-duration="1000"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
                   <category.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold">{category.title}</h3>
@@ -103,7 +122,8 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <li 
                     key={skillIndex}
-                    className="flex items-start"
+                    className="flex items-start opacity-0 animate-fade-in"
+                    style={{ animationDelay: `${(index * 100) + (skillIndex * 50)}ms` }}
                   >
                     <span className="text-primary mr-2">•</span>
                     <span className="text-muted-foreground text-sm">{skill}</span>

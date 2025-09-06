@@ -103,7 +103,12 @@ const FAQ = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <section id="faq" className="min-h-screen py-20 relative overflow-hidden" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+    <section 
+      id="faq" 
+      className="min-h-screen py-20 relative overflow-hidden" 
+      data-aos="fade-up" 
+      data-aos-duration="1200"
+    >
       {/* Background gradient effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"></div>
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -111,19 +116,30 @@ const FAQ = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 rellax" data-rellax-speed="1">
+        <div className="text-center mb-12">
+          <h2 
+            className="text-4xl md:text-5xl font-bold mb-4 rellax" 
+            data-rellax-speed="1"
+          >
             <span className="text-gradient">Questions Fréquentes</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p 
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Trouvez rapidement des réponses à vos questions sur mes services de développement web, 
             infographie et photographie à Abidjan, Côte d'Ivoire
           </p>
         </div>
 
         {/* Category filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12 animate-fade-in animation-delay-100">
-          {categories.map((cat) => (
+        <div 
+          className="flex flex-wrap justify-center gap-2 mb-12"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          {categories.map((cat, index) => (
             <Button
               key={cat.id}
               variant={activeCategory === cat.id ? "default" : "outline"}
@@ -135,6 +151,8 @@ const FAQ = () => {
                   : 'hover:bg-primary/10'
                 }
               `}
+              data-aos="zoom-in"
+              data-aos-delay={400 + index * 50}
             >
               <cat.icon className="w-4 h-4 mr-2" />
               {cat.label}
@@ -152,11 +170,12 @@ const FAQ = () => {
               return (
                 <div
                   key={index}
-                  className="glass-card p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 animate-fade-in group"
-                  style={{ animationDelay: `${index * 50}ms` }}
+                  className="glass-card p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group"
+                  data-aos="flip-up"
+                  data-aos-delay={100 + index * 50}
                 >
                   <div className="flex items-start gap-3 mb-4">
-                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-all duration-500 group-hover:rotate-12">
                       <Icon className="w-5 h-5 text-primary" />
                     </div>
                     <h3 className="font-semibold text-base flex-1">
@@ -173,7 +192,11 @@ const FAQ = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="glass-card p-8 md:p-12 text-center max-w-3xl mx-auto animate-fade-in">
+        <div 
+          className="glass-card p-8 md:p-12 text-center max-w-3xl mx-auto"
+          data-aos="zoom-in-up"
+          data-aos-delay="600"
+        >
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
             Vous avez d'autres questions ?
           </h3>
@@ -187,34 +210,46 @@ const FAQ = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex"
+              data-aos="fade-right"
+              data-aos-delay="700"
             >
               <Button 
                 size="lg" 
-                className="bg-green-500 hover:bg-green-600 text-white shadow-lg hover-lift group"
+                className="bg-green-500 hover:bg-green-600 text-white shadow-lg hover-lift group hover:scale-110 transition-all duration-300"
               >
-                <MessageCircle className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                <MessageCircle className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 WhatsApp Direct
               </Button>
             </a>
             
-            <a href="mailto:deschamp.deschamp222@gmail.com" className="inline-flex">
+            <a 
+              href="mailto:deschamp.deschamp222@gmail.com" 
+              className="inline-flex"
+              data-aos="fade-up"
+              data-aos-delay="800"
+            >
               <Button 
                 size="lg" 
                 variant="outline"
-                className="hover:bg-primary/10 hover-lift group"
+                className="hover:bg-primary/10 hover-lift group hover:scale-110 transition-all duration-300"
               >
-                <Mail className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                <Mail className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 Email
               </Button>
             </a>
             
-            <a href="#contact" className="inline-flex">
+            <a 
+              href="#contact" 
+              className="inline-flex"
+              data-aos="fade-left"
+              data-aos-delay="900"
+            >
               <Button 
                 size="lg"
                 variant="outline" 
-                className="hover:bg-primary/10 hover-lift group"
+                className="hover:bg-primary/10 hover-lift group hover:scale-110 transition-all duration-300"
               >
-                <FileText className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                <FileText className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 Formulaire
               </Button>
             </a>
