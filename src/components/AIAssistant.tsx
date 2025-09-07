@@ -26,38 +26,42 @@ const AIAssistant = () => {
   
   // Determine window size based on screen size
   const getWindowSize = () => {
-    if (isMobile) {
-      return isMinimized ? 
-        'fixed bottom-20 right-4 w-14 h-14 rounded-full' : 
-        'fixed inset-0 w-full h-full z-50';
-    }
     const width = window.innerWidth;
-    if (width < 768) {
+    
+    // Mobile (<600px) - Centered at bottom, 90% width, 80% height
+    if (width < 600) {
       return isMinimized ? 
-        'fixed bottom-20 right-4 w-14 h-14 rounded-full' : 
-        'fixed inset-0 w-full h-full z-50';
-    } else if (width < 1024) {
+        'fixed bottom-4 left-1/2 transform -translate-x-1/2 w-14 h-14 rounded-full' : 
+        'fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] h-[80vh] rounded-xl z-50';
+    }
+    // Tablet (600-1024px) - Bottom right, 400px width, 60% height
+    else if (width >= 600 && width < 1024) {
       return isMinimized ? 
-        'fixed bottom-20 right-6 w-16 h-16 rounded-full' : 
-        'fixed bottom-20 right-6 w-[380px] h-[500px] rounded-2xl';
-    } else {
+        'fixed bottom-6 right-6 w-16 h-16 rounded-full' : 
+        'fixed bottom-6 right-6 w-[400px] h-[60vh] max-h-[600px] rounded-xl';
+    }
+    // Desktop (>1024px) - Bottom right, 350px width, 500px height
+    else {
       return isMinimized ? 
-        'fixed bottom-20 right-6 w-16 h-16 rounded-full' : 
-        'fixed bottom-20 right-6 w-[380px] h-[540px] rounded-2xl';
+        'fixed bottom-6 right-6 w-16 h-16 rounded-full' : 
+        'fixed bottom-6 right-6 w-[350px] h-[500px] rounded-xl';
     }
   };
   
   const getMessagesHeight = () => {
-    if (isMobile) {
-      return 'h-[calc(100vh-180px)]';
-    }
     const width = window.innerWidth;
-    if (width < 768) {
-      return 'h-[calc(100vh-180px)]';
-    } else if (width < 1024) {
+    
+    // Mobile - 80% of 80vh minus header and input
+    if (width < 600) {
+      return 'h-[calc(80vh-140px)]';
+    }
+    // Tablet - 60vh minus header and input
+    else if (width >= 600 && width < 1024) {
+      return 'h-[calc(60vh-140px)]';
+    }
+    // Desktop - Fixed 500px minus header and input
+    else {
       return 'h-[340px]';
-    } else {
-      return 'h-[380px]';
     }
   };
 
@@ -136,7 +140,7 @@ const AIAssistant = () => {
   return (
     <>
       {/* Floating Button - Always Visible */}
-      <div className={`fixed ${isMobile ? 'bottom-4 right-4' : 'bottom-6 right-6'} z-50`}>
+      <div className={`fixed ${window.innerWidth < 600 ? 'bottom-4 left-1/2 transform -translate-x-1/2' : 'bottom-6 right-6'} z-50`}>
         {!isOpen && (
           <Button
             onClick={() => setIsOpen(true)}
@@ -151,24 +155,22 @@ const AIAssistant = () => {
       {/* Chat Window */}
       {isOpen && (
         <>
-          {/* Overlay for mobile */}
-          {isMobile && !isMinimized && (
-            <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setIsOpen(false)} />
+          {/* Overlay for mobile - only for small mobile screens */}
+          {window.innerWidth < 600 && !isMinimized && (
+            <div className="fixed inset-0 bg-black/30 z-40" onClick={() => setIsOpen(false)} />
           )}
           
-          <Card className={`${getWindowSize()} shadow-2xl transition-all duration-300 glass-card border-primary/20 ${
+          <Card className={`${getWindowSize()} shadow-xl transition-all duration-300 glass-card border-primary/20 ${
             isMinimized ? 'overflow-hidden' : ''
           }`}>
             {/* Header */}
-            <div className={`flex items-center justify-between p-3 md:p-4 border-b border-primary/20 bg-gradient-primary ${
-              isMobile && !isMinimized ? 'rounded-none' : 'rounded-t-2xl'
-            }`}>
+            <div className={`flex items-center justify-between p-3 md:p-4 border-b border-primary/20 bg-gradient-primary rounded-t-xl`}>
             <div className="flex items-center gap-2">
               <Bot className="w-5 h-5 md:w-6 md:h-6 text-white" />
               <span className="font-semibold text-white text-sm md:text-base">Assistant IA</span>
             </div>
             <div className="flex items-center gap-1 md:gap-2">
-              {!isMobile && (
+              {window.innerWidth >= 600 && (
                 <Button
                   variant="ghost"
                   size="icon"
@@ -194,27 +196,25 @@ const AIAssistant = () => {
               {/* Messages */}
               <ScrollArea ref={scrollAreaRef} className={`flex-1 p-3 md:p-4 ${getMessagesHeight()}`}>
                 <div className="space-y-3 md:space-y-4">
-                  {messages.length === 0 ? (
-                    <div className="text-center text-muted-foreground text-sm p-4">
-                      <Bot className="w-12 h-12 mx-auto mb-4 text-primary/50" />
-                      <p>Bonjour ! Je suis l'assistant virtuel d'Ulrich Deschamp.</p>
-                      <p className="mt-2">Comment puis-je vous aider aujourd'hui ?</p>
-                    </div>
-                  ) : (
-                    messages.map((message, index) => (
-                      <div
-                        key={index}
-                        className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                      >
-                        <div
-                          className={`${
-                            isMobile ? 'max-w-[85%]' : 'max-w-[80%]'
-                          } p-3 ${
-                            message.role === 'user'
-                              ? 'bg-primary text-primary-foreground rounded-2xl rounded-tr-sm'
-                              : 'bg-muted rounded-2xl rounded-tl-sm'
-                          } shadow-sm`}
-                        >
+              {messages.length === 0 ? (
+                <div className="text-center text-muted-foreground text-sm p-4">
+                  <Bot className="w-12 h-12 mx-auto mb-4 text-primary/50" />
+                  <p>Bonjour ! Je suis l'assistant virtuel d'Ulrich Deschamp.</p>
+                  <p className="mt-2">Comment puis-je vous aider aujourd'hui ?</p>
+                </div>
+              ) : (
+                messages.map((message, index) => (
+                  <div
+                    key={index}
+                    className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div
+                      className={`max-w-[85%] p-3 ${
+                        message.role === 'user'
+                          ? 'bg-primary text-primary-foreground rounded-2xl rounded-tr-sm'
+                          : 'bg-muted rounded-2xl rounded-tl-sm'
+                      } shadow-sm`}
+                    >
                           <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                           <span className="text-xs opacity-70 mt-1 block">
                             {message.timestamp.toLocaleTimeString('fr-FR', { 
@@ -250,15 +250,15 @@ const AIAssistant = () => {
                     onKeyPress={handleKeyPress}
                     placeholder="Posez votre question..."
                     disabled={isLoading}
-                    className="flex-1 min-h-[50px] text-sm md:text-base"
+                    className="flex-1 min-h-[44px] text-sm"
                   />
                   <Button
                     onClick={sendMessage}
                     disabled={!inputMessage.trim() || isLoading}
                     size="icon"
-                    className="bg-primary hover:bg-primary/90 h-[50px] w-[50px]"
+                    className="bg-primary hover:bg-primary/90 h-[44px] w-[44px]"
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
