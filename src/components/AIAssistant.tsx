@@ -28,40 +28,40 @@ const AIAssistant = () => {
   const getWindowSize = () => {
     const width = window.innerWidth;
     
-    // Mobile (<600px) - Centered at bottom, 90% width, 80% height
+    // Mobile (<600px) - Centered at bottom, 85% width, 50% height max
     if (width < 600) {
       return isMinimized ? 
         'fixed bottom-4 left-1/2 transform -translate-x-1/2 w-14 h-14 rounded-full' : 
-        'fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] h-[80vh] rounded-xl z-50';
+        'fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[85%] h-[50vh] max-h-[400px] rounded-xl z-50';
     }
-    // Tablet (600-1024px) - Bottom right, 400px width, 60% height
+    // Tablet (600-1024px) - Bottom right, 350px width, 400px height max
     else if (width >= 600 && width < 1024) {
       return isMinimized ? 
         'fixed bottom-6 right-6 w-16 h-16 rounded-full' : 
-        'fixed bottom-6 right-6 w-[400px] h-[60vh] max-h-[600px] rounded-xl';
+        'fixed bottom-6 right-6 w-[350px] h-[400px] max-h-[450px] rounded-xl';
     }
-    // Desktop (>1024px) - Bottom right, 350px width, 500px height
+    // Desktop (>1024px) - Bottom right, 320px width, 400px height
     else {
       return isMinimized ? 
         'fixed bottom-6 right-6 w-16 h-16 rounded-full' : 
-        'fixed bottom-6 right-6 w-[350px] h-[500px] rounded-xl';
+        'fixed bottom-6 right-6 w-[320px] h-[400px] rounded-xl';
     }
   };
   
   const getMessagesHeight = () => {
     const width = window.innerWidth;
     
-    // Mobile - 80% of 80vh minus header and input
+    // Mobile - 50vh minus header and input (smaller window)
     if (width < 600) {
-      return 'h-[calc(80vh-140px)]';
+      return 'h-[calc(50vh-140px)] max-h-[260px]';
     }
-    // Tablet - 60vh minus header and input
+    // Tablet - 400px minus header and input
     else if (width >= 600 && width < 1024) {
-      return 'h-[calc(60vh-140px)]';
+      return 'h-[calc(400px-140px)]';
     }
-    // Desktop - Fixed 500px minus header and input
+    // Desktop - Fixed 400px minus header and input
     else {
-      return 'h-[340px]';
+      return 'h-[260px]';
     }
   };
 
