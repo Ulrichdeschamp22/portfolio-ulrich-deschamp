@@ -27,29 +27,37 @@ const AIAssistant = () => {
   // Determine window size based on screen size
   const getWindowSize = () => {
     if (isMobile) {
-      return 'fixed bottom-0 left-0 right-0 h-[70vh] w-full rounded-t-2xl';
+      return isMinimized ? 
+        'fixed bottom-20 right-4 w-14 h-14 rounded-full' : 
+        'fixed inset-0 w-full h-full z-50';
     }
     const width = window.innerWidth;
     if (width < 768) {
-      return 'fixed bottom-0 left-0 right-0 h-[70vh] w-full rounded-t-2xl';
+      return isMinimized ? 
+        'fixed bottom-20 right-4 w-14 h-14 rounded-full' : 
+        'fixed inset-0 w-full h-full z-50';
     } else if (width < 1024) {
-      return 'fixed bottom-6 right-6 w-80 h-[480px]';
+      return isMinimized ? 
+        'fixed bottom-20 right-6 w-16 h-16 rounded-full' : 
+        'fixed bottom-20 right-6 w-[380px] h-[500px] rounded-2xl';
     } else {
-      return 'fixed bottom-6 right-6 w-[360px] h-[520px]';
+      return isMinimized ? 
+        'fixed bottom-20 right-6 w-16 h-16 rounded-full' : 
+        'fixed bottom-20 right-6 w-[380px] h-[540px] rounded-2xl';
     }
   };
   
   const getMessagesHeight = () => {
     if (isMobile) {
-      return 'h-[calc(70vh-180px)]';
+      return 'h-[calc(100vh-180px)]';
     }
     const width = window.innerWidth;
     if (width < 768) {
-      return 'h-[calc(70vh-180px)]';
+      return 'h-[calc(100vh-180px)]';
     } else if (width < 1024) {
-      return 'h-[320px]';
+      return 'h-[340px]';
     } else {
-      return 'h-[360px]';
+      return 'h-[380px]';
     }
   };
 
@@ -142,13 +150,19 @@ const AIAssistant = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className={`${getWindowSize()} z-50 shadow-2xl transition-all duration-300 glass-card border-primary/20 ${
-          isMinimized && !isMobile ? 'h-14' : ''
-        }`}>
-          {/* Header */}
-          <div className={`flex items-center justify-between p-3 md:p-4 border-b border-primary/20 bg-gradient-primary ${
-            isMobile ? 'rounded-t-2xl' : 'rounded-t-lg'
+        <>
+          {/* Overlay for mobile */}
+          {isMobile && !isMinimized && (
+            <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setIsOpen(false)} />
+          )}
+          
+          <Card className={`${getWindowSize()} shadow-2xl transition-all duration-300 glass-card border-primary/20 ${
+            isMinimized ? 'overflow-hidden' : ''
           }`}>
+            {/* Header */}
+            <div className={`flex items-center justify-between p-3 md:p-4 border-b border-primary/20 bg-gradient-primary ${
+              isMobile && !isMinimized ? 'rounded-none' : 'rounded-t-2xl'
+            }`}>
             <div className="flex items-center gap-2">
               <Bot className="w-5 h-5 md:w-6 md:h-6 text-white" />
               <span className="font-semibold text-white text-sm md:text-base">Assistant IA</span>
@@ -250,7 +264,8 @@ const AIAssistant = () => {
               </div>
             </>
           )}
-        </Card>
+          </Card>
+        </>
       )}
     </>
   );

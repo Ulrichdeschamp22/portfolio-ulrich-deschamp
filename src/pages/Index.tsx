@@ -10,6 +10,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import Footer from '@/components/Footer';
 import AIAssistant from '@/components/AIAssistant';
 import LegalSection from '@/components/LegalSection';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
   return (
@@ -25,6 +26,7 @@ const Index = () => {
       <LegalSection />
       <Footer />
       <WhatsAppButton />
+      <ScrollToTop />
       <AIAssistant />
     </div>
   );
