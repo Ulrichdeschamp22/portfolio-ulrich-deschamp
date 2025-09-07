@@ -140,7 +140,7 @@ const AIAssistant = () => {
   return (
     <>
       {/* Floating Button - Always Visible */}
-      <div className={`fixed ${window.innerWidth < 600 ? 'bottom-4 left-1/2 transform -translate-x-1/2' : 'bottom-6 right-6'} z-50`}>
+      <div className="fixed bottom-4 right-6 z-40">
         {!isOpen && (
           <Button
             onClick={() => setIsOpen(true)}
