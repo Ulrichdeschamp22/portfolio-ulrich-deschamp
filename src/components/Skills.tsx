@@ -122,8 +122,9 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <li 
                     key={skillIndex}
-                    className="flex items-start opacity-0 animate-fade-in"
-                    style={{ animationDelay: `${(index * 100) + (skillIndex * 50)}ms` }}
+                    className="flex items-start"
+                    data-aos="fade-right"
+                    data-aos-delay={50 + (skillIndex * 50)}
                   >
                     <span className="text-primary mr-2">•</span>
                     <span className="text-muted-foreground text-sm">{skill}</span>
