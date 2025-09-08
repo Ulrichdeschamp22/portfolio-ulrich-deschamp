@@ -92,15 +92,21 @@ const Skills = () => {
           className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
         >
-          <span className="text-gradient">Mes Compétences</span>
+          <span className="text-gradient">Infographie et Design Graphique Créatif</span>
         </h2>
+        <h3 className="text-2xl md:text-3xl font-semibold text-center mb-8 text-primary">
+          Services d'Infographie Professionnelle à Abidjan et en Côte d'Ivoire
+        </h3>
         <p 
-          className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto"
+          className="text-center text-foreground/80 mb-12 max-w-5xl mx-auto text-lg leading-relaxed"
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          Expertise technique en développement web, design graphique et marketing digital. 
-          Services professionnels pour entreprises à Abidjan et partout en Côte d'Ivoire.
+          En tant qu'infographe professionnel basé à Abidjan, je crée des visuels percutants et des designs graphiques modernes pour les entreprises de Côte d'Ivoire. 
+          Mon expertise en infographie couvre la création de logos d'entreprise, chartes graphiques complètes, affiches publicitaires, brochures commerciales, 
+          cartes de visite premium, kakémonos pour événements, et packaging produits. Chaque création graphique est pensée pour renforcer l'identité visuelle 
+          de votre marque à Abidjan et dans toute la Côte d'Ivoire. J'utilise les derniers outils de design (Adobe Creative Suite, Figma) pour garantir 
+          des rendus professionnels haute définition adaptés à tous les supports : print et digital.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

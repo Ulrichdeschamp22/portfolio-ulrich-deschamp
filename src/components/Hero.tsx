@@ -23,18 +23,19 @@ const Hero = () => {
           
           {/* Text Content - Left on Desktop, Below on Mobile/Tablet */}
           <div className="order-2 lg:order-1 text-center lg:text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 rellax" data-rellax-speed="1">
-              <span className="text-gradient">Ulrich Deschamp</span>
-              <span className="text-gradient block lg:inline"> KOSSONOU</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 rellax" data-rellax-speed="1">
+              <span className="text-gradient">Développeur Web Full Stack, Community Manager, Infographe & Photographe à Abidjan</span>
             </h1>
             
-            <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-6 animate-fade-in animation-delay-100">
-              Développeur Web Abidjan • Infographe • Photographe • Community Manager Côte d'Ivoire
+            <h2 className="text-xl sm:text-2xl lg:text-3xl text-primary mb-6 animate-fade-in animation-delay-100">
+              Ulrich Deschamp KOSSONOU - Expert Digital en Côte d'Ivoire
             </h2>
             
             <p className="text-base sm:text-lg lg:text-xl text-foreground/80 mb-8 animate-fade-in animation-delay-200">
-              Expert digital basé à Abidjan, j'accompagne entreprises et particuliers dans leur transformation digitale. 
-              Création site web Côte d'Ivoire avec plus de 5 ans d'expérience en développement web, design graphique et marketing digital.
+              Développeur Web professionnel à Abidjan, je propose mes services de création de sites web, applications SaaS, design graphique et photographie en Côte d'Ivoire. 
+              Avec plus de 5 ans d'expérience, j'accompagne entreprises et startups dans leur transformation digitale. Expertise en développement web full-stack (React, Node.js), 
+              infographie professionnelle (logos, affiches, branding), photographie événementielle et corporate, ainsi qu'en community management et marketing digital. 
+              Basé à Abidjan, j'interviens dans toute la Côte d'Ivoire et l'Afrique de l'Ouest pour vos projets digitaux.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in animation-delay-300">
@@ -54,7 +55,7 @@ const Hero = () => {
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                 <img 
                   src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
-                  alt="Ulrich Deschamp KOSSONOU - Développeur Web et Expert Digital à Abidjan, Côte d'Ivoire - Portrait Professionnel" 
+                  alt="Ulrich Deschamp KOSSONOU - Développeur Web Full Stack à Abidjan Côte d'Ivoire - Expert Digital Infographe Photographe Community Manager" 
                   className="w-full h-full object-contain bg-background"
                   loading="eager"
                   width="448"
