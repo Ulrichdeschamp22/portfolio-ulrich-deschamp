@@ -42,21 +42,14 @@ const Shop = () => {
           className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
         >
-          <span className="text-gradient">Community Management et Marketing Digital en Côte d'Ivoire</span>
+          <span className="text-gradient">Ma Boutique E-commerce</span>
         </h2>
-        <h3 className="text-2xl md:text-3xl font-semibold text-center mb-8 text-primary">
-          Stratégies Digitales et Boutique E-commerce à Abidjan
-        </h3>
         <p 
-          className="text-center text-foreground/80 mb-16 max-w-5xl mx-auto text-lg leading-relaxed"
+          className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto"
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          Community Manager expert basé à Abidjan, j'accompagne les entreprises de Côte d'Ivoire dans leur stratégie de marketing digital et la gestion 
-          professionnelle de leurs réseaux sociaux. Mes services de community management incluent la création de contenus engageants, l'élaboration de 
-          calendriers éditoriaux stratégiques, l'animation de communautés en ligne, l'analyse des performances et le reporting détaillé. Je développe 
-          des stratégies marketing digital sur mesure pour accroître votre visibilité à Abidjan et dans toute la Côte d'Ivoire, générer des leads qualifiés 
-          et fidéliser votre audience. Découvrez également ma boutique en ligne proposant des formations digitales, e-books et outils pour entrepreneurs.
+          Formations en développement web Abidjan, e-books et outils digitaux pour booster votre présence en ligne en Côte d'Ivoire
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">

@@ -62,21 +62,15 @@ const Projects = () => {
           className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
         >
-          <span className="text-gradient">Photographie Professionnelle à Abidjan Côte d'Ivoire</span>
+          <span className="text-gradient">Projets Réalisés</span>
         </h2>
-        <h3 className="text-2xl md:text-3xl font-semibold text-center mb-8 text-primary">
-          Portfolio de Projets Web et Services Photographiques
-        </h3>
         <p 
-          className="text-center text-foreground/80 mb-12 max-w-5xl mx-auto text-lg leading-relaxed"
+          className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto"
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          Photographe professionnel établi à Abidjan, je propose mes services de photographie pour événements d'entreprise, mariages, conférences, 
-          portraits corporate, shooting produits et reportages photo en Côte d'Ivoire. Ma maîtrise technique et mon œil artistique me permettent 
-          de capturer les moments clés avec professionnalisme. En parallèle, découvrez mon portfolio de développement web avec des projets réalisés 
-          pour des entreprises ivoiriennes : sites vitrines modernes, applications SaaS performantes, et boutiques e-commerce optimisées pour le marché 
-          africain. Chaque projet web est développé avec les dernières technologies et optimisé pour le référencement local à Abidjan et en Côte d'Ivoire.
+          Portfolio de mes réalisations en développement web, infographie et photographie à Abidjan. 
+          Découvrez mes projets digitaux créés pour des entreprises en Côte d'Ivoire et à l'international.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

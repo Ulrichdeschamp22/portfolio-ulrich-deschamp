@@ -68,19 +68,14 @@ const Contact = () => {
           className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
         >
-          <span className="text-gradient">Contact Développeur Web et Expert Digital à Abidjan</span>
+          <span className="text-gradient">Contact</span>
         </h2>
-        <h3 className="text-2xl md:text-3xl font-semibold text-center mb-8 text-primary">
-          Devis Gratuit pour vos Projets Web en Côte d'Ivoire
-        </h3>
         <p 
-          className="text-center text-foreground/80 mb-12 max-w-5xl mx-auto text-lg leading-relaxed"
+          className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto"
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          Contactez-moi pour discuter de votre projet digital à Abidjan et en Côte d'Ivoire. Développeur web professionnel, infographe créatif, 
-          photographe expérimenté et community manager stratégique, je suis disponible pour tous vos besoins digitaux. Devis gratuit sous 24h pour 
-          création de site web, application mobile, design graphique, shooting photo ou stratégie de marketing digital en Côte d'Ivoire.
+          Contactez-moi pour vos projets de développement web, infographie, photographie ou community management à Abidjan et en Côte d'Ivoire
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">

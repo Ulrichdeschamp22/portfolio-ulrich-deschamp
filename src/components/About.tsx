@@ -39,33 +39,19 @@ const About = () => {
           className="text-4xl md:text-5xl font-bold text-center mb-12 rellax" 
           data-rellax-speed="1"
         >
-          <span className="text-gradient">Développement Web Professionnel à Abidjan et en Côte d'Ivoire</span>
+          <span className="text-gradient">À propos de moi</span>
         </h2>
         
-        <h3 className="text-2xl md:text-3xl font-semibold text-center mb-8 text-primary">
-          Expert Digital et Développeur Full-Stack basé à Abidjan
-        </h3>
-        
         <div 
-          className="max-w-5xl mx-auto mb-16"
+          className="max-w-4xl mx-auto mb-16"
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <p className="text-lg text-foreground/80 text-center leading-relaxed mb-6">
-            Je suis <span className="text-primary font-semibold">Kossonou Kouassi N'Tobeni Ulrich Deschamp</span>, 
-            développeur web professionnel et expert digital établi à Abidjan, en Côte d'Ivoire. Spécialisé dans le développement web full-stack, 
-            je propose mes services de création de sites web sur mesure, d'applications SaaS performantes et de boutiques e-commerce modernes aux entreprises 
-            et startups d'Abidjan et de toute la Côte d'Ivoire. Mon expertise technique en React, Node.js, et les dernières technologies web me permet 
-            de livrer des solutions digitales innovantes et optimisées pour le SEO, garantissant une visibilité maximale sur les moteurs de recherche 
-            pour mes clients basés en Côte d'Ivoire et en Afrique de l'Ouest.
-          </p>
           <p className="text-lg text-foreground/80 text-center leading-relaxed">
-            En tant que développeur web à Abidjan, j'accompagne les entreprises ivoiriennes dans leur transformation digitale complète. 
-            Mes services incluent non seulement le développement web professionnel, mais aussi l'infographie créative (création de logos, chartes graphiques, 
-            supports marketing), la photographie professionnelle pour événements et produits, ainsi que le community management stratégique. 
-            Cette approche multidisciplinaire me permet d'offrir une solution digitale complète et cohérente à mes clients d'Abidjan, de Yamoussoukro, 
-            de Bouaké, de San Pedro et de toute la Côte d'Ivoire. Chaque projet est conçu avec les meilleures pratiques du web moderne, 
-            assurant performance, sécurité et référencement optimal pour une présence en ligne efficace.
+            Je suis <span className="text-primary font-semibold">Kossonou Kouassi N'Tobeni Ulrich Deschamp</span>, 
+            développeur web et expert digital basé à Abidjan, Côte d'Ivoire. 
+            Avec une approche créative et technique, j'aide les entreprises et particuliers à créer des sites web performants et transformer leurs idées en solutions digitales innovantes 
+            qui génèrent des résultats concrets.
           </p>
         </div>
 
