@@ -197,11 +197,49 @@ All colors MUST be HSL.
     animation: gradient-shift 15s ease infinite;
   }
 
+  /* Floating icons animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotate(5deg);
+    }
+    75% {
+      transform: translateY(10px) rotate(-5deg);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(10px) rotate(-5deg);
+    }
+    75% {
+      transform: translateY(-10px) rotate(5deg);
+    }
+  }
+
+  .floating-icon {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-icon-delayed {
+    animation: float-delayed 6s ease-in-out infinite;
+  }
+
   /* Respect reduced motion preference */
   @media (prefers-reduced-motion: reduce) {
     .bg-gradient-animated {
       animation: none;
       background-size: 100% 100%;
+    }
+    
+    .floating-icon,
+    .floating-icon-delayed {
+      animation: none;
     }
   }
 }

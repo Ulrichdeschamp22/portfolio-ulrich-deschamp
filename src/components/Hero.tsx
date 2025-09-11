@@ -1,13 +1,43 @@
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { ChevronDown, Code2, Terminal, Cpu, Database, Globe, Server } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+
+// Configuration for the animated background
+const CONFIG = {
+  codeChars: ['<', '/>', '{', '}', '()', '[]', '=', ';', 'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'class', '=>', '...', '&&', '||', '!', '?', ':', 'import', 'export', 'async', 'await'],
+  colors: {
+    primary: 'var(--primary)',
+    secondary: 'var(--secondary)',
+    accent: 'var(--accent)'
+  },
+  mobile: {
+    particleCount: 15,
+    codeStreamCount: 8
+  },
+  desktop: {
+    particleCount: 30,
+    codeStreamCount: 20
+  }
+};
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || prefersReducedMotion) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -20,68 +50,134 @@ const Hero = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Particles configuration
-    const particles: Array<{
+    const isMobile = window.innerWidth < 768;
+    const config = isMobile ? CONFIG.mobile : CONFIG.desktop;
+
+    // Code rain particles
+    class CodeParticle {
+      x: number;
+      y: number;
+      speed: number;
+      char: string;
+      opacity: number;
+      size: number;
+
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height - canvas.height;
+        this.speed = Math.random() * 0.5 + 0.2;
+        this.char = CONFIG.codeChars[Math.floor(Math.random() * CONFIG.codeChars.length)];
+        this.opacity = Math.random() * 0.3 + 0.1;
+        this.size = Math.random() * 14 + 10;
+      }
+
+      update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) {
+          this.y = -20;
+          this.x = Math.random() * canvas.width;
+          this.char = CONFIG.codeChars[Math.floor(Math.random() * CONFIG.codeChars.length)];
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = `hsl(${CONFIG.colors.primary})`;
+        ctx.font = `${this.size}px 'Courier New', monospace`;
+        ctx.fillText(this.char, this.x, this.y);
+        ctx.restore();
+      }
+    }
+
+    // Floating tech icons
+    class TechIcon {
       x: number;
       y: number;
       vx: number;
       vy: number;
       size: number;
+      rotation: number;
+      rotationSpeed: number;
       opacity: number;
-    }> = [];
+      icon: string;
 
-    const particleCount = window.innerWidth < 768 ? 20 : 50; // Less particles on mobile
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.size = Math.random() * 20 + 15;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.01;
+        this.opacity = Math.random() * 0.15 + 0.05;
+        this.icon = ['⚡', '💻', '🚀', '⚙️', '📡', '🔧'][Math.floor(Math.random() * 6)];
+      }
 
-    // Initialize particles
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.1
-      });
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.rotation += this.rotationSpeed;
+
+        // Bounce off edges
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.font = `${this.size}px Arial`;
+        ctx.fillText(this.icon, -this.size/2, this.size/2);
+        ctx.restore();
+      }
     }
 
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Initialize particles
+    const codeParticles: CodeParticle[] = [];
+    const techIcons: TechIcon[] = [];
+
+    for (let i = 0; i < config.codeStreamCount; i++) {
+      codeParticles.push(new CodeParticle());
+    }
+
+    for (let i = 0; i < Math.floor(config.particleCount / 3); i++) {
+      techIcons.push(new TechIcon());
+    }
 
     // Animation loop
     let animationId: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw and update particles
-      particles.forEach((particle) => {
-        if (!prefersReducedMotion) {
-          // Update position
-          particle.x += particle.vx;
-          particle.y += particle.vy;
-
-          // Bounce off edges
-          if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-          if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-        }
-
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(var(--primary), ${particle.opacity})`;
-        ctx.fill();
+      // Draw and update code particles
+      codeParticles.forEach(particle => {
+        particle.update();
+        particle.draw();
       });
 
-      // Draw connections between nearby particles
-      particles.forEach((p1, i) => {
-        particles.slice(i + 1).forEach((p2) => {
-          const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+      // Draw and update tech icons
+      techIcons.forEach(icon => {
+        icon.update();
+        icon.draw();
+      });
+
+      // Draw connection lines between nearby tech icons
+      techIcons.forEach((icon1, i) => {
+        techIcons.slice(i + 1).forEach(icon2 => {
+          const distance = Math.sqrt((icon1.x - icon2.x) ** 2 + (icon1.y - icon2.y) ** 2);
           if (distance < 150) {
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `hsla(var(--primary), ${0.1 * (1 - distance / 150)})`;
+            ctx.save();
+            ctx.globalAlpha = 0.05 * (1 - distance / 150);
+            ctx.strokeStyle = `hsl(${CONFIG.colors.primary})`;
             ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(icon1.x, icon1.y);
+            ctx.lineTo(icon2.x, icon2.y);
             ctx.stroke();
+            ctx.restore();
           }
         });
       });
@@ -95,7 +191,7 @@ const Hero = () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20" data-aos="fade-up" data-aos-duration="1500">
@@ -104,15 +200,39 @@ const Hero = () => {
         {/* Animated gradient background */}
         <div className="absolute inset-0 bg-gradient-animated" />
         
-        {/* Particle canvas */}
+        {/* Code rain canvas */}
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 opacity-50"
+          className="absolute inset-0 opacity-60"
           aria-hidden="true"
         />
         
+        {/* Tech icons floating (CSS animation fallback for reduced motion) */}
+        {prefersReducedMotion && (
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="floating-icon absolute top-1/4 left-1/4 text-primary/10">
+              <Code2 size={40} />
+            </div>
+            <div className="floating-icon-delayed absolute top-3/4 right-1/4 text-primary/10">
+              <Terminal size={35} />
+            </div>
+            <div className="floating-icon absolute bottom-1/4 left-1/3 text-primary/10">
+              <Database size={30} />
+            </div>
+            <div className="floating-icon-delayed absolute top-1/3 right-1/3 text-primary/10">
+              <Server size={35} />
+            </div>
+            <div className="floating-icon absolute top-1/2 left-1/6 text-primary/10">
+              <Cpu size={32} />
+            </div>
+            <div className="floating-icon-delayed absolute bottom-1/3 right-1/6 text-primary/10">
+              <Globe size={38} />
+            </div>
+          </div>
+        )}
+        
         {/* Overlay gradient for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/60" />
       </div>
 
       {/* Content */}
