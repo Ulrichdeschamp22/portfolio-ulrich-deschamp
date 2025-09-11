@@ -1,20 +1,118 @@
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
-import heroImage from '@/assets/hero-bg-tech.jpg';
+import { useEffect, useRef } from 'react';
 
 const Hero = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Particles configuration
+    const particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      opacity: number;
+    }> = [];
+
+    const particleCount = window.innerWidth < 768 ? 20 : 50; // Less particles on mobile
+
+    // Initialize particles
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.5 + 0.1
+      });
+    }
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Animation loop
+    let animationId: number;
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw and update particles
+      particles.forEach((particle) => {
+        if (!prefersReducedMotion) {
+          // Update position
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+
+          // Bounce off edges
+          if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+          if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+        }
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(var(--primary), ${particle.opacity})`;
+        ctx.fill();
+      });
+
+      // Draw connections between nearby particles
+      particles.forEach((p1, i) => {
+        particles.slice(i + 1).forEach((p2) => {
+          const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+          if (distance < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `hsla(var(--primary), ${0.1 * (1 - distance / 150)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
+      });
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20" data-aos="fade-up" data-aos-duration="1500">
-      {/* Background with gradient overlay */}
+      {/* Animated background layers */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage} 
-          alt="Développeur web Abidjan - Ulrich Deschamp KOSSONOU - Arrière-plan technologique moderne" 
-          className="w-full h-full object-cover opacity-20"
-          loading="eager"
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 bg-gradient-animated" />
+        
+        {/* Particle canvas */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 opacity-50"
+          aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-gradient-dark" />
-        <div className="absolute inset-0 bg-gradient-glow animate-pulse" />
+        
+        {/* Overlay gradient for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/30 to-background/50" />
       </div>
 
       {/* Content */}
