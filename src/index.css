@@ -197,6 +197,49 @@ All colors MUST be HSL.
     animation: gradient-shift 15s ease infinite;
   }
 
+  /* Code rain animation */
+  @keyframes float-code {
+    from {
+      transform: translateX(100vw);
+    }
+    to {
+      transform: translateX(-300px);
+    }
+  }
+
+  @keyframes code-fall {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  .code-rain-column {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: code-fall linear infinite;
+    opacity: 0.3;
+  }
+
+  .code-char {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: hsl(var(--primary) / 0.4);
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.3);
+  }
+
   /* Floating icons animation */
   @keyframes float {
     0%, 100% {
@@ -238,7 +281,8 @@ All colors MUST be HSL.
     }
     
     .floating-icon,
-    .floating-icon-delayed {
+    .floating-icon-delayed,
+    .code-rain-column {
       animation: none;
     }
   }
