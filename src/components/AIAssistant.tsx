@@ -199,8 +199,17 @@ const AIAssistant = () => {
               {messages.length === 0 ? (
                 <div className="text-center text-muted-foreground text-sm p-4">
                   <Bot className="w-12 h-12 mx-auto mb-4 text-primary/50" />
-                  <p>Bonjour ! Je suis l'assistant virtuel d'Ulrich Deschamp.</p>
-                  <p className="mt-2">Comment puis-je vous aider aujourd'hui ?</p>
+                  <p className="font-semibold">Assistant IA d'Ulrich Deschamp 🚀</p>
+                  <p className="mt-2">Expert Digital & Créatif à Abidjan</p>
+                  <div className="mt-3 space-y-1 text-xs">
+                    <p>Je peux vous renseigner sur:</p>
+                    <p>✓ Sites web & Applications</p>
+                    <p>✓ Design & Branding</p>
+                    <p>✓ Community Management</p>
+                    <p>✓ Photo/Vidéo Pro</p>
+                    <p>✓ Tarifs & Délais</p>
+                  </div>
+                  <p className="mt-3 text-primary font-medium">Posez votre question!</p>
                 </div>
               ) : (
                 messages.map((message, index) => (

@@ -9,104 +9,339 @@ const corsHeaders = {
 };
 
 const siteKnowledge = `
-## Informations sur Ulrich Deschamp
+## PROFIL PROFESSIONNEL - ULRICH DESCHAMP
 
-### Identité et Contact
-- Nom complet: Ulrich Deschamp (Kossonou Kouassi N'Tobeni)
-- Localisation: Abidjan, Côte d'Ivoire
-- Téléphone/WhatsApp: +225 0710224023
-- Email principal: deschamp.deschamp222@gmail.com
-- Email support: support@ulrichdeschampkossonou.online
+### 🔵 IDENTITÉ & CONTACT DIRECT
+Nom complet: Ulrich Deschamp (Kossonou Kouassi N'Tobeni)
+Titre: Expert Digital Full-Stack & Designer Créatif
+Localisation: Abidjan, Côte d'Ivoire
+Disponibilité: 7j/7 de 8h à 20h (GMT)
 
-### Expertise Professionnelle
-Professionnel polyvalent avec plus de 5 ans d'expérience dans:
-- Développement Web (React, Angular, Vue.js, Node.js, Python, .NET)
-- Infographie et Design (logos, branding, chartes graphiques)
-- Photographie professionnelle (événements, portraits, produits)
-- Cadrage vidéo et montage
-- Community Management et marketing digital
-- E-commerce et boutiques en ligne
+📱 WhatsApp Direct: +225 0710224023 (réponse en 15 min)
+📧 Email Pro: deschamp.deschamp222@gmail.com
+📧 Support: support@ulrichdeschampkossonou.online
+🌐 Site Web: https://ulrichdeschampkossonou.online
 
-### Services Proposés
+### 🎯 EXPERTISE & EXPÉRIENCE
+Expérience: 7+ ans dans le digital
+Projets livrés: 150+ projets réussis
+Clients satisfaits: 100+ entreprises
+Taux de satisfaction: 98%
+Spécialisation: Solutions digitales sur mesure pour PME/TPE
 
-#### Développement Web
-- Sites vitrines et portfolios
-- Landing pages optimisées
-- Applications SaaS complexes
-- Boutiques en ligne avec paiement sécurisé
-- Billetterie en ligne
-- API et intégrations
-- Maintenance et support
+### 💼 SERVICES DÉTAILLÉS
 
-#### Design et Graphisme
-- Conception de logos et identité visuelle
-- Supports marketing (affiches, brochures, cartes)
-- Kakémonos et supports d'impression
-- Visuels pour réseaux sociaux
-- Mockups et prototypes
-- Retouche photo professionnelle
+#### 1️⃣ DÉVELOPPEMENT WEB & APPLICATIONS
+✅ Sites Vitrines Premium
+- Design moderne et responsive
+- SEO optimisé pour Google
+- Chargement ultra-rapide
+- Compatible tous appareils
+- Prix: À partir de 150.000 FCFA
 
-#### Community Management
-- Stratégie de contenu
-- Animation de communautés
-- Planification éditoriale
-- Reporting et analytics
-- Marketing digital
-- Gestion de réputation en ligne
+✅ E-commerce & Boutiques en Ligne
+- Catalogue produits illimité
+- Paiement sécurisé (Orange/MTN/Wave/PayPal)
+- Gestion des stocks automatique
+- Tableau de bord vendeur
+- Prix: À partir de 350.000 FCFA
 
-#### Photo/Vidéo
-- Couverture d'événements
-- Portraits professionnels
-- Photographie de produits
-- Vidéos promotionnelles
-- Montage et post-production
-- Direction artistique
+✅ Applications SaaS
+- Gestion commerciale complète
+- CRM et facturation
+- Multi-utilisateurs
+- Cloud sécurisé
+- Sur devis personnalisé
 
-### Projets Réalisés
-1. Portfolio Pasteur K.G
-2. Landing Page - Fondation Miracle of God
-3. Site Web - Hôtel Résidence Sunday
-4. SaaS de gestion pour PME/TPE
-5. Boutique en ligne - Open Mind Shop
+✅ Billetterie & Événementiel
+- Vente de tickets en ligne
+- QR codes sécurisés
+- Contrôle d'accès mobile
+- Rapports en temps réel
+- Prix: À partir de 250.000 FCFA
 
-### Processus de Collaboration
-1. Consultation gratuite initiale
-2. Analyse des besoins et objectifs
-3. Devis détaillé personnalisé
-4. Points réguliers pendant le développement
-5. Livraison et révisions
-6. Support post-livraison
+✅ API & Intégrations
+- WhatsApp Business API
+- Paiements mobiles
+- SMS Marketing
+- Synchronisation données
+- Tarif horaire: 25.000 FCFA/h
 
-### Tarification
-- Devis sur mesure selon la complexité
-- Facturation au forfait ou à l'heure
-- Options de maintenance disponibles
-- Planning flexible selon budget
+#### 2️⃣ DESIGN GRAPHIQUE & BRANDING
+✅ Identité Visuelle Complète
+- Logo professionnel (5 propositions)
+- Charte graphique
+- Cartes de visite
+- Papier en-tête
+- Pack complet: 75.000 FCFA
 
-### Délais Moyens
-- Sites simples: 72 heures (3 jours)
-- Projets complexes: 1-2 semaines
-- Applications sur mesure: jusqu'à 1 mois
+✅ Supports Marketing
+- Affiches publicitaires: 15.000 FCFA
+- Brochures 3 volets: 25.000 FCFA
+- Flyers A5: 10.000 FCFA/100ex
+- Kakémonos 85x200cm: 35.000 FCFA
+- Cartes PVC premium: 30.000 FCFA/100
 
-### Moyens de Paiement
-- Transfert bancaire
-- Espèces
-- Mobile Money (Orange, MTN, Wave, Moovafrica)
-- PayPal
+✅ Design Digital
+- Visuels réseaux sociaux: 5.000 FCFA/visuel
+- Bannières web animées: 20.000 FCFA
+- Templates email: 15.000 FCFA
+- Mockups produits: 10.000 FCFA
 
-### Formations Disponibles
-- Développement web
-- Community management
-- Création graphique
-- E-commerce
-- Marketing digital
+#### 3️⃣ COMMUNITY MANAGEMENT
+✅ Gestion Réseaux Sociaux
+- Facebook, Instagram, LinkedIn, TikTok
+- 3 posts/semaine minimum
+- Stories quotidiennes
+- Réponse aux messages
+- Forfait mensuel: 100.000 FCFA
 
-### Technologies Maîtrisées
-Frontend: React, Angular, Vue.js
-Backend: Node.js, Python, .NET
-Mobile: iOS et Android
-Cloud: AWS, Azure, Google Cloud
-IA: Machine Learning, Automatisation
+✅ Stratégie Marketing Digital
+- Audit de présence digitale
+- Plan de contenu mensuel
+- Campagnes publicitaires
+- Analyse des performances
+- Forfait stratégie: 150.000 FCFA
+
+✅ Création de Contenu
+- Rédaction articles blog: 10.000 FCFA
+- Vidéos courtes (Reels): 15.000 FCFA
+- Infographies: 8.000 FCFA
+- Calendrier éditorial: 25.000 FCFA
+
+#### 4️⃣ PHOTO & VIDÉO PROFESSIONNELLE
+✅ Photographie
+- Événements (mariage, conférence): 150.000 FCFA/jour
+- Portraits professionnels: 50.000 FCFA/séance
+- Photos produits e-commerce: 5.000 FCFA/produit
+- Shooting immobilier: 75.000 FCFA
+
+✅ Production Vidéo
+- Clip promotionnel 2min: 200.000 FCFA
+- Captation événement: 150.000 FCFA/jour
+- Interview professionnelle: 75.000 FCFA
+- Montage vidéo: 30.000 FCFA/heure
+- Drone aérien: 100.000 FCFA/session
+
+#### 5️⃣ FORMATIONS PROFESSIONNELLES
+✅ Formations Disponibles
+- Développement Web (HTML/CSS/JS): 150.000 FCFA
+- WordPress Pro: 100.000 FCFA  
+- Community Management: 75.000 FCFA
+- Photoshop/Illustrator: 100.000 FCFA
+- Marketing Digital: 125.000 FCFA
+Durée: 1 mois intensif (3 séances/semaine)
+
+### 📊 PORTFOLIO & RÉFÉRENCES
+
+#### Projets Web Majeurs
+1. 🏨 Hôtel Résidence Sunday
+   - Site de réservation en ligne
+   - Système de booking temps réel
+   - Galerie virtuelle 360°
+   - Multilingue (FR/EN)
+
+2. ⛪ Fondation Miracle of God
+   - Landing page moderne
+   - Système de dons en ligne
+   - Blog intégré
+   - Newsletter automatique
+
+3. 🛍️ Open Mind Shop
+   - E-commerce 500+ produits
+   - Paiement mobile money
+   - Livraison tracking
+   - Programme fidélité
+
+4. 📊 SaaS Gestion PME
+   - Facturation automatique
+   - Gestion stocks
+   - Comptabilité simplifiée
+   - 50+ entreprises utilisatrices
+
+5. 🎤 Portfolio Pasteur K.G
+   - Site vitrine élégant
+   - Calendrier événements
+   - Streaming live intégré
+   - Espace membres
+
+#### Clients Références
+- Orange CI (campagne digitale)
+- MTN Business (supports print)
+- Société Générale (vidéo corporate)
+- Ministère du Commerce (site web)
+- UNICEF Côte d'Ivoire (reportage photo)
+
+### ⚡ PROCESSUS DE TRAVAIL
+
+Étape 1: CONSULTATION GRATUITE (30 min)
+- Appel WhatsApp ou rencontre
+- Analyse des besoins
+- Conseils personnalisés
+- Sans engagement
+
+Étape 2: PROPOSITION COMMERCIALE (24h)
+- Devis détaillé transparent
+- Planning de réalisation
+- Conditions de paiement
+- Garanties incluses
+
+Étape 3: DÉVELOPPEMENT
+- Brief créatif validé
+- Maquettes/prototypes
+- Validation par étapes
+- Communication quotidienne
+
+Étape 4: LIVRAISON
+- Tests et optimisations
+- Formation utilisation
+- Documentation complète
+- Transfert des accès
+
+Étape 5: SUPPORT
+- Assistance 30 jours offerte
+- Maintenance mensuelle option
+- Évolutions sur devis
+- Hotline WhatsApp
+
+### 💰 OPTIONS DE PAIEMENT
+
+Modalités flexibles:
+- 40% à la commande
+- 40% à mi-parcours  
+- 20% à la livraison
+
+Moyens acceptés:
+- Orange Money / MTN Money / Wave / Moov Money
+- Virement bancaire (tous les banques CI)
+- PayPal (clients internationaux)
+- Espèces (sur Abidjan)
+- Paiement échelonné possible (projets > 500.000 FCFA)
+
+### ⏱️ DÉLAIS GARANTIS
+
+Express (72h):
+- Logo simple
+- Flyers/Affiches
+- Retouches photo
+- Landing page
+
+Standard (1 semaine):
+- Site vitrine 5 pages
+- Identité visuelle
+- Vidéo courte
+- Setup réseaux sociaux
+
+Premium (2-4 semaines):
+- E-commerce complet
+- Application SaaS
+- Campagne marketing
+- Formation complète
+
+### 🎁 AVANTAGES CLIENTS
+
+✅ Consultation gratuite 30 min
+✅ Devis sous 24h
+✅ 3 révisions incluses
+✅ Formation à l'utilisation
+✅ Support 30 jours offert
+✅ -10% client fidèle
+✅ -15% sur 3 services combinés
+✅ Paiement échelonné disponible
+✅ Garantie satisfait ou remboursé
+
+### 📞 CONTACT IMMÉDIAT
+
+Besoin urgent? Contactez maintenant:
+📱 WhatsApp: +225 0710224023 (cliquez pour discuter)
+📧 Email: deschamp.deschamp222@gmail.com
+💬 Chat en ligne: disponible sur le site
+📍 Bureau: Cocody, Abidjan (sur RDV)
+
+Heures d'ouverture:
+Lundi-Vendredi: 8h-20h
+Samedi: 9h-18h  
+Dimanche: 10h-16h (urgences)
+Réponse garantie en 30 min max
+
+### 🌟 POURQUOI CHOISIR ULRICH DESCHAMP?
+
+1. Expertise confirmée 7+ ans
+2. Portfolio 150+ projets réussis
+3. Support client 7j/7
+4. Prix transparents et justes
+5. Délais toujours respectés
+6. Technologies dernière génération
+7. Formation gratuite incluse
+8. Réseau de partenaires fiables
+9. Garantie satisfaction 100%
+10. Références vérifiables
+
+### 🔧 TECHNOLOGIES & OUTILS
+
+Développement:
+- Frontend: React, Vue.js, Angular, Next.js
+- Backend: Node.js, Python, PHP, .NET
+- Mobile: React Native, Flutter
+- CMS: WordPress, Shopify, PrestaShop
+- Base de données: MySQL, MongoDB, PostgreSQL
+- Cloud: AWS, Google Cloud, Azure
+
+Design:
+- Adobe Creative Suite (Photoshop, Illustrator, InDesign)
+- Figma, Sketch, Adobe XD
+- After Effects, Premiere Pro
+- Canva Pro, Capcut
+
+Marketing:
+- Google Ads, Facebook Ads
+- Mailchimp, SendinBlue  
+- Google Analytics, Tag Manager
+- SEMrush, Ahrefs
+- Hootsuite, Buffer
+
+### 🏆 CERTIFICATIONS & FORMATIONS
+
+- Google Digital Marketing Certificate
+- Meta Social Media Marketing
+- AWS Cloud Practitioner
+- Adobe Certified Professional
+- HubSpot Content Marketing
+- Formation Continue en IA et Automatisation
+
+### 💡 CONSEILS GRATUITS
+
+Optimisation site web:
+- Vitesse chargement < 3 secondes
+- Mobile-first obligatoire
+- SEO dès la conception
+- Sécurité HTTPS/SSL
+- Sauvegarde automatique
+
+Réseaux sociaux:
+- Publier 3x/semaine minimum
+- Stories quotidiennes
+- Répondre sous 2h
+- Contenu 80% valeur, 20% promo
+- Utiliser les hashtags locaux
+
+E-commerce:
+- Photos HD obligatoires
+- Descriptions détaillées
+- Reviews clients
+- Livraison claire
+- Support WhatsApp
+
+### 📈 STATISTIQUES CLÉS
+
+- 98% clients satisfaits
+- 85% clients reviennent
+- 150+ projets livrés
+- 7+ années d'expérience
+- 24h délai de réponse max
+- 100% projets livrés à temps
+- 50+ formations dispensées
+- 10+ technologies maîtrisées
 `;
 
 serve(async (req) => {
@@ -124,23 +359,37 @@ serve(async (req) => {
     const messages = [
       {
         role: 'system',
-        content: `Tu es l'assistant virtuel du portfolio d'Ulrich Deschamp, un professionnel polyvalent basé à Abidjan. 
-        
-Tu dois répondre de manière professionnelle et chaleureuse en utilisant UNIQUEMENT les informations suivantes sur Ulrich Deschamp. 
-Ne jamais inventer d'informations. Si une question sort du cadre de ces informations, redirige poliment vers le formulaire de contact ou WhatsApp.
+        content: `Tu es l'assistant IA intelligent d'Ulrich Deschamp, expert digital à Abidjan. Tu es professionnel, efficace et orienté solutions.
 
+INSTRUCTIONS CRITIQUES:
+1. Utilise UNIQUEMENT les informations de la base de connaissances ci-dessous
+2. Réponds de manière DIRECTE et PERSONNALISÉE selon la question
+3. TOUJOURS mentionner le contact WhatsApp +225 0710224023 pour devis/urgences
+4. Si tu ne connais pas la réponse exacte, propose de contacter Ulrich directement
+5. Sois commercial: mets en avant les avantages et incite à l'action
+6. Utilise un ton professionnel mais chaleureux et accessible
+
+BASE DE CONNAISSANCES COMPLÈTE:
 ${siteKnowledge}
 
-Règles importantes:
-1. Toujours répondre en français sauf si la question est posée dans une autre langue
-2. RÉPONSES TRÈS COURTES ET CONCISES (maximum 2-3 phrases)
-3. NE JAMAIS utiliser de formatage markdown (pas de **, pas de ##, pas de -)
-4. Utiliser des mots simples et directs
-5. Mettre en avant les compétences d'Ulrich
-6. Encourager le contact direct pour les devis
-7. Ne jamais donner de prix fixes sans consultation
-8. Proposer WhatsApp (+225 0710224023) pour les discussions urgentes
-9. NE PAS utiliser de listes à puces, préférer des phrases courtes`
+RÈGLES DE RÉPONSE:
+- Maximum 3-4 phrases courtes et percutantes
+- Pas de formatage markdown (pas de **, ##, -, etc.)
+- Toujours inclure un call-to-action (WhatsApp, email, devis)
+- Personnalise selon le type de demande (technique, commercial, urgent)
+- Pour les prix: donne les fourchettes disponibles + "devis personnalisé gratuit"
+- Pour les délais: cite les délais moyens + "livraison garantie"
+- Si question hors sujet: redirige poliment vers les services d'Ulrich
+
+EXEMPLES DE RÉPONSES:
+Q: Combien coûte un site web?
+R: Un site vitrine professionnel démarre à 150.000 FCFA avec design moderne et SEO inclus. Pour un e-commerce complet comptez à partir de 350.000 FCFA. Contactez Ulrich au +225 0710224023 pour un devis gratuit adapté à vos besoins.
+
+Q: Vous faites du community management?
+R: Oui, Ulrich gère vos réseaux sociaux avec forfait mensuel à 100.000 FCFA incluant 3 posts/semaine et stories quotidiennes. Il augmente votre visibilité et vos ventes. WhatsApp +225 0710224023 pour démarrer votre stratégie digitale.
+
+Q: Délai pour une application?
+R: Ulrich livre les sites simples en 72h et les applications complexes en 2-4 semaines maximum. Toujours dans les délais avec support 30 jours offert. Appelez le +225 0710224023 pour discuter de votre projet.`
       },
       ...conversationHistory.slice(-10), // Keep last 10 messages for context
       { role: 'user', content: message }
