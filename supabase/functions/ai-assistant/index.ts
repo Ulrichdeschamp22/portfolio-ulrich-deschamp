@@ -339,32 +339,159 @@ E-commerce:
 - 10+ technologies maîtrisées
 `;
 
-// Simple fallback generator when OpenAI is unavailable
+// Enhanced local answer generator using the embedded knowledge base when OpenAI is unavailable
 const generateFallbackAnswer = (question: string): string => {
-  const q = (question || '').toLowerCase();
+  const qRaw = (question || '').slice(0, 1000);
+  const normalize = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .replace(/\s+/g, ' ') // collapse spaces
+      .trim();
 
-  if (/(prix|co[uû]t|tarif|combien)/.test(q)) {
-    return "Un site vitrine démarre à 150 000 FCFA et un e‑commerce à partir de 350 000 FCFA. Devis personnalisé gratuit sous 24h. WhatsApp +225 0710224023.";
+  const q = normalize(qRaw);
+  const has = (pattern: RegExp | string) =>
+    typeof pattern === 'string' ? q.includes(normalize(pattern)) : pattern.test(q);
+
+  // Helpers to extract relevant parts from the knowledge base text
+  const getSection = (title: string) => {
+    const start = siteKnowledge.indexOf(title);
+    if (start === -1) return '';
+    const rest = siteKnowledge.slice(start);
+    const nextIdx = rest.search(/\n### |\n#### /); // next major/minor section
+    const section = nextIdx !== -1 ? rest.slice(0, nextIdx) : rest;
+    return section
+      .replace(/^[#\-\s]+/gm, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  };
+
+  const compose = (lines: string[]) => lines.filter(Boolean).join(' ').trim();
+  const CTA = 'Contact direct WhatsApp +225 0710224023 ou email deschamp.deschamp222@gmail.com pour un devis gratuit.';
+
+  // Fast intents
+  if (has(/(contact|whatsapp|appel|telephone|t[eé]l[eé]phone|num[eé]ro|rdv|urgence)/)) {
+    return compose([
+      'Vous pouvez joindre Ulrich immédiatement par WhatsApp au +225 0710224023 ou par email à deschamp.deschamp222@gmail.com.',
+      'Disponibilité 7j/7 de 8h à 20h à Abidjan, réponse sous 30 minutes.',
+    ]);
   }
-  if (/(d[ée]lai|temps|livraison|dur[ée])/.test(q)) {
-    return "Sites simples en 72h, projets standards en 1 semaine, applications en 2 à 4 semaines. Support 30 jours offert. WhatsApp +225 0710224023.";
+
+  // Pricing intent
+  if (has(/(prix|cout|co[uû]t|tarif|combien|budget)/)) {
+    return compose([
+      'Un site vitrine professionnel démarre à 150 000 FCFA et un e‑commerce complet à partir de 350 000 FCFA.',
+      'Des packs design, community management et photo/vidéo sont disponibles à prix transparents selon vos besoins.',
+      CTA,
+    ]);
   }
-  if (/(e[- ]?commerce|boutique|paiement|panier)/.test(q)) {
-    return "Oui, création de boutiques avec paiement sécurisé, gestion des stocks et suivi commandes. Mise en ligne rapide. Contact WhatsApp +225 0710224023.";
+
+  // Delays intent
+  if (has(/(delai|d[eé]lai|temps|livraison|duree|dur[ée]e)/)) {
+    return compose([
+      'Sites simples livrés en 72h, projets standards en 1 semaine, applications en 2 à 4 semaines.',
+      'Support 30 jours offert et livraison garantie dans les délais.',
+      CTA,
+    ]);
   }
-  if (/(community|r[ée]seaux|social|instagram|facebook|tiktok|linkedin)/.test(q)) {
-    return "Gestion complète des réseaux sociaux dès 100 000 FCFA/mois avec contenu et reporting. Stratégie adaptée à votre activité. WhatsApp +225 0710224023.";
+
+  // E‑commerce intent
+  if (has(/(e[- ]?commerce|boutique|paiement|panier|produit|catalogue|commande|livraison)/)) {
+    return compose([
+      'Création de boutiques en ligne avec paiement sécurisé, gestion des stocks, suivi des commandes et tableau de bord vendeur.',
+      'Mise en ligne rapide avec SEO et performance optimisés.',
+      CTA,
+    ]);
   }
-  if (/(photo|vid[ée]o|shooting|montage|interview|drone)/.test(q)) {
-    return "Photo/Vidéo pro: événements, produits, interviews, drone. Qualité garantie et livraison rapide. Réservez au +225 0710224023.";
+
+  // Community Management intent
+  if (has(/(community|r[eé]seaux|social|instagram|facebook|tiktok|linkedin|cm|social media)/)) {
+    return compose([
+      'Gestion complète des réseaux sociaux dès 100 000 FCFA/mois: 3 posts/semaine, stories quotidiennes, réponses aux messages et reporting.',
+      'Stratégie adaptée pour augmenter visibilité et ventes.',
+      CTA,
+    ]);
   }
-  if (/(formation|apprendre|cours|initiation)/.test(q)) {
-    return "Formations pratiques en développement, design et marketing. Sessions intensives d’un mois. Écrivez sur WhatsApp +225 0710224023 pour le programme.";
+
+  // Photo / Video intent
+  if (has(/(photo|video|vid[eé]o|shooting|montage|interview|drone|captation)/)) {
+    return compose([
+      'Photo/vidéo pro: événements, portraits, produits e‑commerce, interviews, drone, montage et livraison rapide.',
+      'Qualité garantie pour booster votre image de marque.',
+      CTA,
+    ]);
   }
-  if (/(contact|whatsapp|t[ée]l[ée]phone|appel|num[ée]ro)/.test(q)) {
-    return "Contact direct: WhatsApp +225 0710224023 ou email deschamp.deschamp222@gmail.com. Réponse sous 30 minutes.";
+
+  // Training intent
+  if (has(/(formation|apprendre|cours|initiation|entrainement|bootcamp)/)) {
+    return compose([
+      'Formations intensives d’un mois en développement web, WordPress, community management, design et marketing digital.',
+      'Programme pratique avec 3 séances/semaine et accompagnement.',
+      CTA,
+    ]);
   }
-  return "Je peux vous aider pour le web, le design, le community management et la photo/vidéo. Dites-moi votre besoin et je vous conseille. WhatsApp +225 0710224023.";
+
+  // Payments / Methods
+  if (has(/(paiement|payer|orange money|mtn|wave|virement|paypal|echelonne|modalit[eé]s)/)) {
+    return compose([
+      'Modalités flexibles: 40% à la commande, 40% à mi‑parcours, 20% à la livraison; paiement échelonné possible.',
+      'Moyens acceptés: Orange/MTN/Wave, virement bancaire, PayPal, espèces.',
+      CTA,
+    ]);
+  }
+
+  // Process intent
+  if (has(/(processus|process|etape|comment ca marche|methode|workflow)/)) {
+    return compose([
+      'Processus en 5 étapes: consultation gratuite, devis en 24h, développement, livraison, support.',
+      'Communication claire, validations par étapes et documentation incluse.',
+      CTA,
+    ]);
+  }
+
+  // Portfolio intent
+  if (has(/(portfolio|r[eé]f[eé]rences|projets|exemples|d[eé]mos|clients)/)) {
+    return compose([
+      'Exemples: Hôtel Résidence Sunday (booking temps réel), Fondation Miracle of God (dons en ligne), Open Mind Shop (e‑commerce 500+ produits).',
+      'Plus de 150 projets livrés avec 98% de satisfaction.',
+      CTA,
+    ]);
+  }
+
+  // Availability / Schedule
+  if (has(/(horaire|disponibilit[eé]|ouverture|weekend|dimanche|samedi)/)) {
+    return compose([
+      'Disponibilité 7j/7: L‑V 8h‑20h, Samedi 9h‑18h, Dimanche 10h‑16h (urgences).',
+      'Réponse garantie en 30 minutes maximum.',
+      CTA,
+    ]);
+  }
+
+  // Technologies / Stack
+  if (has(/(technologie|stack|outil|react|wordpress|shopify|prestashop|aws|cloud|figma|adobe|marketing)/)) {
+    return compose([
+      'Ulrich maîtrise les stacks modernes: React, WordPress/Shopify/PrestaShop, Node.js, AWS/Azure/GCP, Figma et Adobe Suite.',
+      'Solutions robustes, performantes et évolutives.',
+      CTA,
+    ]);
+  }
+
+  // Default general services answer, lightly personalized by detecting the main interest
+  const serviceHint = has(/(site|vitrine|web)/)
+    ? 'site vitrine moderne et optimisé SEO dès 150 000 FCFA'
+    : has(/(app|saas|application)/)
+    ? 'application sur mesure livrée en 2 à 4 semaines'
+    : has(/(identit[eé]|logo|design|branding)/)
+    ? 'identité visuelle complète avec logo et charte à 75 000 FCFA'
+    : 'solutions digitales sur mesure pour PME/TPE (web, e‑commerce, design, social, photo/vidéo)';
+
+  return compose([
+    `Ulrich propose ${serviceHint} avec une qualité professionnelle et un accompagnement complet.`,
+    'Plus de 150 projets réussis et 98% de satisfaction, délais respectés et support 30 jours offert.',
+    CTA,
+  ]);
 };
 
 serve(async (req) => {
