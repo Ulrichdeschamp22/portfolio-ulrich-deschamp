@@ -107,16 +107,19 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className="glass-card bg-primary/15 p-6 hover-lift group transition-colors duration-300 hover:bg-primary/25"
+              className="p-6 hover-lift group transition-all duration-300 rounded-xl overflow-hidden relative"
+              style={{
+                background: 'linear-gradient(135deg, #9333ea 0%, #6b21a8 50%, #3b0764 100%)'
+              }}
               data-aos="flip-left"
               data-aos-delay={100 + index * 100}
               data-aos-duration="1000"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                  <category.icon className="w-6 h-6 text-primary" />
+                <div className="p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                  <category.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold">{category.title}</h3>
+                <h3 className="text-xl font-semibold text-white">{category.title}</h3>
               </div>
               <ul className="space-y-2">
                 {category.skills.map((skill, skillIndex) => (
@@ -126,8 +129,8 @@ const Skills = () => {
                     data-aos="fade-right"
                     data-aos-delay={50 + (skillIndex * 50)}
                   >
-                    <span className="text-primary mr-2">•</span>
-                    <span className="text-muted-foreground text-sm">{skill}</span>
+                    <span className="text-white mr-2">•</span>
+                    <span className="text-white/90 text-sm">{skill}</span>
                   </li>
                 ))}
               </ul>
