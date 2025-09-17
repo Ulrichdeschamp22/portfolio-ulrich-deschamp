@@ -335,14 +335,37 @@ E-commerce:
 ### 📈 STATISTIQUES CLÉS
 
 - 98% clients satisfaits
-- 85% clients reviennent
-- 150+ projets livrés
-- 7+ années d'expérience
-- 24h délai de réponse max
-- 100% projets livrés à temps
-- 50+ formations dispensées
+...
 - 10+ technologies maîtrisées
 `;
+
+// Simple fallback generator when OpenAI is unavailable
+const generateFallbackAnswer = (question: string): string => {
+  const q = (question || '').toLowerCase();
+
+  if (/(prix|co[uû]t|tarif|combien)/.test(q)) {
+    return "Un site vitrine démarre à 150 000 FCFA et un e‑commerce à partir de 350 000 FCFA. Devis personnalisé gratuit sous 24h. WhatsApp +225 0710224023.";
+  }
+  if (/(d[ée]lai|temps|livraison|dur[ée])/.test(q)) {
+    return "Sites simples en 72h, projets standards en 1 semaine, applications en 2 à 4 semaines. Support 30 jours offert. WhatsApp +225 0710224023.";
+  }
+  if (/(e[- ]?commerce|boutique|paiement|panier)/.test(q)) {
+    return "Oui, création de boutiques avec paiement sécurisé, gestion des stocks et suivi commandes. Mise en ligne rapide. Contact WhatsApp +225 0710224023.";
+  }
+  if (/(community|r[ée]seaux|social|instagram|facebook|tiktok|linkedin)/.test(q)) {
+    return "Gestion complète des réseaux sociaux dès 100 000 FCFA/mois avec contenu et reporting. Stratégie adaptée à votre activité. WhatsApp +225 0710224023.";
+  }
+  if (/(photo|vid[ée]o|shooting|montage|interview|drone)/.test(q)) {
+    return "Photo/Vidéo pro: événements, produits, interviews, drone. Qualité garantie et livraison rapide. Réservez au +225 0710224023.";
+  }
+  if (/(formation|apprendre|cours|initiation)/.test(q)) {
+    return "Formations pratiques en développement, design et marketing. Sessions intensives d’un mois. Écrivez sur WhatsApp +225 0710224023 pour le programme.";
+  }
+  if (/(contact|whatsapp|t[ée]l[ée]phone|appel|num[ée]ro)/.test(q)) {
+    return "Contact direct: WhatsApp +225 0710224023 ou email deschamp.deschamp222@gmail.com. Réponse sous 30 minutes.";
+  }
+  return "Je peux vous aider pour le web, le design, le community management et la photo/vidéo. Dites-moi votre besoin et je vous conseille. WhatsApp +225 0710224023.";
+};
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -395,6 +418,15 @@ R: Ulrich livre les sites simples en 72h et les applications complexes en 2-4 se
       { role: 'user', content: message }
     ];
 
+    // If no API key, use deterministic fallback so the chatbot remains operational
+    if (!openAIApiKey) {
+      console.warn('OPENAI_API_KEY is missing. Using fallback answer.');
+      const fallback = generateFallbackAnswer(message);
+      return new Response(JSON.stringify({ response: fallback }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -409,6 +441,14 @@ R: Ulrich livre les sites simples en 72h et les applications complexes en 2-4 se
       }),
     });
 
+    if (response.status === 401) {
+      console.error('OpenAI API returned 401. Falling back.');
+      const fallback = generateFallbackAnswer(message);
+      return new Response(JSON.stringify({ response: fallback }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     if (!response.ok) {
       const errorData = await response.text();
       console.error('OpenAI API error:', errorData);
@@ -416,7 +456,7 @@ R: Ulrich livre les sites simples en 72h et les applications complexes en 2-4 se
     }
 
     const data = await response.json();
-    let aiResponse = data.choices[0].message.content;
+    let aiResponse = data.choices?.[0]?.message?.content || '';
     
     // Remove markdown formatting (asterisks, hashes, etc.)
     aiResponse = aiResponse.replace(/\*\*/g, ''); // Remove bold markdown
@@ -425,6 +465,13 @@ R: Ulrich livre les sites simples en 72h et les applications complexes en 2-4 se
     aiResponse = aiResponse.replace(/^-\s/gm, ''); // Remove list markers
     aiResponse = aiResponse.trim(); // Clean up whitespace
 
+    if (!aiResponse) {
+      const fallback = generateFallbackAnswer(message);
+      return new Response(JSON.stringify({ response: fallback }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     console.log('AI response generated successfully');
 
     return new Response(JSON.stringify({ response: aiResponse }), {
@@ -432,13 +479,13 @@ R: Ulrich livre les sites simples en 72h et les applications complexes en 2-4 se
     });
   } catch (error) {
     console.error('Error in ai-assistant function:', error);
+    const fallback = generateFallbackAnswer(typeof message === 'string' ? message : '');
     return new Response(
       JSON.stringify({ 
-        error: error.message,
-        response: "Désolé, je rencontre un problème technique. Veuillez contacter Ulrich directement au +225 0710224023." 
-      }), 
+        response: fallback,
+        error: error instanceof Error ? error.message : 'unknown_error'
+      }),
       {
-        status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );
