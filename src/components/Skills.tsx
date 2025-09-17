@@ -107,7 +107,7 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className="glass-card p-6 hover-lift group"
+              className="glass-card bg-primary/15 p-6 hover-lift group transition-colors duration-300 hover:bg-primary/25"
               data-aos="flip-left"
               data-aos-delay={100 + index * 100}
               data-aos-duration="1000"
