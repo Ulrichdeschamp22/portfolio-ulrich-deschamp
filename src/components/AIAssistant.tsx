@@ -15,6 +15,16 @@ interface Message {
 }
 
 const AIAssistant = () => {
+  // Vérifier si le chatbot doit être actif (après le 23 décembre 2025)
+  const activationDate = new Date('2025-12-23');
+  const currentDate = new Date();
+  const isActive = currentDate >= activationDate;
+
+  // Ne pas afficher le chatbot si pas encore actif
+  if (!isActive) {
+    return null;
+  }
+
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
