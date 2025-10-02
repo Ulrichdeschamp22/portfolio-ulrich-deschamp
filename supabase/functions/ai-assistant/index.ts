@@ -18,7 +18,7 @@ Localisation: Abidjan, Côte d'Ivoire
 Disponibilité: 7j/7 de 8h à 20h (GMT)
 
 📱 WhatsApp Direct: +225 0710224023 (réponse en 15 min)
-📧 Email Pro: deschamp.deschamp222@gmail.com
+📧 Email Pro: deschamp@gmail.com
 📧 Support: support@ulrichdeschampkossonou.online
 🌐 Site Web: https://ulrichdeschampkossonou.online
 
@@ -254,7 +254,7 @@ Premium (2-4 semaines):
 
 Besoin urgent? Contactez maintenant:
 📱 WhatsApp: +225 0710224023 (cliquez pour discuter)
-📧 Email: deschamp.deschamp222@gmail.com
+📧 Email: deschamp@gmail.com
 💬 Chat en ligne: disponible sur le site
 📍 Bureau: Cocody, Abidjan (sur RDV)
 
@@ -369,12 +369,12 @@ const generateFallbackAnswer = (question: string): string => {
   };
 
   const compose = (lines: string[]) => lines.filter(Boolean).join(' ').trim();
-  const CTA = 'Contact direct WhatsApp +225 0710224023 ou email deschamp.deschamp222@gmail.com pour un devis gratuit.';
+  const CTA = 'Contact direct WhatsApp +225 0710224023 ou email deschamp@gmail.com pour un devis gratuit.';
 
   // Fast intents
   if (has(/(contact|whatsapp|appel|telephone|t[eé]l[eé]phone|num[eé]ro|rdv|urgence)/)) {
     return compose([
-      'Vous pouvez joindre Ulrich immédiatement par WhatsApp au +225 0710224023 ou par email à deschamp.deschamp222@gmail.com.',
+      'Vous pouvez joindre Ulrich immédiatement par WhatsApp au +225 0710224023 ou par email à deschamp@gmail.com.',
       'Disponibilité 7j/7 de 8h à 20h à Abidjan, réponse sous 30 minutes.',
     ]);
   }

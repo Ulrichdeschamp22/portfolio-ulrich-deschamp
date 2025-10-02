@@ -25,7 +25,7 @@ const Projects = () => {
       type: "Site Web"
     },
     {
-      title: "GestionPro - SaaS PME/TPE",
+      title: "stocknix - SaaS PME/TPE",
       description: "Application SaaS complète pour la gestion d'entreprise avec tableau de bord",
       url: "https://gestionpro.lovable.app/",
       tags: ["SaaS", "Dashboard", "Gestion"],

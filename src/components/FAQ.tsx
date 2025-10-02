@@ -30,7 +30,7 @@ const FAQ = () => {
     {
       category: 'about',
       question: "Quels sont ses contacts et informations personnelles ?",
-      answer: "Localisation : Abidjan, Côte d'Ivoire | Téléphone / WhatsApp : +225 0710224023 | Emails : deschamp.deschamp222@gmail.com, support@ulrichdeschampkossonou.online"
+      answer: "Localisation : Abidjan, Côte d'Ivoire | Téléphone / WhatsApp : +225 0710224023 | Emails : deschamp@gmail.com, support@ulrichdeschampkossonou.online"
     },
     {
       category: 'skills',
@@ -223,7 +223,7 @@ const FAQ = () => {
             </a>
             
             <a 
-              href="mailto:deschamp.deschamp222@gmail.com" 
+              href="mailto:deschamp@gmail.com" 
               className="inline-flex"
               data-aos="fade-up"
               data-aos-delay="800"
