@@ -10,7 +10,7 @@ const WhatsAppButton = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 left-8 z-50 group"
+      className="fixed bottom-8 right-8 z-50 group"
       aria-label="Contactez Ulrich Deschamp sur WhatsApp - Développeur Web Abidjan Côte d'Ivoire"
     >
       <div className="relative">
@@ -23,9 +23,9 @@ const WhatsAppButton = () => {
         </div>
         
         {/* Tooltip */}
-        <div className="absolute bottom-full mb-2 right-0 bg-card px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+        <div className="absolute bottom-full mb-2 left-0 bg-card px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
           <span className="text-sm text-foreground">Discutons sur WhatsApp</span>
-          <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-card"></div>
+          <div className="absolute bottom-0 left-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-card"></div>
         </div>
       </div>
     </a>
