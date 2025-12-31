@@ -150,41 +150,41 @@ const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto z-10 relative max-w-7xl w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-12 items-center">
           
-          {/* Text Content - Left side */}
-          <div className="text-center lg:text-left animate-fade-in order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
+          {/* Text Content - Left side on all devices */}
+          <div className="text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
             {/* Name prominently displayed */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 rellax leading-tight text-gradient" data-rellax-speed="1">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 rellax leading-tight text-gradient" data-rellax-speed="1">
               Ulrich Deschamp KOSSONOU
             </h1>
             
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 text-foreground/90">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-2 text-foreground/90">
               <span className="text-primary">Expert digital à Abidjan</span>
-              <span className="block text-lg sm:text-xl md:text-2xl mt-1">Développeur Web Expert & Vibe Coder</span>
+              <span className="block text-base sm:text-lg md:text-xl mt-1">Développeur Web Expert & Vibe Coder</span>
             </h2>
             
-            <p className="text-base sm:text-lg text-muted-foreground mb-4">
+            <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">
               Freelance Premium & Agence Digitale Indépendante
             </p>
             
-            <p className="text-sm sm:text-base md:text-lg text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-xs sm:text-sm md:text-base text-foreground/70 mb-6 sm:mb-8 max-w-xl">
               J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" variant="glow" asChild className="px-8">
+            <div className="flex flex-row gap-3 sm:gap-4">
+              <Button size="default" variant="glow" asChild className="px-4 sm:px-6 lg:px-8 text-xs sm:text-sm">
                 <a href="#projects">Voir mes projets</a>
               </Button>
-              <Button size="lg" variant="outline" asChild className="px-8">
+              <Button size="default" variant="outline" asChild className="px-4 sm:px-6 lg:px-8 text-xs sm:text-sm">
                 <a href="#contact">Me contacter</a>
               </Button>
             </div>
           </div>
 
-          {/* Image - Right side */}
-          <div className="flex justify-center lg:justify-end animate-scale-in animation-delay-100 rellax order-1 lg:order-2" data-rellax-speed="-2">
-            <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem] group">
+          {/* Image - Right side on all devices */}
+          <div className="flex justify-center md:justify-end animate-scale-in animation-delay-100 rellax" data-rellax-speed="-2">
+            <div className="relative w-48 h-60 sm:w-64 sm:h-80 md:w-72 md:h-96 lg:w-96 lg:h-[32rem] group">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                 <img 
