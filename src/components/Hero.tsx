@@ -82,17 +82,17 @@ const Hero = () => {
   }, [isMobile]);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-x-hidden pt-20 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-duration="1500">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-duration="1500">
       {/* Animated code background */}
       <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden">
         {/* Matrix-style code rain effect - visible on all devices */}
-        <div className="code-rain-container absolute inset-0">
-          {Array.from({ length: isMobile ? 8 : 15 }).map((_, i) => (
+        <div className="code-rain-container absolute inset-0 overflow-hidden">
+          {Array.from({ length: isMobile ? 6 : 12 }).map((_, i) => (
             <div
               key={i}
               className="code-rain-column"
               style={{
-                left: `${i * (isMobile ? 12 : 7)}%`,
+                left: `${i * (isMobile ? 15 : 8)}%`,
                 animationDelay: `${i * 0.5}s`,
                 animationDuration: `${15 + i * 2}s`
               }}
@@ -149,42 +149,17 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto z-10 relative max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="container mx-auto z-10 relative max-w-6xl w-full">
+        <div className="flex flex-col items-center text-center">
           
-          {/* Text Content - Left on Desktop, Below on Mobile/Tablet */}
-          <div className="order-2 lg:order-1 text-center lg:text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
-            {/* Name prominently displayed */}
-            <p className="text-primary font-semibold text-lg sm:text-xl mb-2 tracking-wide uppercase animate-fade-in">
-              Ulrich Deschamp KOSSONOU
-            </p>
-            
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 rellax leading-tight" data-rellax-speed="1">
-              <span className="text-gradient">Expert digital à Abidjan</span>
-              <span className="block text-xl sm:text-2xl lg:text-3xl mt-3 text-foreground/90">Développeur Web Expert & Vibe Coder</span>
-            </h1>
-            
-            <h2 className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 animate-fade-in animation-delay-100">
-              Freelance Premium & Agence Digitale Indépendante
-            </h2>
-            
-            <p className="text-sm sm:text-base lg:text-lg text-foreground/80 mb-8 animate-fade-in animation-delay-200 max-w-xl mx-auto lg:mx-0">
-              J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in animation-delay-300">
-              <Button size="lg" variant="glow" asChild>
-                <a href="#projects">Voir mes projets</a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="#contact">Me contacter</a>
-              </Button>
-            </div>
-          </div>
-
-          {/* Image - Right on Desktop, Top on Mobile/Tablet */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-scale-in animation-delay-100 rellax" data-rellax-speed="-2">
-            <div className="relative w-56 h-64 sm:w-72 sm:h-80 lg:w-80 lg:h-96 xl:w-96 xl:h-[28rem] group">
+          {/* Name prominently displayed - Always first */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 rellax leading-tight text-gradient animate-fade-in" data-rellax-speed="1">
+            Ulrich Deschamp KOSSONOU
+          </h1>
+          
+          {/* Image - Second on all devices */}
+          <div className="mb-6 animate-scale-in animation-delay-100 rellax" data-rellax-speed="-2">
+            <div className="relative w-40 h-48 sm:w-56 sm:h-64 md:w-64 md:h-72 lg:w-72 lg:h-80 group">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                 <img 
@@ -192,12 +167,37 @@ const Hero = () => {
                   alt="Ulrich Deschamp KOSSONOU - Expert Digital Abidjan, Développeur Web Expert, Vibe Coder et Freelance Premium en Côte d'Ivoire" 
                   className="w-full h-full object-contain bg-background"
                   loading="eager"
-                  width="384"
-                  height="448"
+                  width="288"
+                  height="320"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
+            </div>
+          </div>
+          
+          {/* Title and description */}
+          <div className="animate-fade-in max-w-2xl" data-aos="fade-up" data-aos-delay="200">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-foreground/90">
+              <span className="text-primary">Expert digital à Abidjan</span>
+              <span className="block text-lg sm:text-xl md:text-2xl mt-2 text-foreground/80">Développeur Web Expert & Vibe Coder</span>
+            </h2>
+            
+            <p className="text-base sm:text-lg text-muted-foreground mb-4 animate-fade-in animation-delay-100">
+              Freelance Premium & Agence Digitale Indépendante
+            </p>
+            
+            <p className="text-sm sm:text-base text-foreground/70 mb-6 animate-fade-in animation-delay-200 px-4">
+              J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in animation-delay-300">
+              <Button size="lg" variant="glow" asChild>
+                <a href="#projects">Voir mes projets</a>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <a href="#contact">Me contacter</a>
+              </Button>
             </div>
           </div>
         </div>
