@@ -150,55 +150,100 @@ const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto z-10 relative max-w-7xl w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-12 items-center">
-          
-          {/* Text Content - Left side on all devices */}
+        {/* Desktop/Tablet Layout - Side by side */}
+        <div className="hidden md:grid md:grid-cols-2 gap-6 lg:gap-12 items-center">
+          {/* Text Content - Left side */}
           <div className="text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
-            {/* Name prominently displayed */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 rellax leading-tight text-gradient" data-rellax-speed="1">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 rellax leading-tight text-gradient" data-rellax-speed="1">
               Ulrich Deschamp KOSSONOU
             </h1>
             
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-2 text-foreground/90">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-2 text-foreground/90">
               <span className="text-primary">Expert digital à Abidjan</span>
-              <span className="block text-base sm:text-lg md:text-xl mt-1">Développeur Web Expert & Vibe Coder</span>
+              <span className="block text-lg md:text-xl mt-1">Développeur Web Expert & Vibe Coder</span>
             </h2>
             
-            <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">
+            <p className="text-base text-muted-foreground mb-4">
               Freelance Premium & Agence Digitale Indépendante
             </p>
             
-            <p className="text-xs sm:text-sm md:text-base text-foreground/70 mb-6 sm:mb-8 max-w-xl">
+            <p className="text-sm md:text-base text-foreground/70 mb-8 max-w-xl">
               J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
             </p>
             
-            <div className="flex flex-row gap-3 sm:gap-4">
-              <Button size="default" variant="glow" asChild className="px-4 sm:px-6 lg:px-8 text-xs sm:text-sm">
+            <div className="flex flex-row gap-4">
+              <Button size="lg" variant="glow" asChild className="px-6 lg:px-8">
                 <a href="#projects">Voir mes projets</a>
               </Button>
-              <Button size="default" variant="outline" asChild className="px-4 sm:px-6 lg:px-8 text-xs sm:text-sm">
+              <Button size="lg" variant="outline" asChild className="px-6 lg:px-8">
                 <a href="#contact">Me contacter</a>
               </Button>
             </div>
           </div>
 
-          {/* Image - Right side on all devices */}
-          <div className="flex justify-center md:justify-end animate-scale-in animation-delay-100 rellax" data-rellax-speed="-2">
-            <div className="relative w-48 h-60 sm:w-64 sm:h-80 md:w-72 md:h-96 lg:w-96 lg:h-[32rem] group">
+          {/* Image - Right side */}
+          <div className="flex justify-end animate-scale-in animation-delay-100 rellax" data-rellax-speed="-2">
+            <div className="relative w-72 md:w-80 lg:w-96 h-96 lg:h-[32rem] group">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                 <img 
                   src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
-                  alt="Ulrich Deschamp KOSSONOU - Expert Digital Abidjan, Développeur Web Expert, Vibe Coder et Freelance Premium en Côte d'Ivoire" 
+                  alt="Ulrich Deschamp KOSSONOU - Expert Digital Abidjan" 
                   className="w-full h-full object-cover bg-background"
                   loading="eager"
-                  width="384"
-                  height="512"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
             </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout - Stacked: Title, Photo, Description, Buttons */}
+        <div className="md:hidden flex flex-col items-center text-center">
+          {/* Name and titles first */}
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3 rellax leading-tight text-gradient" data-rellax-speed="1">
+            Ulrich Deschamp KOSSONOU
+          </h1>
+          
+          <h2 className="text-lg sm:text-xl font-semibold mb-2 text-foreground/90">
+            <span className="text-primary">Expert digital à Abidjan</span>
+            <span className="block text-base mt-1">Développeur Web Expert & Vibe Coder</span>
+          </h2>
+          
+          <p className="text-sm text-muted-foreground mb-4">
+            Freelance Premium & Agence Digitale Indépendante
+          </p>
+
+          {/* Photo second */}
+          <div className="mb-6 animate-scale-in animation-delay-100">
+            <div className="relative w-56 h-72 sm:w-64 sm:h-80 group">
+              <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
+              <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
+                <img 
+                  src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
+                  alt="Ulrich Deschamp KOSSONOU - Expert Digital Abidjan" 
+                  className="w-full h-full object-cover bg-background"
+                  loading="eager"
+                />
+              </div>
+              <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 -z-10"></div>
+            </div>
+          </div>
+
+          {/* Description third */}
+          <p className="text-xs sm:text-sm text-foreground/70 mb-6 max-w-sm px-2">
+            J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
+          </p>
+          
+          {/* Buttons last */}
+          <div className="flex flex-row gap-3">
+            <Button size="default" variant="glow" asChild className="px-4 text-xs">
+              <a href="#projects">Voir mes projets</a>
+            </Button>
+            <Button size="default" variant="outline" asChild className="px-4 text-xs">
+              <a href="#contact">Me contacter</a>
+            </Button>
           </div>
         </div>
       </div>
