@@ -151,10 +151,18 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto z-10 relative max-w-7xl w-full">
         {/* Desktop/Tablet Layout - Side by side */}
-        <div className="hidden md:grid md:grid-cols-2 gap-6 lg:gap-12 items-center">
-          {/* Text Content - Left side */}
-          <div className="text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 rellax leading-tight text-gradient" data-rellax-speed="1">
+        <div className="hidden md:flex md:flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+          {/* Tablet: Full width name at top */}
+          <div className="lg:hidden w-full text-center mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold rellax leading-tight text-gradient" data-rellax-speed="1">
+              Ulrich Deschamp KOSSONOU
+            </h1>
+          </div>
+
+          {/* Text Content - Left side (Desktop) / Below name (Tablet) */}
+          <div className="text-center lg:text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
+            {/* Desktop only: Name */}
+            <h1 className="hidden lg:block text-4xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 rellax leading-tight text-gradient" data-rellax-speed="1">
               Ulrich Deschamp KOSSONOU
             </h1>
             
@@ -167,23 +175,24 @@ const Hero = () => {
               Freelance Premium & Agence Digitale Indépendante
             </p>
             
-            <p className="text-sm md:text-base text-foreground/70 mb-8 max-w-xl">
+            <p className="text-sm md:text-base text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
               J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
             </p>
             
-            <div className="flex flex-row gap-4">
-              <Button size="lg" variant="glow" asChild className="px-6 lg:px-8">
+            {/* Buttons - Full width side by side on tablet */}
+            <div className="flex flex-row gap-4 w-full lg:w-auto">
+              <Button size="lg" variant="glow" asChild className="flex-1 lg:flex-none px-6 lg:px-8">
                 <a href="#projects">Voir mes projets</a>
               </Button>
-              <Button size="lg" variant="outline" asChild className="px-6 lg:px-8">
+              <Button size="lg" variant="outline" asChild className="flex-1 lg:flex-none px-6 lg:px-8">
                 <a href="#contact">Me contacter</a>
               </Button>
             </div>
           </div>
 
-          {/* Image - Right side */}
-          <div className="flex justify-end animate-scale-in animation-delay-100 rellax" data-rellax-speed="-2">
-            <div className="relative w-72 md:w-80 lg:w-96 h-96 lg:h-[32rem] group">
+          {/* Image - Right side (Desktop) / Centered (Tablet) */}
+          <div className="flex justify-center lg:justify-end animate-scale-in animation-delay-100 rellax order-first lg:order-none" data-rellax-speed="-2">
+            <div className="relative w-64 md:w-72 lg:w-96 h-80 md:h-96 lg:h-[32rem] group">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                 <img 
