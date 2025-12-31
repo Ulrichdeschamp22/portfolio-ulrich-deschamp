@@ -1,96 +1,93 @@
 import { useState } from 'react';
-import { ChevronDown, MessageCircle, Mail, FileText, User, Briefcase, Code, Clock, CreditCard, GraduationCap } from 'lucide-react';
+import { ChevronDown, MessageCircle, Mail, FileText, User, Briefcase, Code, Clock, CreditCard, GraduationCap, Globe, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const FAQ = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
   const categories = [
     { id: 'all', label: 'Toutes les questions', icon: FileText },
+    { id: 'expertise', label: 'Expertise', icon: Award },
     { id: 'about', label: 'À propos', icon: User },
     { id: 'skills', label: 'Compétences', icon: Briefcase },
     { id: 'projects', label: 'Projets', icon: Code },
     { id: 'collaboration', label: 'Collaboration', icon: MessageCircle },
     { id: 'payment', label: 'Paiement', icon: CreditCard },
-    { id: 'training', label: 'Formations', icon: GraduationCap },
+    { id: 'international', label: 'International', icon: Globe },
   ];
 
   const faqData = [
+    // Questions SEO prioritaires
+    {
+      category: 'expertise',
+      question: "Êtes-vous le meilleur expert digital à Abidjan ?",
+      answer: "Oui, j'interviens comme expert digital à Abidjan avec une approche stratégique complète, combinant développement web, solutions digitales sur mesure, automatisation et accompagnement premium pour les entreprises et marques ambitieuses. Mon expertise couvre le développement web expert, le marketing digital, l'automatisation IA et le branding haut de gamme."
+    },
+    {
+      category: 'expertise',
+      question: "Travaillez-vous comme freelance ou agence digitale ?",
+      answer: "Je travaille comme freelance expert digital tout en opérant comme une agence digitale indépendante, offrant la flexibilité du freelancing avec la qualité d'une agence. Cela me permet d'offrir des solutions digitales premium personnalisées avec un suivi direct et une expertise de haut niveau."
+    },
+    {
+      category: 'expertise',
+      question: "Êtes-vous Vibe Coder ?",
+      answer: "Oui, en tant que Vibe Coder, je développe des solutions digitales modernes, créatives et performantes, pensées pour l'expérience utilisateur, la rapidité et la scalabilité. J'utilise les dernières technologies et méthodologies pour créer des applications web innovantes et efficaces."
+    },
+    {
+      category: 'international',
+      question: "Travaillez-vous à l'international ?",
+      answer: "Oui, j'accompagne des clients en Côte d'Ivoire, en Afrique et à l'international en tant que consultant digital freelance et agence digitale internationale. Je propose mes services de développement web expert, automatisation et solutions digitales premium à travers le monde."
+    },
+    {
+      category: 'expertise',
+      question: "Quels types de clients accompagnez-vous ?",
+      answer: "J'accompagne entreprises, startups, institutions, marques et entrepreneurs recherchant un expert digital de haut niveau pour leurs projets digitaux. Que ce soit pour la création de sites web premium, le développement d'applications SaaS, l'automatisation ou le marketing digital, j'offre un accompagnement personnalisé."
+    },
+    // Questions existantes améliorées
     {
       category: 'about',
       question: "Qui est Ulrich Deschamp ?",
-      answer: "Ulrich Deschamp (Kossonou Kouassi N'Tobeni) est un professionnel polyvalent basé à Abidjan, Côte d'Ivoire. Il est spécialisé en développement web, infographie, photographie, cadrage vidéo, community management et e-commerce, alliant créativité et expertise technique pour transformer vos idées en solutions digitales concrètes."
+      answer: "Ulrich Deschamp (Kossonou Kouassi N'Tobeni) est un expert digital senior et consultant de référence basé à Abidjan, Côte d'Ivoire. Développeur web expert et Vibe Coder, il opère comme agence digitale indépendante et freelance premium, spécialisé en développement web, automatisation IA, marketing digital et branding haut de gamme."
     },
     {
       category: 'about',
-      question: "Quels sont ses contacts et informations personnelles ?",
-      answer: "Localisation : Abidjan, Côte d'Ivoire | Téléphone / WhatsApp : +225 0710224023 | Emails : deschamp@gmail.com, support@ulrichdeschampkossonou.online"
+      question: "Quels sont ses contacts et informations ?",
+      answer: "Localisation : Abidjan, Côte d'Ivoire | Téléphone / WhatsApp : +225 0710224023 | Emails : deschamp@gmail.com, support@ulrichdeschampkossonou.online | Site : ulrichdeschampkossonou.online"
     },
     {
       category: 'skills',
       question: "Quelles sont ses compétences principales ?",
-      answer: "Développement Web (sites vitrines, applications SaaS, e-commerce), Infographie (logos, branding, supports digitaux), Community Management (stratégies marketing digital), Photographie (événements, portraits, produits), Cadrage et Vidéo (captation, montage), E-commerce (boutiques en ligne, formations, services)."
+      answer: "Développement Web Expert (sites premium, applications SaaS, e-commerce), Automatisation & IA (solutions intelligentes pour entreprises), Marketing Digital Premium (stratégie digitale avancée, community management expert), Design & Branding (identité visuelle haut de gamme), Photographie & Vidéo professionnelle."
     },
     {
       category: 'projects',
       question: "Quels projets a-t-il réalisés ?",
-      answer: "Portfolio Pasteur K.G, Landing Page Fondation Miracle of God, Site Web Hôtel Résidence Sunday, SaaS de gestion pour PME/TPE. Chaque projet est réalisé avec une approche personnalisée et moderne."
+      answer: "Portfolio Pasteur K.G, Landing Page Fondation Miracle of God, Site Web Hôtel Résidence Sunday, Stocknix - SaaS de gestion pour PME/TPE. Chaque projet bénéficie d'une approche personnalisée avec des solutions digitales haut de gamme."
     },
     {
       category: 'collaboration',
-      question: "Comment puis-je collaborer avec Ulrich Deschamp ?",
-      answer: "Contactez-le via le formulaire du site, le bouton WhatsApp ou par email. Une consultation gratuite permet d'évaluer vos besoins. Vous recevrez un devis détaillé personnalisé. Les projets peuvent être réalisés en forfait ou en régie selon vos préférences."
+      question: "Comment puis-je collaborer avec vous ?",
+      answer: "Contactez-moi via le formulaire du site, WhatsApp ou email. Une consultation gratuite permet d'évaluer vos besoins. Vous recevrez un devis détaillé personnalisé. En tant qu'agence digitale indépendante, j'offre la flexibilité d'un freelance avec la qualité d'une agence premium."
     },
     {
       category: 'payment',
       question: "Comment sont établis les tarifs ?",
-      answer: "Les tarifs dépendent de la complexité du projet et des fonctionnalités demandées. Un devis détaillé est fourni après consultation. Facturation au forfait ou à l'heure selon vos besoins. Options supplémentaires disponibles (maintenance, SEO, marketing)."
+      answer: "Les tarifs dépendent de la complexité du projet et des fonctionnalités demandées. Un devis détaillé est fourni après consultation. Facturation au forfait ou à l'heure selon vos besoins. Options de solutions digitales premium disponibles."
     },
     {
       category: 'skills',
-      question: "Quelles technologies sont utilisées pour le développement ?",
-      answer: "Frontend : React, Angular, Vue.js | Backend : Node.js, Python, .NET | Mobile : iOS et Android | IA & Automatisation : Machine Learning | Cloud : AWS, Azure, Google Cloud Platform | Architecture scalable et sécurisée avec intégration API."
-    },
-    {
-      category: 'projects',
-      question: "Quels types de projets sont réalisables avec Ulrich Deschamp ?",
-      answer: "Sites vitrines et portfolios, Landing pages et applications SaaS, Boutiques en ligne et billetterie, Branding et supports graphiques, Community management, Vidéos promotionnelles et captation d'événements, Automatisation et intégration d'outils digitaux."
+      question: "Quelles technologies utilisez-vous ?",
+      answer: "Frontend : React, TypeScript, Next.js | Backend : Node.js, Python, Supabase | Automatisation : IA, Machine Learning, workflows intelligents | Cloud : AWS, Vercel, solutions scalables | Architecture moderne et sécurisée avec intégration API avancée."
     },
     {
       category: 'collaboration',
-      question: "Quels sont les délais moyens pour un projet ?",
-      answer: "Projets simples (sites vitrines, landing pages) : 72 heures (3 jours). Projets complexes (SaaS, e-commerce) : 1-2 semaines à 1 mois. Un planning détaillé est fourni dès la signature du devis."
+      question: "Quels sont les délais moyens ?",
+      answer: "Projets simples (sites vitrines, landing pages premium) : 72 heures à 1 semaine. Projets complexes (SaaS, e-commerce, automatisation) : 1-4 semaines. Un planning détaillé est fourni dès validation du devis."
     },
     {
       category: 'collaboration',
-      question: "Y a-t-il un suivi après la livraison du projet ?",
-      answer: "Oui, un support post-livraison est assuré pour maintenance, corrections et mises à jour. Des options de maintenance continue peuvent être contractées pour assurer la sécurité et performance optimale."
-    },
-    {
-      category: 'collaboration',
-      question: "Comment se déroule la collaboration et le suivi du projet ?",
-      answer: "Points réguliers via email, WhatsApp ou visioconférence. Livraison de maquettes et prototypes pour validation étape par étape. Révisions possibles selon le devis. Remise des livrables dans les délais avec suivi post-livraison."
-    },
-    {
-      category: 'about',
-      question: "Quels avantages à travailler avec Ulrich Deschamp ?",
-      answer: "Expertise polyvalente en développement web, graphisme, vidéo et marketing. Design immersif et moderne. Solutions personnalisées. Accompagnement complet du concept à la mise en ligne. Optimisation SEO et performance maximale."
-    },
-    {
-      category: 'payment',
-      question: "Quels moyens de paiement sont acceptés ?",
-      answer: "Transfert bancaire, Espèces, Paiement mobile (Orange Money, MTN Mobile Money, Wave, Moovafrica), PayPal et autres plateformes sécurisées selon les accords."
-    },
-    {
-      category: 'training',
-      question: "Propose-t-il des formations ou accompagnement digital ?",
-      answer: "Oui, formations et coaching disponibles en : Développement web et applications, Community management et réseaux sociaux, Création graphique et branding, Gestion de boutique en ligne et e-commerce."
+      question: "Y a-t-il un suivi après livraison ?",
+      answer: "Oui, un support post-livraison premium est assuré pour maintenance, corrections et mises à jour. Options de maintenance continue disponibles pour garantir performance et sécurité optimales de vos solutions digitales."
     }
   ];
 
@@ -121,15 +118,15 @@ const FAQ = () => {
             className="text-4xl md:text-5xl font-bold mb-4 rellax" 
             data-rellax-speed="1"
           >
-            <span className="text-gradient">Questions Fréquentes</span>
+            <span className="text-gradient">Questions Fréquentes - Expert Digital Abidjan</span>
           </h2>
           <p 
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            className="text-lg text-muted-foreground max-w-3xl mx-auto"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Trouvez rapidement des réponses à vos questions sur mes services de développement web, 
-            infographie et photographie à Abidjan, Côte d'Ivoire
+            Découvrez mes services de développeur web expert, freelance premium et agence digitale indépendante 
+            en Côte d'Ivoire et à l'international
           </p>
         </div>
 
@@ -198,10 +195,10 @@ const FAQ = () => {
           data-aos-delay="600"
         >
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Vous avez d'autres questions ?
+            Besoin d'un Expert Digital Premium ?
           </h3>
           <p className="text-muted-foreground mb-8">
-            N'hésitez pas à me contacter directement pour discuter de votre projet
+            Contactez le meilleur expert digital à Abidjan pour discuter de votre projet
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
