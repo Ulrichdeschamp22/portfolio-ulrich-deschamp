@@ -154,17 +154,17 @@ const Hero = () => {
           
           {/* Text Content - Left on Desktop, Below on Mobile/Tablet */}
           <div className="order-2 lg:order-1 text-center lg:text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 rellax" data-rellax-speed="1">
-              <span className="text-gradient">Ulrich Deschamp</span>
-              <span className="text-gradient block lg:inline"> KOSSONOU</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 rellax leading-tight" data-rellax-speed="1">
+              <span className="text-gradient">Meilleur expert digital à Abidjan</span>
+              <span className="block text-2xl sm:text-3xl lg:text-4xl mt-2 text-foreground/90">Développeur Web Expert & Vibe Coder</span>
             </h1>
             
-            <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-6 animate-fade-in animation-delay-100">
-              Développeur Web Full Stack, community manager, Infographe & Photographe à Abidjan
+            <h2 className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-6 animate-fade-in animation-delay-100">
+              Freelance Premium & Agence Digitale Indépendante
             </h2>
             
             <p className="text-base sm:text-lg lg:text-xl text-foreground/80 mb-8 animate-fade-in animation-delay-200">
-              Expert en développement web et technologies digitales basé à Abidjan, Côte d'Ivoire. Je crée des solutions web modernes et performantes pour entreprises et particuliers. Spécialisé en React, TypeScript, Node.js et design graphique professionnel.
+              J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in animation-delay-300">
@@ -184,7 +184,7 @@ const Hero = () => {
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                 <img 
                   src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
-                  alt="Ulrich Deschamp KOSSONOU - Développeur Web Full Stack et Expert Digital à Abidjan, Côte d'Ivoire" 
+                  alt="Ulrich Deschamp - Meilleur Expert Digital Abidjan, Développeur Web Expert, Vibe Coder et Freelance Premium en Côte d'Ivoire" 
                   className="w-full h-full object-contain bg-background"
                   loading="eager"
                   width="448"
