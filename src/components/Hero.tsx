@@ -159,12 +159,17 @@ const Hero = () => {
               Ulrich Deschamp KOSSONOU
             </h1>
             
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-foreground/90">
-              Développeur Web Full Stack, community manager, Infographe & Photographe à Abidjan
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 text-foreground/90">
+              <span className="text-primary">Expert digital à Abidjan</span>
+              <span className="block text-lg sm:text-xl md:text-2xl mt-1">Développeur Web Expert & Vibe Coder</span>
             </h2>
             
+            <p className="text-base sm:text-lg text-muted-foreground mb-4">
+              Freelance Premium & Agence Digitale Indépendante
+            </p>
+            
             <p className="text-sm sm:text-base md:text-lg text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
-              Expert en développement web et technologies digitales basé à Abidjan, Côte d'Ivoire. Je crée des solutions web modernes et performantes pour entreprises et particuliers. Spécialisé en React, TypeScript, Node.js et design graphique professionnel.
+              J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
