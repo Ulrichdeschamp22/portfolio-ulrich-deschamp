@@ -149,55 +149,50 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto z-10 relative max-w-6xl w-full">
-        <div className="flex flex-col items-center text-center">
+      <div className="container mx-auto z-10 relative max-w-7xl w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           
-          {/* Name prominently displayed - Always first */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 rellax leading-tight text-gradient animate-fade-in" data-rellax-speed="1">
-            Ulrich Deschamp KOSSONOU
-          </h1>
-          
-          {/* Image - Second on all devices */}
-          <div className="mb-6 animate-scale-in animation-delay-100 rellax" data-rellax-speed="-2">
-            <div className="relative w-40 h-48 sm:w-56 sm:h-64 md:w-64 md:h-72 lg:w-72 lg:h-80 group">
+          {/* Text Content - Left side */}
+          <div className="text-center lg:text-left animate-fade-in order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
+            {/* Name prominently displayed */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 rellax leading-tight text-gradient" data-rellax-speed="1">
+              Ulrich Deschamp KOSSONOU
+            </h1>
+            
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-foreground/90">
+              Développeur Web Full Stack, community manager, Infographe & Photographe à Abidjan
+            </h2>
+            
+            <p className="text-sm sm:text-base md:text-lg text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
+              Expert en développement web et technologies digitales basé à Abidjan, Côte d'Ivoire. Je crée des solutions web modernes et performantes pour entreprises et particuliers. Spécialisé en React, TypeScript, Node.js et design graphique professionnel.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button size="lg" variant="glow" asChild className="px-8">
+                <a href="#projects">Voir mes projets</a>
+              </Button>
+              <Button size="lg" variant="outline" asChild className="px-8">
+                <a href="#contact">Me contacter</a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Image - Right side */}
+          <div className="flex justify-center lg:justify-end animate-scale-in animation-delay-100 rellax order-1 lg:order-2" data-rellax-speed="-2">
+            <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] lg:w-96 lg:h-[32rem] group">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                 <img 
                   src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
                   alt="Ulrich Deschamp KOSSONOU - Expert Digital Abidjan, Développeur Web Expert, Vibe Coder et Freelance Premium en Côte d'Ivoire" 
-                  className="w-full h-full object-contain bg-background"
+                  className="w-full h-full object-cover bg-background"
                   loading="eager"
-                  width="288"
-                  height="320"
+                  width="384"
+                  height="512"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
-            </div>
-          </div>
-          
-          {/* Title and description */}
-          <div className="animate-fade-in max-w-2xl" data-aos="fade-up" data-aos-delay="200">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-foreground/90">
-              <span className="text-primary">Expert digital à Abidjan</span>
-              <span className="block text-lg sm:text-xl md:text-2xl mt-2 text-foreground/80">Développeur Web Expert & Vibe Coder</span>
-            </h2>
-            
-            <p className="text-base sm:text-lg text-muted-foreground mb-4 animate-fade-in animation-delay-100">
-              Freelance Premium & Agence Digitale Indépendante
-            </p>
-            
-            <p className="text-sm sm:text-base text-foreground/70 mb-6 animate-fade-in animation-delay-200 px-4">
-              J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in animation-delay-300">
-              <Button size="lg" variant="glow" asChild>
-                <a href="#projects">Voir mes projets</a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="#contact">Me contacter</a>
-              </Button>
             </div>
           </div>
         </div>
