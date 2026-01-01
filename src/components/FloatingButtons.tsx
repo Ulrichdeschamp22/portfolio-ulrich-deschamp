@@ -22,22 +22,23 @@ const FloatingButtons = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className="fixed bottom-6 right-4 z-50 flex items-center gap-3">
-      {/* Text pill button */}
+    <div className="fixed bottom-6 right-4 z-50 flex items-center gap-2">
+      {/* Text pill button with stacked text */}
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105 font-medium text-sm whitespace-nowrap"
+        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex flex-col items-start leading-tight"
       >
-        Discuter avec moi sur WhatsApp
+        <span className="text-xs font-medium">Discuter avec moi sur</span>
+        <span className="text-sm font-bold">WhatsApp</span>
       </a>
 
       {/* Icon button - switches between WhatsApp and Scroll to Top */}
       {showScrollTop ? (
         <button
           onClick={scrollToTop}
-          className="bg-primary hover:bg-primary/90 text-primary-foreground p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+          className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
           aria-label="Retour en haut"
         >
           <ArrowUp className="w-5 h-5" />
@@ -47,7 +48,7 @@ const FloatingButtons = () => {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-green-500 hover:bg-green-600 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+          className="bg-green-500 hover:bg-green-600 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
           aria-label="WhatsApp"
         >
           <MessageCircle className="w-5 h-5 text-white" fill="white" />
