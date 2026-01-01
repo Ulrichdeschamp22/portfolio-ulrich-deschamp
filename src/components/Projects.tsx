@@ -59,13 +59,13 @@ const Projects = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <h2 
-          className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
         >
           <span className="text-gradient">Projets Réalisés</span>
         </h2>
         <p 
-          className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto"
+          className="text-center text-sm md:text-base text-muted-foreground mb-8 md:mb-12 max-w-3xl mx-auto px-2"
           data-aos="fade-up"
           data-aos-delay="200"
         >
@@ -95,11 +95,11 @@ const Projects = () => {
                   <Code2 className="w-5 h-5 text-muted-foreground group-hover:rotate-12 transition-transform" />
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors" itemProp="name">
+                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors" itemProp="name">
                   {project.title}
                 </h3>
                 
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2" itemProp="description">
+                <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2" itemProp="description">
                   {project.description}
                 </p>
                 

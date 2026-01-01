@@ -39,13 +39,13 @@ const Shop = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <h2 
-          className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
         >
           <span className="text-gradient">Ma Boutique E-commerce</span>
         </h2>
         <p 
-          className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto"
+          className="text-center text-sm md:text-base text-muted-foreground mb-10 md:mb-16 max-w-2xl mx-auto px-2"
           data-aos="fade-up"
           data-aos-delay="200"
         >
@@ -75,8 +75,8 @@ const Shop = () => {
                 <product.icon className="w-8 h-8 text-primary" />
               </div>
               
-              <h3 className="text-xl font-semibold mb-3" itemProp="name">{product.title}</h3>
-              <p className="text-muted-foreground mb-6" itemProp="description">{product.description}</p>
+              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3" itemProp="name">{product.title}</h3>
+              <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6" itemProp="description">{product.description}</p>
               
               <ul className="space-y-2 mb-6">
                 {product.features.map((feature, featureIndex) => (
