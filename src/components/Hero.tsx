@@ -82,7 +82,7 @@ const Hero = () => {
   }, [isMobile]);
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-duration="1500">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" data-aos="fade-up" data-aos-duration="1500">
       {/* Animated code background */}
       <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden">
         {/* Matrix-style code rain effect - visible on all devices */}
@@ -175,7 +175,7 @@ const Hero = () => {
               Freelance Premium & Agence Digitale Indépendante
             </p>
             
-            <p className="text-sm md:text-base text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-base md:text-lg text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
               J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
             </p>
             
@@ -241,7 +241,7 @@ const Hero = () => {
           </div>
 
           {/* Description third */}
-          <p className="text-xs sm:text-sm text-foreground/70 mb-6 max-w-sm px-2">
+          <p className="text-sm sm:text-base text-foreground/70 mb-6 max-w-sm px-2">
             J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
           </p>
           
