@@ -65,13 +65,13 @@ const Contact = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <h2 
-          className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
         >
           <span className="text-gradient">Contact</span>
         </h2>
         <p 
-          className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto"
+          className="text-center text-sm md:text-base text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto px-2"
           data-aos="fade-up"
           data-aos-delay="200"
         >
@@ -81,8 +81,8 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
           <div data-aos="fade-right" data-aos-delay="300">
-            <h3 className="text-2xl font-semibold mb-8">Parlons de votre projet</h3>
-            <p className="text-muted-foreground mb-8">
+            <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-8">Parlons de votre projet</h3>
+            <p className="text-sm md:text-base text-muted-foreground mb-6 md:mb-8">
               Je suis disponible pour discuter de vos besoins et vous accompagner dans la réalisation de vos projets digitaux.
             </p>
             

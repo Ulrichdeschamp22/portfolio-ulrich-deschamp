@@ -97,13 +97,13 @@ const Skills = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <h2 
-          className="text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
         >
           <span className="text-gradient">Mes Compétences</span>
         </h2>
         <p 
-          className="text-center text-muted-foreground mb-6 max-w-3xl mx-auto"
+          className="text-center text-sm md:text-base text-muted-foreground mb-4 md:mb-6 max-w-3xl mx-auto px-2"
           data-aos="fade-up"
           data-aos-delay="200"
         >
@@ -111,7 +111,7 @@ const Skills = () => {
           je propose ces solutions digitales premium dans chaque domaine ci-dessous.
         </p>
         <p 
-          className="text-center text-sm text-muted-foreground mb-12 max-w-2xl mx-auto"
+          className="text-center text-xs md:text-sm text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto px-2"
           data-aos="fade-up"
           data-aos-delay="300"
         >
@@ -130,13 +130,13 @@ const Skills = () => {
               data-aos-delay={100 + index * 100}
               data-aos-duration="1000"
             >
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                  <category.icon className="w-6 h-6 text-white" />
+              <div className="flex items-center space-x-2 md:space-x-3 mb-2 md:mb-3">
+                <div className="p-2 md:p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                  <category.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-white">{category.title}</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">{category.title}</h3>
               </div>
-              <p className="text-white/70 text-sm mb-4 italic">{category.description}</p>
+              <p className="text-white/70 text-xs md:text-sm mb-3 md:mb-4 italic">{category.description}</p>
               <ul className="space-y-2">
                 {category.skills.map((skill, skillIndex) => (
                   <li 
