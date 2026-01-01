@@ -6,11 +6,9 @@ import Projects from '@/components/Projects';
 import Shop from '@/components/Shop';
 import Contact from '@/components/Contact';
 import FAQ from '@/components/FAQ';
-import WhatsAppButton from '@/components/WhatsAppButton';
 import Footer from '@/components/Footer';
-
 import LegalSection from '@/components/LegalSection';
-import ScrollToTop from '@/components/ScrollToTop';
+import FloatingButtons from '@/components/FloatingButtons';
 
 const Index = () => {
   return (
@@ -25,9 +23,7 @@ const Index = () => {
       <Contact />
       <LegalSection />
       <Footer />
-      <WhatsAppButton />
-      <ScrollToTop />
-      
+      <FloatingButtons />
     </div>
   );
 };
