@@ -53,17 +53,18 @@ const Contact = () => {
   return (
     <section 
       id="contact" 
-      className="py-20 relative overflow-hidden" 
-      data-aos="fade-left" 
-      data-aos-duration="1200"
+      className="py-16 md:py-20 relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
+      data-aos="fade-up" 
+      data-aos-duration="800"
+      data-aos-once="true"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse animation-delay-300"></div>
+        <div className="absolute top-0 right-0 w-48 md:w-72 h-48 md:h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-48 md:w-72 h-48 md:h-72 bg-accent/10 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10 max-w-7xl">
         <h2 
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
@@ -78,7 +79,7 @@ const Contact = () => {
           Contactez-moi pour vos projets de développement web, infographie, photographie ou community management à Abidjan et en Côte d'Ivoire
         </p>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
           <div data-aos="fade-right" data-aos-delay="300">
             <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-8">Parlons de votre projet</h3>
@@ -95,20 +96,20 @@ const Contact = () => {
                   data-aos="fade-right"
                   data-aos-delay={400 + index * 100}
                 >
-                  <div className="p-3 rounded-lg bg-primary/10 hover:bg-primary/20 transition-all duration-300 hover:scale-110">
-                    <info.icon className="w-5 h-5 text-primary" />
+                  <div className="p-2 md:p-3 rounded-lg bg-primary/10 hover:bg-primary/20 transition-all duration-300">
+                    <info.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
+                    <p className="text-xs md:text-sm text-muted-foreground mb-1">{info.label}</p>
                     {info.link ? (
                       <a 
                         href={info.link}
-                        className="text-foreground hover:text-primary transition-colors story-link"
+                        className="text-sm md:text-base text-foreground hover:text-primary transition-colors"
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-foreground">{info.value}</p>
+                      <p className="text-sm md:text-base text-foreground">{info.value}</p>
                     )}
                   </div>
                 </div>
@@ -118,50 +119,51 @@ const Contact = () => {
           
           {/* Contact Form */}
           <div 
-            className="glass-card p-8"
-            data-aos="fade-left"
-            data-aos-delay="400"
+            className="glass-card p-6 md:p-8"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-once="true"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div data-aos="fade-up" data-aos-delay="500">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+              <div>
                 <Input
                   placeholder="Votre nom"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   required
-                  className="bg-background/50 border-border/50 focus:border-primary transition-all duration-300"
+                  className="bg-background/50 border-border/50 focus:border-primary transition-all duration-300 text-sm md:text-base"
                 />
               </div>
               
-              <div data-aos="fade-up" data-aos-delay="600">
+              <div>
                 <Input
                   type="email"
                   placeholder="Votre email"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   required
-                  className="bg-background/50 border-border/50 focus:border-primary transition-all duration-300"
+                  className="bg-background/50 border-border/50 focus:border-primary transition-all duration-300 text-sm md:text-base"
                 />
               </div>
               
-              <div data-aos="fade-up" data-aos-delay="700">
+              <div>
                 <Input
                   placeholder="Sujet"
                   value={formData.subject}
                   onChange={(e) => setFormData({...formData, subject: e.target.value})}
                   required
-                  className="bg-background/50 border-border/50 focus:border-primary transition-all duration-300"
+                  className="bg-background/50 border-border/50 focus:border-primary transition-all duration-300 text-sm md:text-base"
                 />
               </div>
               
-              <div data-aos="fade-up" data-aos-delay="800">
+              <div>
                 <Textarea
                   placeholder="Votre message"
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                   required
-                  className="bg-background/50 border-border/50 focus:border-primary resize-none transition-all duration-300"
+                  className="bg-background/50 border-border/50 focus:border-primary resize-none transition-all duration-300 text-sm md:text-base"
                 />
               </div>
               
@@ -169,11 +171,9 @@ const Contact = () => {
                 type="submit" 
                 size="lg" 
                 variant="glow" 
-                className="w-full hover:scale-105 transition-transform duration-300"
-                data-aos="zoom-in"
-                data-aos-delay="900"
+                className="w-full transition-transform duration-300 text-sm md:text-base"
               >
-                <Send className="w-4 h-4 mr-2 animate-pulse" />
+                <Send className="w-4 h-4 mr-2" />
                 Envoyer le message
               </Button>
             </form>

@@ -47,17 +47,18 @@ const Projects = () => {
   return (
     <section 
       id="projects" 
-      className="py-20 relative overflow-hidden" 
-      data-aos="zoom-in" 
-      data-aos-duration="1200"
+      className="py-16 md:py-20 relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
+      data-aos="fade-up" 
+      data-aos-duration="800"
+      data-aos-once="true"
     >
       {/* Animated gradient mesh background */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse animation-delay-300"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-accent/10 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10 max-w-7xl">
         <h2 
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
@@ -73,26 +74,26 @@ const Projects = () => {
           Découvrez mes projets digitaux créés pour des entreprises en Côte d'Ivoire et à l'international.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <article 
               key={index}
-              className={`glass-card overflow-hidden group hover-lift ${index % 2 === 0 ? 'rellax' : ''}`}
-              data-rellax-speed={index % 2 === 0 ? "3" : undefined}
+              className="glass-card overflow-hidden group hover-lift"
               data-aos="fade-up"
-              data-aos-delay={100 + index * 100}
+              data-aos-delay={50 + index * 50}
+              data-aos-once="true"
               itemScope 
               itemType="https://schema.org/CreativeWork"
             >
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
+              <div className="p-4 md:p-6">
+                <div className="flex items-start justify-between mb-3 md:mb-4">
                   <div className="flex items-center space-x-2">
-                    <Globe className="w-5 h-5 text-primary animate-pulse" />
-                    <span className={`text-sm font-medium ${getTypeColor(project.type)}`} itemProp="category">
+                    <Globe className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                    <span className={`text-xs md:text-sm font-medium ${getTypeColor(project.type)}`} itemProp="category">
                       {project.type}
                     </span>
                   </div>
-                  <Code2 className="w-5 h-5 text-muted-foreground group-hover:rotate-12 transition-transform" />
+                  <Code2 className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:rotate-12 transition-transform" />
                 </div>
                 
                 <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors" itemProp="name">
@@ -103,13 +104,11 @@ const Projects = () => {
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-6" itemProp="keywords">
+                <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6" itemProp="keywords">
                   {project.tags.map((tag, tagIndex) => (
                     <span 
                       key={tagIndex}
-                      className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-                      data-aos="zoom-in"
-                      data-aos-delay={200 + tagIndex * 50}
+                      className="px-2 py-0.5 md:py-1 text-[10px] md:text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
                     >
                       {tag}
                     </span>
@@ -118,7 +117,7 @@ const Projects = () => {
                 
                 <Button 
                   variant="outline" 
-                  className="w-full group-hover:bg-primary/10 group-hover:scale-105 transition-all duration-300"
+                  className="w-full group-hover:bg-primary/10 transition-all duration-300 text-xs md:text-sm"
                   asChild
                 >
                   <a 

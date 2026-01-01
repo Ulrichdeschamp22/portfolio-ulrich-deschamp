@@ -37,14 +37,15 @@ const About = () => {
   return (
     <section 
       id="about" 
-      className="py-20 relative overflow-hidden" 
-      data-aos="fade-right" 
-      data-aos-duration="1200"
+      className="py-16 md:py-20 relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
+      data-aos="fade-up" 
+      data-aos-duration="800"
+      data-aos-once="true"
     >
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50"></div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10 max-w-7xl">
         <h2 
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 md:mb-12 rellax" 
           data-rellax-speed="1"
@@ -69,14 +70,14 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {highlights.map((item, index) => (
             <div 
               key={index}
-              className="glass-card p-6 hover-lift group rellax"
-              data-rellax-speed={index % 2 === 0 ? "2" : "-1"}
-              data-aos="zoom-in"
-              data-aos-delay={200 + index * 100}
+              className="glass-card p-4 md:p-6 hover-lift group"
+              data-aos="fade-up"
+              data-aos-delay={100 + index * 50}
+              data-aos-once="true"
             >
               <div className="flex items-start space-x-3 md:space-x-4">
                 <div className="p-2 md:p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-500 group-hover:scale-110">
