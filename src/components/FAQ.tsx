@@ -107,28 +107,29 @@ const FAQ = () => {
   return (
     <section 
       id="faq" 
-      className="min-h-screen py-20 relative overflow-hidden" 
+      className="py-16 md:py-20 relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
       data-aos="fade-up" 
-      data-aos-duration="1200"
+      data-aos-duration="800"
+      data-aos-once="true"
     >
       {/* Background gradient effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse animation-delay-200"></div>
+      <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 md:w-96 h-64 md:h-96 bg-primary/10 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center mb-6 md:mb-12">
           <h2 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 rellax" 
-            data-rellax-speed="1"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" 
           >
             <span className="text-gradient">Questions Fréquentes</span>
           </h2>
           <p 
-            className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto px-4"
+            className="text-sm md:text-base text-muted-foreground max-w-3xl mx-auto"
             data-aos="fade-up"
-            data-aos-delay="200"
+            data-aos-delay="100"
+            data-aos-once="true"
           >
             Expert Digital Abidjan - Découvrez mes services
           </p>
@@ -136,9 +137,10 @@ const FAQ = () => {
 
         {/* Category filters - Scrollable on mobile */}
         <div 
-          className="flex overflow-x-auto pb-4 mb-8 gap-2 scrollbar-hide justify-start md:justify-center md:flex-wrap"
+          className="flex overflow-x-auto pb-4 mb-6 md:mb-8 gap-2 scrollbar-hide justify-start md:justify-center md:flex-wrap"
           data-aos="fade-up"
-          data-aos-delay="300"
+          data-aos-delay="150"
+          data-aos-once="true"
         >
           {categories.map((cat) => (
             <Button

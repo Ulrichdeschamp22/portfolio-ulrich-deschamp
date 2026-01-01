@@ -87,15 +87,16 @@ const Skills = () => {
   return (
     <section 
       id="skills" 
-      className="py-20 bg-card/20 relative overflow-hidden" 
+      className="py-16 md:py-20 bg-card/20 relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
       data-aos="fade-up" 
-      data-aos-duration="1200"
+      data-aos-duration="800"
+      data-aos-once="true"
     >
       {/* Animated particles background */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse animation-delay-200"></div>
+      <div className="absolute top-0 left-0 w-48 md:w-64 h-48 md:h-64 bg-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-accent/10 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto relative z-10 max-w-7xl">
         <h2 
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"
@@ -118,17 +119,17 @@ const Skills = () => {
           Freelance développeur web expert | Agence digitale indépendante | Côte d'Ivoire & International
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className="p-6 hover-lift group transition-all duration-300 rounded-xl overflow-hidden relative"
+              className="p-4 md:p-6 hover-lift group transition-all duration-300 rounded-xl overflow-hidden relative"
               style={{
                 background: 'linear-gradient(135deg, #9333ea 0%, #6b21a8 50%, #3b0764 100%)'
               }}
-              data-aos="flip-left"
-              data-aos-delay={100 + index * 100}
-              data-aos-duration="1000"
+              data-aos="fade-up"
+              data-aos-delay={50 + index * 50}
+              data-aos-once="true"
             >
               <div className="flex items-center space-x-2 md:space-x-3 mb-2 md:mb-3">
                 <div className="p-2 md:p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
@@ -137,16 +138,14 @@ const Skills = () => {
                 <h3 className="text-lg md:text-xl font-semibold text-white">{category.title}</h3>
               </div>
               <p className="text-white/70 text-xs md:text-sm mb-3 md:mb-4 italic">{category.description}</p>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5 md:space-y-2">
                 {category.skills.map((skill, skillIndex) => (
                   <li 
                     key={skillIndex}
                     className="flex items-start"
-                    data-aos="fade-right"
-                    data-aos-delay={50 + (skillIndex * 50)}
                   >
                     <span className="text-white mr-2">•</span>
-                    <span className="text-white/90 text-sm">{skill}</span>
+                    <span className="text-white/90 text-xs md:text-sm">{skill}</span>
                   </li>
                 ))}
               </ul>

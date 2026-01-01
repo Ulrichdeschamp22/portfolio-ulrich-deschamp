@@ -35,18 +35,24 @@ const LegalSection = () => {
   };
 
   return (
-    <section id="legal" className="py-16 bg-gradient-to-b from-background to-background/50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-primary-variant to-primary bg-clip-text text-transparent">
+    <section 
+      id="legal" 
+      className="py-12 md:py-16 bg-gradient-to-b from-background to-background/50 px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24"
+      data-aos="fade-up"
+      data-aos-duration="800"
+      data-aos-once="true"
+    >
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent">
             Mentions Légales
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xs md:text-sm text-muted-foreground max-w-2xl mx-auto">
             Informations légales du portfolio de Ulrich Deschamp KOSSONOU - Développeur web professionnel à Abidjan, Côte d'Ivoire
           </p>
         </div>
 
-        <Card className="max-w-5xl mx-auto p-8 glass-card">
+        <Card className="max-w-5xl mx-auto p-4 md:p-8 glass-card">
           <Tabs defaultValue="editor" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
               <TabsTrigger value="editor" className="flex items-center gap-2">
