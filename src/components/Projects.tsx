@@ -47,15 +47,15 @@ const Projects = () => {
   return (
     <section 
       id="projects" 
-      className="py-16 md:py-20 relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
+      className="py-16 md:py-20 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-primary/10" 
       data-aos="fade-up" 
       data-aos-duration="800"
       data-aos-once="true"
     >
       {/* Animated gradient mesh background */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-accent/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/15 rounded-full blur-3xl"></div>
       </div>
       
       <div className="container mx-auto relative z-10 max-w-7xl">

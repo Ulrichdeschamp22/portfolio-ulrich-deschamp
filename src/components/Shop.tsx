@@ -29,7 +29,7 @@ const Shop = () => {
   return (
     <section 
       id="shop" 
-      className="py-16 md:py-20 bg-card/20 relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
+      className="py-16 md:py-20 bg-card/20 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" 
       data-aos="fade-up" 
       data-aos-duration="800"
       data-aos-once="true"
@@ -90,6 +90,22 @@ const Shop = () => {
                   </li>
                 ))}
               </ul>
+              
+              <Button 
+                variant="outline" 
+                className="w-full group-hover:bg-primary/10 transition-all duration-300 text-xs md:text-sm"
+                asChild
+              >
+                <a 
+                  href="https://open-mind.shop/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label={`Découvrir ${product.title}`}
+                >
+                  Découvrir
+                </a>
+              </Button>
+              
               <meta itemProp="brand" content="Ulrich Deschamp Digital" />
               <meta itemProp="seller" content="Ulrich Deschamp KOSSONOU" />
             </article>

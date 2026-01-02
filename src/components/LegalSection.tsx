@@ -37,7 +37,7 @@ const LegalSection = () => {
   return (
     <section 
       id="legal" 
-      className="py-12 md:py-16 bg-gradient-to-b from-background to-background/50 px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24"
+      className="py-12 md:py-16 bg-gradient-to-b from-background to-background/50 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16"
       data-aos="fade-up"
       data-aos-duration="800"
       data-aos-once="true"
