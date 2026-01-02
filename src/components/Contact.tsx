@@ -53,7 +53,7 @@ const Contact = () => {
   return (
     <section 
       id="contact" 
-      className="py-16 md:py-20 relative overflow-hidden px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
+      className="py-16 md:py-20 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" 
       data-aos="fade-up" 
       data-aos-duration="800"
       data-aos-once="true"
