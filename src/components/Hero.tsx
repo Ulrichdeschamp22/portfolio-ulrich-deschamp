@@ -1,9 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import HeroBackground from './hero/HeroBackground';
+import HeroContent from './hero/HeroContent';
+import HeroImage from './hero/HeroImage';
+import DynamicTypingText from './hero/DynamicTypingText';
+import { SEO_KEYWORDS } from '@/hooks/useTypingAnimation';
 
 const Hero = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -15,229 +19,41 @@ const Hero = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    if (!containerRef.current || isMobile) return;
-
-    const container = containerRef.current;
-    
-    // Create multiple code snippets that will float
-    const codeSnippets = [
-      'const app = () => {',
-      '  return <div>',
-      '    <h1>Hello World</h1>',
-      '  </div>',
-      '}',
-      'function calculate(x, y) {',
-      '  return x + y;',
-      '}',
-      'import React from "react"',
-      'export default App',
-      'npm install',
-      'git commit -m "update"',
-      '<html>',
-      '<body>',
-      '</body>',
-      '</html>',
-      'if (condition) {',
-      '  execute();',
-      '}',
-      'async function getData() {',
-      '  const res = await fetch()',
-      '  return res.json()',
-      '}',
-      '.container {',
-      '  display: flex;',
-      '  justify-content: center;',
-      '}',
-      '@media (max-width: 768px) {',
-      '  .responsive { }',
-      '}'
-    ];
-
-    // Create floating code elements
-    codeSnippets.forEach((snippet, index) => {
-      const codeElement = document.createElement('div');
-      codeElement.className = 'floating-code';
-      codeElement.textContent = snippet;
-      codeElement.style.cssText = `
-        position: absolute;
-        font-family: 'Courier New', monospace;
-        font-size: ${Math.random() * 8 + 12}px;
-        color: hsl(var(--primary) / 0.2);
-        white-space: nowrap;
-        pointer-events: none;
-        animation: float-code ${20 + Math.random() * 10}s linear infinite;
-        animation-delay: ${index * 0.5}s;
-        top: ${Math.random() * 100}%;
-        left: ${-100 - Math.random() * 200}px;
-      `;
-      container.appendChild(codeElement);
-    });
-
-    return () => {
-      // Cleanup
-      const elements = container.querySelectorAll('.floating-code');
-      elements.forEach(el => el.remove());
-    };
-  }, [isMobile]);
-
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" data-aos="fade-up" data-aos-duration="1500">
+    <section 
+      id="hero" 
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24" 
+      data-aos="fade-up" 
+      data-aos-duration="1500"
+      aria-label="Section principale - Expert Digital Abidjan"
+    >
       {/* Animated code background */}
-      <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden">
-        {/* Matrix-style code rain effect - visible on all devices */}
-        <div className="code-rain-container absolute inset-0 overflow-hidden">
-          {Array.from({ length: isMobile ? 6 : 12 }).map((_, i) => (
-            <div
-              key={i}
-              className="code-rain-column"
-              style={{
-                left: `${i * (isMobile ? 15 : 8)}%`,
-                animationDelay: `${i * 0.5}s`,
-                animationDuration: `${15 + i * 2}s`
-              }}
-            >
-              <span className="code-char">0</span>
-              <span className="code-char">1</span>
-              <span className="code-char">{`{`}</span>
-              <span className="code-char">{`}`}</span>
-              <span className="code-char">&lt;</span>
-              <span className="code-char">/&gt;</span>
-              <span className="code-char">( )</span>
-              <span className="code-char">[ ]</span>
-              <span className="code-char">=</span>
-              <span className="code-char">;</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Terminal window decorations */}
-        <div className="absolute top-20 left-10 opacity-10 transform rotate-12 hidden lg:block">
-          <div className="w-64 h-40 bg-primary/10 rounded-lg border border-primary/20">
-            <div className="flex gap-2 p-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/30"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500/30"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500/30"></div>
-            </div>
-            <div className="p-2 text-xs font-mono text-primary/30">
-              <div>$ npm run dev</div>
-              <div>✓ Server running...</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-20 right-10 opacity-10 transform -rotate-12 hidden lg:block">
-          <div className="w-72 h-48 bg-primary/10 rounded-lg border border-primary/20">
-            <div className="flex gap-2 p-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/30"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500/30"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500/30"></div>
-            </div>
-            <div className="p-2 text-xs font-mono text-primary/30">
-              <div>&lt;div className="app"&gt;</div>
-              <div>  &lt;h1&gt;Portfolio&lt;/h1&gt;</div>
-              <div>&lt;/div&gt;</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/85 to-background/95" />
-        
-        {/* Additional overlay for better text contrast */}
-        <div className="absolute inset-0 bg-background/40 backdrop-blur-sm" />
-      </div>
+      <HeroBackground isMobile={isMobile} />
 
       {/* Content */}
       <div className="container mx-auto z-10 relative max-w-7xl w-full">
         {/* Desktop/Tablet Layout - Side by side */}
         <div className="hidden md:flex md:flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Tablet: Full width name at top */}
-          <div className="lg:hidden w-full text-center mb-4">
-            <h1 className="text-4xl md:text-5xl font-bold rellax leading-tight text-gradient" data-rellax-speed="1">
-              Ulrich Deschamp KOSSONOU
-            </h1>
-          </div>
+          <HeroContent variant="tablet" />
 
           {/* Text Content - Left side (Desktop) / Below name (Tablet) */}
-          <div className="text-center lg:text-left animate-fade-in" data-aos="fade-right" data-aos-delay="200">
-            {/* Desktop only: Name */}
-            <h1 className="hidden lg:block text-4xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 rellax leading-tight text-gradient" data-rellax-speed="1">
-              Ulrich Deschamp KOSSONOU
-            </h1>
-            
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-2 text-foreground/90">
-              <span className="text-primary">Expert digital à Abidjan</span>
-              <span className="block text-lg md:text-xl mt-1">Développeur Web Expert & Vibe Coder</span>
-            </h2>
-            
-            <p className="text-base text-muted-foreground mb-4">
-              Freelance Premium & Agence Digitale Indépendante
-            </p>
-            
-            <p className="text-base md:text-lg text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
-              J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
-            </p>
-            
-            {/* Buttons - Full width side by side on tablet */}
-            <div className="flex flex-row gap-4 w-full lg:w-auto">
-              <Button size="lg" variant="glow" asChild className="flex-1 lg:flex-none px-6 lg:px-8">
-                <a href="#projects">Voir mes projets</a>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="flex-1 lg:flex-none px-6 lg:px-8">
-                <a href="#contact">Me contacter</a>
-              </Button>
-            </div>
-          </div>
+          <HeroContent variant="desktop" />
 
           {/* Image - Right side (Desktop) / Centered (Tablet) */}
           <div className="flex justify-center lg:justify-end animate-scale-in animation-delay-100 rellax order-first lg:order-none" data-rellax-speed="-2">
-            <div className="relative w-64 md:w-72 lg:w-96 h-80 md:h-96 lg:h-[32rem] group">
-              <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                <img 
-                  src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
-                  alt="Ulrich Deschamp KOSSONOU - Expert Digital Abidjan" 
-                  className="w-full h-full object-cover bg-background"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-              <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
-            </div>
+            <HeroImage size="desktop" />
           </div>
         </div>
 
         {/* Mobile Layout - Stacked: Title, Photo, Description, Buttons */}
         <div className="md:hidden flex flex-col items-center text-center">
           {/* Name and titles first */}
-          <h1 className="text-3xl sm:text-4xl font-bold mb-3 rellax leading-tight text-gradient" data-rellax-speed="1">
-            Ulrich Deschamp KOSSONOU
-          </h1>
-          
-          <h2 className="text-lg sm:text-xl font-semibold mb-2 text-foreground/90">
-            <span className="text-primary">Expert digital à Abidjan</span>
-            <span className="block text-base mt-1">Développeur Web Expert & Vibe Coder</span>
-          </h2>
-          
-          <p className="text-sm text-muted-foreground mb-4">
-            Freelance Premium & Agence Digitale Indépendante
-          </p>
+          <HeroContent variant="mobile" />
 
           {/* Photo second */}
           <div className="mb-6 animate-scale-in animation-delay-100">
-            <div className="relative w-56 h-72 sm:w-64 sm:h-80 group">
-              <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl">
-                <img 
-                  src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
-                  alt="Ulrich Deschamp KOSSONOU - Expert Digital Abidjan" 
-                  className="w-full h-full object-cover bg-background"
-                  loading="eager"
-                />
-              </div>
-              <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 -z-10"></div>
-            </div>
+            <HeroImage size="mobile" />
           </div>
 
           {/* Description third */}
@@ -259,7 +75,31 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ChevronDown className="w-8 h-8 text-primary" />
+        <ChevronDown className="w-8 h-8 text-primary" aria-hidden="true" />
+        <span className="sr-only">Défiler vers le bas</span>
+      </div>
+
+      {/* SEO Hidden Content - All keywords for search engines */}
+      <div className="sr-only" aria-hidden="true">
+        <h2>Ulrich Deschamp KOSSONOU - Expert Digital de Référence</h2>
+        <p>
+          {SEO_KEYWORDS.join('. ')}. 
+          Meilleur développeur web à Abidjan, Côte d'Ivoire. 
+          Développeur full stack reconnu internationalement. 
+          Vibe Coder professionnel et consultant digital senior. 
+          Expert en intelligence artificielle et automatisation. 
+          Infographiste professionnel et designer UI/UX moderne. 
+          Agence digitale premium à Abidjan. 
+          Leader du digital en Côte d'Ivoire et Afrique francophone. 
+          Créateur de solutions digitales sur mesure. 
+          Expert SEO, marketing digital et transformation digitale. 
+          Développeur React, Node.js, TypeScript, Python. 
+          Expert WordPress, Vue.js et technologies cloud. 
+          Consultant cybersécurité et DevOps. 
+          Meilleur expert digital Afrique. 
+          Agence web haut de gamme Abidjan. 
+          Spécialiste e-commerce et applications mobiles.
+        </p>
       </div>
     </section>
   );

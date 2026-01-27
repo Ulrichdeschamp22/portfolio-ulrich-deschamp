@@ -278,6 +278,36 @@ All colors MUST be HSL.
     animation: float-delayed 6s ease-in-out infinite;
   }
 
+  /* Typing cursor animation */
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .typing-cursor {
+    animation: blink-cursor 0.7s infinite;
+  }
+
+  /* Dynamic typing text styles */
+  .dynamic-typing-text {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    font-size: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .dynamic-text-wrapper {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* SEO hidden text - accessible to search engines but not visible */
+  .seo-hidden-text {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   /* Respect reduced motion preference */
   @media (prefers-reduced-motion: reduce) {
     .bg-gradient-animated {
@@ -289,6 +319,11 @@ All colors MUST be HSL.
     .floating-icon-delayed,
     .code-rain-column {
       animation: none;
+    }
+
+    .typing-cursor {
+      animation: none;
+      opacity: 1;
     }
   }
 }
