@@ -1,12 +1,13 @@
-# Robots.txt pour Ulrich Deschamp Portfolio
-# Optimisé pour le SEO en Côte d'Ivoire et International
+# Robots.txt pour Ulrich Deschamp KOSSONOU
+# Meilleur Développeur Web & Expert Digital à Abidjan
+# Optimisé pour domination SEO mondiale
 
 # Autoriser tous les robots d'indexation
 User-agent: *
 Allow: /
 Crawl-delay: 1
 
-# Robots spécifiques pour une meilleure indexation
+# Google - Indexation prioritaire
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
@@ -14,10 +15,37 @@ Crawl-delay: 0
 User-agent: Googlebot-Image
 Allow: /
 
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+User-agent: BingPreview
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Baidu (Chine)
+User-agent: Baiduspider
+Allow: /
+
+# Yandex (Russie)
+User-agent: YandexBot
+Allow: /
+
+# Réseaux Sociaux
 User-agent: Twitterbot
 Allow: /
 
@@ -30,11 +58,41 @@ Allow: /
 User-agent: WhatsApp
 Allow: /
 
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# SEO Tools
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
 # Sitemap
 Sitemap: https://ulrichdeschampkossonou.online/sitemap.xml
 
 # Dossiers et fichiers à ne pas indexer
 Disallow: /admin
+Disallow: /administration
+Disallow: /auth
 Disallow: /api
 Disallow: /*.json$
-Disallow: /*.txt$
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Autoriser les ressources importantes
+Allow: /lovable-uploads/
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$

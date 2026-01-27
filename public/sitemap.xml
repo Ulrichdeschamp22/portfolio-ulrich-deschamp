@@ -1,45 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Page Accueil - Priorité maximale -->
   <url>
     <loc>https://ulrichdeschampkossonou.online/</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ulrichdeschampkossonou.online/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png</image:loc>
+      <image:title>Ulrich Deschamp KOSSONOU - Meilleur Développeur Web Abidjan</image:title>
+      <image:caption>Ulrich Deschamp KOSSONOU, meilleur développeur web et expert digital à Abidjan, Côte d'Ivoire</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Section À propos -->
   <url>
     <loc>https://ulrichdeschampkossonou.online/#about</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  
+  <!-- Section Compétences -->
   <url>
     <loc>https://ulrichdeschampkossonou.online/#skills</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+  
+  <!-- Section Projets - Portfolio -->
   <url>
     <loc>https://ulrichdeschampkossonou.online/#projects</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ulrichdeschampkossonou.online/lovable-uploads/34faaf17-3c1d-4e37-908f-3f2c0d371540.png</image:loc>
+      <image:title>Portfolio Développeur Web Abidjan</image:title>
+      <image:caption>Projets réalisés par Ulrich Deschamp KOSSONOU, expert digital</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Section Boutique -->
   <url>
     <loc>https://ulrichdeschampkossonou.online/#shop</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Section FAQ -->
+  <url>
+    <loc>https://ulrichdeschampkossonou.online/#faq</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Section Contact -->
   <url>
     <loc>https://ulrichdeschampkossonou.online/#contact</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  
+  <!-- Page Mentions Légales -->
   <url>
     <loc>https://ulrichdeschampkossonou.online/mentions-legales</loc>
-    <lastmod>2025-09-05</lastmod>
+    <lastmod>2026-01-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  
 </urlset>
