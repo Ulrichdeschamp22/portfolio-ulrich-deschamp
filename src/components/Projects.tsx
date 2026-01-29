@@ -4,6 +4,20 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
+      title: "Les Awards des Familles",
+      description: "Plateforme de vote en ligne pour célébrer et promouvoir les valeurs familiales africaines lors de la cérémonie Les Awards des Familles",
+      url: "https://lesawardsdesfamilles.damehortysholding.com/",
+      tags: ["Vote en ligne", "Événementiel", "React"],
+      type: "Application SaaS"
+    },
+    {
+      title: "Dame Hortys Holding",
+      description: "Site de présentation de la structure de Madame Hortense Konan avec boutique en ligne et vente de formations digitales",
+      url: "https://www.damehortysholding.com/",
+      tags: ["E-commerce", "Formation", "Boutique"],
+      type: "Boutique en ligne"
+    },
+    {
       title: "Portfolio Pasteur KOUADIO.G",
       description: "Un portfolio moderne et interactif présentant le Pasteur KOUADIO GERMAIN",
       url: "https://germain-kouadio.lovable.app/",
