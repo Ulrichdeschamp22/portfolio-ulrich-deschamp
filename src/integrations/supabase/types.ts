@@ -50,6 +50,48 @@ export type Database = {
         }
         Relationships: []
       }
+      design_portfolio: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          display_order: number | null
+          id: string
+          is_visible: boolean
+          media_type: string
+          media_url: string
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          is_visible?: boolean
+          media_type?: string
+          media_url: string
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          is_visible?: boolean
+          media_type?: string
+          media_url?: string
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -199,6 +241,7 @@ export type Database = {
         | "Application SaaS"
         | "Boutique en ligne"
         | "Autre"
+        | "Design Graphique"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -335,6 +378,7 @@ export const Constants = {
         "Application SaaS",
         "Boutique en ligne",
         "Autre",
+        "Design Graphique",
       ],
     },
   },

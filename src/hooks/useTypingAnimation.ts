@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 
-// Configuration des mots-clés SEO puissants pour domination organique
-const SEO_KEYWORDS = [
-  // Mots-clés internationaux d'autorité
+// Complete SEO keywords for global organic domination
+export const SEO_KEYWORDS = [
+  // International Authority Keywords
   "Expert Digital de Référence à Abidjan",
   "Meilleur Développeur Web à Abidjan",
   "Développeur Full Stack Reconnu",
@@ -18,23 +18,47 @@ const SEO_KEYWORDS = [
   "Développeur Web Certifié",
   "Spécialiste E-commerce",
   "Consultant Transformation Digitale",
-  // Mots-clés géolocalisés Abidjan
+  "Expert Stratégie Digitale",
+  "Architecte Solutions Cloud",
+  // Abidjan Geo-targeted
+  "Meilleur Développeur Full Stack à Abidjan",
   "Expert Digital N°1 à Abidjan",
-  "Meilleur Full Stack à Abidjan",
+  "Agence Digitale de Référence à Abidjan",
+  "Meilleur Infographiste à Abidjan",
+  "Expert IA à Abidjan",
   "Création Site Web Premium à Abidjan",
-  "Expert SEO à Abidjan",
+  "Expert Automatisation à Abidjan",
   "Spécialiste Marketing Digital à Abidjan",
-  // Mots-clés nationaux Côte d'Ivoire
+  "Expert SEO à Abidjan",
+  "Expert WordPress à Abidjan",
+  "Développeur React à Abidjan",
+  "Expert Node.js à Abidjan",
+  "Consultant Cloud à Abidjan",
+  // Côte d'Ivoire National
   "Meilleur Développeur Web en Côte d'Ivoire",
-  "Solutions Digitales Premium en Côte d'Ivoire",
-  "Expert IA en Côte d'Ivoire",
+  "Expert Digital de Référence en Côte d'Ivoire",
+  "Vibe Coder en Côte d'Ivoire",
   "Agence Digitale Leader en Côte d'Ivoire",
-  // Spécialités
+  "Solutions Digitales Premium en Côte d'Ivoire",
+  "Expert Intelligence Artificielle en Côte d'Ivoire",
+  "Leader du Digital en Afrique Francophone",
+  // Vibe Coding Specialty
+  "Vibe Coding Expert",
+  "Meilleur Vibe Coder",
   "Vibe Coder Nouvelle Génération",
   "Expert Vibe Coding Côte d'Ivoire",
-  "Meilleur Infographiste à Abidjan",
+  // Design & Infographics
+  "Expert Infographie Digitale",
+  "Designer Graphique Professionnel",
   "Expert Design UI/UX",
-  "Architecte Web Moderne"
+  "Créateur de Logos Professionnels",
+  "Expert Identité Visuelle",
+  // Technology Stack
+  "Développeur Python Côte d'Ivoire",
+  "Expert TypeScript Abidjan",
+  "Spécialiste Vue.js Côte d'Ivoire",
+  "Expert DevOps Abidjan",
+  "Expert Cybersécurité Côte d'Ivoire"
 ];
 
 interface UseTypingAnimationOptions {
@@ -150,6 +174,3 @@ export const useTypingAnimation = (options?: UseTypingAnimationOptions): UseTypi
     keywordIndex
   };
 };
-
-// Export des mots-clés pour réutilisation (SEO caché, etc.)
-export { SEO_KEYWORDS };

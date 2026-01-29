@@ -35,7 +35,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 
-type ProjectType = 'Portfolio' | 'Landing Page' | 'Site Web' | 'Application SaaS' | 'Boutique en ligne' | 'Autre';
+type ProjectType = 'Portfolio' | 'Landing Page' | 'Site Web' | 'Application SaaS' | 'Boutique en ligne' | 'Design Graphique' | 'Autre';
 
 interface Project {
   id: string;
@@ -50,7 +50,7 @@ interface Project {
   created_at: string;
 }
 
-const projectTypes: ProjectType[] = ['Portfolio', 'Landing Page', 'Site Web', 'Application SaaS', 'Boutique en ligne', 'Autre'];
+const projectTypes: ProjectType[] = ['Portfolio', 'Landing Page', 'Site Web', 'Application SaaS', 'Boutique en ligne', 'Design Graphique', 'Autre'];
 
 const AdminProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
