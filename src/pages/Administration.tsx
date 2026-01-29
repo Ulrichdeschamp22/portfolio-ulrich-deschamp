@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { LogOut, Mail, Briefcase, Lightbulb, LayoutDashboard } from 'lucide-react';
+import { LogOut, Mail, Briefcase, Lightbulb, LayoutDashboard, Palette } from 'lucide-react';
 import AdminMessages from '@/components/admin/AdminMessages';
 import AdminProjects from '@/components/admin/AdminProjects';
 import AdminSkills from '@/components/admin/AdminSkills';
 import AdminDashboard from '@/components/admin/AdminDashboard';
+import AdminDesignPortfolio from '@/components/admin/AdminDesignPortfolio';
 
 const Administration = () => {
   const { user, isAdmin, loading, signOut } = useAuth();
@@ -75,7 +76,7 @@ const Administration = () => {
       {/* Main content */}
       <main className="container mx-auto px-4 py-8 relative z-10">
         <Tabs defaultValue="dashboard" className="space-y-6">
-          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 glass-card">
+          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-5 glass-card">
             <TabsTrigger value="dashboard" className="flex items-center gap-2">
               <LayoutDashboard className="h-4 w-4" />
               <span className="hidden sm:inline">Dashboard</span>
@@ -87,6 +88,10 @@ const Administration = () => {
             <TabsTrigger value="projects" className="flex items-center gap-2">
               <Briefcase className="h-4 w-4" />
               <span className="hidden sm:inline">Projets</span>
+            </TabsTrigger>
+            <TabsTrigger value="design" className="flex items-center gap-2">
+              <Palette className="h-4 w-4" />
+              <span className="hidden sm:inline">Design</span>
             </TabsTrigger>
             <TabsTrigger value="skills" className="flex items-center gap-2">
               <Lightbulb className="h-4 w-4" />
@@ -104,6 +109,10 @@ const Administration = () => {
           
           <TabsContent value="projects">
             <AdminProjects />
+          </TabsContent>
+          
+          <TabsContent value="design">
+            <AdminDesignPortfolio />
           </TabsContent>
           
           <TabsContent value="skills">
