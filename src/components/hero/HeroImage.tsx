@@ -9,17 +9,17 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
   const [isShining, setIsShining] = useState(false);
 
   useEffect(() => {
-    // Trigger shine effect every 20 seconds
+    // Trigger shine effect every 7 seconds
     const interval = setInterval(() => {
       setIsShining(true);
       setTimeout(() => setIsShining(false), 1500);
-    }, 20000);
+    }, 7000);
 
-    // Initial shine after 2 seconds
+    // Initial shine after 1 second
     const initialTimeout = setTimeout(() => {
       setIsShining(true);
       setTimeout(() => setIsShining(false), 1500);
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearInterval(interval);
@@ -41,7 +41,7 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
       {/* Main image container */}
       <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
         <img 
-          src="/lovable-uploads/4280103e-85a8-47b1-89ed-03aed6d7493d.png" 
+          src="/lovable-uploads/hero-photo.jpeg" 
           alt="Ulrich Deschamp KOSSONOU - Meilleur Expert Digital à Abidjan, Développeur Web Full Stack, Vibe Coder Professionnel en Côte d'Ivoire" 
           className="w-full h-full object-cover object-top bg-background"
           loading="eager"
