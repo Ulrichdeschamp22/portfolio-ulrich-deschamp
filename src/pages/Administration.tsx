@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { LogOut, Mail, Briefcase, Lightbulb, LayoutDashboard, Palette } from 'lucide-react';
+import { Home, Mail, Briefcase, Lightbulb, LayoutDashboard, Palette } from 'lucide-react';
 import AdminMessages from '@/components/admin/AdminMessages';
 import AdminProjects from '@/components/admin/AdminProjects';
 import AdminSkills from '@/components/admin/AdminSkills';
@@ -11,35 +9,7 @@ import AdminDashboard from '@/components/admin/AdminDashboard';
 import AdminDesignPortfolio from '@/components/admin/AdminDesignPortfolio';
 
 const Administration = () => {
-  const { user, isAdmin, loading, signOut } = useAuth();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!loading) {
-      if (!user) {
-        navigate('/auth');
-      } else if (!isAdmin) {
-        navigate('/');
-      }
-    }
-  }, [user, isAdmin, loading, navigate]);
-
-  const handleSignOut = async () => {
-    await signOut();
-    navigate('/');
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
-
-  if (!user || !isAdmin) {
-    return null;
-  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -61,15 +31,10 @@ const Administration = () => {
             </h1>
           </div>
           
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-muted-foreground hidden sm:inline">
-              {user.email}
-            </span>
-            <Button variant="outline" size="sm" onClick={handleSignOut}>
-              <LogOut className="h-4 w-4 mr-2" />
-              Déconnexion
-            </Button>
-          </div>
+          <Button variant="outline" size="sm" onClick={() => navigate('/')}>
+            <Home className="h-4 w-4 mr-2" />
+            Retour au site
+          </Button>
         </div>
       </header>
       
