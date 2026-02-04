@@ -23,12 +23,7 @@ const HeroContent = ({ variant }: HeroContentProps) => {
           <span className="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-primary/20 via-primary/30 to-accent/20 border border-primary/40 backdrop-blur-sm shadow-md shadow-primary/20">
             <span className="text-gradient font-bold">Expert digital à Abidjan</span>
           </span>
-          <span className="block text-sm mt-2">Développeur Web Expert & Vibe Coder</span>
         </h2>
-        
-        <p className="text-sm text-muted-foreground mb-4">
-          Freelance Premium & Agence Digitale Indépendante
-        </p>
       </div>
     );
   }
@@ -64,12 +59,7 @@ const HeroContent = ({ variant }: HeroContentProps) => {
         <span className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-primary/20 via-primary/30 to-accent/20 border border-primary/40 backdrop-blur-sm shadow-lg shadow-primary/20">
           <span className="text-gradient font-bold">Expert digital à Abidjan</span>
         </span>
-        <span className="block text-lg md:text-xl mt-3">Développeur Web Expert & Vibe Coder</span>
       </h2>
-      
-      <p className="text-base text-muted-foreground mb-4">
-        Freelance Premium & Agence Digitale Indépendante
-      </p>
       
       <p className="text-base md:text-lg text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0">
         J'accompagne entreprises, marques et startups en Côte d'Ivoire et à l'international avec des solutions digitales premium : développement web sur mesure, automatisation, IA, marketing digital et branding haut de gamme.
