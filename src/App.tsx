@@ -9,6 +9,8 @@ import NotFound from "./pages/NotFound";
 import LegalNotice from "./pages/LegalNotice";
 import Auth from "./pages/Auth";
 import Administration from "./pages/Administration";
+import Tarifs from "./pages/Tarifs";
+import EspaceFormation from "./pages/EspaceFormation";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,8 @@ const App = () => (
             <Route path="/mentions-legales" element={<LegalNotice />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/administration" element={<Administration />} />
+            <Route path="/tarifs" element={<Tarifs />} />
+            <Route path="/espace-formation" element={<EspaceFormation />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

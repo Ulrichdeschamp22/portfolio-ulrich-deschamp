@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles, MessageSquare } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState('#hero');
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,126 +17,151 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const navItems = [
-  { label: 'Accueil', href: '#hero' },
-  { label: 'À propos', href: '#about' },
-  { label: 'Compétences', href: '#skills' },
-  { label: 'Projets', href: '#projects' },
-  { label: 'Boutique', href: '#shop' },
-  { label: 'Contact', href: '#contact' },
-];
+  const navItems = [
+    { label: 'Accueil', href: isHomePage ? '#hero' : '/', isExternal: false },
+    { label: 'Espace Formation', href: '/espace-formation', isExternal: false },
+    { label: 'À propos', href: isHomePage ? '#about' : '/#about', isExternal: false },
+    { label: 'Tarifs', href: '/tarifs', isExternal: false },
+  ];
+
+  const handleNavClick = (href: string, isExternal: boolean) => {
+    setIsMobileMenuOpen(false);
+    if (href.startsWith('#') && isHomePage) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-background/80 backdrop-blur-xl shadow-2xl border-b border-primary/20 py-2 md:py-3' 
-        : 'bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm py-3 md:py-5'
+        ? 'py-2' 
+        : 'py-3 md:py-5'
     }`}>
-      <div className="container mx-auto px-4 flex justify-between items-center max-w-7xl">
-        <a href="/" className="relative group flex-shrink-0" aria-label="Ulrich Deschamp - Accueil Portfolio Développeur Web Abidjan">
-          <div className="absolute -inset-2 bg-gradient-primary rounded-lg blur-lg opacity-0 group-hover:opacity-50 transition duration-500"></div>
-          <div className="relative flex items-center space-x-2">
-            <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary animate-pulse" />
-            <span className="text-xl md:text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              UD
-            </span>
-          </div>
-        </a>
-        
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-          <ul className="flex space-x-1 xl:space-x-2">
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  onClick={() => setActiveItem(item.href)}
-                  className={`relative px-3 xl:px-4 py-2 rounded-full transition-all duration-300 text-sm xl:text-base ${
-                    activeItem === item.href 
-                      ? 'text-primary-foreground' 
-                      : 'text-foreground/80 hover:text-foreground'
-                  } group`}
-                >
-                  {activeItem === item.href && (
-                    <span className="absolute inset-0 bg-gradient-primary rounded-full animate-pulse"></span>
+      <div className={`container mx-auto px-4 max-w-7xl transition-all duration-500 ${
+        isScrolled 
+          ? 'bg-background/90 backdrop-blur-xl border border-border/50 rounded-full shadow-2xl py-2 px-6' 
+          : ''
+      }`}>
+        <div className="flex justify-between items-center">
+          <Link to="/" className="relative group flex-shrink-0" aria-label="Ulrich Deschamp - Accueil Portfolio Développeur Web Abidjan">
+            <div className="absolute -inset-2 bg-gradient-primary rounded-lg blur-lg opacity-0 group-hover:opacity-50 transition duration-500"></div>
+            <div className="relative flex items-center space-x-2">
+              <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary animate-pulse" />
+              <span className="text-xl md:text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                UD
+              </span>
+            </div>
+          </Link>
+          
+          {/* Desktop Menu - Centered */}
+          <div className="hidden lg:flex items-center justify-center flex-1">
+            <ul className="flex items-center space-x-1 xl:space-x-2">
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  {item.href.startsWith('/') && !item.href.includes('#') ? (
+                    <Link
+                      to={item.href}
+                      className="relative px-4 xl:px-5 py-2 rounded-full transition-all duration-300 text-sm xl:text-base text-foreground/80 hover:text-foreground group"
+                    >
+                      <span className="relative z-10 font-medium">
+                        {item.label}
+                      </span>
+                      <span className="absolute inset-0 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      onClick={() => handleNavClick(item.href, item.isExternal)}
+                      className="relative px-4 xl:px-5 py-2 rounded-full transition-all duration-300 text-sm xl:text-base text-foreground/80 hover:text-foreground group"
+                    >
+                      <span className="relative z-10 font-medium">
+                        {item.label}
+                      </span>
+                      <span className="absolute inset-0 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </a>
                   )}
-                  <span className="relative z-10 font-medium">
-                    {item.label}
-                  </span>
-                  <span className="absolute inset-0 bg-gradient-primary rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-                </a>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
           
-          {/* Quote Button */}
-          <a
-            href="https://wa.me/2250710224023?text=Bonjour%20Ulrich,%20je%20souhaite%20obtenir%20un%20devis%20pour%20mon%20projet"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-2 xl:ml-4 flex-shrink-0"
-          >
-            <Button className="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-3 xl:px-4 py-2 rounded-full flex items-center gap-2 text-sm">
-              <MessageSquare className="w-4 h-4" />
-              <span className="hidden xl:inline">Demander un devis</span>
-              <span className="xl:hidden">Devis</span>
-            </Button>
-          </a>
-        </div>
+          {/* Right side buttons */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Link to="/auth">
+              <Button variant="ghost" className="text-foreground/80 hover:text-foreground">
+                Se connecter
+              </Button>
+            </Link>
+            <Link to="/espace-formation">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-2 rounded-full">
+                Découvrir
+              </Button>
+            </Link>
+          </div>
 
-        {/* Mobile/Tablet Menu Button */}
-        <div className="flex lg:hidden items-center gap-2">
-          {/* Mobile Quote Button */}
-          <a
-            href="https://wa.me/2250710224023?text=Bonjour%20Ulrich,%20je%20souhaite%20obtenir%20un%20devis%20pour%20mon%20projet"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button 
-              size="sm"
-              className="bg-violet-600 hover:bg-violet-700 text-white px-3 py-1.5 rounded-full text-xs sm:text-sm flex items-center gap-1"
+          {/* Mobile/Tablet Menu Button */}
+          <div className="flex lg:hidden items-center gap-2">
+            <Link to="/espace-formation">
+              <Button 
+                size="sm"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-1.5 rounded-full text-xs sm:text-sm"
+              >
+                Découvrir
+              </Button>
+            </Link>
+            
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative group w-9 h-9"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="hidden sm:inline">Devis</span>
+              <div className="absolute inset-0 bg-gradient-primary rounded-lg blur-md opacity-0 group-hover:opacity-30 transition duration-300"></div>
+              <span className="relative">
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </span>
             </Button>
-          </a>
-          
-          <Button
-            variant="ghost"
-            size="icon"
-            className="relative group w-9 h-9"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <div className="absolute inset-0 bg-gradient-primary rounded-lg blur-md opacity-0 group-hover:opacity-30 transition duration-300"></div>
-            <span className="relative">
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </span>
-          </Button>
+          </div>
         </div>
       </div>
 
       {/* Mobile/Tablet Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-primary/20 mt-2 animate-slide-in-right">
-          <ul className="container mx-auto px-4 py-4 space-y-1 max-w-7xl">
+        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-t border-primary/20 mt-2 animate-slide-in-right mx-4 rounded-2xl">
+          <ul className="px-4 py-4 space-y-1">
             {navItems.map((item) => (
               <li key={item.label}>
-                <a
-                  href={item.href}
-                  onClick={() => {
-                    setActiveItem(item.href);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`block px-4 py-3 rounded-lg transition-all duration-300 text-sm ${
-                    activeItem === item.href
-                      ? 'bg-gradient-primary text-primary-foreground'
-                      : 'text-foreground/80 hover:bg-primary/10 hover:text-foreground'
-                  }`}
-                >
-                  {item.label}
-                </a>
+                {item.href.startsWith('/') && !item.href.includes('#') ? (
+                  <Link
+                    to={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-lg transition-all duration-300 text-sm text-foreground/80 hover:bg-primary/10 hover:text-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={item.href}
+                    onClick={() => handleNavClick(item.href, item.isExternal)}
+                    className="block px-4 py-3 rounded-lg transition-all duration-300 text-sm text-foreground/80 hover:bg-primary/10 hover:text-foreground"
+                  >
+                    {item.label}
+                  </a>
+                )}
               </li>
             ))}
+            <li className="pt-2 border-t border-border/50">
+              <Link
+                to="/auth"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 rounded-lg transition-all duration-300 text-sm text-foreground/80 hover:bg-primary/10 hover:text-foreground"
+              >
+                Se connecter
+              </Link>
+            </li>
           </ul>
         </div>
       )}
