@@ -1,11 +1,23 @@
-import { Code, Palette, Camera, Users, Video, ShoppingCart, Bot, Sparkles } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import Skill3DLaptop from './skills/Skill3DLaptop';
+import Skill3DBrain from './skills/Skill3DBrain';
+import Skill3DSmartphone from './skills/Skill3DSmartphone';
+import Skill3DMegaphone from './skills/Skill3DMegaphone';
+import Skill3DTablet from './skills/Skill3DTablet';
+import Skill3DCamera from './skills/Skill3DCamera';
 
 const Skills = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
   const skillCategories = [
     {
-      icon: Code,
       title: "Développement Web",
-      description: "Développeur web expert Abidjan - Création site web premium",
+      subtitle: "Développeur web expert Abidjan - Création site web premium",
       skills: [
         "Développement application web sur mesure",
         "Sites vitrines & Landing pages premium",
@@ -15,12 +27,13 @@ const Skills = () => {
         "Optimisation SEO & performance web",
         "API & bases de données",
         "Sécurisation & hébergement"
-      ]
+      ],
+      Visual: Skill3DLaptop,
+      textLeft: true
     },
     {
-      icon: Bot,
       title: "Automatisation & IA",
-      description: "Expert automatisation digitale - Solutions IA pour entreprises",
+      subtitle: "Expert automatisation digitale - Solutions IA pour entreprises",
       skills: [
         "Automatisation intelligente des processus",
         "Intégration solutions IA",
@@ -28,12 +41,13 @@ const Skills = () => {
         "Chatbots et assistants virtuels",
         "Machine Learning appliqué",
         "Workflows automatisés"
-      ]
+      ],
+      Visual: Skill3DBrain,
+      textLeft: false
     },
     {
-      icon: Sparkles,
       title: "Solutions Digitales & Événementiel",
-      description: "Plateformes digitales sur mesure pour entreprises",
+      subtitle: "Plateformes digitales sur mesure pour entreprises",
       skills: [
         "Plateformes digitales personnalisées",
         "Systèmes de réservation en ligne",
@@ -41,12 +55,13 @@ const Skills = () => {
         "Solutions digitales événementielles",
         "Intégration d'outils métiers",
         "Transformation digitale avancée"
-      ]
+      ],
+      Visual: Skill3DSmartphone,
+      textLeft: true
     },
     {
-      icon: Users,
       title: "Marketing & Branding",
-      description: "Stratégie digitale avancée - Marketing digital premium",
+      subtitle: "Stratégie digitale avancée - Marketing digital premium",
       skills: [
         "Community management expert",
         "Gestion campagnes digitales performantes",
@@ -54,12 +69,13 @@ const Skills = () => {
         "Création de contenus impactants",
         "Animation de communautés",
         "Calendrier éditorial & reporting"
-      ]
+      ],
+      Visual: Skill3DMegaphone,
+      textLeft: false
     },
     {
-      icon: Palette,
       title: "Design & Contenu",
-      description: "Design graphique professionnel - Identité visuelle premium",
+      subtitle: "Design graphique professionnel - Identité visuelle premium",
       skills: [
         "Logos & branding haut de gamme",
         "Affiches publicitaires",
@@ -67,12 +83,13 @@ const Skills = () => {
         "Création contenus digitaux impactants",
         "Mockups & retouche photo",
         "Packaging & supports print"
-      ]
+      ],
+      Visual: Skill3DTablet,
+      textLeft: true
     },
     {
-      icon: Camera,
       title: "Photographie & Vidéo",
-      description: "Photographie digitale professionnelle",
+      subtitle: "Photographie digitale professionnelle",
       skills: [
         "Événements & corporate",
         "Portraits professionnels",
@@ -80,76 +97,100 @@ const Skills = () => {
         "Captation vidéo événementielle",
         "Montage dynamique",
         "Vidéos promotionnelles"
-      ]
+      ],
+      Visual: Skill3DCamera,
+      textLeft: false
     }
   ];
 
   return (
     <section 
+      ref={sectionRef}
       id="skills" 
-      className="py-16 md:py-20 bg-card/20 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" 
-      data-aos="fade-up" 
-      data-aos-duration="800"
-      data-aos-once="true"
+      className="py-20 md:py-32 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden"
     >
-      {/* Animated particles background */}
-      <div className="absolute top-0 left-0 w-48 md:w-64 h-48 md:h-64 bg-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-accent/10 rounded-full blur-3xl"></div>
+      {/* Background glow effects */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl opacity-50" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl opacity-30" />
       
-      <div className="container mx-auto relative z-10 max-w-7xl">
-        <h2 
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
-          data-rellax-speed="1"
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-20 md:mb-28"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <span className="text-gradient">Mes Compétences</span>
-        </h2>
-        <p 
-          className="text-center text-sm md:text-base text-muted-foreground mb-4 md:mb-6 max-w-3xl mx-auto px-2"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          En tant que <span className="text-primary font-semibold">meilleur expert digital à Abidjan</span> et <span className="text-primary font-semibold">Vibe Coder</span>, 
-          je propose ces solutions digitales premium dans chaque domaine ci-dessous.
-        </p>
-        <p 
-          className="text-center text-xs md:text-sm text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto px-2"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          Freelance développeur web expert | Agence digitale indépendante | Côte d'Ivoire & International
-        </p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+            <span className="text-gradient">Mes Compétences</span>
+          </h2>
+          <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">
+            En tant que <span className="text-primary font-semibold">meilleur expert digital à Abidjan</span>, 
+            je propose des solutions digitales premium dans chaque domaine ci-dessous.
+          </p>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+        {/* Skill sections */}
+        <div className="space-y-24 md:space-y-40">
           {skillCategories.map((category, index) => (
-            <div 
+            <motion.div 
               key={index}
-              className="p-4 md:p-6 hover-lift group transition-all duration-300 rounded-xl overflow-hidden relative"
-              style={{
-                background: 'linear-gradient(135deg, #9333ea 0%, #6b21a8 50%, #3b0764 100%)'
-              }}
-              data-aos="fade-up"
-              data-aos-delay={50 + index * 50}
-              data-aos-once="true"
+              className={`grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center ${
+                category.textLeft ? '' : 'md:flex-row-reverse'
+              }`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <div className="flex items-center space-x-2 md:space-x-3 mb-2 md:mb-3">
-                <div className="p-2 md:p-3 rounded-lg bg-white/10 group-hover:bg-white/20 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                  <category.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-white">{category.title}</h3>
+              {/* Text content */}
+              <div className={`${category.textLeft ? 'md:order-1' : 'md:order-2'}`}>
+                <motion.div
+                  initial={{ opacity: 0, x: category.textLeft ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+                    {category.title}
+                  </h3>
+                  <p className="text-primary text-base md:text-lg mb-6 font-medium">
+                    {category.subtitle}
+                  </p>
+                  <ul className="space-y-3">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.li 
+                        key={skillIndex}
+                        className="flex items-start gap-3 group"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.3 + skillIndex * 0.05 }}
+                      >
+                        <span className="w-2 h-2 rounded-full bg-primary mt-2 group-hover:scale-125 transition-transform" />
+                        <span className="text-muted-foreground text-sm md:text-base group-hover:text-foreground transition-colors">
+                          {skill}
+                        </span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </motion.div>
               </div>
-              <p className="text-white/70 text-xs md:text-sm mb-3 md:mb-4 italic">{category.description}</p>
-              <ul className="space-y-1.5 md:space-y-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <li 
-                    key={skillIndex}
-                    className="flex items-start"
-                  >
-                    <span className="text-white mr-2">•</span>
-                    <span className="text-white/90 text-xs md:text-sm">{skill}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              
+              {/* 3D Visual */}
+              <div className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  <category.Visual />
+                </motion.div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

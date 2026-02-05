@@ -42,15 +42,21 @@ const Navigation = () => {
     }`}>
       <div className={`container mx-auto px-4 max-w-7xl transition-all duration-500 ${
         isScrolled 
-          ? 'bg-background/90 backdrop-blur-xl border border-border/50 rounded-full shadow-2xl py-2 px-6' 
+          ? 'bg-primary/95 backdrop-blur-xl border border-primary-foreground/20 rounded-full shadow-2xl shadow-primary/30 py-2 px-6' 
           : ''
       }`}>
         <div className="flex justify-between items-center">
           <Link to="/" className="relative group flex-shrink-0" aria-label="Ulrich Deschamp - Accueil Portfolio Développeur Web Abidjan">
-            <div className="absolute -inset-2 bg-gradient-primary rounded-lg blur-lg opacity-0 group-hover:opacity-50 transition duration-500"></div>
+            <div className={`absolute -inset-2 rounded-lg blur-lg opacity-0 group-hover:opacity-50 transition duration-500 ${
+              isScrolled ? 'bg-primary-foreground/30' : 'bg-gradient-primary'
+            }`}></div>
             <div className="relative flex items-center space-x-2">
-              <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary animate-pulse" />
-              <span className="text-xl md:text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              <Sparkles className={`w-4 h-4 md:w-5 md:h-5 animate-pulse transition-colors duration-300 ${
+                isScrolled ? 'text-primary-foreground' : 'text-primary'
+              }`} />
+              <span className={`text-xl md:text-2xl font-bold transition-all duration-300 ${
+                isScrolled ? 'text-primary-foreground' : 'bg-gradient-primary bg-clip-text text-transparent'
+              }`}>
                 UD
               </span>
             </div>
@@ -64,23 +70,35 @@ const Navigation = () => {
                   {item.href.startsWith('/') && !item.href.includes('#') ? (
                     <Link
                       to={item.href}
-                      className="relative px-4 xl:px-5 py-2 rounded-full transition-all duration-300 text-sm xl:text-base text-foreground/80 hover:text-foreground group"
+                      className={`relative px-4 xl:px-5 py-2 rounded-full transition-all duration-300 text-sm xl:text-base group ${
+                        isScrolled 
+                          ? 'text-primary-foreground/90 hover:text-primary-foreground' 
+                          : 'text-foreground/80 hover:text-foreground'
+                      }`}
                     >
                       <span className="relative z-10 font-medium">
                         {item.label}
                       </span>
-                      <span className="absolute inset-0 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      <span className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                        isScrolled ? 'bg-primary-foreground/20' : 'bg-primary/10'
+                      }`}></span>
                     </Link>
                   ) : (
                     <a
                       href={item.href}
                       onClick={() => handleNavClick(item.href, item.isExternal)}
-                      className="relative px-4 xl:px-5 py-2 rounded-full transition-all duration-300 text-sm xl:text-base text-foreground/80 hover:text-foreground group"
+                      className={`relative px-4 xl:px-5 py-2 rounded-full transition-all duration-300 text-sm xl:text-base group ${
+                        isScrolled 
+                          ? 'text-primary-foreground/90 hover:text-primary-foreground' 
+                          : 'text-foreground/80 hover:text-foreground'
+                      }`}
                     >
                       <span className="relative z-10 font-medium">
                         {item.label}
                       </span>
-                      <span className="absolute inset-0 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      <span className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                        isScrolled ? 'bg-primary-foreground/20' : 'bg-primary/10'
+                      }`}></span>
                     </a>
                   )}
                 </li>
@@ -91,12 +109,25 @@ const Navigation = () => {
           {/* Right side buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <Link to="/auth">
-              <Button variant="ghost" className="text-foreground/80 hover:text-foreground">
+              <Button 
+                variant="ghost" 
+                className={`transition-colors duration-300 ${
+                  isScrolled 
+                    ? 'text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10' 
+                    : 'text-foreground/80 hover:text-foreground'
+                }`}
+              >
                 Se connecter
               </Button>
             </Link>
             <Link to="/espace-formation">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-2 rounded-full">
+              <Button 
+                className={`font-semibold px-6 py-2 rounded-full transition-all duration-300 ${
+                  isScrolled 
+                    ? 'bg-primary-foreground text-primary hover:bg-primary-foreground/90' 
+                    : 'bg-primary hover:bg-primary/90 text-primary-foreground'
+                }`}
+              >
                 Découvrir
               </Button>
             </Link>
