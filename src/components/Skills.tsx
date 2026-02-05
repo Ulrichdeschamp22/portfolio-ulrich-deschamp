@@ -103,16 +103,22 @@ const Skills = () => {
     }
   ];
 
+  // Universe colors for each skill section
+  const universeColors = [
+    { from: 'from-violet-950/30', via: 'via-purple-900/20', to: 'to-background', glow: 'bg-violet-500/20' },
+    { from: 'from-pink-950/30', via: 'via-rose-900/20', to: 'to-background', glow: 'bg-pink-500/20' },
+    { from: 'from-blue-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-blue-500/20' },
+    { from: 'from-orange-950/30', via: 'via-amber-900/20', to: 'to-background', glow: 'bg-orange-500/20' },
+    { from: 'from-emerald-950/30', via: 'via-teal-900/20', to: 'to-background', glow: 'bg-emerald-500/20' },
+    { from: 'from-rose-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-rose-500/20' },
+  ];
+
   return (
     <section 
       ref={sectionRef}
       id="skills" 
-      className="py-20 md:py-32 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden"
+      className="py-20 md:py-32 bg-background relative overflow-hidden"
     >
-      {/* Background glow effects */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl opacity-50" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl opacity-30" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
         {/* Header */}
@@ -133,65 +139,83 @@ const Skills = () => {
         </motion.div>
         
         {/* Skill sections */}
-        <div className="space-y-24 md:space-y-40">
-          {skillCategories.map((category, index) => (
-            <motion.div 
-              key={index}
-              className={`grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center ${
-                category.textLeft ? '' : 'md:flex-row-reverse'
-              }`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              {/* Text content */}
-              <div className={`${category.textLeft ? 'md:order-1' : 'md:order-2'}`}>
-                <motion.div
-                  initial={{ opacity: 0, x: category.textLeft ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+        <div className="space-y-0">
+          {skillCategories.map((category, index) => {
+            const universe = universeColors[index];
+            return (
+              <div 
+                key={index}
+                className={`relative py-20 md:py-32 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
+              >
+                {/* Universe glow effect */}
+                <div className={`absolute inset-0 ${universe.glow} opacity-10 blur-3xl`} />
+                
+                {/* Separator line */}
+                {index > 0 && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                )}
+                
+                <motion.div 
+                  className={`relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center max-w-7xl mx-auto ${
+                    category.textLeft ? '' : 'md:flex-row-reverse'
+                  }`}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
                 >
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-                    {category.title}
-                  </h3>
-                  <p className="text-primary text-base md:text-lg mb-6 font-medium">
-                    {category.subtitle}
-                  </p>
-                  <ul className="space-y-3">
-                    {category.skills.map((skill, skillIndex) => (
-                      <motion.li 
-                        key={skillIndex}
-                        className="flex items-start gap-3 group"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.3 + skillIndex * 0.05 }}
-                      >
-                        <span className="w-2 h-2 rounded-full bg-primary mt-2 group-hover:scale-125 transition-transform" />
-                        <span className="text-muted-foreground text-sm md:text-base group-hover:text-foreground transition-colors">
-                          {skill}
-                        </span>
-                      </motion.li>
-                    ))}
-                  </ul>
+                  {/* Text content */}
+                  <div className={`${category.textLeft ? 'md:order-1' : 'md:order-2'}`}>
+                    <motion.div
+                      initial={{ opacity: 0, x: category.textLeft ? -30 : 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                      <span className="text-xs uppercase tracking-widest text-primary/70 mb-2 block">
+                        Compétence {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+                        {category.title}
+                      </h3>
+                      <p className="text-primary text-base md:text-lg mb-6 font-medium">
+                        {category.subtitle}
+                      </p>
+                      <ul className="space-y-3">
+                        {category.skills.map((skill, skillIndex) => (
+                          <motion.li 
+                            key={skillIndex}
+                            className="flex items-start gap-3 group"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: 0.3 + skillIndex * 0.05 }}
+                          >
+                            <span className="w-2 h-2 rounded-full bg-primary mt-2 group-hover:scale-125 transition-transform" />
+                            <span className="text-muted-foreground text-sm md:text-base group-hover:text-foreground transition-colors">
+                              {skill}
+                            </span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  </div>
+                  
+                  {/* 3D Visual - Static */}
+                  <div className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                    >
+                      <category.Visual />
+                    </motion.div>
+                  </div>
                 </motion.div>
               </div>
-              
-              {/* 3D Visual */}
-              <div className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                >
-                  <category.Visual />
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -75,10 +75,7 @@ const Skill3DMegaphone = () => {
         className="relative z-10"
         initial={{ rotateY: 10, rotateZ: -15 }}
         whileHover={{ rotateY: 0, rotateZ: 0, scale: 1.1 }}
-        animate={{ y: [0, -8, 0] }}
-        transition={{ 
-          y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-        }}
+        transition={{ duration: 0.5 }}
         style={{ perspective: 1000 }}
       >
         {/* Megaphone body */}

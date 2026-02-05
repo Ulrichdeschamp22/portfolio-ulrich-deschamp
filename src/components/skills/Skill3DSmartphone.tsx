@@ -50,10 +50,7 @@ const Skill3DSmartphone = () => {
         className="relative"
         initial={{ rotateY: -10, rotateX: 5 }}
         whileHover={{ rotateY: 0, rotateX: 0, scale: 1.05 }}
-        animate={{ y: [0, -12, 0] }}
-        transition={{ 
-          y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-        }}
+        transition={{ duration: 0.5 }}
         style={{ perspective: 1000 }}
       >
         {/* Phone frame */}

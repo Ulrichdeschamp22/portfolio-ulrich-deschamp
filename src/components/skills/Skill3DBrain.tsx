@@ -53,11 +53,7 @@ const Skill3DBrain = () => {
         className="relative"
         initial={{ rotateY: 15, rotateX: -5 }}
         whileHover={{ rotateY: 0, rotateX: 0, scale: 1.08 }}
-        animate={{ y: [0, -8, 0] }}
-        transition={{ 
-          y: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
-          rotateY: { duration: 0.5 },
-        }}
+        transition={{ duration: 0.5 }}
         style={{ perspective: 1000 }}
       >
         {/* Brain shape */}
