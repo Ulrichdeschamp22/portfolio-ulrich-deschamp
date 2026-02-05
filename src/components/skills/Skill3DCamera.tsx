@@ -52,10 +52,7 @@ const Skill3DCamera = () => {
         className="relative z-10"
         initial={{ rotateY: 15, rotateX: -5 }}
         whileHover={{ rotateY: 0, rotateX: 0, scale: 1.08 }}
-        animate={{ y: [0, -8, 0] }}
-        transition={{ 
-          y: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
-        }}
+        transition={{ duration: 0.5 }}
         style={{ perspective: 1000 }}
       >
         {/* Camera body */}
