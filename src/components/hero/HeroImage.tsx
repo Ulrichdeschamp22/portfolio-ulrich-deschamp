@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 interface HeroImageProps {
@@ -9,13 +10,11 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
   const [isShining, setIsShining] = useState(false);
 
   useEffect(() => {
-    // Trigger shine effect every 7 seconds
     const interval = setInterval(() => {
       setIsShining(true);
       setTimeout(() => setIsShining(false), 1500);
     }, 7000);
 
-    // Initial shine after 1 second
     const initialTimeout = setTimeout(() => {
       setIsShining(true);
       setTimeout(() => setIsShining(false), 1500);
@@ -34,36 +33,88 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
   };
 
   return (
-    <div className={`relative ${sizeClasses[size]} group ${className}`}>
-      {/* Glow effect background */}
-      <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
+    <motion.div 
+      className={`relative ${sizeClasses[size]} group ${className}`}
+      initial={{ opacity: 0, scale: 0.8, y: 50, rotateZ: -5 }}
+      animate={{ opacity: 1, scale: 1, y: 0, rotateZ: 0 }}
+      transition={{ 
+        delay: 0.4, 
+        duration: 1.2,
+        type: 'spring',
+        stiffness: 100,
+        damping: 15
+      }}
+    >
+      {/* Pulsating glow effect */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl"
+        animate={{
+          opacity: [0.3, 0.5, 0.3],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
       
-      {/* Main image container */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl group-hover:scale-105 transition-transform duration-500">
-        <img 
-          src="/lovable-uploads/hero-photo.jpeg" 
-          alt="Ulrich Deschamp KOSSONOU - Meilleur Expert Digital à Abidjan, Développeur Web Full Stack, Vibe Coder Professionnel en Côte d'Ivoire" 
-          className="w-full h-full object-cover object-top bg-background"
-          loading="eager"
-          width="384"
-          height="512"
-        />
-        
-        {/* Shine effect overlay */}
-        <div 
-          className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 transition-all duration-1500 ease-in-out ${
-            isShining ? 'translate-x-[200%]' : '-translate-x-[200%]'
-          }`}
-          style={{ transitionDuration: '1.5s' }}
-        />
-        
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      </div>
+      {/* Floating animation */}
+      <motion.div
+        className="relative w-full h-full"
+        animate={{
+          y: [0, -10, 0],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      >
+        {/* Main image container */}
+        <motion.div 
+          className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl"
+          style={{
+            border: '3px solid transparent',
+            background: 'linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box, linear-gradient(135deg, hsl(271 91% 65%), hsl(217 91% 60%)) border-box',
+            boxShadow: '0 0 40px hsl(271 91% 65% / 0.5), 0 0 80px hsl(271 91% 65% / 0.25)'
+          }}
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.4 }}
+        >
+          <img 
+            src="/lovable-uploads/hero-photo.jpeg" 
+            alt="Ulrich Deschamp KOSSONOU - Expert Digital à Abidjan, Développeur Web Full Stack" 
+            className="w-full h-full object-cover object-top bg-background"
+            loading="eager"
+            width="384"
+            height="512"
+          />
+          
+          {/* Shine effect */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12"
+            initial={{ x: '-200%' }}
+            animate={{ x: isShining ? '200%' : '-200%' }}
+            transition={{ duration: 1.5, ease: 'easeInOut' }}
+          />
+          
+          {/* Hover overlay */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+      </motion.div>
       
-      {/* Outer glow */}
-      <div className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md opacity-30 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
-    </div>
+      {/* Outer glow ring */}
+      <div 
+        className="absolute -inset-1 bg-gradient-primary rounded-2xl blur-md -z-10"
+        style={{ opacity: 0.3 }}
+      />
+    </motion.div>
   );
 };
 
