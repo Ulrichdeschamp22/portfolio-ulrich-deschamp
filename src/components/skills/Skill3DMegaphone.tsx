@@ -1,11 +1,18 @@
+import { motion } from 'framer-motion';
+
 const Skill3DMegaphone = () => {
   return (
     <div className="relative w-full h-64 md:h-80 flex items-center justify-center">
       {/* Glow effect */}
       <div className="absolute inset-0 bg-orange-500/10 blur-3xl rounded-full opacity-30" />
       
-      {/* Main Marketing Visual - Static */}
-      <div className="relative" style={{ perspective: 1000 }}>
+      {/* Main Marketing Visual - Static with hover */}
+      <motion.div 
+        className="relative cursor-pointer" 
+        style={{ perspective: 1000 }}
+        whileHover={{ scale: 1.03 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
         <div className="relative w-48 h-48 md:w-56 md:h-56">
           {/* Central target/chart */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -59,7 +66,7 @@ const Skill3DMegaphone = () => {
             10K+
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

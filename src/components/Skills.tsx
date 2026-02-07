@@ -117,22 +117,22 @@ const Skills = () => {
     <section 
       ref={sectionRef}
       id="skills" 
-      className="py-20 md:py-32 bg-background relative overflow-hidden"
+      className="py-12 md:py-16 bg-background relative overflow-hidden"
     >
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+      <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] relative z-10">
         {/* Header */}
         <motion.div 
-          className="text-center mb-20 md:mb-28"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="text-gradient">Mes Compétences</span>
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
             En tant que <span className="text-primary font-semibold">meilleur expert digital à Abidjan</span>, 
             je propose des solutions digitales premium dans chaque domaine ci-dessous.
           </p>
@@ -145,54 +145,54 @@ const Skills = () => {
             return (
               <div 
                 key={index}
-                className={`relative py-12 md:py-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
+                className={`relative py-8 md:py-12 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
               >
                 {/* Universe glow effect */}
-                <div className={`absolute inset-0 ${universe.glow} opacity-10 blur-3xl`} />
+                <div className={`absolute inset-0 ${universe.glow} opacity-5 blur-3xl pointer-events-none`} />
                 
                 {/* Separator line */}
                 {index > 0 && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
                 )}
                 
                 <motion.div 
-                  className={`relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center max-w-7xl mx-auto ${
+                  className={`relative z-10 grid md:grid-cols-2 gap-6 md:gap-10 lg:gap-14 items-center max-w-[1400px] mx-auto ${
                     category.textLeft ? '' : 'md:flex-row-reverse'
                   }`}
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   {/* Text content */}
                   <div className={`${category.textLeft ? 'md:order-1' : 'md:order-2'}`}>
                     <motion.div
-                      initial={{ opacity: 0, x: category.textLeft ? -30 : 30 }}
+                      initial={{ opacity: 0, x: category.textLeft ? -20 : 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
+                      transition={{ duration: 0.4, delay: 0.2 }}
                     >
-                      <span className="text-xs uppercase tracking-widest text-primary/70 mb-2 block">
+                      <span className="text-xs uppercase tracking-widest text-primary/60 mb-1 block">
                         Compétence {String(index + 1).padStart(2, '0')}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">
                         {category.title}
                       </h3>
-                      <p className="text-primary text-base md:text-lg mb-6 font-medium">
+                      <p className="text-primary text-sm md:text-base mb-4 font-medium">
                         {category.subtitle}
                       </p>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2">
                         {category.skills.map((skill, skillIndex) => (
                           <motion.li 
                             key={skillIndex}
-                            className="flex items-start gap-3 group"
-                            initial={{ opacity: 0, x: -20 }}
+                            className="flex items-start gap-2 group"
+                            initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: 0.3 + skillIndex * 0.05 }}
+                            transition={{ duration: 0.3, delay: 0.2 + skillIndex * 0.03 }}
                           >
-                            <span className="w-2 h-2 rounded-full bg-primary mt-2 group-hover:scale-125 transition-transform" />
-                            <span className="text-muted-foreground text-sm md:text-base group-hover:text-foreground transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            <span className="text-muted-foreground text-xs md:text-sm group-hover:text-foreground transition-colors duration-200">
                               {skill}
                             </span>
                           </motion.li>
@@ -201,13 +201,14 @@ const Skills = () => {
                     </motion.div>
                   </div>
                   
-                  {/* 3D Visual - Static */}
+                  {/* 3D Visual - Static with hover transition */}
                   <div className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}>
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: 0.3 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="transition-transform duration-500 hover:scale-[1.02]"
                     >
                       <category.Visual />
                     </motion.div>

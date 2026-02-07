@@ -37,7 +37,7 @@ const About = () => {
   return (
     <section 
       id="about" 
-      className="py-16 md:py-20 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" 
+      className="py-12 md:py-16 relative overflow-hidden" 
       data-aos="fade-up" 
       data-aos-duration="800"
       data-aos-once="true"
@@ -45,7 +45,7 @@ const About = () => {
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-50"></div>
       
-      <div className="container mx-auto relative z-10 max-w-7xl">
+      <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] relative z-10">
         <h2 
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 md:mb-12 rellax" 
           data-rellax-speed="1"

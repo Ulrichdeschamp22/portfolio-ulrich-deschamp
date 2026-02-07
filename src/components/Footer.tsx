@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="py-8 md:py-12 border-t border-border/50 bg-card/30 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-      <div className="container mx-auto max-w-7xl">
+    <footer className="py-8 md:py-12 border-t border-border/50 bg-card/30">
+      <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px]">
         {/* SEO Footer Content */}
         <div className="max-w-4xl mx-auto mb-6 md:mb-8 px-2">
           <h2 className="text-lg md:text-xl font-bold text-center mb-3 md:mb-4 text-gradient">

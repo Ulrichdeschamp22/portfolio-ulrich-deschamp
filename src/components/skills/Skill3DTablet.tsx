@@ -2,122 +2,75 @@ import { motion } from 'framer-motion';
 
 const Skill3DTablet = () => {
   return (
-    <div className="relative w-full h-80 md:h-96 flex items-center justify-center">
+    <div className="relative w-full h-64 md:h-80 flex items-center justify-center">
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-pink-500/20 to-secondary/20 blur-3xl rounded-full opacity-40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-pink-500/15 to-secondary/15 blur-3xl rounded-full opacity-40" />
       
-      {/* Floating geometric shapes */}
-      <motion.div
-        className="absolute top-8 right-16 w-6 h-6 bg-gradient-to-br from-pink-500 to-primary rounded shadow-lg"
-        animate={{ 
-          rotate: 360,
-          y: [-5, 5, -5]
-        }}
-        transition={{ 
-          rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-          y: { duration: 2, repeat: Infinity }
-        }}
-      />
-      <motion.div
-        className="absolute top-20 left-8 w-5 h-5 rounded-full bg-gradient-to-br from-secondary to-cyan-400 shadow-lg"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          y: [0, -10, 0]
-        }}
-        transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-      />
-      <motion.div
-        className="absolute bottom-16 right-8"
-        animate={{ 
-          rotate: [0, 60, 0],
-          scale: [1, 1.1, 1]
-        }}
-        transition={{ duration: 4, repeat: Infinity }}
-      >
-        <div className="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[18px] border-b-accent shadow-lg" />
-      </motion.div>
-      <motion.div
-        className="absolute bottom-24 left-12 w-8 h-3 bg-gradient-to-r from-primary via-pink-500 to-secondary rounded-full shadow-lg"
-        animate={{ 
-          scaleX: [1, 1.3, 1],
-          opacity: [0.6, 1, 0.6]
-        }}
-        transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
-      />
+      {/* Static geometric shapes */}
+      <div className="absolute top-6 right-14 w-5 h-5 bg-gradient-to-br from-pink-500 to-primary rounded shadow-md rotate-12" />
+      <div className="absolute top-16 left-6 w-4 h-4 rounded-full bg-gradient-to-br from-secondary to-cyan-400 shadow-md" />
+      <div className="absolute bottom-14 right-6 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[14px] border-b-accent" />
+      <div className="absolute bottom-20 left-10 w-6 h-2 bg-gradient-to-r from-primary via-pink-500 to-secondary rounded-full" />
       
       {/* Main tablet 3D */}
       <motion.div
-        className="relative"
-        initial={{ rotateY: -10, rotateX: 5 }}
-        whileHover={{ rotateY: 0, rotateX: 0, scale: 1.05 }}
-        transition={{ duration: 0.5 }}
+        className="relative cursor-pointer"
+        whileHover={{ scale: 1.03 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         style={{ perspective: 1000 }}
       >
         {/* Tablet frame */}
-        <div className="w-48 h-36 md:w-64 md:h-44 rounded-xl bg-gradient-to-br from-muted via-border to-muted p-2 shadow-2xl shadow-primary/30">
+        <div className="w-44 h-32 md:w-60 md:h-40 rounded-xl bg-gradient-to-br from-muted via-border to-muted p-2 shadow-xl shadow-primary/20">
           {/* Screen */}
           <div className="w-full h-full rounded-lg bg-background overflow-hidden relative">
             {/* Canvas area */}
             <div className="absolute inset-2 bg-card/50 rounded">
-              {/* Drawing animation */}
+              {/* Static drawing shapes */}
               <svg className="w-full h-full" viewBox="0 0 100 80">
-                <motion.circle
-                  cx="30"
+                <circle
+                  cx="28"
                   cy="40"
-                  r="15"
+                  r="12"
                   fill="none"
                   stroke="hsl(var(--primary))"
                   strokeWidth="2"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: [0, 1, 1, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
+                  opacity="0.8"
                 />
-                <motion.rect
-                  x="55"
-                  y="25"
-                  width="25"
-                  height="25"
+                <rect
+                  x="52"
+                  y="28"
+                  width="20"
+                  height="20"
                   fill="none"
                   stroke="hsl(var(--secondary))"
                   strokeWidth="2"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: [0, 1, 1, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+                  opacity="0.8"
                 />
-                <motion.path
-                  d="M45 60 L55 45 L65 60 Z"
+                <path
+                  d="M42 60 L50 48 L58 60 Z"
                   fill="none"
                   stroke="hsl(var(--accent))"
                   strokeWidth="2"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: [0, 1, 1, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+                  opacity="0.8"
                 />
               </svg>
             </div>
             
             {/* Color palette */}
-            <div className="absolute bottom-2 left-2 flex gap-1">
-              <div className="w-3 h-3 rounded-full bg-primary" />
-              <div className="w-3 h-3 rounded-full bg-secondary" />
-              <div className="w-3 h-3 rounded-full bg-pink-500" />
-              <div className="w-3 h-3 rounded-full bg-accent" />
+            <div className="absolute bottom-1.5 left-2 flex gap-1">
+              <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+              <div className="w-2.5 h-2.5 rounded-full bg-secondary" />
+              <div className="w-2.5 h-2.5 rounded-full bg-pink-500" />
+              <div className="w-2.5 h-2.5 rounded-full bg-accent" />
             </div>
           </div>
         </div>
         
-        {/* Stylus pen */}
-        <motion.div
-          className="absolute -right-6 top-0 origin-bottom-left"
-          animate={{ 
-            rotate: [-5, 5, -5],
-            x: [-2, 2, -2]
-          }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-2 h-20 md:h-24 bg-gradient-to-b from-muted via-border to-primary rounded-full shadow-lg transform rotate-45" />
-          <div className="absolute bottom-0 left-0 w-2 h-3 bg-primary rounded-b-full" />
-        </motion.div>
+        {/* Stylus pen - Static */}
+        <div className="absolute -right-5 top-1 origin-bottom-left rotate-45">
+          <div className="w-1.5 h-16 md:h-20 bg-gradient-to-b from-muted via-border to-primary rounded-full shadow-md" />
+          <div className="absolute bottom-0 left-0 w-1.5 h-2.5 bg-primary rounded-b-full" />
+        </div>
       </motion.div>
     </div>
   );
