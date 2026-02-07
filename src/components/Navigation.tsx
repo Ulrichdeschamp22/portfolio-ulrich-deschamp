@@ -46,8 +46,8 @@ const Navigation = () => {
     >
       <div className={`container mx-auto px-4 max-w-7xl transition-all duration-500 ${
         isScrolled 
-          ? 'bg-background/70 backdrop-blur-xl border border-border/40 rounded-2xl shadow-2xl shadow-primary/20 py-2 px-6' 
-          : ''
+          ? 'bg-transparent backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/20 py-2 px-6' 
+          : 'bg-transparent'
       }`}>
         <div className="flex justify-between items-center">
           {/* Logo with hover animation */}

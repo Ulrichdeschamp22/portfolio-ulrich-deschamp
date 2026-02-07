@@ -145,7 +145,7 @@ const Skills = () => {
             return (
               <div 
                 key={index}
-                className={`relative py-20 md:py-32 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
+                className={`relative py-12 md:py-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
               >
                 {/* Universe glow effect */}
                 <div className={`absolute inset-0 ${universe.glow} opacity-10 blur-3xl`} />
