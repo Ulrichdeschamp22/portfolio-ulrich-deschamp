@@ -23,17 +23,6 @@ const FloatingButtons = () => {
 
   return (
     <div className="fixed bottom-6 right-4 z-50 flex items-center gap-2">
-      {/* Text pill button with stacked text */}
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex flex-col items-start leading-tight"
-      >
-        <span className="text-xs font-medium">Discuter avec moi sur</span>
-        <span className="text-sm font-bold">WhatsApp</span>
-      </a>
-
       {/* Icon button - switches between WhatsApp and Scroll to Top */}
       {showScrollTop ? (
         <button

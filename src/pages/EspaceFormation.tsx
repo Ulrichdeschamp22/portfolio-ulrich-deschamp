@@ -108,14 +108,14 @@ const EspaceFormation = () => {
 
         {/* Sidebar */}
         <aside className={cn(
-          "fixed lg:static inset-y-0 left-0 z-50 bg-sidebar-background border-r border-sidebar-border transition-all duration-300 lg:translate-x-0",
+          "fixed lg:static inset-y-0 left-0 z-50 bg-card/95 backdrop-blur-xl border-r border-border/50 transition-all duration-300 lg:translate-x-0",
           sidebarCollapsed ? "w-[70px]" : "w-64",
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}>
           <div className="flex flex-col h-full">
             {/* Logo */}
             <div className={cn(
-              "p-4 border-b border-sidebar-border flex items-center",
+              "p-4 border-b border-border/50 flex items-center",
               sidebarCollapsed ? "justify-center" : "justify-between"
             )}>
               <Link to="/" className="flex items-center gap-2">
@@ -141,7 +141,7 @@ const EspaceFormation = () => {
             </div>
 
             {/* Collapse Toggle Button - Desktop only */}
-            <div className="hidden lg:flex justify-end p-2 border-b border-sidebar-border">
+            <div className="hidden lg:flex justify-end p-2 border-b border-border/50">
               <button
                 onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
                 className="p-2 hover:bg-muted rounded-lg transition-colors"
@@ -208,7 +208,7 @@ const EspaceFormation = () => {
 
             {/* Back to site */}
             <div className={cn(
-              "border-t border-sidebar-border",
+              "border-t border-border/50",
               sidebarCollapsed ? "p-2" : "p-4"
             )}>
               {sidebarCollapsed ? (
