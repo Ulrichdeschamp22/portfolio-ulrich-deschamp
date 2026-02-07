@@ -1,11 +1,18 @@
+import { motion } from 'framer-motion';
+
 const Skill3DBrain = () => {
   return (
     <div className="relative w-full h-64 md:h-80 flex items-center justify-center">
       {/* Glow effect */}
       <div className="absolute inset-0 bg-pink-500/10 blur-3xl rounded-full opacity-30" />
       
-      {/* Main Robot AI - Static */}
-      <div className="relative" style={{ perspective: 1000 }}>
+      {/* Main Robot AI - Static with hover */}
+      <motion.div 
+        className="relative cursor-pointer" 
+        style={{ perspective: 1000 }}
+        whileHover={{ scale: 1.03 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
         {/* Robot body */}
         <div className="relative w-40 h-48 md:w-48 md:h-56">
           {/* Robot head */}
@@ -46,7 +53,7 @@ const Skill3DBrain = () => {
         </div>
         
         {/* Floating circuit lines - decorative static */}
-        <div className="absolute -inset-6 opacity-20">
+        <div className="absolute -inset-6 opacity-20 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 200 200">
             <path d="M20 100 L60 100 L80 60 L120 60 L140 100 L180 100" stroke="currentColor" strokeWidth="1" fill="none" className="text-primary" />
             <path d="M100 20 L100 60 L140 100 L100 140 L100 180" stroke="currentColor" strokeWidth="1" fill="none" className="text-cyan-400" />
@@ -55,7 +62,7 @@ const Skill3DBrain = () => {
             <circle cx="140" cy="100" r="4" fill="currentColor" className="text-cyan-400" />
           </svg>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

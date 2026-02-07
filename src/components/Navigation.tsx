@@ -41,12 +41,12 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 100, damping: 20 }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'py-2' : 'py-3 md:py-5'
+        isScrolled ? 'py-3' : 'py-4 md:py-6'
       }`}
     >
-      <div className={`container mx-auto px-4 max-w-7xl transition-all duration-500 ${
+      <div className={`mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] transition-all duration-500 ${
         isScrolled 
-          ? 'bg-transparent backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/20 py-2 px-6' 
+          ? 'bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-xl shadow-black/10 py-3 px-8' 
           : 'bg-transparent'
       }`}>
         <div className="flex justify-between items-center">

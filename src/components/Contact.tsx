@@ -74,18 +74,18 @@ const Contact = () => {
   return (
     <section 
       id="contact" 
-      className="py-16 md:py-20 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" 
+      className="py-12 md:py-16 relative overflow-hidden" 
       data-aos="fade-up" 
       data-aos-duration="800"
       data-aos-once="true"
     >
       {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-48 md:w-72 h-48 md:h-72 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-48 md:w-72 h-48 md:h-72 bg-accent/10 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-48 md:w-64 h-48 md:h-64 bg-accent/10 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto relative z-10 max-w-7xl">
+      <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] relative z-10">
         <h2 
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"

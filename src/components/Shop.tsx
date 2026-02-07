@@ -29,16 +29,16 @@ const Shop = () => {
   return (
     <section 
       id="shop" 
-      className="py-16 md:py-20 bg-card/20 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" 
+      className="py-12 md:py-16 bg-card/20 relative overflow-hidden" 
       data-aos="fade-up" 
       data-aos-duration="800"
       data-aos-once="true"
     >
       {/* Floating elements animation */}
-      <div className="absolute top-10 left-10 w-16 md:w-20 h-16 md:h-20 bg-primary/20 rounded-full"></div>
-      <div className="absolute bottom-10 right-10 w-24 md:w-32 h-24 md:h-32 bg-accent/20 rounded-full"></div>
+      <div className="absolute top-10 left-10 w-12 md:w-16 h-12 md:h-16 bg-primary/15 rounded-full blur-xl pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-16 md:w-24 h-16 md:h-24 bg-accent/15 rounded-full blur-xl pointer-events-none"></div>
       
-      <div className="container mx-auto relative z-10 max-w-7xl">
+      <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] relative z-10">
         <h2 
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
           data-rellax-speed="1"

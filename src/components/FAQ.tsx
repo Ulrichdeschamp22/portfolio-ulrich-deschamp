@@ -107,17 +107,17 @@ const FAQ = () => {
   return (
     <section 
       id="faq" 
-      className="py-16 md:py-20 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" 
+      className="py-12 md:py-16 relative overflow-hidden" 
       data-aos="fade-up" 
       data-aos-duration="800"
       data-aos-once="true"
     >
       {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"></div>
-      <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-64 md:w-96 h-64 md:h-96 bg-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-48 md:w-72 h-48 md:h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-48 md:w-72 h-48 md:h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
       
-      <div className="container mx-auto relative z-10 max-w-7xl">
+      <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] relative z-10">
         {/* Header */}
         <div className="text-center mb-6 md:mb-12">
           <h2 
