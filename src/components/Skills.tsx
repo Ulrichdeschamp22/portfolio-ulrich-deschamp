@@ -159,18 +159,18 @@ const Skills = () => {
                   className={`relative z-10 grid md:grid-cols-2 gap-6 md:gap-10 lg:gap-14 items-center max-w-[1400px] mx-auto ${
                     category.textLeft ? '' : 'md:flex-row-reverse'
                   }`}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
                 >
                   {/* Text content */}
                   <div className={`${category.textLeft ? 'md:order-1' : 'md:order-2'}`}>
                     <motion.div
-                      initial={{ opacity: 0, x: category.textLeft ? -20 : 20 }}
+                      initial={{ opacity: 0, x: category.textLeft ? -15 : 15 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.35, ease: "easeOut" }}
                     >
                       <span className="text-xs uppercase tracking-widest text-primary/60 mb-1 block">
                         Compétence {String(index + 1).padStart(2, '0')}
@@ -186,10 +186,10 @@ const Skills = () => {
                           <motion.li 
                             key={skillIndex}
                             className="flex items-start gap-2 group"
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.3, delay: 0.2 + skillIndex * 0.03 }}
+                            transition={{ duration: 0.2, delay: skillIndex * 0.02 }}
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                             <span className="text-muted-foreground text-xs md:text-sm group-hover:text-foreground transition-colors duration-200">
@@ -204,11 +204,10 @@ const Skills = () => {
                   {/* 3D Visual - Static with hover transition */}
                   <div className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}>
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.98 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                      className="transition-transform duration-500 hover:scale-[1.02]"
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
                     >
                       <category.Visual />
                     </motion.div>
