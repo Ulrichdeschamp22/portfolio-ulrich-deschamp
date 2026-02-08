@@ -117,7 +117,7 @@ const Skills = () => {
     <section 
       ref={sectionRef}
       id="skills" 
-      className="py-12 md:py-16 bg-background relative overflow-hidden"
+      className="py-8 md:py-12 bg-background relative overflow-hidden"
     >
       
       <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] relative z-10">
@@ -145,7 +145,7 @@ const Skills = () => {
             return (
               <div 
                 key={index}
-                className={`relative py-8 md:py-12 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
+                className={`relative py-6 md:py-8 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
               >
                 {/* Universe glow effect */}
                 <div className={`absolute inset-0 ${universe.glow} opacity-5 blur-3xl pointer-events-none`} />

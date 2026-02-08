@@ -44,10 +44,10 @@ const Navigation = () => {
         isScrolled ? 'py-3' : 'py-4 md:py-6'
       }`}
     >
-      <div className={`mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] transition-all duration-500 ${
+      <div className={`mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] transition-all duration-500 ease-out ${
         isScrolled 
-          ? 'bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-xl shadow-black/10 py-3 px-8' 
-          : 'bg-transparent'
+          ? 'bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-lg shadow-black/5 py-3 px-8' 
+          : 'bg-transparent border border-transparent'
       }`}>
         <div className="flex justify-between items-center">
           {/* Logo with hover animation */}
