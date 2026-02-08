@@ -59,18 +59,8 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
         }}
       />
       
-      {/* Floating animation */}
-      <motion.div
-        className="relative w-full h-full"
-        animate={{
-          y: [0, -10, 0],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      >
+      {/* Static container - no floating animation */}
+      <div className="relative w-full h-full">
         {/* Main image container */}
         <motion.div 
           className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl"
@@ -107,7 +97,7 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
             transition={{ duration: 0.3 }}
           />
         </motion.div>
-      </motion.div>
+      </div>
       
       {/* Outer glow ring */}
       <div 
