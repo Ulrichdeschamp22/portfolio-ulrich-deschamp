@@ -149,6 +149,20 @@ All colors MUST be HSL.
     @apply bg-card/70 backdrop-blur-md border border-border/30;
     box-shadow: 0 8px 32px 0 hsl(240 10% 50% / 0.08);
   }
+
+  /* Navigation glass effect */
+  .nav-glass-scrolled {
+    @apply backdrop-blur-2xl border shadow-lg;
+    background: hsl(0 0% 100% / 0.1);
+    border-color: hsl(0 0% 100% / 0.2);
+    box-shadow: 0 4px 30px hsl(0 0% 0% / 0.05);
+  }
+  
+  .light .nav-glass-scrolled {
+    background: hsl(0 0% 100% / 0.75);
+    border-color: hsl(0 0% 0% / 0.08);
+    box-shadow: 0 4px 30px hsl(0 0% 0% / 0.08);
+  }
   
   /* Glow effect for buttons */
   .btn-glow {
