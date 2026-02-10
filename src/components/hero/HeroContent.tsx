@@ -155,12 +155,19 @@ const HeroContent = ({ variant }: HeroContentProps) => {
         variants={badgeVariants}
       >
         <motion.span 
-          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-primary/20 via-primary/30 to-accent/20 border border-primary/40 backdrop-blur-sm"
-          style={{ boxShadow: '0 0 30px hsl(271 91% 65% / 0.3)' }}
-          whileHover={{ scale: 1.03, boxShadow: '0 0 40px hsl(271 91% 65% / 0.5)' }}
+          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-primary/25 via-accent/30 to-secondary/25 border border-primary/50 backdrop-blur-md relative overflow-hidden"
+          style={{ 
+            boxShadow: '0 0 30px hsl(271 91% 65% / 0.35), inset 0 1px 0 hsl(0 0% 100% / 0.1)' 
+          }}
+          whileHover={{ scale: 1.03, boxShadow: '0 0 45px hsl(271 91% 65% / 0.5)' }}
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         >
-          <span className="text-gradient font-bold">Expert digital à Abidjan</span>
+          <span className="relative z-10 text-gradient font-bold tracking-wide">✦ Expert digital à Abidjan</span>
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent"
+            animate={{ x: ['-100%', '200%'] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear', repeatDelay: 2 }}
+          />
         </motion.span>
       </motion.h2>
       
