@@ -36,6 +36,9 @@ const App = () => {
           {/* Morphing blob - fil conducteur visuel */}
           <MorphingBlob />
           
+          {/* Theme toggle */}
+          <ThemeToggle />
+          
           <Toaster />
           <Sonner />
           <BrowserRouter>

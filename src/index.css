@@ -145,6 +145,11 @@ All colors MUST be HSL.
     box-shadow: 0 8px 32px 0 hsl(240 10% 3% / 0.4);
   }
   
+  .light .glass-card {
+    @apply bg-card/70 backdrop-blur-md border border-border/30;
+    box-shadow: 0 8px 32px 0 hsl(240 10% 50% / 0.08);
+  }
+  
   /* Glow effect for buttons */
   .btn-glow {
     @apply relative overflow-hidden;
