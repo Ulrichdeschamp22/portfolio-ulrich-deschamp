@@ -63,7 +63,7 @@ const LegalNotice = () => {
             Ces données ne sont jamais partagées avec des tiers sans votre consentement explicite.
           </p>
           <p className="font-medium">
-            Pour exercer vos droits, contactez-nous à : contact@ulrichdeschamp.com
+            Pour exercer vos droits, contactez-nous à : deschamp.deschamp222@gmail.com
           </p>
         </div>
       )
