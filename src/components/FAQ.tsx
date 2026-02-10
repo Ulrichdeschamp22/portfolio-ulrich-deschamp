@@ -57,7 +57,7 @@ const FAQ = () => {
     {
       category: 'about',
       question: "Quels sont ses contacts ?",
-      answer: "Localisation : Abidjan, Côte d'Ivoire | Téléphone / WhatsApp : +225 0710224023 | Email : deschamp@gmail.com | Site : ulrichdeschampkossonou.online"
+      answer: "Localisation : Abidjan, Côte d'Ivoire | Téléphone / WhatsApp : +225 0710224023 | Email : deschamp.deschamp222@gmail.com | Site : ulrichdeschampkossonou.online"
     },
     {
       category: 'skills',
