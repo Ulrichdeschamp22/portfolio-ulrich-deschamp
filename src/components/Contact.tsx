@@ -54,8 +54,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email principal",
-      value: "deschamp@gmail.com",
-      link: "mailto:deschamp@gmail.com"
+      value: "deschamp.deschamp222@gmail.com",
+      link: "mailto:deschamp.deschamp222@gmail.com"
     },
     {
       icon: Mail,

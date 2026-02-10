@@ -231,7 +231,7 @@ const FAQ = () => {
               </Button>
             </a>
             
-            <a href="mailto:deschamp@gmail.com" className="inline-flex justify-center">
+            <a href="mailto:deschamp.deschamp222@gmail.com" className="inline-flex justify-center">
               <Button 
                 size="default" 
                 variant="outline"
