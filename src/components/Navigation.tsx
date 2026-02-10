@@ -46,7 +46,7 @@ const Navigation = () => {
     >
       <div className={`mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] transition-all duration-500 ease-out ${
         isScrolled 
-          ? 'bg-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl shadow-lg shadow-black/5 py-3 px-8 light:bg-white/70 light:border-black/10 light:shadow-black/10' 
+          ? 'nav-glass-scrolled rounded-2xl py-3 px-8' 
           : 'bg-transparent border border-transparent'
       }`}>
         <div className="flex justify-between items-center">
