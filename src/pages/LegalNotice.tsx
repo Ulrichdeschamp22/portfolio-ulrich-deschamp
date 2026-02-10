@@ -16,7 +16,7 @@ const LegalNotice = () => {
           <p><strong>Statut :</strong> Développeur Full Stack Indépendant</p>
           <p><strong>Adresse :</strong> Abidjan, Côte d'Ivoire</p>
           <p><strong>Téléphone :</strong> +225 0710224023</p>
-          <p><strong>Email :</strong> contact@ulrichdeschamp.com</p>
+          <p><strong>Email :</strong> deschamp.deschamp222@gmail.com</p>
         </div>
       )
     },
@@ -63,7 +63,7 @@ const LegalNotice = () => {
             Ces données ne sont jamais partagées avec des tiers sans votre consentement explicite.
           </p>
           <p className="font-medium">
-            Pour exercer vos droits, contactez-nous à : contact@ulrichdeschamp.com
+            Pour exercer vos droits, contactez-nous à : deschamp.deschamp222@gmail.com
           </p>
         </div>
       )

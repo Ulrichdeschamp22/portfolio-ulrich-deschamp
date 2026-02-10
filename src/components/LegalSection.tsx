@@ -12,7 +12,7 @@ const LegalSection = () => {
         statut: "Développeur Full Stack Indépendant",
         adresse: "Abidjan, Côte d'Ivoire",
         telephone: "+225 0710224023",
-        email: "contact@ulrichdeschamp.com"
+        email: "deschamp.deschamp222@gmail.com"
       }
     },
     hosting: {
