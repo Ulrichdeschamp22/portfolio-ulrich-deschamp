@@ -4,6 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import PricingHeader from '@/components/tarifs/PricingHeader';
+import ServiceCatalog from '@/components/tarifs/ServiceCatalog';
+import PricingFAQ from '@/components/tarifs/PricingFAQ';
 
 const Tarifs = () => {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -28,8 +31,8 @@ const Tarifs = () => {
     {
       name: 'Starter',
       description: 'Pour les petits projets',
-      price: '75 000 FCFA',
-      priceAnnual: '750 000 FCFA',
+      price: '150 000 FCFA',
+      priceAnnual: '1 500 000 FCFA',
       icon: Star,
       features: [
         'Site vitrine one-page',
@@ -46,8 +49,8 @@ const Tarifs = () => {
     {
       name: 'Premium',
       description: 'Pour les projets ambitieux',
-      price: '250 000 FCFA',
-      priceAnnual: '2 500 000 FCFA',
+      price: '500 000 FCFA',
+      priceAnnual: '5 000 000 FCFA',
       icon: Crown,
       features: [
         'Tout du plan Starter',
@@ -66,8 +69,8 @@ const Tarifs = () => {
     {
       name: 'Business',
       description: 'Pour les entreprises',
-      price: '500 000 FCFA',
-      priceAnnual: '5 000 000 FCFA',
+      price: '1 500 000 FCFA',
+      priceAnnual: '15 000 000 FCFA',
       icon: Rocket,
       features: [
         'Tout du plan Premium',
@@ -86,81 +89,12 @@ const Tarifs = () => {
     },
   ];
 
-  const comparisonFeatures = [
-    { name: 'Consultation initiale', discovery: true, starter: true, premium: true, business: true },
-    { name: 'Design responsive', discovery: false, starter: true, premium: true, business: true },
-    { name: 'Optimisation SEO', discovery: false, starter: 'Basique', premium: 'Avancé', business: 'Premium' },
-    { name: 'Hébergement inclus', discovery: false, starter: '1 an', premium: '1 an', business: '1 an' },
-    { name: 'Support', discovery: 'Communauté', starter: 'Email 48h', premium: 'Prioritaire', business: 'Dédié' },
-    { name: 'Révisions', discovery: false, starter: '1', premium: '3', business: 'Illimitées' },
-    { name: 'Automatisation', discovery: false, starter: false, premium: 'Basique', business: 'Avancée' },
-    { name: 'IA & Chatbots', discovery: false, starter: false, premium: false, business: true },
-    { name: 'Formation incluse', discovery: false, starter: false, premium: true, business: true },
-    { name: 'Maintenance', discovery: false, starter: false, premium: false, business: '1 an' },
-  ];
-
-  const faqs = [
-    {
-      question: 'Puis-je changer de plan à tout moment ?',
-      answer: 'Oui, vous pouvez passer à un plan supérieur à tout moment. Le changement sera effectif immédiatement et la différence sera calculée au prorata.',
-    },
-    {
-      question: 'Quels sont les délais de réalisation ?',
-      answer: 'Les délais varient selon le plan : 1-2 semaines pour Starter, 3-4 semaines pour Premium, et 6-8 semaines pour Business. Ces délais peuvent varier selon la complexité du projet.',
-    },
-    {
-      question: 'Comment se passe le paiement ?',
-      answer: 'Nous acceptons les paiements par virement bancaire, Orange Money, Wave et autres moyens de paiement mobile. Un acompte de 50% est demandé au démarrage.',
-    },
-    {
-      question: 'Proposez-vous des devis personnalisés ?',
-      answer: 'Absolument ! Pour des projets spécifiques ou sur mesure, contactez-nous pour obtenir un devis adapté à vos besoins exacts.',
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
       <main className="pt-24 pb-16">
-        {/* Header */}
-        <div className="text-center max-w-4xl mx-auto px-6 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm mb-6">
-            <Sparkles className="w-4 h-4" />
-            Investissez en vous-même
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Passez au niveau{' '}
-            <span className="text-gradient">Supérieur</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Des solutions digitales sur mesure pour transformer votre présence en ligne. 
-            Choisissez l'offre qui correspond à vos ambitions.
-          </p>
-          
-          {/* Toggle */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={() => setIsAnnual(false)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                !isAnnual ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Mensuel
-            </button>
-            <button
-              onClick={() => setIsAnnual(true)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
-                isAnnual ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Annuel
-              <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">
-                -17%
-              </span>
-            </button>
-          </div>
-        </div>
+        <PricingHeader isAnnual={isAnnual} setIsAnnual={setIsAnnual} />
 
         {/* Pricing Cards */}
         <div className="max-w-7xl mx-auto px-6 mb-20">
@@ -229,87 +163,11 @@ const Tarifs = () => {
           </div>
         </div>
 
-        {/* Comparison Table */}
-        <div className="max-w-6xl mx-auto px-6 mb-20">
-          <h2 className="text-3xl font-bold text-center mb-10">Comparatif des plans</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-4 px-4 text-muted-foreground font-medium">Fonctionnalités</th>
-                  <th className="text-center py-4 px-4 text-muted-foreground font-medium">Découverte</th>
-                  <th className="text-center py-4 px-4 text-muted-foreground font-medium">Starter</th>
-                  <th className="text-center py-4 px-4 bg-primary/10 rounded-t-lg font-medium text-primary">Premium</th>
-                  <th className="text-center py-4 px-4 text-muted-foreground font-medium">Business</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonFeatures.map((feature, idx) => (
-                  <tr key={idx} className="border-b border-border/50">
-                    <td className="py-4 px-4 text-sm">{feature.name}</td>
-                    <td className="text-center py-4 px-4">
-                      {typeof feature.discovery === 'boolean' ? (
-                        feature.discovery ? (
-                          <Check className="w-5 h-5 text-primary mx-auto" />
-                        ) : (
-                          <span className="text-muted-foreground">-</span>
-                        )
-                      ) : (
-                        <span className="text-sm text-muted-foreground">{feature.discovery}</span>
-                      )}
-                    </td>
-                    <td className="text-center py-4 px-4">
-                      {typeof feature.starter === 'boolean' ? (
-                        feature.starter ? (
-                          <Check className="w-5 h-5 text-primary mx-auto" />
-                        ) : (
-                          <span className="text-muted-foreground">-</span>
-                        )
-                      ) : (
-                        <span className="text-sm text-muted-foreground">{feature.starter}</span>
-                      )}
-                    </td>
-                    <td className="text-center py-4 px-4 bg-primary/5">
-                      {typeof feature.premium === 'boolean' ? (
-                        feature.premium ? (
-                          <Check className="w-5 h-5 text-primary mx-auto" />
-                        ) : (
-                          <span className="text-muted-foreground">-</span>
-                        )
-                      ) : (
-                        <span className="text-sm text-primary font-medium">{feature.premium}</span>
-                      )}
-                    </td>
-                    <td className="text-center py-4 px-4">
-                      {typeof feature.business === 'boolean' ? (
-                        feature.business ? (
-                          <Check className="w-5 h-5 text-primary mx-auto" />
-                        ) : (
-                          <span className="text-muted-foreground">-</span>
-                        )
-                      ) : (
-                        <span className="text-sm text-muted-foreground">{feature.business}</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        {/* Full Service Catalog */}
+        <ServiceCatalog />
 
         {/* FAQ */}
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-10">Questions fréquentes</h2>
-          <div className="space-y-6">
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
-                <h3 className="font-semibold mb-2">{faq.question}</h3>
-                <p className="text-muted-foreground text-sm">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <PricingFAQ />
       </main>
 
       <Footer />
