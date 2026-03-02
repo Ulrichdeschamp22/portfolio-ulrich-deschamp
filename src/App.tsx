@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import PageLoader from "@/components/ui/PageLoader";
-import ThemeToggle from "@/components/ThemeToggle";
+
 import MorphingBlob from "@/components/ui/MorphingBlob";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -36,8 +36,6 @@ const App = () => {
           {/* Morphing blob - fil conducteur visuel */}
           <MorphingBlob />
           
-          {/* Theme toggle */}
-          <ThemeToggle />
           
           <Toaster />
           <Sonner />
