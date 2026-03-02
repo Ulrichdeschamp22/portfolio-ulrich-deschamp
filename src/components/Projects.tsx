@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { ExternalLink, Globe, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Projects = () => {
+  const [activeFilter, setActiveFilter] = useState('Tous');
+
   const projects = [
     {
       title: "Les Awards des Familles",
@@ -47,6 +51,12 @@ const Projects = () => {
     }
   ];
 
+  const filters = ['Tous', 'Site Web', 'Application SaaS', 'Portfolio', 'Landing Page', 'Boutique en ligne', 'Design Graphique'];
+
+  const filteredProjects = activeFilter === 'Tous'
+    ? projects
+    : projects.filter(p => p.type === activeFilter);
+
   const getTypeColor = (type: string) => {
     switch(type) {
       case 'Portfolio': return 'text-purple-400';
@@ -54,6 +64,7 @@ const Projects = () => {
       case 'Site Web': return 'text-green-400';
       case 'Application SaaS': return 'text-orange-400';
       case 'Boutique en ligne': return 'text-pink-400';
+      case 'Design Graphique': return 'text-teal-400';
       default: return 'text-primary';
     }
   };
@@ -61,96 +72,119 @@ const Projects = () => {
   return (
     <section 
       id="projects" 
-      className="py-12 md:py-16 relative overflow-hidden bg-primary/5" 
+      className="py-12 md:py-16 relative overflow-hidden section-projects" 
       data-aos="fade-up" 
       data-aos-duration="800"
       data-aos-once="true"
     >
-      {/* Animated gradient mesh background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-48 md:w-72 h-48 md:h-72 bg-primary/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-48 md:w-72 h-48 md:h-72 bg-primary/10 rounded-full blur-3xl"></div>
       </div>
       
       <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] relative z-10">
-        <h2 
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" 
-          data-rellax-speed="1"
-        >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" data-rellax-speed="1">
           <span className="text-gradient">Projets Réalisés</span>
         </h2>
-        <p 
-          className="text-center text-sm md:text-base text-muted-foreground mb-8 md:mb-12 max-w-3xl mx-auto px-2"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
+        <p className="text-center text-sm md:text-base text-muted-foreground mb-8 md:mb-10 max-w-3xl mx-auto px-2">
           Portfolio de mes réalisations en développement web, infographie et photographie à Abidjan. 
           Découvrez mes projets digitaux créés pour des entreprises en Côte d'Ivoire et à l'international.
         </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-          {projects.map((project, index) => (
-            <article 
-              key={index}
-              className="glass-card overflow-hidden group hover-lift"
-              data-aos="fade-up"
-              data-aos-delay={50 + index * 50}
-              data-aos-once="true"
-              itemScope 
-              itemType="https://schema.org/CreativeWork"
+
+        {/* Category Filters */}
+        <div className="flex overflow-x-auto pb-4 mb-8 gap-2 scrollbar-hide justify-start md:justify-center md:flex-wrap">
+          {filters.map((filter) => (
+            <Button
+              key={filter}
+              variant={activeFilter === filter ? "default" : "outline"}
+              onClick={() => setActiveFilter(filter)}
+              size="sm"
+              className={`flex-shrink-0 transition-all duration-300 ${
+                activeFilter === filter
+                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                  : 'hover:bg-primary/10'
+              }`}
             >
-              <div className="p-4 md:p-6">
-                <div className="flex items-start justify-between mb-3 md:mb-4">
-                  <div className="flex items-center space-x-2">
-                    <Globe className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                    <span className={`text-xs md:text-sm font-medium ${getTypeColor(project.type)}`} itemProp="category">
-                      {project.type}
-                    </span>
-                  </div>
-                  <Code2 className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:rotate-12 transition-transform" />
-                </div>
-                
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors" itemProp="name">
-                  {project.title}
-                </h3>
-                
-                <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2" itemProp="description">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6" itemProp="keywords">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex}
-                      className="px-2 py-0.5 md:py-1 text-[10px] md:text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full group-hover:bg-primary/10 transition-all duration-300 text-xs md:text-sm"
-                  asChild
-                >
-                  <a 
-                    href={project.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center"
-                    aria-label={`Voir le projet ${project.title} - Développé par Ulrich Deschamp à Abidjan`}
-                  >
-                    Voir le projet
-                    <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
-                <link itemProp="url" href={project.url} />
-                <meta itemProp="creator" content="Ulrich Deschamp KOSSONOU" />
-              </div>
-            </article>
+              <span className="text-xs sm:text-sm whitespace-nowrap">{filter}</span>
+            </Button>
           ))}
         </div>
+        
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={activeFilter}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
+          >
+            {filteredProjects.length === 0 ? (
+              <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground text-sm">Aucun projet dans cette catégorie pour le moment.</p>
+              </div>
+            ) : (
+              filteredProjects.map((project, index) => (
+                <article 
+                  key={project.title}
+                  className="glass-card overflow-hidden group hover-lift"
+                  itemScope 
+                  itemType="https://schema.org/CreativeWork"
+                >
+                  <div className="p-4 md:p-6">
+                    <div className="flex items-start justify-between mb-3 md:mb-4">
+                      <div className="flex items-center space-x-2">
+                        <Globe className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                        <span className={`text-xs md:text-sm font-medium ${getTypeColor(project.type)}`} itemProp="category">
+                          {project.type}
+                        </span>
+                      </div>
+                      <Code2 className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:rotate-12 transition-transform" />
+                    </div>
+                    
+                    <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors" itemProp="name">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2" itemProp="description">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6" itemProp="keywords">
+                      {project.tags.map((tag, tagIndex) => (
+                        <span 
+                          key={tagIndex}
+                          className="px-2 py-0.5 md:py-1 text-[10px] md:text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <Button 
+                      variant="outline" 
+                      className="w-full group-hover:bg-primary/10 transition-all duration-300 text-xs md:text-sm"
+                      asChild
+                    >
+                      <a 
+                        href={project.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center"
+                        aria-label={`Voir le projet ${project.title}`}
+                      >
+                        Voir le projet
+                        <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </Button>
+                    <link itemProp="url" href={project.url} />
+                    <meta itemProp="creator" content="Ulrich Deschamp KOSSONOU" />
+                  </div>
+                </article>
+              ))
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
