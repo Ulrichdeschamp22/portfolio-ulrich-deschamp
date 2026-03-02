@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { Check, Globe, Settings, Headphones, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import PricingHeader from '@/components/tarifs/PricingHeader';
@@ -10,8 +11,9 @@ import PricingFAQ from '@/components/tarifs/PricingFAQ';
 const plans = [
   {
     name: 'Présence Digitale & Image Professionnelle',
-    price: '3 000 000 FCFA',
-    period: '/ an',
+    priceMonthly: '250 000 FCFA',
+    priceAnnual: '3 000 000 FCFA',
+    periodLabel: { monthly: '/ mois', annual: '/ an' },
     icon: Globe,
     features: [
       'Analyse et amélioration de l\'image digitale',
@@ -24,8 +26,9 @@ const plans = [
   },
   {
     name: 'Structuration & Professionnalisation Digitale',
-    price: '6 500 000 FCFA',
-    period: '/ an',
+    priceMonthly: '542 000 FCFA',
+    priceAnnual: '6 500 000 FCFA',
+    periodLabel: { monthly: '/ mois', annual: '/ an' },
     icon: Settings,
     features: [
       'Audit stratégique complet',
@@ -38,8 +41,9 @@ const plans = [
   },
   {
     name: 'Assistance Technique Continue',
-    price: '7 800 000 FCFA',
-    period: '/ an',
+    priceMonthly: '650 000 FCFA',
+    priceAnnual: '7 800 000 FCFA',
+    periodLabel: { monthly: '/ mois', annual: '/ an' },
     icon: Headphones,
     features: [
       'Support technique prioritaire',
@@ -52,8 +56,9 @@ const plans = [
   },
   {
     name: 'Direction Digitale Externalisée',
-    price: '15 000 000 FCFA',
-    period: '/ an',
+    priceMonthly: '1 250 000 FCFA',
+    priceAnnual: '15 000 000 FCFA',
+    periodLabel: { monthly: '/ mois', annual: '/ an' },
     icon: Crown,
     features: [
       'Élaboration stratégie digitale globale',
@@ -67,12 +72,38 @@ const plans = [
 ];
 
 const Tarifs = () => {
+  const [isAnnual, setIsAnnual] = useState(true);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
       <main className="pt-24 pb-16">
         <PricingHeader />
+
+        {/* Toggle Buttons */}
+        <div className="flex items-center justify-center gap-4 mb-12">
+          <button
+            onClick={() => setIsAnnual(false)}
+            className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+              !isAnnual
+                ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
+                : 'text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            Projet unique
+          </button>
+          <button
+            onClick={() => setIsAnnual(true)}
+            className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+              isAnnual
+                ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
+                : 'text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            Pack annuel
+          </button>
+        </div>
 
         {/* Pricing Cards */}
         <div className="max-w-7xl mx-auto px-6 mb-20">
@@ -90,8 +121,12 @@ const Tarifs = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="mb-6">
-                    <span className="text-3xl font-bold">{plan.price}</span>
-                    <span className="text-muted-foreground text-sm ml-1">{plan.period}</span>
+                    <span className="text-3xl font-bold">
+                      {isAnnual ? plan.priceAnnual : plan.priceMonthly}
+                    </span>
+                    <span className="text-muted-foreground text-sm ml-1">
+                      {isAnnual ? plan.periodLabel.annual : plan.periodLabel.monthly}
+                    </span>
                   </div>
                   
                   <ul className="space-y-3 mb-8">
@@ -109,7 +144,7 @@ const Tarifs = () => {
                     asChild
                   >
                     <a 
-                      href={`https://wa.me/2250710224023?text=Bonjour%20Ulrich,%20je%20suis%20intéressé%20par%20l'offre%20${encodeURIComponent(plan.name)}`}
+                      href={`https://wa.me/2250710224023?text=Bonjour%20Ulrich,%20je%20suis%20intéressé%20par%20l'offre%20${encodeURIComponent(plan.name)}%20(${isAnnual ? 'annuel' : 'mensuel'})`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -122,10 +157,7 @@ const Tarifs = () => {
           </div>
         </div>
 
-        {/* Full Service Catalog */}
         <ServiceCatalog />
-
-        {/* FAQ */}
         <PricingFAQ />
       </main>
 
