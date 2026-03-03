@@ -422,4 +422,27 @@ All colors MUST be HSL.
       opacity: 1;
     }
   }
+
+  /* Animated blobs for Tarifs background */
+  @keyframes blob-float-1 {
+    0%, 100% { transform: translate(10%, 10%); }
+    25% { transform: translate(60%, 20%); }
+    50% { transform: translate(40%, 60%); }
+    75% { transform: translate(10%, 50%); }
+  }
+  @keyframes blob-float-2 {
+    0%, 100% { transform: translate(70%, 60%); }
+    25% { transform: translate(20%, 40%); }
+    50% { transform: translate(50%, 10%); }
+    75% { transform: translate(80%, 30%); }
+  }
+  @keyframes blob-float-3 {
+    0%, 100% { transform: translate(40%, 30%); }
+    25% { transform: translate(70%, 70%); }
+    50% { transform: translate(10%, 50%); }
+    75% { transform: translate(50%, 10%); }
+  }
+  .animate-blob-1 { animation: blob-float-1 20s ease-in-out infinite; }
+  .animate-blob-2 { animation: blob-float-2 25s ease-in-out infinite; }
+  .animate-blob-3 { animation: blob-float-3 30s ease-in-out infinite; }
 }
