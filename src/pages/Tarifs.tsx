@@ -11,8 +11,8 @@ import PricingFAQ from '@/components/tarifs/PricingFAQ';
 const plans = [
   {
     name: 'Présence Digitale & Image Professionnelle',
-    priceMonthly: '250 000 FCFA',
-    priceAnnual: '3 000 000 FCFA',
+    priceMonthly: '200 000 FCFA',
+    priceAnnual: '2 200 000 FCFA',
     periodLabel: { monthly: '/ mois', annual: '/ an' },
     icon: Globe,
     features: [
@@ -26,8 +26,8 @@ const plans = [
   },
   {
     name: 'Structuration & Professionnalisation Digitale',
-    priceMonthly: '542 000 FCFA',
-    priceAnnual: '6 500 000 FCFA',
+    priceMonthly: '450 000 FCFA',
+    priceAnnual: '5 000 000 FCFA',
     periodLabel: { monthly: '/ mois', annual: '/ an' },
     icon: Settings,
     features: [
@@ -41,8 +41,8 @@ const plans = [
   },
   {
     name: 'Assistance Technique Continue',
-    priceMonthly: '650 000 FCFA',
-    priceAnnual: '7 800 000 FCFA',
+    priceMonthly: '550 000 FCFA',
+    priceAnnual: '6 000 000 FCFA',
     periodLabel: { monthly: '/ mois', annual: '/ an' },
     icon: Headphones,
     features: [
@@ -56,8 +56,8 @@ const plans = [
   },
   {
     name: 'Direction Digitale Externalisée',
-    priceMonthly: '1 250 000 FCFA',
-    priceAnnual: '15 000 000 FCFA',
+    priceMonthly: '1 000 000 FCFA',
+    priceAnnual: '11 000 000 FCFA',
     periodLabel: { monthly: '/ mois', annual: '/ an' },
     icon: Crown,
     features: [
@@ -72,13 +72,20 @@ const plans = [
 ];
 
 const Tarifs = () => {
-  const [isAnnual, setIsAnnual] = useState(true);
+  const [isAnnual, setIsAnnual] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Animated background */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] animate-blob-1" />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-accent/5 blur-[100px] animate-blob-2" />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-primary/3 blur-[80px] animate-blob-3" />
+      </div>
+
       <Navigation />
       
-      <main className="pt-24 pb-16">
+      <main className="pt-24 pb-16 relative z-10">
         <PricingHeader />
 
         {/* Toggle Buttons */}
@@ -106,8 +113,8 @@ const Tarifs = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="max-w-7xl mx-auto px-6 mb-20">
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             {plans.map((plan) => (
               <Card 
                 key={plan.name}
@@ -117,11 +124,11 @@ const Tarifs = () => {
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <plan.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <CardTitle className="text-xl leading-tight">{plan.name}</CardTitle>
+                  <CardTitle className="text-lg sm:text-xl leading-tight">{plan.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="mb-6">
-                    <span className="text-3xl font-bold">
+                    <span className="text-2xl sm:text-3xl font-bold">
                       {isAnnual ? plan.priceAnnual : plan.priceMonthly}
                     </span>
                     <span className="text-muted-foreground text-sm ml-1">
