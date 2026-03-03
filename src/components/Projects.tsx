@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ExternalLink, Globe, Code2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { ExternalLink, Globe, Code2, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -14,12 +14,27 @@ const designImages = [
   { src: '/lovable-uploads/design/plan-travail-18-5.jpg', title: 'Keys Voyages - Visa USA' },
   { src: '/lovable-uploads/design/plan-travail-18.jpg', title: 'Keys Voyages - Visa France' },
   { src: '/lovable-uploads/design/plan-travail-19.jpg', title: 'Keys Voyages - Visa Travail' },
+  { src: '/lovable-uploads/design/plan-travail-27.jpg', title: 'Keys Voyages - Saint Valentin' },
+  { src: '/lovable-uploads/design/atelier-premarital.jpg', title: 'Dame Hortys - Atelier Prémarital' },
+  { src: '/lovable-uploads/design/affiche-nounou.jpg', title: 'Servir La Famille - Recrutement' },
+  { src: '/lovable-uploads/design/affiche-saint-valentin.jpg', title: 'Dame Hortys - Saint Valentin' },
+  { src: '/lovable-uploads/design/bootcamp-couple.jpg', title: 'Bootcamp Spécial Couple 2026' },
+  { src: '/lovable-uploads/design/entrepreneuriat.jpg', title: 'Entrepreneuriat & Liberté Financière' },
+  { src: '/lovable-uploads/design/formation-couple.jpg', title: 'Formation Spécial Couple' },
+  { src: '/lovable-uploads/design/bootcamp-celibataire.jpg', title: 'Bootcamp Célibataire à Devenir Épouse' },
+  { src: '/lovable-uploads/design/plan-travail-1.jpg', title: 'Dame Hortys - Promo Relations' },
+  { src: '/lovable-uploads/design/plan-travail-2.jpg', title: 'Dame Hortys - Annonces Matrimoniales' },
 ];
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('Tous');
-  const [carouselIndex, setCarouselIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
   const projects = [
     {
@@ -86,30 +101,77 @@ const Projects = () => {
 
   const isDesignGraphique = activeFilter === 'Design Graphique';
 
-  const nextSlide = () => {
-    setCarouselIndex((prev) => (prev + 1) % designImages.length);
-  };
+  // Auto-scroll
+  const startAutoScroll = useCallback(() => {
+    if (autoScrollRef.current) clearInterval(autoScrollRef.current);
+    autoScrollRef.current = setInterval(() => {
+      if (scrollRef.current && !isDragging) {
+        const { scrollLeft: sl, scrollWidth, clientWidth } = scrollRef.current;
+        if (sl + clientWidth >= scrollWidth - 10) {
+          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: 280, behavior: 'smooth' });
+        }
+      }
+    }, 3000);
+  }, [isDragging]);
 
-  const prevSlide = () => {
-    setCarouselIndex((prev) => (prev - 1 + designImages.length) % designImages.length);
-  };
-
-  // Get visible images for grid (3 at a time on desktop, 1 on mobile)
-  const getVisibleRange = () => {
-    const images = [];
-    for (let i = 0; i < 3; i++) {
-      images.push(designImages[(carouselIndex + i) % designImages.length]);
+  useEffect(() => {
+    if (isDesignGraphique) {
+      startAutoScroll();
     }
-    return images;
+    return () => {
+      if (autoScrollRef.current) clearInterval(autoScrollRef.current);
+    };
+  }, [isDesignGraphique, startAutoScroll]);
+
+  // Mouse drag
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0));
+    setScrollLeft(scrollRef.current?.scrollLeft || 0);
+    if (autoScrollRef.current) clearInterval(autoScrollRef.current);
+  };
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
+    const walk = (x - startX) * 1.5;
+    if (scrollRef.current) scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    startAutoScroll();
+  };
+
+  // Scroll buttons
+  const scrollByAmount = (dir: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: dir * 300, behavior: 'smooth' });
+    }
+  };
+
+  // Lightbox navigation
+  const openLightbox = (src: string) => {
+    const idx = designImages.findIndex(i => i.src === src);
+    setLightboxIndex(idx >= 0 ? idx : 0);
+    setSelectedImage(src);
+  };
+  const lightboxPrev = () => {
+    const newIdx = (lightboxIndex - 1 + designImages.length) % designImages.length;
+    setLightboxIndex(newIdx);
+    setSelectedImage(designImages[newIdx].src);
+  };
+  const lightboxNext = () => {
+    const newIdx = (lightboxIndex + 1) % designImages.length;
+    setLightboxIndex(newIdx);
+    setSelectedImage(designImages[newIdx].src);
   };
 
   return (
     <section 
       id="projects" 
       className="py-12 md:py-16 relative overflow-hidden section-projects" 
-      data-aos="fade-up" 
-      data-aos-duration="800"
-      data-aos-once="true"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-48 md:w-72 h-48 md:h-72 bg-primary/10 rounded-full blur-3xl"></div>
@@ -117,7 +179,7 @@ const Projects = () => {
       </div>
       
       <div className="mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-[1600px] relative z-10">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 rellax" data-rellax-speed="1">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
           <span className="text-gradient">Projets Réalisés</span>
         </h2>
         <p className="text-center text-sm md:text-base text-muted-foreground mb-8 md:mb-10 max-w-3xl mx-auto px-2">
@@ -131,7 +193,7 @@ const Projects = () => {
             <Button
               key={filter}
               variant={activeFilter === filter ? "default" : "outline"}
-              onClick={() => { setActiveFilter(filter); setCarouselIndex(0); }}
+              onClick={() => { setActiveFilter(filter); }}
               size="sm"
               className={`flex-shrink-0 transition-all duration-300 ${
                 activeFilter === filter
@@ -153,65 +215,61 @@ const Projects = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
             >
-              {/* Carousel */}
+              {/* Carousel with horizontal scroll */}
               <div className="relative">
-                {/* Navigation buttons */}
-                <div className="flex items-center justify-between mb-4">
-                  <p className="text-sm text-muted-foreground">
-                    {carouselIndex + 1} / {designImages.length}
-                  </p>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="icon" onClick={prevSlide} className="h-9 w-9 rounded-full">
-                      <ChevronLeft className="h-4 w-4" />
-                    </Button>
-                    <Button variant="outline" size="icon" onClick={nextSlide} className="h-9 w-9 rounded-full">
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
+                {/* Nav arrows */}
+                <button
+                  onClick={() => scrollByAmount(-1)}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex"
+                  aria-label="Précédent"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={() => scrollByAmount(1)}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex"
+                  aria-label="Suivant"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
 
-                {/* Images grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  <AnimatePresence mode="wait">
-                    {getVisibleRange().map((image, idx) => (
-                      <motion.div
-                        key={`${carouselIndex}-${idx}`}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.3, delay: idx * 0.05 }}
-                        className="glass-card overflow-hidden group hover-lift cursor-pointer"
-                        onClick={() => setSelectedImage(image.src)}
-                      >
-                        <div className="aspect-square overflow-hidden">
-                          <img 
-                            src={image.src} 
-                            alt={image.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div className="p-3 md:p-4">
-                          <p className="text-sm font-medium text-foreground truncate">{image.title}</p>
-                          <p className="text-xs text-muted-foreground mt-1">Design Graphique</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </AnimatePresence>
-                </div>
-
-                {/* Dots */}
-                <div className="flex justify-center gap-1.5 mt-6">
-                  {designImages.map((_, idx) => (
-                    <button
+                {/* Scrollable container */}
+                <div
+                  ref={scrollRef}
+                  className="flex gap-4 overflow-x-auto scrollbar-hide px-2 sm:px-8 pb-4 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
+                  style={{ WebkitOverflowScrolling: 'touch' }}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                >
+                  {designImages.map((image, idx) => (
+                    <div
                       key={idx}
-                      onClick={() => setCarouselIndex(idx)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        idx === carouselIndex ? 'bg-primary w-6' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                      }`}
-                    />
+                      className="flex-shrink-0 w-[260px] sm:w-[280px] md:w-[300px] lg:w-[320px] snap-center rounded-xl overflow-hidden bg-card/50 border border-border/30 cursor-pointer transition-transform duration-300"
+                      onClick={() => !isDragging && openLightbox(image.src)}
+                    >
+                      <div className="aspect-square overflow-hidden">
+                        <img 
+                          src={image.src} 
+                          alt={image.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          draggable={false}
+                        />
+                      </div>
+                      <div className="p-3">
+                        <p className="text-sm font-medium text-foreground truncate">{image.title}</p>
+                        <p className="text-xs text-muted-foreground mt-1">Design Graphique</p>
+                      </div>
+                    </div>
                   ))}
                 </div>
+
+                {/* Counter */}
+                <p className="text-center text-xs text-muted-foreground mt-3">
+                  {designImages.length} créations • Glissez pour explorer
+                </p>
               </div>
 
               {/* Lightbox */}
@@ -221,18 +279,41 @@ const Projects = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+                    className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
                     onClick={() => setSelectedImage(null)}
                   >
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
+                      className="absolute top-4 right-4 text-white/70 hover:text-white z-50 p-2"
+                    >
+                      <X className="h-6 w-6" />
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); lightboxPrev(); }}
+                      className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"
+                    >
+                      <ChevronLeft className="h-6 w-6" />
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); lightboxNext(); }}
+                      className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"
+                    >
+                      <ChevronRight className="h-6 w-6" />
+                    </button>
                     <motion.img
-                      initial={{ scale: 0.8 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0.8 }}
+                      key={selectedImage}
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.8, opacity: 0 }}
                       src={selectedImage}
                       alt="Design en grand"
-                      className="max-w-full max-h-[90vh] object-contain rounded-lg"
+                      className="max-w-full max-h-[85vh] object-contain rounded-lg"
                       onClick={(e) => e.stopPropagation()}
+                      draggable={false}
                     />
+                    <p className="absolute bottom-6 text-white/60 text-sm">
+                      {lightboxIndex + 1} / {designImages.length} — {designImages[lightboxIndex]?.title}
+                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
