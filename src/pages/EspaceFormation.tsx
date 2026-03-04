@@ -86,16 +86,18 @@ const EspaceFormation = () => {
   return (
     <TooltipProvider delayDuration={0}>
       <div className="min-h-screen bg-background flex relative overflow-hidden">
-        {/* "Bientôt disponible" diagonal banner */}
-        <div className="fixed top-0 right-0 z-[60] pointer-events-none">
-          <div className="absolute top-[40px] right-[-80px] w-[320px] text-center rotate-45 py-2 bg-primary shadow-lg shadow-primary/40 text-primary-foreground text-sm font-bold tracking-wider"
+        {/* "Bientôt disponible" full overlay banner */}
+        <div className="fixed inset-0 z-[60] pointer-events-none flex items-center justify-center">
+          <div 
+            className="w-[150vw] text-center py-4 sm:py-5 -rotate-12 text-white text-lg sm:text-2xl md:text-3xl font-black tracking-widest uppercase shadow-2xl"
             style={{
-              background: 'linear-gradient(90deg, hsl(271 91% 55%), hsl(271 91% 65%), hsl(271 91% 55%))',
+              background: 'linear-gradient(90deg, hsl(0 85% 45%), hsl(0 90% 55%), hsl(0 85% 45%))',
               backgroundSize: '200% 100%',
               animation: 'shimmer-banner 3s ease-in-out infinite',
+              boxShadow: '0 0 60px rgba(220, 38, 38, 0.5), 0 0 120px rgba(220, 38, 38, 0.2)',
             }}
           >
-            ✨ Bientôt disponible
+            🚧 Bientôt disponible 🚧
           </div>
         </div>
 

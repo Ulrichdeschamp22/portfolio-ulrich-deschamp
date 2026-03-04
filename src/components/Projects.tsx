@@ -107,6 +107,7 @@ const Projects = () => {
   };
 
   const isDesignGraphique = activeFilter === 'Design Graphique';
+  const showDesignCarousel = activeFilter === 'Tous' || isDesignGraphique;
 
   // Auto-scroll
   const startAutoScroll = useCallback(() => {
@@ -124,13 +125,13 @@ const Projects = () => {
   }, [isDragging]);
 
   useEffect(() => {
-    if (isDesignGraphique) {
+    if (showDesignCarousel) {
       startAutoScroll();
     }
     return () => {
       if (autoScrollRef.current) clearInterval(autoScrollRef.current);
     };
-  }, [isDesignGraphique, startAutoScroll]);
+  }, [showDesignCarousel, startAutoScroll]);
 
   // Mouse drag
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -332,71 +333,120 @@ const Projects = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
             >
-              {filteredProjects.length === 0 ? (
-                <div className="col-span-full text-center py-12">
-                  <p className="text-muted-foreground text-sm">Aucun projet dans cette catégorie pour le moment.</p>
-                </div>
-              ) : (
-                filteredProjects.map((project) => (
-                  <article 
-                    key={project.title}
-                    className="glass-card overflow-hidden group hover-lift"
-                    itemScope 
-                    itemType="https://schema.org/CreativeWork"
-                  >
-                    <div className="p-4 md:p-6">
-                      <div className="flex items-start justify-between mb-3 md:mb-4">
-                        <div className="flex items-center space-x-2">
-                          <Globe className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                          <span className={`text-xs md:text-sm font-medium ${getTypeColor(project.type)}`} itemProp="category">
-                            {project.type}
-                          </span>
+              {/* Project cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+                {filteredProjects.length === 0 ? (
+                  <div className="col-span-full text-center py-12">
+                    <p className="text-muted-foreground text-sm">Aucun projet dans cette catégorie pour le moment.</p>
+                  </div>
+                ) : (
+                  filteredProjects.map((project) => (
+                    <article 
+                      key={project.title}
+                      className="glass-card overflow-hidden group hover-lift"
+                      itemScope 
+                      itemType="https://schema.org/CreativeWork"
+                    >
+                      <div className="p-4 md:p-6">
+                        <div className="flex items-start justify-between mb-3 md:mb-4">
+                          <div className="flex items-center space-x-2">
+                            <Globe className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                            <span className={`text-xs md:text-sm font-medium ${getTypeColor(project.type)}`} itemProp="category">
+                              {project.type}
+                            </span>
+                          </div>
+                          <Code2 className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:rotate-12 transition-transform" />
                         </div>
-                        <Code2 className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:rotate-12 transition-transform" />
-                      </div>
-                      
-                      <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors" itemProp="name">
-                        {project.title}
-                      </h3>
-                      
-                      <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2" itemProp="description">
-                        {project.description}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6" itemProp="keywords">
-                        {project.tags.map((tag, tagIndex) => (
-                          <span 
-                            key={tagIndex}
-                            className="px-2 py-0.5 md:py-1 text-[10px] md:text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      
-                      <Button 
-                        variant="outline" 
-                        className="w-full group-hover:bg-primary/10 transition-all duration-300 text-xs md:text-sm"
-                        asChild
-                      >
-                        <a 
-                          href={project.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center"
-                          aria-label={`Voir le projet ${project.title}`}
+                        
+                        <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors" itemProp="name">
+                          {project.title}
+                        </h3>
+                        
+                        <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2" itemProp="description">
+                          {project.description}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6" itemProp="keywords">
+                          {project.tags.map((tag, tagIndex) => (
+                            <span 
+                              key={tagIndex}
+                              className="px-2 py-0.5 md:py-1 text-[10px] md:text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        <Button 
+                          variant="outline" 
+                          className="w-full group-hover:bg-primary/10 transition-all duration-300 text-xs md:text-sm"
+                          asChild
                         >
-                          Voir le projet
-                          <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </a>
-                      </Button>
-                      <link itemProp="url" href={project.url} />
-                      <meta itemProp="creator" content="Ulrich Deschamp KOSSONOU" />
+                          <a 
+                            href={project.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center"
+                            aria-label={`Voir le projet ${project.title}`}
+                          >
+                            Voir le projet
+                            <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </a>
+                        </Button>
+                        <link itemProp="url" href={project.url} />
+                        <meta itemProp="creator" content="Ulrich Deschamp KOSSONOU" />
+                      </div>
+                    </article>
+                  ))
+                )}
+              </div>
+
+              {/* Design Graphique carousel when "Tous" is active */}
+              {activeFilter === 'Tous' && (
+                <div className="mt-10">
+                  <h3 className="text-xl md:text-2xl font-bold mb-6">
+                    <span className="text-gradient">Design Graphique</span>
+                  </h3>
+                  <div className="relative">
+                    <button onClick={() => scrollByAmount(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex" aria-label="Précédent"><ChevronLeft className="h-5 w-5" /></button>
+                    <button onClick={() => scrollByAmount(1)} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex" aria-label="Suivant"><ChevronRight className="h-5 w-5" /></button>
+
+                    <div
+                      ref={scrollRef}
+                      className="flex gap-4 overflow-x-auto scrollbar-hide px-2 sm:px-8 pb-4 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
+                      style={{ WebkitOverflowScrolling: 'touch' }}
+                      onMouseDown={handleMouseDown}
+                      onMouseMove={handleMouseMove}
+                      onMouseUp={handleMouseUp}
+                      onMouseLeave={handleMouseUp}
+                    >
+                      {designImages.map((image, idx) => (
+                        <div key={idx} className="flex-shrink-0 w-[220px] sm:w-[240px] md:w-[260px] lg:w-[280px] snap-center rounded-xl overflow-hidden bg-card/50 border border-border/30 cursor-pointer" onClick={() => !isDragging && openLightbox(image.src)}>
+                          <div className="aspect-square overflow-hidden">
+                            <img src={image.src} alt={image.title} className="w-full h-full object-cover" loading="lazy" draggable={false} />
+                          </div>
+                          <div className="p-2">
+                            <p className="text-xs font-medium text-foreground truncate">{image.title}</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  </article>
-                ))
+                    <p className="text-center text-xs text-muted-foreground mt-3">{designImages.length} créations • Glissez pour explorer</p>
+                  </div>
+
+                  <AnimatePresence>
+                    {selectedImage && (
+                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
+                        <button onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }} className="absolute top-4 right-4 text-white/70 hover:text-white z-50 p-2"><X className="h-6 w-6" /></button>
+                        <button onClick={(e) => { e.stopPropagation(); lightboxPrev(); }} className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"><ChevronLeft className="h-6 w-6" /></button>
+                        <button onClick={(e) => { e.stopPropagation(); lightboxNext(); }} className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"><ChevronRight className="h-6 w-6" /></button>
+                        <motion.img key={selectedImage} initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} src={selectedImage} alt="Design en grand" className="max-w-full max-h-[85vh] object-contain rounded-lg" onClick={(e) => e.stopPropagation()} draggable={false} />
+                        <p className="absolute bottom-6 text-white/60 text-sm">{lightboxIndex + 1} / {designImages.length} — {designImages[lightboxIndex]?.title}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               )}
             </motion.div>
           )}
