@@ -24,6 +24,13 @@ const designImages = [
   { src: '/lovable-uploads/design/bootcamp-celibataire.jpg', title: 'Bootcamp Célibataire à Devenir Épouse' },
   { src: '/lovable-uploads/design/plan-travail-1.jpg', title: 'Dame Hortys - Promo Relations' },
   { src: '/lovable-uploads/design/plan-travail-2.jpg', title: 'Dame Hortys - Annonces Matrimoniales' },
+  { src: '/lovable-uploads/design/investissement-immobilier-1.jpg', title: 'Certificat Professionnel - Investissement Immobilier' },
+  { src: '/lovable-uploads/design/investissement-immobilier-2.jpg', title: 'Investissement Immobilier - Février 2026' },
+  { src: '/lovable-uploads/design/affiche-temoignage.jpg', title: 'Dame Hortys - Témoignage' },
+  { src: '/lovable-uploads/design/investissement-immobilier-3.jpg', title: 'Investissement Immobilier - Mars 2026' },
+  { src: '/lovable-uploads/design/amour-immobilier.jpg', title: 'Amour & Immobilier - Mars 2026' },
+  { src: '/lovable-uploads/design/couple-vision-360.jpg', title: 'Couple Vision 360' },
+  { src: '/lovable-uploads/design/bootcamp-celibataire-2.jpg', title: 'BootCamp Célibataire - Époux à Devenir' },
 ];
 
 const Projects = () => {
