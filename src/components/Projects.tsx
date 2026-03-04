@@ -107,6 +107,7 @@ const Projects = () => {
   };
 
   const isDesignGraphique = activeFilter === 'Design Graphique';
+  const showDesignCarousel = activeFilter === 'Tous' || isDesignGraphique;
 
   // Auto-scroll
   const startAutoScroll = useCallback(() => {
@@ -124,13 +125,13 @@ const Projects = () => {
   }, [isDragging]);
 
   useEffect(() => {
-    if (isDesignGraphique) {
+    if (showDesignCarousel) {
       startAutoScroll();
     }
     return () => {
       if (autoScrollRef.current) clearInterval(autoScrollRef.current);
     };
-  }, [isDesignGraphique, startAutoScroll]);
+  }, [showDesignCarousel, startAutoScroll]);
 
   // Mouse drag
   const handleMouseDown = (e: React.MouseEvent) => {

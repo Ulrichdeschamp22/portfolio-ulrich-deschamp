@@ -28,7 +28,7 @@ const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 px-3 sm:px-6 md:px-10 lg:px-14 xl:px-16"
       aria-label="Section principale - Expert Digital Abidjan"
     >
       {/* Parallax background */}
