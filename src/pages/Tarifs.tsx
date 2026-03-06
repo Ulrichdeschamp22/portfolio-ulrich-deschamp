@@ -88,6 +88,10 @@ const plans = [
 const Tarifs = () => {
   const [isAnnual, setIsAnnual] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Animated mesh background */}
