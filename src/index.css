@@ -150,33 +150,30 @@ All colors MUST be HSL.
     box-shadow: 0 8px 32px 0 hsl(240 10% 50% / 0.08);
   }
 
-  /* Light mode vivid section backgrounds — dark mode untouched */
-  .light #hero        { background: linear-gradient(135deg, #F0EAFF 0%, #DBEAFE 100%); }
-  .light #about       { background: linear-gradient(135deg, #EEF2FF 0%, #F5F0FF 100%); }
-  .light #services    { background: linear-gradient(135deg, #F8FAFF 0%, #F0EAFF 100%); }
-  .light #skills      { background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%); }
-  .light .section-projects { background: linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 100%); }
-  .light #shop        { background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #EC4899 100%); }
-  .light #faq         { background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%); }
-  .light #contact     { background: linear-gradient(135deg, #F0FDFA 0%, #EFF6FF 100%); }
-
-  /* Light mode skill sub-section backgrounds */
-  .light .skill-section-devweb      { background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%) !important; }
-  .light .skill-section-ia          { background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%) !important; }
-  .light .skill-section-solutions   { background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%) !important; }
-  .light .skill-section-marketing   { background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%) !important; }
-  .light .skill-section-design      { background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%) !important; }
-  .light .skill-section-photo       { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%) !important; }
-
-  /* Light mode: override text colors for dark-bg sections */
-  .light #skills > div { color: white; }
-  .light #skills .text-muted-foreground { color: rgba(255,255,255,0.8); }
-  .light #skills .text-gradient { background-image: linear-gradient(135deg, #fff, #E0D4FF); -webkit-background-clip: text; }
-  .light #skills .text-primary { color: #E0D4FF; }
-  .light #shop > div { color: white; }
-  .light #shop .text-muted-foreground { color: rgba(255,255,255,0.85); }
-  .light #shop .glass-card { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); }
-  .light #shop .text-gradient { background-image: linear-gradient(135deg, #fff, #FCE7F3); -webkit-background-clip: text; }
+  /* Light mode vivid section backgrounds */
+  .light #about {
+    background: linear-gradient(135deg, hsl(271 80% 97%), hsl(217 80% 97%));
+  }
+  
+  .light #skills {
+    background: hsl(240 20% 98%);
+  }
+  
+  .light .section-projects {
+    background: linear-gradient(135deg, hsl(180 60% 96%), hsl(217 70% 97%));
+  }
+  
+  .light #shop {
+    background: linear-gradient(135deg, hsl(320 60% 97%), hsl(271 60% 97%));
+  }
+  
+  .light #faq {
+    background: linear-gradient(135deg, hsl(40 70% 97%), hsl(20 60% 97%));
+  }
+  
+  .light #contact {
+    background: linear-gradient(135deg, hsl(150 50% 97%), hsl(180 50% 97%));
+  }
 
   /* Navigation glass effect */
   .nav-glass-scrolled {
@@ -455,5 +452,32 @@ All colors MUST be HSL.
     50% { background-position: 100% 50%; }
   }
 
-  /* Light mode gradients are now defined above in the main light mode section */
+  /* Light mode pure gradient section backgrounds */
+  .light #hero {
+    background: linear-gradient(180deg, hsl(0 0% 100%), hsl(271 60% 97%));
+  }
+
+  .light #about {
+    background: linear-gradient(135deg, hsl(280 100% 96%), hsl(250 100% 97%), hsl(220 100% 96%));
+  }
+  
+  .light #skills {
+    background: linear-gradient(135deg, hsl(200 100% 96%), hsl(180 100% 97%), hsl(160 100% 96%));
+  }
+  
+  .light .section-projects {
+    background: linear-gradient(135deg, hsl(140 80% 96%), hsl(170 90% 96%), hsl(200 80% 97%));
+  }
+  
+  .light #shop {
+    background: linear-gradient(135deg, hsl(320 90% 96%), hsl(340 80% 97%), hsl(280 80% 96%));
+  }
+  
+  .light #faq {
+    background: linear-gradient(135deg, hsl(40 100% 96%), hsl(30 90% 97%), hsl(15 80% 96%));
+  }
+  
+  .light #contact {
+    background: linear-gradient(135deg, hsl(150 80% 96%), hsl(170 70% 97%), hsl(200 70% 96%));
+  }
 }

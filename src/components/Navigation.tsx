@@ -20,8 +20,8 @@ const Navigation = () => {
 
   const navItems = [
     { label: 'Accueil', href: isHomePage ? '#hero' : '/', isExternal: false },
+    { label: 'Espace Formation', href: '/espace-formation', isExternal: false },
     { label: 'À propos', href: isHomePage ? '#about' : '/#about', isExternal: false },
-    { label: 'Services', href: isHomePage ? '#services' : '/#services', isExternal: false },
     { label: 'Tarifs', href: '/tarifs', isExternal: false },
   ];
 
@@ -135,7 +135,7 @@ const Navigation = () => {
                 Se connecter
               </Button>
             </Link>
-            <Link to="/tarifs">
+            <Link to="/espace-formation">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   className="font-semibold px-6 py-2 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
@@ -143,7 +143,7 @@ const Navigation = () => {
                     boxShadow: '0 0 20px hsl(271 91% 65% / 0.4)'
                   }}
                 >
-                  Nos Tarifs
+                  Découvrir
                 </Button>
               </motion.div>
             </Link>
@@ -151,12 +151,12 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            <Link to="/tarifs">
+            <Link to="/espace-formation">
               <Button 
                 size="sm"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-1.5 rounded-full text-xs sm:text-sm"
               >
-                Nos Tarifs
+                Découvrir
               </Button>
             </Link>
             

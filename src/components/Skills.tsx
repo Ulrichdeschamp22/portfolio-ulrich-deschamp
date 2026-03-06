@@ -142,11 +142,10 @@ const Skills = () => {
         <div className="space-y-0">
           {skillCategories.map((category, index) => {
             const universe = universeColors[index];
-            const skillSectionClasses = ['skill-section-devweb', 'skill-section-ia', 'skill-section-solutions', 'skill-section-marketing', 'skill-section-design', 'skill-section-photo'];
             return (
               <div 
                 key={index}
-                className={`${skillSectionClasses[index]} relative py-6 md:py-8 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
+                className={`relative py-6 md:py-8 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
               >
                 {/* Universe glow effect */}
                 <div className={`absolute inset-0 ${universe.glow} opacity-5 blur-3xl pointer-events-none`} />
