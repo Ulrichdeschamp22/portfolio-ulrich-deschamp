@@ -46,7 +46,7 @@ const App = () => {
               <Route path="/auth" element={<Auth />} />
               <Route path="/administration" element={<Administration />} />
               <Route path="/tarifs" element={<Tarifs />} />
-              <Route path="/espace-formation" element={<EspaceFormation />} />
+              {/* <Route path="/espace-formation" element={<EspaceFormation />} /> */}
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
