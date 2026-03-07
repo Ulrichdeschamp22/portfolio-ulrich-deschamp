@@ -1,8 +1,10 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Skill3DLaptop from './skills/Skill3DLaptop';
-
 import Skill3DSmartphone from './skills/Skill3DSmartphone';
+import Skill3DVote from './skills/Skill3DVote';
+import Skill3DEcommerce from './skills/Skill3DEcommerce';
+import Skill3DTunnel from './skills/Skill3DTunnel';
 import Skill3DMegaphone from './skills/Skill3DMegaphone';
 import Skill3DTablet from './skills/Skill3DTablet';
 import Skill3DCamera from './skills/Skill3DCamera';
@@ -44,6 +46,54 @@ const Skills = () => {
       ],
       Visual: Skill3DSmartphone,
       textLeft: true
+    },
+    {
+      title: "Plateformes de Vote en Ligne",
+      subtitle: "Création de plateformes de vote et awards sécurisées",
+      skills: [
+        "Plateformes de vote en ligne sécurisées",
+        "Systèmes d'awards & cérémonies",
+        "Vote en temps réel avec résultats live",
+        "Gestion multi-candidats & catégories",
+        "Intégration paiement mobile (Orange Money, MTN, Wave)",
+        "Tableaux de bord administrateur",
+        "Anti-fraude & vérification des votes",
+        "Statistiques & reporting avancés"
+      ],
+      Visual: Skill3DVote,
+      textLeft: false
+    },
+    {
+      title: "Boutiques en Ligne",
+      subtitle: "Création de boutiques e-commerce performantes et rentables",
+      skills: [
+        "E-commerce sur mesure clé en main",
+        "Catalogue produits & gestion de stock",
+        "Paiement sécurisé multi-devises",
+        "Intégration livraison & logistique",
+        "Expérience d'achat optimisée mobile",
+        "Tableau de bord vendeur & analytics",
+        "Promotions, coupons & fidélisation",
+        "SEO e-commerce & visibilité"
+      ],
+      Visual: Skill3DEcommerce,
+      textLeft: true
+    },
+    {
+      title: "Tunnels de Vente",
+      subtitle: "Création de tunnels de vente automatisés à haute conversion",
+      skills: [
+        "Pages de capture & landing pages",
+        "Séquences email automatisées",
+        "Pages de vente à haute conversion",
+        "Upsell, downsell & order bump",
+        "Intégration CRM & outils marketing",
+        "A/B testing & optimisation continue",
+        "Webinaires & formations en ligne",
+        "Suivi analytics & ROI"
+      ],
+      Visual: Skill3DTunnel,
+      textLeft: false
     },
     {
       title: "Marketing & Branding",
@@ -93,9 +143,11 @@ const Skills = () => {
   const universeColors = [
     { from: 'from-violet-950/30', via: 'via-purple-900/20', to: 'to-background', glow: 'bg-violet-500/20' },
     { from: 'from-pink-950/30', via: 'via-rose-900/20', to: 'to-background', glow: 'bg-pink-500/20' },
+    { from: 'from-indigo-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-indigo-500/20' },
+    { from: 'from-emerald-950/30', via: 'via-green-900/20', to: 'to-background', glow: 'bg-emerald-500/20' },
+    { from: 'from-amber-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-amber-500/20' },
     { from: 'from-blue-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-blue-500/20' },
     { from: 'from-orange-950/30', via: 'via-amber-900/20', to: 'to-background', glow: 'bg-orange-500/20' },
-    { from: 'from-emerald-950/30', via: 'via-teal-900/20', to: 'to-background', glow: 'bg-emerald-500/20' },
     { from: 'from-rose-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-rose-500/20' },
   ];
 
