@@ -143,9 +143,11 @@ const Skills = () => {
   const universeColors = [
     { from: 'from-violet-950/30', via: 'via-purple-900/20', to: 'to-background', glow: 'bg-violet-500/20' },
     { from: 'from-pink-950/30', via: 'via-rose-900/20', to: 'to-background', glow: 'bg-pink-500/20' },
+    { from: 'from-indigo-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-indigo-500/20' },
+    { from: 'from-emerald-950/30', via: 'via-green-900/20', to: 'to-background', glow: 'bg-emerald-500/20' },
+    { from: 'from-amber-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-amber-500/20' },
     { from: 'from-blue-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-blue-500/20' },
     { from: 'from-orange-950/30', via: 'via-amber-900/20', to: 'to-background', glow: 'bg-orange-500/20' },
-    { from: 'from-emerald-950/30', via: 'via-teal-900/20', to: 'to-background', glow: 'bg-emerald-500/20' },
     { from: 'from-rose-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-rose-500/20' },
   ];
 
