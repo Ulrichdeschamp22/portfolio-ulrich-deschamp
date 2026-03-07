@@ -48,6 +48,54 @@ const Skills = () => {
       textLeft: true
     },
     {
+      title: "Plateformes de Vote en Ligne",
+      subtitle: "Création de plateformes de vote et awards sécurisées",
+      skills: [
+        "Plateformes de vote en ligne sécurisées",
+        "Systèmes d'awards & cérémonies",
+        "Vote en temps réel avec résultats live",
+        "Gestion multi-candidats & catégories",
+        "Intégration paiement mobile (Orange Money, MTN, Wave)",
+        "Tableaux de bord administrateur",
+        "Anti-fraude & vérification des votes",
+        "Statistiques & reporting avancés"
+      ],
+      Visual: Skill3DVote,
+      textLeft: false
+    },
+    {
+      title: "Boutiques en Ligne",
+      subtitle: "Création de boutiques e-commerce performantes et rentables",
+      skills: [
+        "E-commerce sur mesure clé en main",
+        "Catalogue produits & gestion de stock",
+        "Paiement sécurisé multi-devises",
+        "Intégration livraison & logistique",
+        "Expérience d'achat optimisée mobile",
+        "Tableau de bord vendeur & analytics",
+        "Promotions, coupons & fidélisation",
+        "SEO e-commerce & visibilité"
+      ],
+      Visual: Skill3DEcommerce,
+      textLeft: true
+    },
+    {
+      title: "Tunnels de Vente",
+      subtitle: "Création de tunnels de vente automatisés à haute conversion",
+      skills: [
+        "Pages de capture & landing pages",
+        "Séquences email automatisées",
+        "Pages de vente à haute conversion",
+        "Upsell, downsell & order bump",
+        "Intégration CRM & outils marketing",
+        "A/B testing & optimisation continue",
+        "Webinaires & formations en ligne",
+        "Suivi analytics & ROI"
+      ],
+      Visual: Skill3DTunnel,
+      textLeft: false
+    },
+    {
       title: "Marketing & Branding",
       subtitle: "Stratégie digitale avancée - Marketing digital premium",
       skills: [
