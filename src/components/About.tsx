@@ -1,4 +1,4 @@
-import { GraduationCap, Award, Briefcase, Target, Bot, Sparkles } from 'lucide-react';
+import { GraduationCap, Award, Briefcase, Target } from 'lucide-react';
 
 const About = () => {
   const highlights = [
