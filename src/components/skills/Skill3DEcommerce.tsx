@@ -54,14 +54,19 @@ const Skill3DEcommerce = () => {
               {/* Product grid */}
               <div className="grid grid-cols-3 gap-1">
                 {[
-                  { color: 'from-emerald-500/20 to-emerald-600/10', price: '€19' },
-                  { color: 'from-teal-500/20 to-teal-600/10', price: '€35' },
-                  { color: 'from-green-500/20 to-green-600/10', price: '€55' },
+                  { emoji: '👟', name: 'Sneakers', price: '€59', color: 'from-emerald-500/20 to-emerald-600/10' },
+                  { emoji: '👜', name: 'Sac cuir', price: '€89', color: 'from-teal-500/20 to-teal-600/10' },
+                  { emoji: '⌚', name: 'Montre', price: '€129', color: 'from-green-500/20 to-green-600/10' },
                 ].map((item, i) => (
                   <div key={i} className={`rounded bg-gradient-to-b ${item.color} p-0.5`}>
-                    <div className="w-full h-8 bg-white/5 rounded mb-0.5" />
-                    <div className="text-[5px] text-foreground font-medium">Produit</div>
-                    <div className="text-[5px] text-emerald-400 font-bold">{item.price}</div>
+                    <div className="w-full h-8 bg-white/5 rounded mb-0.5 flex items-center justify-center text-lg">
+                      {item.emoji}
+                    </div>
+                    <div className="text-[5px] text-foreground font-medium truncate">{item.name}</div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-[5px] text-emerald-400 font-bold">{item.price}</div>
+                      <div className="text-[4px] text-yellow-400">★★★★</div>
+                    </div>
                   </div>
                 ))}
               </div>

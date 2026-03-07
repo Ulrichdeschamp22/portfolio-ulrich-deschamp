@@ -48,19 +48,28 @@ const Skill3DVote = () => {
               {/* Candidate cards */}
               <div className="grid grid-cols-3 gap-1">
                 <div className="rounded bg-gradient-to-b from-indigo-500/20 to-indigo-500/10 p-1 text-center">
-                  <div className="w-5 h-5 mx-auto rounded-full bg-indigo-400/30 mb-0.5" />
-                  <div className="text-[5px] font-semibold text-foreground">Candidat 1</div>
-                  <div className="text-[5px] text-indigo-400 font-bold">34%</div>
+                  <div className="w-5 h-5 mx-auto rounded-full bg-indigo-400/30 mb-0.5 flex items-center justify-center text-[8px]">👨</div>
+                  <div className="text-[5px] font-semibold text-foreground">Kouamé A.</div>
+                  <div className="w-full h-1 bg-muted rounded-full mt-0.5 overflow-hidden">
+                    <div className="w-[34%] h-full bg-indigo-500 rounded-full" />
+                  </div>
+                  <div className="text-[5px] text-indigo-400 font-bold">4,250 votes</div>
                 </div>
                 <div className="rounded bg-gradient-to-b from-cyan-500/20 to-cyan-500/10 p-1 text-center border border-cyan-400/30">
-                  <div className="w-5 h-5 mx-auto rounded-full bg-cyan-400/30 mb-0.5" />
-                  <div className="text-[5px] font-semibold text-foreground">Candidat 2</div>
-                  <div className="text-[5px] text-cyan-400 font-bold">42%</div>
+                  <div className="w-5 h-5 mx-auto rounded-full bg-cyan-400/30 mb-0.5 flex items-center justify-center text-[8px]">👩</div>
+                  <div className="text-[5px] font-semibold text-foreground">Adjoua M.</div>
+                  <div className="w-full h-1 bg-muted rounded-full mt-0.5 overflow-hidden">
+                    <div className="w-[52%] h-full bg-cyan-500 rounded-full" />
+                  </div>
+                  <div className="text-[5px] text-cyan-400 font-bold">6,520 votes</div>
                 </div>
                 <div className="rounded bg-gradient-to-b from-purple-500/20 to-purple-500/10 p-1 text-center">
-                  <div className="w-5 h-5 mx-auto rounded-full bg-purple-400/30 mb-0.5" />
-                  <div className="text-[5px] font-semibold text-foreground">Candidat 3</div>
-                  <div className="text-[5px] text-purple-400 font-bold">24%</div>
+                  <div className="w-5 h-5 mx-auto rounded-full bg-purple-400/30 mb-0.5 flex items-center justify-center text-[8px]">👨</div>
+                  <div className="text-[5px] font-semibold text-foreground">Traoré K.</div>
+                  <div className="w-full h-1 bg-muted rounded-full mt-0.5 overflow-hidden">
+                    <div className="w-[14%] h-full bg-purple-500 rounded-full" />
+                  </div>
+                  <div className="text-[5px] text-purple-400 font-bold">1,730 votes</div>
                 </div>
               </div>
 
