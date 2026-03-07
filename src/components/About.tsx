@@ -1,4 +1,4 @@
-import { GraduationCap, Award, Briefcase, Target, Bot, Sparkles } from 'lucide-react';
+import { GraduationCap, Award, Briefcase, Target } from 'lucide-react';
 
 const About = () => {
   const highlights = [
@@ -22,17 +22,8 @@ const About = () => {
       title: "Mission",
       description: "Accompagner les entreprises dans la transformation digitale avancée avec des solutions digitales haut de gamme"
     },
-    {
-      icon: Bot,
-      title: "Automatisation & IA",
-      description: "Solutions d'automatisation intelligente et intégration IA pour optimiser vos processus et gagner en productivité"
-    },
-    {
-      icon: Sparkles,
-      title: "Vibe Coder",
-      description: "Développement de solutions digitales modernes, créatives et performantes, pensées pour l'expérience utilisateur et la scalabilité"
-    }
   ];
+
 
   return (
     <section 

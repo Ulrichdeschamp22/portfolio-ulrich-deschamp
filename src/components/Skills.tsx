@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Skill3DLaptop from './skills/Skill3DLaptop';
-import Skill3DBrain from './skills/Skill3DBrain';
+
 import Skill3DSmartphone from './skills/Skill3DSmartphone';
 import Skill3DMegaphone from './skills/Skill3DMegaphone';
 import Skill3DTablet from './skills/Skill3DTablet';
@@ -30,20 +30,6 @@ const Skills = () => {
       ],
       Visual: Skill3DLaptop,
       textLeft: true
-    },
-    {
-      title: "Automatisation & IA",
-      subtitle: "Expert automatisation digitale - Solutions IA pour entreprises",
-      skills: [
-        "Automatisation intelligente des processus",
-        "Intégration solutions IA",
-        "Optimisation process et gain de temps",
-        "Chatbots et assistants virtuels",
-        "Machine Learning appliqué",
-        "Workflows automatisés"
-      ],
-      Visual: Skill3DBrain,
-      textLeft: false
     },
     {
       title: "Solutions Digitales & Événementiel",
