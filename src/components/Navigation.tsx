@@ -20,7 +20,7 @@ const Navigation = () => {
 
   const navItems = [
     { label: 'Accueil', href: isHomePage ? '#hero' : '/', isExternal: false },
-    { label: 'Espace Formation', href: '/espace-formation', isExternal: false },
+    
     { label: 'À propos', href: isHomePage ? '#about' : '/#about', isExternal: false },
     { label: 'Tarifs', href: '/tarifs', isExternal: false },
   ];
