@@ -1,8 +1,10 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Skill3DLaptop from './skills/Skill3DLaptop';
-
 import Skill3DSmartphone from './skills/Skill3DSmartphone';
+import Skill3DVote from './skills/Skill3DVote';
+import Skill3DEcommerce from './skills/Skill3DEcommerce';
+import Skill3DTunnel from './skills/Skill3DTunnel';
 import Skill3DMegaphone from './skills/Skill3DMegaphone';
 import Skill3DTablet from './skills/Skill3DTablet';
 import Skill3DCamera from './skills/Skill3DCamera';
