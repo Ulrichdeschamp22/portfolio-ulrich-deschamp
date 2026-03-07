@@ -32,20 +32,6 @@ const Skills = () => {
       textLeft: true
     },
     {
-      title: "Automatisation & IA",
-      subtitle: "Expert automatisation digitale - Solutions IA pour entreprises",
-      skills: [
-        "Automatisation intelligente des processus",
-        "Intégration solutions IA",
-        "Optimisation process et gain de temps",
-        "Chatbots et assistants virtuels",
-        "Machine Learning appliqué",
-        "Workflows automatisés"
-      ],
-      Visual: Skill3DBrain,
-      textLeft: false
-    },
-    {
       title: "Solutions Digitales & Événementiel",
       subtitle: "Plateformes digitales sur mesure pour entreprises",
       skills: [
