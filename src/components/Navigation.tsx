@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -65,7 +65,7 @@ const Navigation = () => {
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
-                <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-primary" />
               </motion.div>
               <span className="text-xl md:text-2xl font-bold text-gradient">
                 UD
@@ -121,44 +121,46 @@ const Navigation = () => {
           </div>
           
           {/* Right side buttons */}
-          <motion.div 
+            <motion.div 
             className="hidden lg:flex items-center gap-3"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <Link to="/auth">
-              <Button 
-                variant="ghost" 
-                className="text-foreground/80 hover:text-foreground transition-colors duration-300"
-              >
-                Se connecter
-              </Button>
-            </Link>
-            <Link to="/espace-formation">
+            <a
+              href="https://wa.me/2250710224023?text=Bonjour%20Ulrich%2C%20j%27aimerais%20discuter%20d%27un%20projet%20avec%20vous."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
-                  className="font-semibold px-6 py-2 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
+                  className="font-semibold px-6 py-2 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 gap-2"
                   style={{
                     boxShadow: '0 0 20px hsl(271 91% 65% / 0.4)'
                   }}
                 >
-                  Découvrir
+                  <MessageCircle className="w-4 h-4" />
+                  Parler d'un projet
                 </Button>
               </motion.div>
-            </Link>
+            </a>
           </motion.div>
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            <Link to="/espace-formation">
+            <a
+              href="https://wa.me/2250710224023?text=Bonjour%20Ulrich%2C%20j%27aimerais%20discuter%20d%27un%20projet%20avec%20vous."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button 
                 size="sm"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-1.5 rounded-full text-xs sm:text-sm"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-1.5 rounded-full text-xs sm:text-sm gap-1.5"
               >
-                Découvrir
+                <MessageCircle className="w-3.5 h-3.5" />
+                Parler d'un projet
               </Button>
-            </Link>
+            </a>
             
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -232,20 +234,6 @@ const Navigation = () => {
                   )}
                 </motion.li>
               ))}
-              <motion.li 
-                className="pt-2 border-t border-border/50"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <Link
-                  to="/auth"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-lg transition-all duration-300 text-sm text-foreground/80 hover:bg-primary/10 hover:text-foreground"
-                >
-                  Se connecter
-                </Link>
-              </motion.li>
             </ul>
           </motion.div>
         )}
