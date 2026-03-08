@@ -234,20 +234,6 @@ const Navigation = () => {
                   )}
                 </motion.li>
               ))}
-              <motion.li 
-                className="pt-2 border-t border-border/50"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <Link
-                  to="/auth"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-lg transition-all duration-300 text-sm text-foreground/80 hover:bg-primary/10 hover:text-foreground"
-                >
-                  Se connecter
-                </Link>
-              </motion.li>
             </ul>
           </motion.div>
         )}
