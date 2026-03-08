@@ -194,66 +194,68 @@ const Skills = () => {
                 )}
                 
                 <motion.div 
-                  className={`relative z-10 grid md:grid-cols-2 gap-6 md:gap-10 lg:gap-14 items-center max-w-[1400px] mx-auto ${
-                    category.textLeft ? '' : 'md:flex-row-reverse'
-                  }`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className={`relative z-10 grid md:grid-cols-2 gap-6 md:gap-10 lg:gap-14 items-center max-w-[1400px] mx-auto`}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.15 }}
                 >
                   {/* Text content */}
-                  <div className={`${category.textLeft ? 'md:order-1' : 'md:order-2'}`}>
-                    <motion.div
-                      initial={{ opacity: 0, x: category.textLeft ? -15 : 15 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.35, ease: "easeOut" }}
-                    >
-                      <span className="text-xs uppercase tracking-widest text-primary/60 mb-1 block">
-                        Compétence {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">
-                        {category.title}
-                      </h3>
-                      <p className="text-primary text-sm md:text-base mb-4 font-medium">
-                        {category.subtitle}
-                      </p>
-                      <ul className="space-y-2">
-                        {category.skills.map((skill, skillIndex) => (
-                          <motion.li 
-                            key={skillIndex}
-                            className="flex items-start gap-2 group"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.2, delay: skillIndex * 0.02 }}
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                            <span className="text-muted-foreground text-xs md:text-sm group-hover:text-foreground transition-colors duration-200">
-                              {skill}
-                            </span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  </div>
+                  <motion.div 
+                    className={`${category.textLeft ? 'md:order-1' : 'md:order-2'}`}
+                    variants={{
+                      hidden: { opacity: 0, x: category.textLeft ? -60 : 60 },
+                      visible: { 
+                        opacity: 1, 
+                        x: 0,
+                        transition: { 
+                          duration: 0.8, 
+                          ease: [0.22, 1, 0.36, 1],
+                          delay: 0.1
+                        }
+                      }
+                    }}
+                  >
+                    <span className="text-xs uppercase tracking-widest text-primary/60 mb-1 block">
+                      Compétence {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">
+                      {category.title}
+                    </h3>
+                    <p className="text-primary text-sm md:text-base mb-4 font-medium">
+                      {category.subtitle}
+                    </p>
+                    <ul className="space-y-2">
+                      {category.skills.map((skill, skillIndex) => (
+                        <li 
+                          key={skillIndex}
+                          className="flex items-start gap-2 group"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          <span className="text-muted-foreground text-xs md:text-sm group-hover:text-foreground transition-colors duration-200">
+                            {skill}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
                   
-                  {/* 3D Visual - Alternating slide animation */}
-                  <div className={`${category.textLeft ? 'md:order-2' : 'md:order-1'} overflow-hidden`}>
-                    <motion.div
-                      initial={{ opacity: 0, x: category.textLeft ? 120 : -120 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ 
-                        duration: 0.7, 
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                        opacity: { duration: 0.5 }
-                      }}
-                    >
-                      <category.Visual />
-                    </motion.div>
-                  </div>
+                  {/* 3D Visual - Smooth alternating slide */}
+                  <motion.div 
+                    className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}
+                    variants={{
+                      hidden: { opacity: 0, x: category.textLeft ? 80 : -80 },
+                      visible: { 
+                        opacity: 1, 
+                        x: 0,
+                        transition: { 
+                          duration: 0.9, 
+                          ease: [0.22, 1, 0.36, 1]
+                        }
+                      }
+                    }}
+                  >
+                    <category.Visual />
+                  </motion.div>
                 </motion.div>
               </div>
             );
