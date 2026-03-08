@@ -65,7 +65,7 @@ const Navigation = () => {
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
               >
-                <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-primary" />
               </motion.div>
               <span className="text-xl md:text-2xl font-bold text-gradient">
                 UD
