@@ -239,17 +239,18 @@ const Skills = () => {
                     </ul>
                   </motion.div>
                   
-                  {/* 3D Visual - Smooth alternating slide */}
+                  {/* 3D Visual - slides in AFTER text finishes */}
                   <motion.div 
                     className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}
                     variants={{
-                      hidden: { opacity: 0, x: category.textLeft ? 80 : -80 },
+                      hidden: { opacity: 0, x: category.textLeft ? 90 : -90 },
                       visible: { 
                         opacity: 1, 
                         x: 0,
                         transition: { 
-                          duration: 0.9, 
-                          ease: [0.22, 1, 0.36, 1]
+                          duration: 0.85, 
+                          ease: [0.22, 1, 0.36, 1],
+                          delay: 0.75
                         }
                       }
                     }}
