@@ -121,32 +121,29 @@ const Navigation = () => {
           </div>
           
           {/* Right side buttons */}
-          <motion.div 
+            <motion.div 
             className="hidden lg:flex items-center gap-3"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <Link to="/auth">
-              <Button 
-                variant="ghost" 
-                className="text-foreground/80 hover:text-foreground transition-colors duration-300"
-              >
-                Se connecter
-              </Button>
-            </Link>
-            <Link to="/espace-formation">
+            <a
+              href="https://wa.me/2250710224023?text=Bonjour%20Ulrich%2C%20j%27aimerais%20discuter%20d%27un%20projet%20avec%20vous."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
-                  className="font-semibold px-6 py-2 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
+                  className="font-semibold px-6 py-2 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 gap-2"
                   style={{
                     boxShadow: '0 0 20px hsl(271 91% 65% / 0.4)'
                   }}
                 >
-                  Découvrir
+                  <MessageCircle className="w-4 h-4" />
+                  Parler d'un projet
                 </Button>
               </motion.div>
-            </Link>
+            </a>
           </motion.div>
 
           {/* Mobile Menu Button */}
