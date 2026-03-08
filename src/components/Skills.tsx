@@ -239,13 +239,17 @@ const Skills = () => {
                     </motion.div>
                   </div>
                   
-                  {/* 3D Visual - Static with hover transition */}
-                  <div className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}>
+                  {/* 3D Visual - Alternating slide animation */}
+                  <div className={`${category.textLeft ? 'md:order-2' : 'md:order-1'} overflow-hidden`}>
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      initial={{ opacity: 0, x: category.textLeft ? 120 : -120 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ 
+                        duration: 0.7, 
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        opacity: { duration: 0.5 }
+                      }}
                     >
                       <category.Visual />
                     </motion.div>
