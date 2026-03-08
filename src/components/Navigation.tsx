@@ -148,14 +148,19 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            <Link to="/espace-formation">
+            <a
+              href="https://wa.me/2250710224023?text=Bonjour%20Ulrich%2C%20j%27aimerais%20discuter%20d%27un%20projet%20avec%20vous."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button 
                 size="sm"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-1.5 rounded-full text-xs sm:text-sm"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-1.5 rounded-full text-xs sm:text-sm gap-1.5"
               >
-                Découvrir
+                <MessageCircle className="w-3.5 h-3.5" />
+                Parler d'un projet
               </Button>
-            </Link>
+            </a>
             
             <motion.button
               whileHover={{ scale: 1.1 }}
