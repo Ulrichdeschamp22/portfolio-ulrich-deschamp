@@ -6,61 +6,88 @@ const Skill3DTunnel = () => {
       {/* Glow effect */}
       <div className="absolute inset-0 bg-amber-500/15 blur-3xl rounded-full opacity-40" />
 
-      {/* Funnel visual */}
+      {/* Main website/landing page visual */}
       <motion.div
         className="relative cursor-pointer"
         whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
         style={{ perspective: 1000 }}
       >
-        <div className="relative w-48 h-56 md:w-56 md:h-64 flex flex-col items-center">
-          {/* Funnel stages */}
-          {/* Stage 1 - Awareness */}
-          <div className="w-48 md:w-56 h-12 md:h-14 bg-gradient-to-r from-amber-500/30 to-orange-500/30 rounded-t-2xl border border-amber-400/20 flex items-center justify-between px-3 relative">
-            <div className="text-[8px] md:text-[9px] font-bold text-foreground">👀 Trafic</div>
-            <div className="text-[7px] text-amber-400 font-bold">10K visiteurs</div>
-            <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-amber-500/20 border border-amber-400/30 flex items-center justify-center">
-              <span className="text-[8px]">1</span>
+        {/* Browser frame */}
+        <div className="w-52 h-44 md:w-64 md:h-52 rounded-xl bg-gradient-to-br from-muted via-border to-muted p-1.5 shadow-xl shadow-amber-500/30">
+          <div className="w-full h-full rounded-lg bg-background overflow-hidden relative">
+            {/* Browser bar */}
+            <div className="h-5 bg-amber-500/15 flex items-center px-2 gap-1">
+              <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
+              <div className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+              <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+              <span className="text-[6px] text-muted-foreground ml-2">mon-tunnel.com</span>
             </div>
-          </div>
 
-          {/* Stage 2 - Interest */}
-          <div className="w-40 md:w-48 h-12 md:h-14 bg-gradient-to-r from-orange-500/30 to-rose-500/30 border-x border-orange-400/20 flex items-center justify-between px-3 relative">
-            <div className="text-[8px] md:text-[9px] font-bold text-foreground">📧 Capture</div>
-            <div className="text-[7px] text-orange-400 font-bold">2.5K leads</div>
-            <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-orange-500/20 border border-orange-400/30 flex items-center justify-center">
-              <span className="text-[8px]">2</span>
-            </div>
-          </div>
+            {/* Landing page content */}
+            <div className="p-2 space-y-1.5">
+              {/* Hero section */}
+              <div className="w-full h-12 bg-gradient-to-r from-amber-500/20 via-orange-500/15 to-rose-500/20 rounded-lg flex items-center justify-center p-1.5">
+                <div className="text-center">
+                  <div className="text-[7px] font-bold text-foreground">🚀 Doublez vos ventes</div>
+                  <div className="text-[5px] text-muted-foreground mt-0.5">Méthode éprouvée en 3 étapes</div>
+                </div>
+              </div>
 
-          {/* Stage 3 - Decision */}
-          <div className="w-32 md:w-40 h-12 md:h-14 bg-gradient-to-r from-rose-500/30 to-pink-500/30 border-x border-rose-400/20 flex items-center justify-between px-3 relative">
-            <div className="text-[8px] md:text-[9px] font-bold text-foreground">🔥 Offre</div>
-            <div className="text-[7px] text-rose-400 font-bold">800 prospects</div>
-            <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-rose-500/20 border border-rose-400/30 flex items-center justify-center">
-              <span className="text-[8px]">3</span>
-            </div>
-          </div>
+              {/* Funnel steps */}
+              <div className="flex items-center gap-1">
+                <div className="flex-1 h-6 bg-gradient-to-b from-amber-500/25 to-amber-500/10 rounded p-0.5 text-center">
+                  <div className="text-[5px] font-bold text-amber-400">1</div>
+                  <div className="text-[4px] text-foreground">Capture</div>
+                </div>
+                <svg className="w-2 h-2 text-amber-400 flex-shrink-0" viewBox="0 0 8 8" fill="none">
+                  <path d="M2 4H6M4.5 2L6.5 4L4.5 6" stroke="currentColor" strokeWidth="1" />
+                </svg>
+                <div className="flex-1 h-6 bg-gradient-to-b from-orange-500/25 to-orange-500/10 rounded p-0.5 text-center">
+                  <div className="text-[5px] font-bold text-orange-400">2</div>
+                  <div className="text-[4px] text-foreground">Nurture</div>
+                </div>
+                <svg className="w-2 h-2 text-orange-400 flex-shrink-0" viewBox="0 0 8 8" fill="none">
+                  <path d="M2 4H6M4.5 2L6.5 4L4.5 6" stroke="currentColor" strokeWidth="1" />
+                </svg>
+                <div className="flex-1 h-6 bg-gradient-to-b from-rose-500/25 to-rose-500/10 rounded p-0.5 text-center">
+                  <div className="text-[5px] font-bold text-rose-400">3</div>
+                  <div className="text-[4px] text-foreground">Vente</div>
+                </div>
+              </div>
 
-          {/* Stage 4 - Action */}
-          <div className="w-24 md:w-32 h-12 md:h-14 bg-gradient-to-r from-pink-500/30 to-primary/30 rounded-b-2xl border border-pink-400/20 flex items-center justify-between px-3 relative">
-            <div className="text-[8px] md:text-[9px] font-bold text-foreground">💰 Vente</div>
-            <div className="text-[7px] text-primary font-bold">120 clients</div>
-            <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-              <span className="text-[8px]">4</span>
-            </div>
-          </div>
+              {/* Email capture form */}
+              <div className="flex gap-1">
+                <div className="flex-1 h-4 bg-muted/50 rounded border border-border/30 px-1 flex items-center">
+                  <span className="text-[5px] text-muted-foreground">votre@email.com</span>
+                </div>
+                <div className="w-12 h-4 rounded bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center">
+                  <span className="text-[5px] text-white font-bold">GO →</span>
+                </div>
+              </div>
 
-          {/* Conversion arrow */}
-          <div className="mt-2 flex flex-col items-center">
-            <svg className="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none">
-              <path d="M12 4 L12 18 M6 14 L12 20 L18 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <div className="px-3 py-1 rounded-full bg-gradient-to-r from-primary to-amber-500 text-[7px] text-white font-bold shadow-lg">
-              Taux: 1.2%
+              {/* Stats row */}
+              <div className="flex items-center justify-between px-1">
+                <div className="text-center">
+                  <div className="text-[6px] font-bold text-amber-400">10K</div>
+                  <div className="text-[4px] text-muted-foreground">Visiteurs</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-[6px] font-bold text-orange-400">2.5K</div>
+                  <div className="text-[4px] text-muted-foreground">Leads</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-[6px] font-bold text-rose-400">120</div>
+                  <div className="text-[4px] text-muted-foreground">Clients</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Stand */}
+        <div className="mx-auto w-10 h-3 bg-gradient-to-b from-border to-muted rounded-b" />
+        <div className="mx-auto w-16 h-1.5 bg-gradient-to-b from-border to-muted rounded-b-lg" />
       </motion.div>
 
       {/* Email icon */}
@@ -73,9 +100,9 @@ const Skill3DTunnel = () => {
         +€8.2K/mois
       </div>
 
-      {/* Upsell badge */}
+      {/* Conversion badge */}
       <div className="absolute top-4 left-10 px-2 py-1 bg-card/80 rounded-full border border-border/50 text-xs text-rose-400 font-medium">
-        Upsell +35%
+        Taux: 1.2%
       </div>
     </div>
   );

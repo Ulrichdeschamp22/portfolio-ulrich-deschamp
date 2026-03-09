@@ -223,28 +223,28 @@ const Projects = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
             >
-              {/* Carousel with horizontal scroll */}
+              {/* Masonry-style grid carousel */}
               <div className="relative">
                 {/* Nav arrows */}
                 <button
                   onClick={() => scrollByAmount(-1)}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex"
                   aria-label="Précédent"
                 >
                   <ChevronLeft className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => scrollByAmount(1)}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex"
                   aria-label="Suivant"
                 >
                   <ChevronRight className="h-5 w-5" />
                 </button>
 
-                {/* Scrollable container */}
+                {/* Scrollable container - new staggered style */}
                 <div
                   ref={scrollRef}
-                  className="flex gap-4 overflow-x-auto scrollbar-hide px-2 sm:px-8 pb-4 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
+                  className="flex gap-5 overflow-x-auto scrollbar-hide px-2 sm:px-10 pb-6 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
                   style={{ WebkitOverflowScrolling: 'touch' }}
                   onMouseDown={handleMouseDown}
                   onMouseMove={handleMouseMove}
@@ -252,32 +252,53 @@ const Projects = () => {
                   onMouseLeave={handleMouseUp}
                 >
                   {designImages.map((image, idx) => (
-                    <div
+                    <motion.div
                       key={idx}
-                      className="flex-shrink-0 w-[260px] sm:w-[280px] md:w-[300px] lg:w-[320px] snap-center rounded-xl overflow-hidden bg-card/50 border border-border/30 cursor-pointer transition-transform duration-300"
+                      className={`flex-shrink-0 w-[240px] sm:w-[260px] md:w-[280px] snap-center cursor-pointer group ${idx % 2 === 0 ? 'mt-0' : 'mt-8'}`}
+                      whileHover={{ y: -8 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                       onClick={() => !isDragging && openLightbox(image.src)}
                     >
-                      <div className="aspect-square overflow-hidden">
-                        <img 
-                          src={image.src} 
-                          alt={image.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          draggable={false}
-                        />
+                      <div className="relative rounded-2xl overflow-hidden bg-card border border-border/20 shadow-lg group-hover:shadow-2xl group-hover:shadow-primary/15 transition-shadow duration-500">
+                        {/* Image */}
+                        <div className="aspect-[4/5] overflow-hidden">
+                          <img 
+                            src={image.src} 
+                            alt={image.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            loading="lazy"
+                            draggable={false}
+                          />
+                          {/* Overlay gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                        
+                        {/* Info overlay at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                          <p className="text-xs font-semibold text-white truncate">{image.title}</p>
+                          <div className="flex items-center gap-1 mt-1">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            <p className="text-[10px] text-white/70">Design Graphique</p>
+                          </div>
+                        </div>
+
+                        {/* Index badge */}
+                        <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="text-[9px] text-primary-foreground font-bold">{idx + 1}</span>
+                        </div>
                       </div>
-                      <div className="p-3">
-                        <p className="text-sm font-medium text-foreground truncate">{image.title}</p>
-                        <p className="text-xs text-muted-foreground mt-1">Design Graphique</p>
-                      </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
                 {/* Counter */}
-                <p className="text-center text-xs text-muted-foreground mt-3">
-                  {designImages.length} créations • Glissez pour explorer
-                </p>
+                <div className="flex items-center justify-center gap-3 mt-4">
+                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/30" />
+                  <p className="text-xs text-muted-foreground font-medium">
+                    {designImages.length} créations
+                  </p>
+                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/30" />
+                </div>
               </div>
 
               {/* Lightbox */}
@@ -409,12 +430,12 @@ const Projects = () => {
                     <span className="text-gradient">Design Graphique</span>
                   </h3>
                   <div className="relative">
-                    <button onClick={() => scrollByAmount(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex" aria-label="Précédent"><ChevronLeft className="h-5 w-5" /></button>
-                    <button onClick={() => scrollByAmount(1)} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex" aria-label="Suivant"><ChevronRight className="h-5 w-5" /></button>
+                    <button onClick={() => scrollByAmount(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex" aria-label="Précédent"><ChevronLeft className="h-5 w-5" /></button>
+                    <button onClick={() => scrollByAmount(1)} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex" aria-label="Suivant"><ChevronRight className="h-5 w-5" /></button>
 
                     <div
                       ref={scrollRef}
-                      className="flex gap-4 overflow-x-auto scrollbar-hide px-2 sm:px-8 pb-4 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
+                      className="flex gap-5 overflow-x-auto scrollbar-hide px-2 sm:px-10 pb-6 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
                       style={{ WebkitOverflowScrolling: 'touch' }}
                       onMouseDown={handleMouseDown}
                       onMouseMove={handleMouseMove}
@@ -422,17 +443,29 @@ const Projects = () => {
                       onMouseLeave={handleMouseUp}
                     >
                       {designImages.map((image, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[220px] sm:w-[240px] md:w-[260px] lg:w-[280px] snap-center rounded-xl overflow-hidden bg-card/50 border border-border/30 cursor-pointer" onClick={() => !isDragging && openLightbox(image.src)}>
-                          <div className="aspect-square overflow-hidden">
-                            <img src={image.src} alt={image.title} className="w-full h-full object-cover" loading="lazy" draggable={false} />
+                        <motion.div
+                          key={idx}
+                          className={`flex-shrink-0 w-[200px] sm:w-[220px] md:w-[240px] snap-center cursor-pointer group ${idx % 2 === 0 ? 'mt-0' : 'mt-6'}`}
+                          whileHover={{ y: -6 }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          onClick={() => !isDragging && openLightbox(image.src)}
+                        >
+                          <div className="relative rounded-2xl overflow-hidden bg-card border border-border/20 shadow-lg group-hover:shadow-xl group-hover:shadow-primary/10 transition-shadow duration-500">
+                            <div className="aspect-[4/5] overflow-hidden">
+                              <img src={image.src} alt={image.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" draggable={false} />
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                              <p className="text-[10px] font-semibold text-white truncate">{image.title}</p>
+                            </div>
                           </div>
-                          <div className="p-2">
-                            <p className="text-xs font-medium text-foreground truncate">{image.title}</p>
-                          </div>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
-                    <p className="text-center text-xs text-muted-foreground mt-3">{designImages.length} créations • Glissez pour explorer</p>
+                    <div className="flex items-center justify-center gap-3 mt-3">
+                      <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/30" />
+                      <p className="text-xs text-muted-foreground">{designImages.length} créations</p>
+                      <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/30" />
+                    </div>
                   </div>
 
                   <AnimatePresence>
