@@ -1,11 +1,14 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import { useRef } from 'react';
 import Skill3DLaptop from './skills/Skill3DLaptop';
+import Skill3DMegaphone from './skills/Skill3DMegaphone';
+import Skill3DSaaS from './skills/Skill3DSaaS';
+import Skill3DMobile from './skills/Skill3DMobile';
+import Skill3DWebApp from './skills/Skill3DWebApp';
 import Skill3DSmartphone from './skills/Skill3DSmartphone';
 import Skill3DVote from './skills/Skill3DVote';
 import Skill3DEcommerce from './skills/Skill3DEcommerce';
 import Skill3DTunnel from './skills/Skill3DTunnel';
-import Skill3DMegaphone from './skills/Skill3DMegaphone';
 import Skill3DTablet from './skills/Skill3DTablet';
 import Skill3DCamera from './skills/Skill3DCamera';
 
@@ -23,7 +26,6 @@ const Skills = () => {
       skills: [
         "Développement application web sur mesure",
         "Sites vitrines & Landing pages premium",
-        "Applications SaaS performantes",
         "Boutiques e-commerce",
         "Billetterie en ligne",
         "Optimisation SEO & performance web",
@@ -32,68 +34,6 @@ const Skills = () => {
       ],
       Visual: Skill3DLaptop,
       textLeft: true
-    },
-    {
-      title: "Solutions Digitales & Événementiel",
-      subtitle: "Plateformes digitales sur mesure pour entreprises",
-      skills: [
-        "Plateformes digitales personnalisées",
-        "Systèmes de réservation en ligne",
-        "Billetterie événementielle",
-        "Solutions digitales événementielles",
-        "Intégration d'outils métiers",
-        "Transformation digitale avancée"
-      ],
-      Visual: Skill3DSmartphone,
-      textLeft: true
-    },
-    {
-      title: "Plateformes de Vote en Ligne",
-      subtitle: "Création de plateformes de vote et awards sécurisées",
-      skills: [
-        "Plateformes de vote en ligne sécurisées",
-        "Systèmes d'awards & cérémonies",
-        "Vote en temps réel avec résultats live",
-        "Gestion multi-candidats & catégories",
-        "Intégration paiement mobile (Orange Money, MTN, Wave)",
-        "Tableaux de bord administrateur",
-        "Anti-fraude & vérification des votes",
-        "Statistiques & reporting avancés"
-      ],
-      Visual: Skill3DVote,
-      textLeft: false
-    },
-    {
-      title: "Boutiques en Ligne",
-      subtitle: "Création de boutiques e-commerce performantes et rentables",
-      skills: [
-        "E-commerce sur mesure clé en main",
-        "Catalogue produits & gestion de stock",
-        "Paiement sécurisé multi-devises",
-        "Intégration livraison & logistique",
-        "Expérience d'achat optimisée mobile",
-        "Tableau de bord vendeur & analytics",
-        "Promotions, coupons & fidélisation",
-        "SEO e-commerce & visibilité"
-      ],
-      Visual: Skill3DEcommerce,
-      textLeft: true
-    },
-    {
-      title: "Tunnels de Vente",
-      subtitle: "Création de tunnels de vente automatisés à haute conversion",
-      skills: [
-        "Pages de capture & landing pages",
-        "Séquences email automatisées",
-        "Pages de vente à haute conversion",
-        "Upsell, downsell & order bump",
-        "Intégration CRM & outils marketing",
-        "A/B testing & optimisation continue",
-        "Webinaires & formations en ligne",
-        "Suivi analytics & ROI"
-      ],
-      Visual: Skill3DTunnel,
-      textLeft: false
     },
     {
       title: "Marketing & Branding",
@@ -110,6 +50,116 @@ const Skills = () => {
       textLeft: false
     },
     {
+      title: "Applications SaaS",
+      subtitle: "Création d'applications SaaS performantes et évolutives",
+      skills: [
+        "Architecture cloud scalable",
+        "Tableaux de bord & analytics temps réel",
+        "Système d'abonnement & facturation",
+        "Gestion multi-utilisateurs & rôles",
+        "API RESTful & intégrations tierces",
+        "Déploiement continu & monitoring",
+        "Sécurité & conformité RGPD",
+        "Support technique & maintenance"
+      ],
+      Visual: Skill3DSaaS,
+      textLeft: true
+    },
+    {
+      title: "Applications Mobiles",
+      subtitle: "Création d'applications mobiles iOS & Android sur mesure",
+      skills: [
+        "Applications cross-platform (React Native)",
+        "Design UI/UX mobile natif",
+        "Notifications push & temps réel",
+        "Intégration API & services cloud",
+        "Géolocalisation & cartographie",
+        "Paiement mobile intégré",
+        "Publication App Store & Play Store",
+        "Maintenance & mises à jour"
+      ],
+      Visual: Skill3DMobile,
+      textLeft: false
+    },
+    {
+      title: "Applications Web",
+      subtitle: "Développement d'applications web modernes et performantes",
+      skills: [
+        "Progressive Web Apps (PWA)",
+        "Single Page Applications (SPA)",
+        "Interfaces utilisateur réactives",
+        "Gestion d'état avancée",
+        "Authentification & autorisation",
+        "Intégration bases de données",
+        "Tests automatisés & CI/CD",
+        "Optimisation performance & SEO"
+      ],
+      Visual: Skill3DWebApp,
+      textLeft: true
+    },
+    {
+      title: "Solutions Digitales & Événementiel",
+      subtitle: "Plateformes digitales sur mesure pour entreprises",
+      skills: [
+        "Plateformes digitales personnalisées",
+        "Systèmes de réservation en ligne",
+        "Billetterie événementielle",
+        "Solutions digitales événementielles",
+        "Intégration d'outils métiers",
+        "Transformation digitale avancée"
+      ],
+      Visual: Skill3DSmartphone,
+      textLeft: false
+    },
+    {
+      title: "Plateformes de Vote en Ligne",
+      subtitle: "Création de plateformes de vote et awards sécurisées",
+      skills: [
+        "Plateformes de vote en ligne sécurisées",
+        "Systèmes d'awards & cérémonies",
+        "Vote en temps réel avec résultats live",
+        "Gestion multi-candidats & catégories",
+        "Intégration paiement mobile (Orange Money, MTN, Wave)",
+        "Tableaux de bord administrateur",
+        "Anti-fraude & vérification des votes",
+        "Statistiques & reporting avancés"
+      ],
+      Visual: Skill3DVote,
+      textLeft: true
+    },
+    {
+      title: "Boutiques en Ligne",
+      subtitle: "Création de boutiques e-commerce performantes et rentables",
+      skills: [
+        "E-commerce sur mesure clé en main",
+        "Catalogue produits & gestion de stock",
+        "Paiement sécurisé multi-devises",
+        "Intégration livraison & logistique",
+        "Expérience d'achat optimisée mobile",
+        "Tableau de bord vendeur & analytics",
+        "Promotions, coupons & fidélisation",
+        "SEO e-commerce & visibilité"
+      ],
+      Visual: Skill3DEcommerce,
+      textLeft: false
+    },
+    {
+      title: "Tunnels de Vente",
+      subtitle: "Création de tunnels de vente automatisés à haute conversion",
+      skills: [
+        "Pages de capture & landing pages",
+        "Séquences email automatisées",
+        "Pages de vente à haute conversion",
+        "Upsell, downsell & order bump",
+        "Intégration CRM & outils marketing",
+        "A/B testing & optimisation continue",
+        "Webinaires & formations en ligne",
+        "Suivi analytics & ROI"
+      ],
+      Visual: Skill3DTunnel,
+      textLeft: true
+    },
+    {
       title: "Design & Contenu",
       subtitle: "Design graphique professionnel - Identité visuelle premium",
       skills: [
@@ -121,7 +171,7 @@ const Skills = () => {
         "Packaging & supports print"
       ],
       Visual: Skill3DTablet,
-      textLeft: true
+      textLeft: false
     },
     {
       title: "Photographie & Vidéo",
@@ -135,18 +185,21 @@ const Skills = () => {
         "Vidéos promotionnelles"
       ],
       Visual: Skill3DCamera,
-      textLeft: false
+      textLeft: true
     }
   ];
 
   // Universe colors for each skill section
   const universeColors = [
     { from: 'from-violet-950/30', via: 'via-purple-900/20', to: 'to-background', glow: 'bg-violet-500/20' },
+    { from: 'from-blue-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-blue-500/20' },
+    { from: 'from-cyan-950/30', via: 'via-sky-900/20', to: 'to-background', glow: 'bg-cyan-500/20' },
+    { from: 'from-purple-950/30', via: 'via-violet-900/20', to: 'to-background', glow: 'bg-purple-500/20' },
+    { from: 'from-sky-950/30', via: 'via-blue-900/20', to: 'to-background', glow: 'bg-sky-500/20' },
     { from: 'from-pink-950/30', via: 'via-rose-900/20', to: 'to-background', glow: 'bg-pink-500/20' },
     { from: 'from-indigo-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-indigo-500/20' },
     { from: 'from-emerald-950/30', via: 'via-green-900/20', to: 'to-background', glow: 'bg-emerald-500/20' },
     { from: 'from-amber-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-amber-500/20' },
-    { from: 'from-blue-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-blue-500/20' },
     { from: 'from-orange-950/30', via: 'via-amber-900/20', to: 'to-background', glow: 'bg-orange-500/20' },
     { from: 'from-rose-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-rose-500/20' },
   ];
@@ -179,7 +232,7 @@ const Skills = () => {
         {/* Skill sections */}
         <div className="space-y-0">
           {skillCategories.map((category, index) => {
-            const universe = universeColors[index];
+            const universe = universeColors[index % universeColors.length];
             return (
               <div 
                 key={index}
@@ -239,7 +292,7 @@ const Skills = () => {
                     </ul>
                   </motion.div>
                   
-                  {/* 3D Visual - slides in AFTER text finishes */}
+                  {/* 3D Visual */}
                   <motion.div 
                     className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}
                     variants={{
