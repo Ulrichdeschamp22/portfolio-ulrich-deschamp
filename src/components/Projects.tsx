@@ -430,12 +430,12 @@ const Projects = () => {
                     <span className="text-gradient">Design Graphique</span>
                   </h3>
                   <div className="relative">
-                    <button onClick={() => scrollByAmount(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex" aria-label="Précédent"><ChevronLeft className="h-5 w-5" /></button>
-                    <button onClick={() => scrollByAmount(1)} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 shadow-lg hover:bg-primary/10 transition-colors hidden sm:flex" aria-label="Suivant"><ChevronRight className="h-5 w-5" /></button>
+                    <button onClick={() => scrollByAmount(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex" aria-label="Précédent"><ChevronLeft className="h-5 w-5" /></button>
+                    <button onClick={() => scrollByAmount(1)} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex" aria-label="Suivant"><ChevronRight className="h-5 w-5" /></button>
 
                     <div
                       ref={scrollRef}
-                      className="flex gap-4 overflow-x-auto scrollbar-hide px-2 sm:px-8 pb-4 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
+                      className="flex gap-5 overflow-x-auto scrollbar-hide px-2 sm:px-10 pb-6 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
                       style={{ WebkitOverflowScrolling: 'touch' }}
                       onMouseDown={handleMouseDown}
                       onMouseMove={handleMouseMove}
@@ -443,17 +443,29 @@ const Projects = () => {
                       onMouseLeave={handleMouseUp}
                     >
                       {designImages.map((image, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[220px] sm:w-[240px] md:w-[260px] lg:w-[280px] snap-center rounded-xl overflow-hidden bg-card/50 border border-border/30 cursor-pointer" onClick={() => !isDragging && openLightbox(image.src)}>
-                          <div className="aspect-square overflow-hidden">
-                            <img src={image.src} alt={image.title} className="w-full h-full object-cover" loading="lazy" draggable={false} />
+                        <motion.div
+                          key={idx}
+                          className={`flex-shrink-0 w-[200px] sm:w-[220px] md:w-[240px] snap-center cursor-pointer group ${idx % 2 === 0 ? 'mt-0' : 'mt-6'}`}
+                          whileHover={{ y: -6 }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          onClick={() => !isDragging && openLightbox(image.src)}
+                        >
+                          <div className="relative rounded-2xl overflow-hidden bg-card border border-border/20 shadow-lg group-hover:shadow-xl group-hover:shadow-primary/10 transition-shadow duration-500">
+                            <div className="aspect-[4/5] overflow-hidden">
+                              <img src={image.src} alt={image.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" draggable={false} />
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                              <p className="text-[10px] font-semibold text-white truncate">{image.title}</p>
+                            </div>
                           </div>
-                          <div className="p-2">
-                            <p className="text-xs font-medium text-foreground truncate">{image.title}</p>
-                          </div>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
-                    <p className="text-center text-xs text-muted-foreground mt-3">{designImages.length} créations • Glissez pour explorer</p>
+                    <div className="flex items-center justify-center gap-3 mt-3">
+                      <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/30" />
+                      <p className="text-xs text-muted-foreground">{designImages.length} créations</p>
+                      <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/30" />
+                    </div>
                   </div>
 
                   <AnimatePresence>
