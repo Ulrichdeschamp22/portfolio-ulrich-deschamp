@@ -22,47 +22,49 @@ const Skill3DEcommerce = () => {
         <span className="text-sm">🛒</span>
       </div>
 
-      {/* Main store visual */}
+      {/* Main smartphone with shop */}
       <motion.div
         className="relative cursor-pointer"
         whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
         style={{ perspective: 1000 }}
       >
-        {/* Browser frame */}
-        <div className="w-52 h-40 md:w-64 md:h-48 rounded-xl bg-gradient-to-br from-muted via-border to-muted p-1.5 shadow-xl shadow-emerald-500/30">
-          <div className="w-full h-full rounded-lg bg-background overflow-hidden relative">
-            {/* Header */}
-            <div className="h-5 bg-emerald-500/20 flex items-center px-2 gap-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
-              <div className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-              <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-              <span className="text-[6px] text-muted-foreground ml-2">ma-boutique.com</span>
+        {/* Phone frame */}
+        <div className="w-32 h-60 md:w-40 md:h-72 rounded-3xl bg-gradient-to-br from-muted via-border to-muted p-1.5 shadow-xl shadow-emerald-500/30">
+          {/* Screen */}
+          <div className="w-full h-full rounded-2xl bg-background overflow-hidden relative">
+            {/* Status bar */}
+            <div className="h-5 bg-emerald-500/15 flex items-center justify-between px-2.5">
+              <span className="text-[7px] text-muted-foreground">9:41</span>
+              <div className="flex gap-1">
+                <div className="w-2.5 h-1.5 bg-muted-foreground/50 rounded-sm" />
+                <div className="w-1.5 h-1.5 bg-muted-foreground/50 rounded-full" />
+              </div>
             </div>
 
-            {/* Store content */}
-            <div className="p-1.5 space-y-1.5">
-              {/* Nav */}
-              <div className="flex items-center justify-between">
-                <div className="text-[7px] font-bold text-foreground">🏪 Boutique</div>
-                <div className="flex items-center gap-1">
-                  <div className="w-8 h-2.5 bg-muted rounded-full" />
-                  <div className="text-[7px]">🛒<sup className="text-[5px] text-emerald-400">3</sup></div>
-                </div>
+            {/* Shop header */}
+            <div className="px-2 py-1.5 flex items-center justify-between border-b border-border/30">
+              <div className="text-[8px] font-bold text-foreground">🏪 Ma Boutique</div>
+              <div className="flex items-center gap-1">
+                <div className="w-6 h-2.5 bg-muted rounded-full" />
+                <div className="text-[7px]">🛒<sup className="text-[5px] text-emerald-400">3</sup></div>
               </div>
+            </div>
 
-              {/* Product grid */}
-              <div className="grid grid-cols-3 gap-1">
+            {/* Product grid */}
+            <div className="p-1.5 space-y-1.5">
+              <div className="grid grid-cols-2 gap-1">
                 {[
                   { emoji: '👟', name: 'Sneakers', price: '€59', color: 'from-emerald-500/20 to-emerald-600/10' },
                   { emoji: '👜', name: 'Sac cuir', price: '€89', color: 'from-teal-500/20 to-teal-600/10' },
                   { emoji: '⌚', name: 'Montre', price: '€129', color: 'from-green-500/20 to-green-600/10' },
+                  { emoji: '👕', name: 'T-shirt', price: '€35', color: 'from-emerald-500/20 to-teal-500/10' },
                 ].map((item, i) => (
-                  <div key={i} className={`rounded bg-gradient-to-b ${item.color} p-0.5`}>
-                    <div className="w-full h-8 bg-white/5 rounded mb-0.5 flex items-center justify-center text-lg">
+                  <div key={i} className={`rounded-lg bg-gradient-to-b ${item.color} p-1`}>
+                    <div className="w-full h-10 bg-white/5 rounded flex items-center justify-center text-lg">
                       {item.emoji}
                     </div>
-                    <div className="text-[5px] text-foreground font-medium truncate">{item.name}</div>
+                    <div className="text-[5px] text-foreground font-medium truncate mt-0.5">{item.name}</div>
                     <div className="flex items-center justify-between">
                       <div className="text-[5px] text-emerald-400 font-bold">{item.price}</div>
                       <div className="text-[4px] text-yellow-400">★★★★</div>
@@ -71,24 +73,28 @@ const Skill3DEcommerce = () => {
                 ))}
               </div>
 
-              {/* Payment bar */}
-              <div className="flex items-center justify-between bg-card/50 rounded p-1">
-                <div className="flex gap-0.5">
-                  <div className="w-4 h-2.5 bg-blue-500/30 rounded-sm" />
-                  <div className="w-4 h-2.5 bg-orange-500/30 rounded-sm" />
-                  <div className="w-4 h-2.5 bg-yellow-500/30 rounded-sm" />
-                </div>
-                <div className="w-12 h-3 rounded bg-gradient-to-r from-emerald-500 to-teal-500 flex items-center justify-center">
-                  <span className="text-[5px] text-white font-bold">ACHETER</span>
-                </div>
+              {/* Add to cart button */}
+              <div className="w-full h-5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 flex items-center justify-center">
+                <span className="text-[6px] text-white font-bold">AJOUTER AU PANIER</span>
               </div>
+
+              {/* Payment methods */}
+              <div className="flex items-center justify-center gap-1">
+                <div className="w-5 h-3 bg-blue-500/30 rounded-sm" />
+                <div className="w-5 h-3 bg-orange-500/30 rounded-sm" />
+                <div className="w-5 h-3 bg-yellow-500/30 rounded-sm" />
+              </div>
+            </div>
+
+            {/* Bottom nav */}
+            <div className="absolute bottom-0 left-0 right-0 h-7 bg-card/80 backdrop-blur-sm flex items-center justify-around px-2 border-t border-border/30">
+              <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/50" />
+              <div className="w-3.5 h-3.5 rounded-full bg-muted" />
+              <div className="w-3.5 h-3.5 rounded-full bg-muted" />
+              <div className="w-3.5 h-3.5 rounded-full bg-muted" />
             </div>
           </div>
         </div>
-
-        {/* Stand */}
-        <div className="mx-auto w-10 h-3 bg-gradient-to-b from-border to-muted rounded-b" />
-        <div className="mx-auto w-16 h-1.5 bg-gradient-to-b from-border to-muted rounded-b-lg" />
       </motion.div>
 
       {/* Revenue badge */}
