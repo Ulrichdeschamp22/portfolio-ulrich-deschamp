@@ -262,13 +262,23 @@ const Projects = () => {
                       <div className="relative rounded-2xl overflow-hidden bg-card border border-border/20 shadow-lg group-hover:shadow-2xl group-hover:shadow-primary/15 transition-shadow duration-500">
                         {/* Image */}
                         <div className="aspect-[4/5] overflow-hidden">
-                          <img 
-                            src={image.src} 
-                            alt={image.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                            loading="lazy"
-                            draggable={false}
-                          />
+                          {idx < 7 ? (
+                            <img 
+                              src={image.src} 
+                              alt={image.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                              loading="lazy"
+                              draggable={false}
+                            />
+                          ) : (
+                            <div
+                              role="img"
+                              data-nosnippet
+                              className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                              style={{ backgroundImage: `url(${image.src})` }}
+                              draggable={false}
+                            />
+                          )}
                           {/* Overlay gradient */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
@@ -452,7 +462,11 @@ const Projects = () => {
                         >
                           <div className="relative rounded-2xl overflow-hidden bg-card border border-border/20 shadow-lg group-hover:shadow-xl group-hover:shadow-primary/10 transition-shadow duration-500">
                             <div className="aspect-[4/5] overflow-hidden">
-                              <img src={image.src} alt={image.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" draggable={false} />
+                              {idx < 7 ? (
+                                <img src={image.src} alt={image.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" draggable={false} />
+                              ) : (
+                                <div role="img" data-nosnippet className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out" style={{ backgroundImage: `url(${image.src})` }} draggable={false} />
+                              )}
                             </div>
                             <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
                               <p className="text-[10px] font-semibold text-white truncate">{image.title}</p>
