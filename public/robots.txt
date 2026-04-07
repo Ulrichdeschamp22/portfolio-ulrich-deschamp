@@ -86,7 +86,36 @@ Disallow: /*.json$
 Disallow: /node_modules/
 Disallow: /.git/
 
+# Bloquer l'indexation des images design à partir de la 8ème
+Disallow: /lovable-uploads/design/plan-travail-18-5.jpg
+Disallow: /lovable-uploads/design/plan-travail-18.jpg
+Disallow: /lovable-uploads/design/plan-travail-19.jpg
+Disallow: /lovable-uploads/design/plan-travail-27.jpg
+Disallow: /lovable-uploads/design/atelier-premarital.jpg
+Disallow: /lovable-uploads/design/affiche-nounou.jpg
+Disallow: /lovable-uploads/design/affiche-saint-valentin.jpg
+Disallow: /lovable-uploads/design/bootcamp-couple.jpg
+Disallow: /lovable-uploads/design/entrepreneuriat.jpg
+Disallow: /lovable-uploads/design/formation-couple.jpg
+Disallow: /lovable-uploads/design/bootcamp-celibataire.jpg
+Disallow: /lovable-uploads/design/plan-travail-1.jpg
+Disallow: /lovable-uploads/design/plan-travail-2.jpg
+Disallow: /lovable-uploads/design/investissement-immobilier-1.jpg
+Disallow: /lovable-uploads/design/investissement-immobilier-2.jpg
+Disallow: /lovable-uploads/design/affiche-temoignage.jpg
+Disallow: /lovable-uploads/design/investissement-immobilier-3.jpg
+Disallow: /lovable-uploads/design/amour-immobilier.jpg
+Disallow: /lovable-uploads/design/couple-vision-360.jpg
+Disallow: /lovable-uploads/design/bootcamp-celibataire-2.jpg
+
 # Autoriser les ressources importantes
+Allow: /lovable-uploads/design/plan-travail-3.jpg
+Allow: /lovable-uploads/design/plan-travail-6.jpg
+Allow: /lovable-uploads/design/plan-travail-7.jpg
+Allow: /lovable-uploads/design/plan-travail-8.jpg
+Allow: /lovable-uploads/design/plan-travail-9.jpg
+Allow: /lovable-uploads/design/plan-travail-10.jpg
+Allow: /lovable-uploads/design/plan-travail-11.jpg
 Allow: /lovable-uploads/
 Allow: /*.js$
 Allow: /*.css$
