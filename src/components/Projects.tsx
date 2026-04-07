@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { ExternalLink, Globe, Code2, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -33,15 +33,88 @@ const designImages = [
   { src: '/lovable-uploads/design/bootcamp-celibataire-2.jpg', title: 'BootCamp Célibataire - Époux à Devenir' },
 ];
 
+// Split images into rows for marquee
+const splitIntoRows = (images: typeof designImages, numRows: number) => {
+  const rows: (typeof designImages)[] = Array.from({ length: numRows }, () => []);
+  images.forEach((img, i) => rows[i % numRows].push(img));
+  return rows;
+};
+
+const MarqueeRow = ({ images, direction, speed, onImageClick }: { 
+  images: typeof designImages; 
+  direction: 'left' | 'right'; 
+  speed: number;
+  onImageClick: (src: string) => void;
+}) => {
+  const doubled = useMemo(() => [...images, ...images], [images]);
+  
+  return (
+    <div className="overflow-hidden py-2">
+      <div
+        className={`flex gap-4 w-max ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
+        style={{ animationDuration: `${speed}s` }}
+      >
+        {doubled.map((image, idx) => (
+          <div
+            key={`${direction}-${idx}`}
+            className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-[220px] rounded-xl overflow-hidden border border-border/20 bg-card shadow-md hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
+            onClick={() => onImageClick(image.src)}
+          >
+            <div className="aspect-[4/5] overflow-hidden">
+              {idx < 7 ? (
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  draggable={false}
+                />
+              ) : (
+                <div
+                  role="img"
+                  data-nosnippet
+                  className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                  style={{ backgroundImage: `url(${image.src})` }}
+                  draggable={false}
+                />
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const DesignMarquee = ({ onImageClick }: { onImageClick: (src: string) => void }) => {
+  const rows = useMemo(() => splitIntoRows(designImages, 4), []);
+
+  return (
+    <div className="space-y-2">
+      {rows.map((row, i) => (
+        <MarqueeRow
+          key={i}
+          images={row}
+          direction={i % 2 === 0 ? 'left' : 'right'}
+          speed={35 + i * 5}
+          onImageClick={onImageClick}
+        />
+      ))}
+      <div className="flex items-center justify-center gap-3 mt-4">
+        <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/30" />
+        <p className="text-xs text-muted-foreground font-medium">
+          {designImages.length} créations
+        </p>
+        <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/30" />
+      </div>
+    </div>
+  );
+};
+
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('Tous');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
   const projects = [
     {
@@ -109,57 +182,7 @@ const Projects = () => {
   const isDesignGraphique = activeFilter === 'Design Graphique';
   const showDesignCarousel = activeFilter === 'Tous' || isDesignGraphique;
 
-  // Auto-scroll
-  const startAutoScroll = useCallback(() => {
-    if (autoScrollRef.current) clearInterval(autoScrollRef.current);
-    autoScrollRef.current = setInterval(() => {
-      if (scrollRef.current && !isDragging) {
-        const { scrollLeft: sl, scrollWidth, clientWidth } = scrollRef.current;
-        if (sl + clientWidth >= scrollWidth - 10) {
-          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          scrollRef.current.scrollBy({ left: 280, behavior: 'smooth' });
-        }
-      }
-    }, 3000);
-  }, [isDragging]);
-
-  useEffect(() => {
-    if (showDesignCarousel) {
-      startAutoScroll();
-    }
-    return () => {
-      if (autoScrollRef.current) clearInterval(autoScrollRef.current);
-    };
-  }, [showDesignCarousel, startAutoScroll]);
-
-  // Mouse drag
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0));
-    setScrollLeft(scrollRef.current?.scrollLeft || 0);
-    if (autoScrollRef.current) clearInterval(autoScrollRef.current);
-  };
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 1.5;
-    if (scrollRef.current) scrollRef.current.scrollLeft = scrollLeft - walk;
-  };
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    startAutoScroll();
-  };
-
-  // Scroll buttons
-  const scrollByAmount = (dir: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: dir * 300, behavior: 'smooth' });
-    }
-  };
-
-  // Lightbox navigation
+  // Lightbox
   const openLightbox = (src: string) => {
     const idx = designImages.findIndex(i => i.src === src);
     setLightboxIndex(idx >= 0 ? idx : 0);
@@ -217,145 +240,13 @@ const Projects = () => {
         <AnimatePresence mode="wait">
           {isDesignGraphique ? (
             <motion.div
-              key="design-carousel"
+              key="design-marquee"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
             >
-              {/* Masonry-style grid carousel */}
-              <div className="relative">
-                {/* Nav arrows */}
-                <button
-                  onClick={() => scrollByAmount(-1)}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex"
-                  aria-label="Précédent"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={() => scrollByAmount(1)}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex"
-                  aria-label="Suivant"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-
-                {/* Scrollable container - new staggered style */}
-                <div
-                  ref={scrollRef}
-                  className="flex gap-5 overflow-x-auto scrollbar-hide px-2 sm:px-10 pb-6 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
-                  style={{ WebkitOverflowScrolling: 'touch' }}
-                  onMouseDown={handleMouseDown}
-                  onMouseMove={handleMouseMove}
-                  onMouseUp={handleMouseUp}
-                  onMouseLeave={handleMouseUp}
-                >
-                  {designImages.map((image, idx) => (
-                    <motion.div
-                      key={idx}
-                      className={`flex-shrink-0 w-[240px] sm:w-[260px] md:w-[280px] snap-center cursor-pointer group ${idx % 2 === 0 ? 'mt-0' : 'mt-8'}`}
-                      whileHover={{ y: -8 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                      onClick={() => !isDragging && openLightbox(image.src)}
-                    >
-                      <div className="relative rounded-2xl overflow-hidden bg-card border border-border/20 shadow-lg group-hover:shadow-2xl group-hover:shadow-primary/15 transition-shadow duration-500">
-                        {/* Image */}
-                        <div className="aspect-[4/5] overflow-hidden">
-                          {idx < 7 ? (
-                            <img 
-                              src={image.src} 
-                              alt={image.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                              loading="lazy"
-                              draggable={false}
-                            />
-                          ) : (
-                            <div
-                              role="img"
-                              data-nosnippet
-                              className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                              style={{ backgroundImage: `url(${image.src})` }}
-                              draggable={false}
-                            />
-                          )}
-                          {/* Overlay gradient */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
-                        
-                        {/* Info overlay at bottom */}
-                        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-                          <p className="text-xs font-semibold text-white truncate">{image.title}</p>
-                          <div className="flex items-center gap-1 mt-1">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            <p className="text-[10px] text-white/70">Design Graphique</p>
-                          </div>
-                        </div>
-
-                        {/* Index badge */}
-                        <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-primary/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <span className="text-[9px] text-primary-foreground font-bold">{idx + 1}</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Counter */}
-                <div className="flex items-center justify-center gap-3 mt-4">
-                  <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/30" />
-                  <p className="text-xs text-muted-foreground font-medium">
-                    {designImages.length} créations
-                  </p>
-                  <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/30" />
-                </div>
-              </div>
-
-              {/* Lightbox */}
-              <AnimatePresence>
-                {selectedImage && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
-                    onClick={() => setSelectedImage(null)}
-                  >
-                    <button
-                      onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
-                      className="absolute top-4 right-4 text-white/70 hover:text-white z-50 p-2"
-                    >
-                      <X className="h-6 w-6" />
-                    </button>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); lightboxPrev(); }}
-                      className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"
-                    >
-                      <ChevronLeft className="h-6 w-6" />
-                    </button>
-                    <button
-                      onClick={(e) => { e.stopPropagation(); lightboxNext(); }}
-                      className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"
-                    >
-                      <ChevronRight className="h-6 w-6" />
-                    </button>
-                    <motion.img
-                      key={selectedImage}
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0.8, opacity: 0 }}
-                      src={selectedImage}
-                      alt="Design en grand"
-                      className="max-w-full max-h-[85vh] object-contain rounded-lg"
-                      onClick={(e) => e.stopPropagation()}
-                      draggable={false}
-                    />
-                    <p className="absolute bottom-6 text-white/60 text-sm">
-                      {lightboxIndex + 1} / {designImages.length} — {designImages[lightboxIndex]?.title}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <DesignMarquee onImageClick={openLightbox} />
             </motion.div>
           ) : (
             <motion.div 
@@ -433,68 +324,34 @@ const Projects = () => {
                 )}
               </div>
 
-              {/* Design Graphique carousel when "Tous" is active */}
+              {/* Design Graphique marquee when "Tous" is active */}
               {activeFilter === 'Tous' && (
                 <div className="mt-10">
                   <h3 className="text-xl md:text-2xl font-bold mb-6">
                     <span className="text-gradient">Design Graphique</span>
                   </h3>
-                  <div className="relative">
-                    <button onClick={() => scrollByAmount(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex" aria-label="Précédent"><ChevronLeft className="h-5 w-5" /></button>
-                    <button onClick={() => scrollByAmount(1)} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-md border border-primary/20 rounded-full p-3 shadow-xl shadow-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 hidden sm:flex" aria-label="Suivant"><ChevronRight className="h-5 w-5" /></button>
-
-                    <div
-                      ref={scrollRef}
-                      className="flex gap-5 overflow-x-auto scrollbar-hide px-2 sm:px-10 pb-6 cursor-grab active:cursor-grabbing snap-x snap-mandatory"
-                      style={{ WebkitOverflowScrolling: 'touch' }}
-                      onMouseDown={handleMouseDown}
-                      onMouseMove={handleMouseMove}
-                      onMouseUp={handleMouseUp}
-                      onMouseLeave={handleMouseUp}
-                    >
-                      {designImages.map((image, idx) => (
-                        <motion.div
-                          key={idx}
-                          className={`flex-shrink-0 w-[200px] sm:w-[220px] md:w-[240px] snap-center cursor-pointer group ${idx % 2 === 0 ? 'mt-0' : 'mt-6'}`}
-                          whileHover={{ y: -6 }}
-                          transition={{ duration: 0.3, ease: "easeOut" }}
-                          onClick={() => !isDragging && openLightbox(image.src)}
-                        >
-                          <div className="relative rounded-2xl overflow-hidden bg-card border border-border/20 shadow-lg group-hover:shadow-xl group-hover:shadow-primary/10 transition-shadow duration-500">
-                            <div className="aspect-[4/5] overflow-hidden">
-                              {idx < 7 ? (
-                                <img src={image.src} alt={image.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" draggable={false} />
-                              ) : (
-                                <div role="img" data-nosnippet className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700 ease-out" style={{ backgroundImage: `url(${image.src})` }} draggable={false} />
-                              )}
-                            </div>
-                            <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
-                              <p className="text-[10px] font-semibold text-white truncate">{image.title}</p>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <div className="flex items-center justify-center gap-3 mt-3">
-                      <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/30" />
-                      <p className="text-xs text-muted-foreground">{designImages.length} créations</p>
-                      <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/30" />
-                    </div>
-                  </div>
-
-                  <AnimatePresence>
-                    {selectedImage && (
-                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
-                        <button onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }} className="absolute top-4 right-4 text-white/70 hover:text-white z-50 p-2"><X className="h-6 w-6" /></button>
-                        <button onClick={(e) => { e.stopPropagation(); lightboxPrev(); }} className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"><ChevronLeft className="h-6 w-6" /></button>
-                        <button onClick={(e) => { e.stopPropagation(); lightboxNext(); }} className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"><ChevronRight className="h-6 w-6" /></button>
-                        <motion.img key={selectedImage} initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} src={selectedImage} alt="Design en grand" className="max-w-full max-h-[85vh] object-contain rounded-lg" onClick={(e) => e.stopPropagation()} draggable={false} />
-                        <p className="absolute bottom-6 text-white/60 text-sm">{lightboxIndex + 1} / {designImages.length} — {designImages[lightboxIndex]?.title}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <DesignMarquee onImageClick={openLightbox} />
                 </div>
               )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Lightbox */}
+        <AnimatePresence>
+          {selectedImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+              onClick={() => setSelectedImage(null)}
+            >
+              <button onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }} className="absolute top-4 right-4 text-white/70 hover:text-white z-50 p-2"><X className="h-6 w-6" /></button>
+              <button onClick={(e) => { e.stopPropagation(); lightboxPrev(); }} className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"><ChevronLeft className="h-6 w-6" /></button>
+              <button onClick={(e) => { e.stopPropagation(); lightboxNext(); }} className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-50 p-2 bg-white/10 rounded-full backdrop-blur-sm"><ChevronRight className="h-6 w-6" /></button>
+              <motion.img key={selectedImage} initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} src={selectedImage} alt="Design en grand" className="max-w-full max-h-[85vh] object-contain rounded-lg" onClick={(e) => e.stopPropagation()} draggable={false} />
+              <p className="absolute bottom-6 text-white/60 text-sm">{lightboxIndex + 1} / {designImages.length} — {designImages[lightboxIndex]?.title}</p>
             </motion.div>
           )}
         </AnimatePresence>
