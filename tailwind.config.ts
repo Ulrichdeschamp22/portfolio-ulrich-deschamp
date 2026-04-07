@@ -159,6 +159,14 @@ export default {
 					'50%': {
 						boxShadow: '0 0 40px hsl(var(--primary) / 0.8)'
 					}
+				},
+				'marquee-left': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-50%)' }
+				},
+				'marquee-right': {
+					'0%': { transform: 'translateX(-50%)' },
+					'100%': { transform: 'translateX(0)' }
 				}
 			},
 			animation: {
@@ -170,7 +178,9 @@ export default {
 				'slide-in': 'slide-in 0.4s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'glow': 'glow 2s ease-in-out infinite',
-				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'marquee-left': 'marquee-left linear infinite',
+				'marquee-right': 'marquee-right linear infinite'
 			},
 			backdropBlur: {
 				xs: '2px',
