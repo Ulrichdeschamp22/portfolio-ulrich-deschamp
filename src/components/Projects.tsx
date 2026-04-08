@@ -49,15 +49,15 @@ const MarqueeRow = ({ images, direction, speed, onImageClick }: {
   const doubled = useMemo(() => [...images, ...images], [images]);
   
   return (
-    <div className="overflow-hidden py-2">
+    <div className="overflow-hidden py-1">
       <div
-        className={`flex gap-4 w-max ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
+        className={`flex gap-3 w-max ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
         style={{ animationDuration: `${speed}s` }}
       >
         {doubled.map((image, idx) => (
           <div
             key={`${direction}-${idx}`}
-            className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-[220px] rounded-xl overflow-hidden border border-border/20 bg-card shadow-md hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
+            className="flex-shrink-0 w-[140px] sm:w-[160px] md:w-[180px] rounded-xl overflow-hidden border border-border/10 bg-card/50 shadow-sm hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
             onClick={() => onImageClick(image.src)}
           >
             <div className="aspect-[4/5] overflow-hidden">
@@ -90,7 +90,7 @@ const DesignMarquee = ({ onImageClick }: { onImageClick: (src: string) => void }
   const rows = useMemo(() => splitIntoRows(designImages, 2), []);
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-1">
       {rows.map((row, i) => (
         <MarqueeRow
           key={i}

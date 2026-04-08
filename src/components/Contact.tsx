@@ -58,12 +58,6 @@ const Contact = () => {
       link: "mailto:deschamp.deschamp222@gmail.com"
     },
     {
-      icon: Mail,
-      label: "Email support",
-      value: "support@ulrichdeschampkossonou.online",
-      link: "mailto:support@ulrichdeschampkossonou.online"
-    },
-    {
       icon: MapPin,
       label: "Localisation",
       value: "Abidjan, Côte d'Ivoire",
