@@ -57,7 +57,7 @@ const MarqueeRow = ({ images, direction, speed, onImageClick }: {
         {doubled.map((image, idx) => (
           <div
             key={`${direction}-${idx}`}
-            className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-[220px] overflow-hidden border border-border/20 bg-card shadow-md hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
+            className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-[220px] rounded-xl overflow-hidden border border-border/20 bg-card shadow-md hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
             onClick={() => onImageClick(image.src)}
           >
             <div className="aspect-[4/5] overflow-hidden">
