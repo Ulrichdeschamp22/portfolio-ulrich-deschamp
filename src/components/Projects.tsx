@@ -256,6 +256,16 @@ const Projects = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
             >
+              {/* Design Graphique marquee FIRST when "Tous" is active */}
+              {activeFilter === 'Tous' && (
+                <div className="mb-10">
+                  <h3 className="text-xl md:text-2xl font-bold mb-6">
+                    <span className="text-gradient">Design Graphique</span>
+                  </h3>
+                  <DesignMarquee onImageClick={openLightbox} />
+                </div>
+              )}
+
               {/* Project cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
                 {filteredProjects.length === 0 ? (
@@ -263,13 +273,30 @@ const Projects = () => {
                     <p className="text-muted-foreground text-sm">Aucun projet dans cette catégorie pour le moment.</p>
                   </div>
                 ) : (
-                  filteredProjects.map((project) => (
+                  filteredProjects.map((project) => {
+                    const domain = (() => {
+                      try { return new URL(project.url).hostname; } catch { return ''; }
+                    })();
+                    const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : '';
+                    
+                    return (
                     <article 
                       key={project.title}
                       className="glass-card overflow-hidden group hover-lift"
                       itemScope 
                       itemType="https://schema.org/CreativeWork"
                     >
+                      {/* Favicon as project image */}
+                      {faviconUrl && (
+                        <div className="w-full h-32 md:h-40 bg-gradient-to-br from-card to-muted/30 flex items-center justify-center border-b border-border/20">
+                          <img 
+                            src={faviconUrl} 
+                            alt={`Favicon de ${project.title}`}
+                            className="w-16 h-16 md:w-20 md:h-20 object-contain rounded-xl shadow-lg"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
                       <div className="p-4 md:p-6">
                         <div className="flex items-start justify-between mb-3 md:mb-4">
                           <div className="flex items-center space-x-2">
@@ -320,19 +347,11 @@ const Projects = () => {
                         <meta itemProp="creator" content="Ulrich Deschamp KOSSONOU" />
                       </div>
                     </article>
-                  ))
+                    );
+                  })
                 )}
               </div>
 
-              {/* Design Graphique marquee when "Tous" is active */}
-              {activeFilter === 'Tous' && (
-                <div className="mt-10">
-                  <h3 className="text-xl md:text-2xl font-bold mb-6">
-                    <span className="text-gradient">Design Graphique</span>
-                  </h3>
-                  <DesignMarquee onImageClick={openLightbox} />
-                </div>
-              )}
             </motion.div>
           )}
         </AnimatePresence>
