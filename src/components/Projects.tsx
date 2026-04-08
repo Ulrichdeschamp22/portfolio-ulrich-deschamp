@@ -274,11 +274,6 @@ const Projects = () => {
                   </div>
                 ) : (
                   filteredProjects.map((project) => {
-                    const domain = (() => {
-                      try { return new URL(project.url).hostname; } catch { return ''; }
-                    })();
-                    const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : '';
-                    
                     return (
                     <article 
                       key={project.title}
@@ -286,17 +281,12 @@ const Projects = () => {
                       itemScope 
                       itemType="https://schema.org/CreativeWork"
                     >
-                      {/* Favicon as project image */}
-                      {faviconUrl && (
-                        <div className="w-full h-32 md:h-40 bg-gradient-to-br from-card to-muted/30 flex items-center justify-center border-b border-border/20">
-                          <img 
-                            src={faviconUrl} 
-                            alt={`Favicon de ${project.title}`}
-                            className="w-16 h-16 md:w-20 md:h-20 object-contain rounded-xl shadow-lg"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
+                      {/* Project type as hero banner */}
+                      <div className={`w-full h-32 md:h-40 bg-gradient-to-br from-card to-muted/30 flex items-center justify-center border-b border-border/20`}>
+                        <span className={`text-2xl md:text-3xl font-bold ${getTypeColor(project.type)} text-center px-4`}>
+                          {project.type}
+                        </span>
+                      </div>
                       <div className="p-4 md:p-6">
                         <div className="flex items-start justify-between mb-3 md:mb-4">
                           <div className="flex items-center space-x-2">
