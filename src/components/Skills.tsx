@@ -311,7 +311,9 @@ const Skills = () => {
                       }
                     }}
                   >
-                    <category.Visual />
+                    <Suspense fallback={<VisualFallback />}>
+                      <category.Visual />
+                    </Suspense>
                   </motion.div>
                 </motion.div>
               </div>
