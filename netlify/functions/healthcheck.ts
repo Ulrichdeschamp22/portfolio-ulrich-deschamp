@@ -1,7 +1,6 @@
-import { Handler } from "@netlify/functions";
 import { keepAlive } from "../../src/server/keepAlive";
 
-export const handler: Handler = async (event) => {
+export const handler = async (event: { httpMethod: string }) => {
   if (event.httpMethod !== "GET" && event.httpMethod !== "HEAD") {
     return {
       statusCode: 405,
