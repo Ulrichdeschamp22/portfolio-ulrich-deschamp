@@ -31,6 +31,11 @@ const designImages = [
   { src: '/lovable-uploads/design/amour-immobilier.jpg', title: 'Amour & Immobilier - Mars 2026' },
   { src: '/lovable-uploads/design/couple-vision-360.jpg', title: 'Couple Vision 360' },
   { src: '/lovable-uploads/design/bootcamp-celibataire-2.jpg', title: 'BootCamp Célibataire - Époux à Devenir' },
+  { src: '/lovable-uploads/design/bootcamp-celibataire-3.jpg', title: 'Bootcamp Célibataire - Époux à Devenir (Mai)' },
+  { src: '/lovable-uploads/design/test-love.jpg', title: 'Test Love - Vérifiez votre compatibilité' },
+  { src: '/lovable-uploads/design/bootcamp-celibataire-epouse-mai.jpg', title: 'Boot Camp Célibataire - Épouse à Devenir (12 Mai)' },
+  { src: '/lovable-uploads/design/bootcamp-epoux-avril.jpg', title: 'Boot Camp Célibataire - Époux à Devenir (Avril)' },
+  { src: '/lovable-uploads/design/bootcamp-epouse-avril.jpg', title: 'Boot Camp Célibataire - Épouse à Devenir (Avril)' },
 ];
 
 // Split images into rows for marquee
