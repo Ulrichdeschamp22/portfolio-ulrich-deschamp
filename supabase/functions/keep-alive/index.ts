@@ -8,23 +8,37 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    return new Response(
+      JSON.stringify({ ok: false, time: new Date().toISOString() }),
+      {
+        status: 405,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json', Allow: 'GET, HEAD' },
+      }
+    );
+  }
+
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_ANON_KEY')!;
+    const time = new Date().toISOString();
 
-    // Minimal query: select count from a small table (lightweight)
-    const res = await fetch(`${supabaseUrl}/rest/v1/skills?select=id&limit=1`, {
+    const res = await fetch(`${supabaseUrl.replace(/\/$/, '')}/rest/v1/`, {
+      method: 'GET',
       headers: {
         'apikey': supabaseKey,
         'Authorization': `Bearer ${supabaseKey}`,
+        'Content-Type': 'application/json',
       },
     });
 
+    console.log('Supabase keep alive OK', time, res.status);
+
     return new Response(
       JSON.stringify({
-        status: 'alive',
-        timestamp: new Date().toISOString(),
-        db_connected: res.ok,
+        ok: true,
+        time,
+        status: res.status,
       }),
       {
         status: 200,
@@ -32,8 +46,14 @@ Deno.serve(async (req) => {
       }
     );
   } catch (error) {
+    console.error('Erreur keep alive Supabase :', error);
+
     return new Response(
-      JSON.stringify({ status: 'error', message: error.message }),
+      JSON.stringify({
+        ok: false,
+        time: new Date().toISOString(),
+        error: error instanceof Error ? error.message : String(error),
+      }),
       {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
