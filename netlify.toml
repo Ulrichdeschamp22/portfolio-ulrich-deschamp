@@ -1,0 +1,7 @@
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/healthcheck"
+  to = "/.netlify/functions/healthcheck"
+  status = 200
