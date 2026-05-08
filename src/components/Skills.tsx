@@ -1,16 +1,23 @@
-import { motion, useScroll } from 'framer-motion';
-import { useRef } from 'react';
-import Skill3DLaptop from './skills/Skill3DLaptop';
-import Skill3DMegaphone from './skills/Skill3DMegaphone';
-import Skill3DSaaS from './skills/Skill3DSaaS';
-import Skill3DMobile from './skills/Skill3DMobile';
-import Skill3DWebApp from './skills/Skill3DWebApp';
-import Skill3DSmartphone from './skills/Skill3DSmartphone';
-import Skill3DVote from './skills/Skill3DVote';
-import Skill3DEcommerce from './skills/Skill3DEcommerce';
-import Skill3DTunnel from './skills/Skill3DTunnel';
-import Skill3DTablet from './skills/Skill3DTablet';
-import Skill3DCamera from './skills/Skill3DCamera';
+import { motion } from 'framer-motion';
+import { lazy, Suspense, useRef } from 'react';
+
+const Skill3DLaptop = lazy(() => import('./skills/Skill3DLaptop'));
+const Skill3DMegaphone = lazy(() => import('./skills/Skill3DMegaphone'));
+const Skill3DSaaS = lazy(() => import('./skills/Skill3DSaaS'));
+const Skill3DMobile = lazy(() => import('./skills/Skill3DMobile'));
+const Skill3DWebApp = lazy(() => import('./skills/Skill3DWebApp'));
+const Skill3DSmartphone = lazy(() => import('./skills/Skill3DSmartphone'));
+const Skill3DVote = lazy(() => import('./skills/Skill3DVote'));
+const Skill3DEcommerce = lazy(() => import('./skills/Skill3DEcommerce'));
+const Skill3DTunnel = lazy(() => import('./skills/Skill3DTunnel'));
+const Skill3DTablet = lazy(() => import('./skills/Skill3DTablet'));
+const Skill3DCamera = lazy(() => import('./skills/Skill3DCamera'));
+
+const VisualFallback = () => (
+  <div className="w-full h-64 md:h-80 flex items-center justify-center">
+    <div className="w-16 h-16 rounded-full bg-primary/10 animate-pulse" />
+  </div>
+);
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
