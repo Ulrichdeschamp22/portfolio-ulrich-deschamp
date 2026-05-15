@@ -85,7 +85,9 @@ const About = () => {
 
           {/* Contact CTA card with 3D bitmoji */}
           <a
-            href="#contact"
+            href={`https://wa.me/2250710224023?text=${encodeURIComponent("Bonjour Mr Ulrich Deschamp KOSSONOU, je viens de votre site et je souhaite discuter avec vous pour un projet. Merci de me recontacter.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="md:col-span-2 relative overflow-hidden rounded-2xl p-5 md:p-6 group hover-lift transition-all duration-500"
             style={{
               background: 'linear-gradient(135deg, hsl(142 76% 36% / 0.95), hsl(160 84% 30% / 0.95))',
