@@ -36,6 +36,10 @@ const designImages = [
   { src: '/lovable-uploads/design/bootcamp-celibataire-epouse-mai.jpg', title: 'Boot Camp Célibataire - Épouse à Devenir (12 Mai)' },
   { src: '/lovable-uploads/design/bootcamp-epoux-avril.jpg', title: 'Boot Camp Célibataire - Époux à Devenir (Avril)' },
   { src: '/lovable-uploads/design/bootcamp-epouse-avril.jpg', title: 'Boot Camp Célibataire - Épouse à Devenir (Avril)' },
+  { src: '/lovable-uploads/design/bootcamp-epoux-27-mai.jpg', title: 'Boot Camp Célibataire - Époux à Devenir (27 Mai)' },
+  { src: '/lovable-uploads/design/ascension-dame-hortys.jpg', title: "Dame Hortys - Bonne fête de l'Ascension" },
+  { src: '/lovable-uploads/design/recollection-personnes-seules.jpg', title: 'Récollection des Personnes Seules - Église' },
+  { src: '/lovable-uploads/design/ascension-keys-voyages.jpg', title: "Keys Voyages - Bonne fête de l'Ascension" },
 ];
 
 // Split images into rows for marquee

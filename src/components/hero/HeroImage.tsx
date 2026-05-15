@@ -69,8 +69,6 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
             background: 'linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box, linear-gradient(135deg, hsl(271 91% 65%), hsl(217 91% 60%)) border-box',
             boxShadow: '0 0 40px hsl(271 91% 65% / 0.5), 0 0 80px hsl(271 91% 65% / 0.25)'
           }}
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.4 }}
         >
           <img 
             src="/lovable-uploads/hero-photo.jpeg" 
@@ -89,13 +87,6 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
             transition={{ duration: 1.5, ease: 'easeInOut' }}
           />
           
-          {/* Hover overlay */}
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
         </motion.div>
       </div>
       
