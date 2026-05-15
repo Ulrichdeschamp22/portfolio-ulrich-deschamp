@@ -1,4 +1,5 @@
-import { GraduationCap, Award, Briefcase, Target } from 'lucide-react';
+import { GraduationCap, Award, Briefcase, Target, MessageCircle } from 'lucide-react';
+import bitmojiContact from '@/assets/bitmoji-contact.png';
 
 const About = () => {
   const highlights = [
@@ -81,6 +82,48 @@ const About = () => {
               </div>
             </div>
           ))}
+
+          {/* Contact CTA card with 3D bitmoji */}
+          <a
+            href="#contact"
+            className="md:col-span-2 relative overflow-hidden rounded-2xl p-5 md:p-6 group hover-lift transition-all duration-500"
+            style={{
+              background: 'linear-gradient(135deg, hsl(142 76% 36% / 0.95), hsl(160 84% 30% / 0.95))',
+              boxShadow: '0 10px 40px -10px hsl(142 76% 36% / 0.5)',
+            }}
+            data-aos="fade-up"
+            data-aos-delay="350"
+            data-aos-once="true"
+          >
+            {/* Decorative glow */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-300/20 rounded-full blur-3xl" />
+
+            <div className="relative flex items-center gap-4 md:gap-6">
+              <img
+                src={bitmojiContact}
+                alt="Ulrich Deschamp - Contactez-moi"
+                className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-2xl group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 flex-shrink-0"
+                width={256}
+                height={256}
+                loading="lazy"
+              />
+              <div className="flex-1 text-white">
+                <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                  Disponible maintenant
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold mb-1">Discutons de votre projet</h3>
+                <p className="text-sm md:text-base text-white/90 mb-3">
+                  Une idée, un site, une application ? Contactez-moi pour un échange gratuit.
+                </p>
+                <span className="inline-flex items-center gap-2 text-sm font-semibold bg-white text-emerald-700 px-4 py-2 rounded-full group-hover:gap-3 transition-all">
+                  <MessageCircle className="w-4 h-4" />
+                  Me contacter
+                </span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
