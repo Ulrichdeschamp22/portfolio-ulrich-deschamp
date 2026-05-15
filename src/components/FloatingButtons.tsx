@@ -55,7 +55,7 @@ const FloatingButtons = () => {
   };
 
   const whatsappNumber = "2250710224023";
-  const message = "Bonjour Ulrich, j'aimerais discuter d'un projet avec vous.";
+  const message = "Bonjour Ulrich, je viens de votre site et je souhaite discuter avec vous pour un projet. Merci de me recontacter.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (

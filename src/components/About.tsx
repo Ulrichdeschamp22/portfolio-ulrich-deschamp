@@ -103,7 +103,7 @@ const About = () => {
               <img
                 src={bitmojiContact}
                 alt="Ulrich Deschamp - Contactez-moi"
-                className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-2xl group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 flex-shrink-0"
+                className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-2xl flex-shrink-0"
                 width={256}
                 height={256}
                 loading="lazy"
