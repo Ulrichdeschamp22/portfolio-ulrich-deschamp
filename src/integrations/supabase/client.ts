@@ -8,7 +8,7 @@ const SUPABASE_URL =
 
 const SUPABASE_PUBLISHABLE_KEY =
   (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined) ??
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXAiLCJyZWYiOiJhanlpb21ydHVwaHBqbXNsdXdnZyIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzY3ODU0NzkyLCJleHAiOjIwODM0MzA3OTJ9.JQ-9fQub9Y0YVmCuK2r_7fXG4N51i-lBBXzr7yTsY8Y';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqeWlvbXJ0dXBocGptc2x1d2dnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc4NTQ3OTIsImV4cCI6MjA4MzQzMDc5Mn0.VUZFcTxESkx29jj7EhDYFyUirqCov0l5Kocet8WQc2w';
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
