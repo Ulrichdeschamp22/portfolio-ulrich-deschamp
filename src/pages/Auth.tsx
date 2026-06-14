@@ -43,7 +43,8 @@ const Auth = () => {
     setErrors({});
     
     // Validate inputs
-    const result = loginSchema.safeParse({ email, password });
+    const normalizedEmail = email.trim().toLowerCase();
+    const result = loginSchema.safeParse({ email: normalizedEmail, password });
     if (!result.success) {
       const fieldErrors: { email?: string; password?: string } = {};
       result.error.errors.forEach((err) => {
@@ -56,14 +57,18 @@ const Auth = () => {
 
     setIsLoading(true);
     
-    const { error } = await signIn(email, password);
+    const { error } = await signIn(normalizedEmail, password);
     
     if (error) {
       let message = "Une erreur est survenue lors de la connexion.";
+      console.error('Login error:', error.message);
+
       if (error.message.includes('Invalid login credentials')) {
         message = "Email ou mot de passe incorrect.";
       } else if (error.message.includes('Email not confirmed')) {
         message = "Veuillez confirmer votre email avant de vous connecter.";
+      } else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+        message = "Impossible de joindre le serveur de connexion. Vérifiez votre réseau puis réessayez.";
       }
       
       toast({
