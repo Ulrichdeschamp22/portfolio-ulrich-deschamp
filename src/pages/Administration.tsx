@@ -1,15 +1,32 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Home, Mail, Briefcase, Lightbulb, LayoutDashboard, Palette } from 'lucide-react';
+import { Home, Mail, Briefcase, Lightbulb, LayoutDashboard, Palette, LogOut } from 'lucide-react';
 import AdminMessages from '@/components/admin/AdminMessages';
 import AdminProjects from '@/components/admin/AdminProjects';
 import AdminSkills from '@/components/admin/AdminSkills';
 import AdminDashboard from '@/components/admin/AdminDashboard';
 import AdminDesignPortfolio from '@/components/admin/AdminDesignPortfolio';
+import { useAuth } from '@/hooks/useAuth';
 
 const Administration = () => {
   const navigate = useNavigate();
+  const { user, isAdmin, loading, signOut } = useAuth();
+
+  useEffect(() => {
+    if (!loading && (!user || !isAdmin)) {
+      navigate('/auth');
+    }
+  }, [user, isAdmin, loading, navigate]);
+
+  if (loading || !user || !isAdmin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
