@@ -48,10 +48,16 @@ const Administration = () => {
             </h1>
           </div>
           
-          <Button variant="outline" size="sm" onClick={() => navigate('/')}>
-            <Home className="h-4 w-4 mr-2" />
-            Retour au site
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={async () => { await signOut(); navigate('/auth'); }}>
+              <LogOut className="h-4 w-4 mr-2" />
+              <span className="hidden sm:inline">Déconnexion</span>
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => navigate('/')}>
+              <Home className="h-4 w-4 mr-2" />
+              <span className="hidden sm:inline">Retour au site</span>
+            </Button>
+          </div>
         </div>
       </header>
       
