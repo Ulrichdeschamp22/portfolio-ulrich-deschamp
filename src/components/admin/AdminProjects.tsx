@@ -418,55 +418,71 @@ const AdminProjects = () => {
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {projects.map((project) => (
             <Card 
               key={project.id} 
-              className={`glass-card transition-opacity ${!project.is_visible ? 'opacity-50' : ''}`}
+              className={`group relative overflow-hidden border-border/40 bg-card/40 backdrop-blur-sm hover:border-primary/40 hover:bg-card/60 transition-all duration-300 ${!project.is_visible ? 'opacity-60' : ''}`}
             >
-              <CardContent className="p-4">
-                <div className="flex items-center gap-4">
-                  <GripVertical className="h-5 w-5 text-muted-foreground cursor-grab" />
-                  
+              <CardContent className="p-5 space-y-4">
+                {/* Header: Title + Type */}
+                <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold truncate">{project.title}</h3>
-                      <Badge variant="outline">{project.type}</Badge>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <Badge variant="outline" className="text-[10px] uppercase tracking-wider font-medium border-primary/30 text-primary">
+                        {project.type}
+                      </Badge>
                       {!project.is_visible && (
-                        <Badge variant="secondary">Masqué</Badge>
+                        <Badge variant="secondary" className="text-[10px]">Masqué</Badge>
                       )}
                     </div>
-                    <p className="text-sm text-muted-foreground truncate">{project.description}</p>
-                    {project.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mt-2">
-                        {project.tags.map((tag, i) => (
-                          <Badge key={i} variant="secondary" className="text-xs">{tag}</Badge>
-                        ))}
-                      </div>
-                    )}
+                    <h3 className="font-semibold text-base leading-tight truncate">{project.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
+                      {project.description}
+                    </p>
                   </div>
-                  
+                </div>
+
+                {/* Tags */}
+                {project.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.slice(0, 5).map((tag, i) => (
+                      <span 
+                        key={i} 
+                        className="text-[11px] px-2 py-0.5 rounded-md bg-primary/10 text-primary border border-primary/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Footer actions */}
+                <div className="flex items-center justify-between pt-3 border-t border-border/40">
                   <div className="flex items-center gap-2">
                     <Switch
                       checked={project.is_visible}
                       onCheckedChange={() => toggleVisibility(project)}
                     />
-                    
+                    <span className="text-xs text-muted-foreground">
+                      {project.is_visible ? 'Visible' : 'Masqué'}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-1">
                     {project.url && (
-                      <Button variant="ghost" size="icon" asChild>
-                        <a href={project.url} target="_blank" rel="noopener noreferrer">
+                      <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
+                        <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label="Ouvrir">
                           <ExternalLink className="h-4 w-4" />
                         </a>
                       </Button>
                     )}
-                    
-                    <Button variant="ghost" size="icon" onClick={() => openEditDialog(project)}>
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEditDialog(project)} aria-label="Modifier">
                       <Pencil className="h-4 w-4" />
                     </Button>
-                    
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
-                        <Button variant="ghost" size="icon" className="text-destructive">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10" aria-label="Supprimer">
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </AlertDialogTrigger>
