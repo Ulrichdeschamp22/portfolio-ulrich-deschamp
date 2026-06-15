@@ -39,10 +39,10 @@ interface ContactMessage {
 }
 
 const statusColors: Record<MessageStatus, string> = {
-  new: 'bg-green-500/10 text-green-500',
-  read: 'bg-blue-500/10 text-blue-500',
-  replied: 'bg-purple-500/10 text-purple-500',
-  archived: 'bg-gray-500/10 text-gray-500',
+  new: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+  read: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+  replied: 'bg-primary/15 text-primary border-primary/30',
+  archived: 'bg-muted text-muted-foreground border-border',
 };
 
 const statusLabels: Record<MessageStatus, string> = {
