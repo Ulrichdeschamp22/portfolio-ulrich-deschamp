@@ -216,48 +216,59 @@ const AdminMessages = () => {
         </Card>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-          {messages.map((message) => (
-            <Card 
-              key={message.id} 
-              className={`group relative overflow-hidden cursor-pointer border-border/40 bg-card/40 backdrop-blur-sm hover:border-primary/40 hover:bg-card/60 transition-all duration-300 ${
-                message.status === 'new' ? 'border-l-2 border-l-green-500' : ''
-              }`}
-              onClick={() => openMessage(message)}
-            >
-              <CardContent className="p-4 space-y-3">
-                {/* Header */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <h3 className="font-semibold text-base leading-tight truncate">
-                        {message.subject}
-                      </h3>
-                      <Badge className={`${statusColors[message.status]} text-[10px] uppercase tracking-wider`}>
-                        {statusLabels[message.status]}
-                      </Badge>
+          {messages.map((message) => {
+            const isNew = message.status === 'new';
+            const initial = (message.name || '?').trim().charAt(0).toUpperCase();
+            return (
+              <Card
+                key={message.id}
+                onClick={() => openMessage(message)}
+                className={`group relative overflow-hidden cursor-pointer rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm hover:border-primary/50 hover:bg-card/70 transition-all duration-300 ${
+                  isNew ? 'ring-1 ring-emerald-500/30' : ''
+                }`}
+              >
+                {isNew && (
+                  <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-emerald-400 to-emerald-600" />
+                )}
+                <CardContent className="p-4 sm:p-5">
+                  <div className="flex items-start gap-3 min-w-0">
+                    {/* Avatar */}
+                    <div className="shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/30 flex items-center justify-center text-sm font-semibold text-primary">
+                      {initial}
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0 space-y-1.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="font-semibold text-sm sm:text-base leading-tight truncate">
+                          {message.subject || message.name}
+                        </h3>
+                        <Eye className="h-4 w-4 text-muted-foreground shrink-0 group-hover:text-primary transition-colors" />
+                      </div>
+
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <Badge
+                          variant="outline"
+                          className={`${statusColors[message.status]} text-[10px] uppercase tracking-wider px-1.5 py-0 h-5 font-medium`}
+                        >
+                          {statusLabels[message.status]}
+                        </Badge>
+                        <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {formatDate(message.created_at)}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 min-w-0 text-xs text-muted-foreground pt-0.5">
+                        <Mail className="h-3 w-3 shrink-0" />
+                        <span className="truncate min-w-0">{message.email}</span>
+                      </div>
                     </div>
                   </div>
-                  <Eye className="h-4 w-4 text-muted-foreground shrink-0 mt-1 group-hover:text-primary transition-colors" />
-                </div>
-
-                {/* Meta info — stack on mobile, inline on desktop */}
-                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 gap-1.5 text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1.5 min-w-0">
-                    <User className="h-3 w-3 shrink-0" />
-                    <span className="truncate">{message.name}</span>
-                  </span>
-                  <span className="flex items-center gap-1.5 min-w-0">
-                    <Mail className="h-3 w-3 shrink-0" />
-                    <span className="truncate">{message.email}</span>
-                  </span>
-                  <span className="flex items-center gap-1.5 shrink-0">
-                    <Calendar className="h-3 w-3" />
-                    {formatDate(message.created_at)}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       )}
 
