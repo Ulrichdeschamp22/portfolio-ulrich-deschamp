@@ -420,40 +420,54 @@ const AdminProjects = () => {
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {projects.map((project) => (
-            <Card 
-              key={project.id} 
-              className={`group relative overflow-hidden border-border/40 bg-card/40 backdrop-blur-sm hover:border-primary/40 hover:bg-card/60 transition-all duration-300 ${!project.is_visible ? 'opacity-60' : ''}`}
+            <Card
+              key={project.id}
+              className={`group relative overflow-hidden rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm hover:border-primary/50 hover:bg-card/70 transition-all duration-300 ${
+                !project.is_visible ? 'opacity-60' : ''
+              }`}
             >
-              <CardContent className="p-5 space-y-4">
-                {/* Header: Title + Type */}
+              <CardContent className="p-4 sm:p-5 space-y-3.5">
+                {/* Header */}
                 <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <Badge variant="outline" className="text-[10px] uppercase tracking-wider font-medium border-primary/30 text-primary">
+                  <div className="flex-1 min-w-0 space-y-1.5">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <Badge
+                        variant="outline"
+                        className="text-[10px] uppercase tracking-wider font-medium border-primary/30 text-primary bg-primary/5 px-2 py-0 h-5 whitespace-nowrap"
+                      >
                         {project.type}
                       </Badge>
                       {!project.is_visible && (
-                        <Badge variant="secondary" className="text-[10px]">Masqué</Badge>
+                        <Badge variant="secondary" className="text-[10px] h-5 px-2 py-0">
+                          Masqué
+                        </Badge>
                       )}
                     </div>
-                    <h3 className="font-semibold text-base leading-tight truncate">{project.title}</h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
+                    <h3 className="font-semibold text-base sm:text-lg leading-tight truncate">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
                       {project.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Tags */}
+                {/* Tags — discrets */}
                 {project.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1.5">
-                    {project.tags.slice(0, 5).map((tag, i) => (
-                      <span 
-                        key={i} 
-                        className="text-[11px] px-2 py-0.5 rounded-md bg-primary/10 text-primary border border-primary/20"
+                    {project.tags.slice(0, 4).map((tag, i) => (
+                      <span
+                        key={i}
+                        className="text-[10px] px-2 py-0.5 rounded-full bg-muted/60 text-muted-foreground border border-border/50"
                       >
                         {tag}
                       </span>
                     ))}
+                    {project.tags.length > 4 && (
+                      <span className="text-[10px] px-2 py-0.5 rounded-full text-muted-foreground">
+                        +{project.tags.length - 4}
+                      </span>
+                    )}
                   </div>
                 )}
 
@@ -464,25 +478,36 @@ const AdminProjects = () => {
                       checked={project.is_visible}
                       onCheckedChange={() => toggleVisibility(project)}
                     />
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-[11px] text-muted-foreground">
                       {project.is_visible ? 'Visible' : 'Masqué'}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-0.5">
                     {project.url && (
-                      <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
+                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg hover:bg-primary/10 hover:text-primary" asChild>
                         <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label="Ouvrir">
                           <ExternalLink className="h-4 w-4" />
                         </a>
                       </Button>
                     )}
-                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEditDialog(project)} aria-label="Modifier">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 rounded-lg hover:bg-primary/10 hover:text-primary"
+                      onClick={() => openEditDialog(project)}
+                      aria-label="Modifier"
+                    >
                       <Pencil className="h-4 w-4" />
                     </Button>
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10" aria-label="Supprimer">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8 rounded-lg text-destructive hover:text-destructive hover:bg-destructive/10"
+                          aria-label="Supprimer"
+                        >
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </AlertDialogTrigger>
