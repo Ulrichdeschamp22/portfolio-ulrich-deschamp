@@ -215,7 +215,7 @@ const AdminMessages = () => {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
           {messages.map((message) => {
             const isNew = message.status === 'new';
             const initial = (message.name || '?').trim().charAt(0).toUpperCase();
@@ -223,45 +223,49 @@ const AdminMessages = () => {
               <Card
                 key={message.id}
                 onClick={() => openMessage(message)}
-                className={`group relative overflow-hidden cursor-pointer rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm hover:border-primary/50 hover:bg-card/70 transition-all duration-300 ${
-                  isNew ? 'ring-1 ring-emerald-500/30' : ''
+                className={`group relative overflow-hidden cursor-pointer rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm hover:border-primary/40 hover:bg-card/60 active:scale-[0.99] transition-all duration-300 ${
+                  isNew ? 'ring-1 ring-emerald-500/40' : ''
                 }`}
               >
                 {isNew && (
                   <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-emerald-400 to-emerald-600" />
                 )}
                 <CardContent className="p-4 sm:p-5">
-                  <div className="flex items-start gap-3 min-w-0">
+                  <div className="flex items-start gap-3">
                     {/* Avatar */}
-                    <div className="shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/30 flex items-center justify-center text-sm font-semibold text-primary">
+                    <div className="shrink-0 h-11 w-11 rounded-full bg-gradient-to-br from-primary/30 to-primary/5 border border-primary/30 flex items-center justify-center text-base font-semibold text-primary">
                       {initial}
                     </div>
 
                     {/* Content */}
-                    <div className="flex-1 min-w-0 space-y-1.5">
+                    <div className="flex-1 min-w-0">
+                      {/* Ligne 1 : nom + statut */}
                       <div className="flex items-center justify-between gap-2">
-                        <h3 className="font-semibold text-sm sm:text-base leading-tight truncate">
-                          {message.subject || message.name}
+                        <h3 className="font-semibold text-sm sm:text-base text-foreground truncate">
+                          {message.name || 'Anonyme'}
                         </h3>
-                        <Eye className="h-4 w-4 text-muted-foreground shrink-0 group-hover:text-primary transition-colors" />
-                      </div>
-
-                      <div className="flex items-center gap-2 flex-wrap">
                         <Badge
                           variant="outline"
-                          className={`${statusColors[message.status]} text-[10px] uppercase tracking-wider px-1.5 py-0 h-5 font-medium`}
+                          className={`${statusColors[message.status]} text-[10px] uppercase tracking-wider px-2 py-0 h-5 font-semibold shrink-0`}
                         >
                           {statusLabels[message.status]}
                         </Badge>
-                        <span className="text-[11px] text-muted-foreground flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {formatDate(message.created_at)}
-                        </span>
                       </div>
 
-                      <div className="flex items-center gap-1.5 min-w-0 text-xs text-muted-foreground pt-0.5">
-                        <Mail className="h-3 w-3 shrink-0" />
-                        <span className="truncate min-w-0">{message.email}</span>
+                      {/* Ligne 2 : sujet */}
+                      <p className="text-xs sm:text-sm text-foreground/80 font-medium truncate mt-1">
+                        {message.subject || '(Sans sujet)'}
+                      </p>
+
+                      {/* Ligne 3 : email tronqué */}
+                      <p className="text-[11px] sm:text-xs text-muted-foreground truncate mt-0.5">
+                        {message.email}
+                      </p>
+
+                      {/* Ligne 4 : date */}
+                      <div className="flex items-center gap-1 text-[10px] text-muted-foreground/80 mt-2">
+                        <Calendar className="h-3 w-3" />
+                        {formatDate(message.created_at)}
                       </div>
                     </div>
                   </div>
