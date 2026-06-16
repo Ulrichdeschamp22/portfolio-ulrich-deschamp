@@ -418,74 +418,76 @@ const AdminProjects = () => {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
           {projects.map((project) => (
             <Card
               key={project.id}
-              className={`group relative overflow-hidden rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm hover:border-primary/50 hover:bg-card/70 transition-all duration-300 ${
+              className={`group relative overflow-hidden rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm hover:border-primary/40 hover:bg-card/60 transition-all duration-300 ${
                 !project.is_visible ? 'opacity-60' : ''
               }`}
             >
-              <CardContent className="p-4 sm:p-5 space-y-3.5">
-                {/* Header */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1 min-w-0 space-y-1.5">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <Badge
-                        variant="outline"
-                        className="text-[10px] uppercase tracking-wider font-medium border-primary/30 text-primary bg-primary/5 px-2 py-0 h-5 whitespace-nowrap"
-                      >
-                        {project.type}
-                      </Badge>
-                      {!project.is_visible && (
-                        <Badge variant="secondary" className="text-[10px] h-5 px-2 py-0">
-                          Masqué
-                        </Badge>
-                      )}
-                    </div>
-                    <h3 className="font-semibold text-base sm:text-lg leading-tight truncate">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
-                      {project.description}
-                    </p>
+              <CardContent className="p-4 sm:p-5 flex flex-col gap-4">
+                {/* Top : type + statut visibilité */}
+                <div className="flex items-center justify-between gap-2">
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] uppercase tracking-wider font-semibold border-primary/30 text-primary bg-primary/10 px-2.5 py-0.5 rounded-full"
+                  >
+                    {project.type}
+                  </Badge>
+                  <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                    <span className={`h-1.5 w-1.5 rounded-full ${project.is_visible ? 'bg-emerald-500' : 'bg-muted-foreground/50'}`} />
+                    {project.is_visible ? 'En ligne' : 'Masqué'}
                   </div>
                 </div>
 
-                {/* Tags — discrets */}
+                {/* Titre + description */}
+                <div className="space-y-1.5">
+                  <h3 className="font-semibold text-base sm:text-lg leading-tight text-foreground line-clamp-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Tags */}
                 {project.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.slice(0, 4).map((tag, i) => (
                       <span
                         key={i}
-                        className="text-[10px] px-2 py-0.5 rounded-full bg-muted/60 text-muted-foreground border border-border/50"
+                        className="text-[10px] px-2 py-0.5 rounded-md bg-muted/50 text-muted-foreground border border-border/40"
                       >
                         {tag}
                       </span>
                     ))}
                     {project.tags.length > 4 && (
-                      <span className="text-[10px] px-2 py-0.5 rounded-full text-muted-foreground">
+                      <span className="text-[10px] px-2 py-0.5 rounded-md text-muted-foreground">
                         +{project.tags.length - 4}
                       </span>
                     )}
                   </div>
                 )}
 
-                {/* Footer actions */}
-                <div className="flex items-center justify-between pt-3 border-t border-border/40">
+                {/* Footer : toggle + actions, bien espacés */}
+                <div className="flex items-center justify-between pt-3 mt-auto border-t border-border/30">
                   <div className="flex items-center gap-2">
                     <Switch
                       checked={project.is_visible}
                       onCheckedChange={() => toggleVisibility(project)}
+                      aria-label="Visibilité"
                     />
-                    <span className="text-[11px] text-muted-foreground">
-                      {project.is_visible ? 'Visible' : 'Masqué'}
-                    </span>
                   </div>
 
-                  <div className="flex items-center gap-0.5">
+                  <div className="flex items-center gap-1">
                     {project.url && (
-                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg hover:bg-primary/10 hover:text-primary" asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-9 w-9 rounded-xl hover:bg-primary/10 hover:text-primary"
+                        asChild
+                      >
                         <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label="Ouvrir">
                           <ExternalLink className="h-4 w-4" />
                         </a>
@@ -494,7 +496,7 @@ const AdminProjects = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-8 w-8 rounded-lg hover:bg-primary/10 hover:text-primary"
+                      className="h-9 w-9 rounded-xl hover:bg-primary/10 hover:text-primary"
                       onClick={() => openEditDialog(project)}
                       aria-label="Modifier"
                     >
@@ -505,7 +507,7 @@ const AdminProjects = () => {
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-8 w-8 rounded-lg text-destructive hover:text-destructive hover:bg-destructive/10"
+                          className="h-9 w-9 rounded-xl text-destructive hover:text-destructive hover:bg-destructive/10"
                           aria-label="Supprimer"
                         >
                           <Trash2 className="h-4 w-4" />
