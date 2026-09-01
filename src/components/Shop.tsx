@@ -97,7 +97,7 @@ const Shop = () => {
                 asChild
               >
                 <a 
-                  href="https://open-mind.shop/" 
+                  href="https://openmind.mychariow.shop" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label={`Découvrir ${product.title}`}
@@ -120,7 +120,7 @@ const Shop = () => {
         >
           <Button size="lg" variant="glow" asChild className="transition-transform duration-300">
             <a 
-              href="https://open-mind.shop/" 
+              href="https://openmind.mychariow.shop" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center text-sm md:text-base"
