@@ -12,6 +12,8 @@ const Skill3DEcommerce = lazy(() => import('./skills/Skill3DEcommerce'));
 const Skill3DTunnel = lazy(() => import('./skills/Skill3DTunnel'));
 const Skill3DTablet = lazy(() => import('./skills/Skill3DTablet'));
 const Skill3DCamera = lazy(() => import('./skills/Skill3DCamera'));
+const Skill3DTicket = lazy(() => import('./skills/Skill3DTicket'));
+const Skill3DLanding = lazy(() => import('./skills/Skill3DLanding'));
 
 const VisualFallback = () => (
   <div className="w-full h-64 md:h-80 flex items-center justify-center">
