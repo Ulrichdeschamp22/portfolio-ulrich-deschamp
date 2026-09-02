@@ -149,6 +149,38 @@ const Skills = () => {
       textLeft: false
     },
     {
+      title: "Billetterie d'Événement en Ligne",
+      subtitle: "Création de plateformes de billetterie événementielle sécurisées",
+      skills: [
+        "Billetterie événementielle sur mesure",
+        "Gestion multi-catégories (VIP, Gold, Standard)",
+        "Paiement mobile intégré (Orange Money, MTN, Wave, Visa)",
+        "Codes QR & contrôle d'accès en temps réel",
+        "Stock limité & vente en temps réel",
+        "Tableaux de bord organisateur & analytics",
+        "Billets électroniques personnalisés",
+        "Reporting ventes & fréquentation"
+      ],
+      Visual: Skill3DTicket,
+      textLeft: true
+    },
+    {
+      title: "Création de Landing Page",
+      subtitle: "Landing pages haute conversion pour campagnes marketing premium",
+      skills: [
+        "Landing pages optimisées conversion",
+        "Design UX/UI persuasif & responsive",
+        "Formulaires de capture & lead magnets",
+        "A/B testing & optimisation continue",
+        "Intégration CRM & outils marketing",
+        "Suivi analytics & taux de conversion",
+        "Pages de vente & webinaires",
+        "SEO technique & vitesse de chargement"
+      ],
+      Visual: Skill3DLanding,
+      textLeft: false
+    },
+    {
       title: "Tunnels de Vente",
       subtitle: "Création de tunnels de vente automatisés à haute conversion",
       skills: [
