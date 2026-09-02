@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useHeroImage } from '@/hooks/useHeroImage';
+
 
 interface HeroImageProps {
   className?: string;
