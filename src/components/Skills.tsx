@@ -12,6 +12,8 @@ const Skill3DEcommerce = lazy(() => import('./skills/Skill3DEcommerce'));
 const Skill3DTunnel = lazy(() => import('./skills/Skill3DTunnel'));
 const Skill3DTablet = lazy(() => import('./skills/Skill3DTablet'));
 const Skill3DCamera = lazy(() => import('./skills/Skill3DCamera'));
+const Skill3DTicket = lazy(() => import('./skills/Skill3DTicket'));
+const Skill3DLanding = lazy(() => import('./skills/Skill3DLanding'));
 
 const VisualFallback = () => (
   <div className="w-full h-64 md:h-80 flex items-center justify-center">
@@ -147,6 +149,38 @@ const Skills = () => {
       textLeft: false
     },
     {
+      title: "Billetterie d'Événement en Ligne",
+      subtitle: "Création de plateformes de billetterie événementielle sécurisées",
+      skills: [
+        "Billetterie événementielle sur mesure",
+        "Gestion multi-catégories (VIP, Gold, Standard)",
+        "Paiement mobile intégré (Orange Money, MTN, Wave, Visa)",
+        "Codes QR & contrôle d'accès en temps réel",
+        "Stock limité & vente en temps réel",
+        "Tableaux de bord organisateur & analytics",
+        "Billets électroniques personnalisés",
+        "Reporting ventes & fréquentation"
+      ],
+      Visual: Skill3DTicket,
+      textLeft: true
+    },
+    {
+      title: "Création de Landing Page",
+      subtitle: "Landing pages haute conversion pour campagnes marketing premium",
+      skills: [
+        "Landing pages optimisées conversion",
+        "Design UX/UI persuasif & responsive",
+        "Formulaires de capture & lead magnets",
+        "A/B testing & optimisation continue",
+        "Intégration CRM & outils marketing",
+        "Suivi analytics & taux de conversion",
+        "Pages de vente & webinaires",
+        "SEO technique & vitesse de chargement"
+      ],
+      Visual: Skill3DLanding,
+      textLeft: false
+    },
+    {
       title: "Tunnels de Vente",
       subtitle: "Création de tunnels de vente automatisés à haute conversion",
       skills: [
@@ -203,6 +237,8 @@ const Skills = () => {
     { from: 'from-indigo-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-indigo-500/20' },
     { from: 'from-emerald-950/30', via: 'via-green-900/20', to: 'to-background', glow: 'bg-emerald-500/20' },
     { from: 'from-amber-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-amber-500/20' },
+    { from: 'from-fuchsia-950/30', via: 'via-pink-900/20', to: 'to-background', glow: 'bg-fuchsia-500/20' },
+    { from: 'from-violet-950/30', via: 'via-fuchsia-900/20', to: 'to-background', glow: 'bg-violet-500/20' },
     { from: 'from-orange-950/30', via: 'via-amber-900/20', to: 'to-background', glow: 'bg-orange-500/20' },
     { from: 'from-rose-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-rose-500/20' },
   ];
