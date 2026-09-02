@@ -10,6 +10,7 @@ interface HeroImageProps {
 
 const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
   const [isShining, setIsShining] = useState(false);
+  const { imageUrl } = useHeroImage();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,7 +74,7 @@ const HeroImage = ({ className = '', size = 'desktop' }: HeroImageProps) => {
           }}
         >
           <img 
-            src="/lovable-uploads/hero-photo.jpeg" 
+            src={imageUrl} 
             alt="Ulrich Deschamp KOSSONOU - Expert Digital à Abidjan, Développeur Web Full Stack" 
             className="w-full h-full object-cover object-top bg-background"
             loading="eager"
