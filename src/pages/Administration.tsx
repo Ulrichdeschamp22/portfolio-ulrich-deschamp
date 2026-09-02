@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Home, Mail, Briefcase, Lightbulb, LayoutDashboard, Palette, LogOut } from 'lucide-react';
+import { Home, Mail, Briefcase, Lightbulb, LayoutDashboard, Palette, LogOut, Image } from 'lucide-react';
 import AdminMessages from '@/components/admin/AdminMessages';
 import AdminProjects from '@/components/admin/AdminProjects';
 import AdminSkills from '@/components/admin/AdminSkills';
 import AdminDashboard from '@/components/admin/AdminDashboard';
 import AdminDesignPortfolio from '@/components/admin/AdminDesignPortfolio';
+import AdminHeroImage from '@/components/admin/AdminHeroImage';
 import { useAuth } from '@/hooks/useAuth';
 
 const TABS = [
@@ -16,6 +17,7 @@ const TABS = [
   { value: 'projects', label: 'Projets', icon: Briefcase },
   { value: 'design', label: 'Design', icon: Palette },
   { value: 'skills', label: 'Skills', icon: Lightbulb },
+  { value: 'photo', label: 'Photo', icon: Image },
 ];
 
 const Administration = () => {
@@ -84,7 +86,7 @@ const Administration = () => {
       <main className="container mx-auto px-4 py-6 md:py-8 relative z-10">
         <Tabs value={active} onValueChange={setActive} className="space-y-6">
           {/* Desktop tabs (top) */}
-          <TabsList className="hidden md:grid w-full max-w-3xl mx-auto grid-cols-5 glass-card">
+          <TabsList className="hidden md:grid w-full max-w-3xl mx-auto grid-cols-6 glass-card">
             {TABS.map(({ value, label, icon: Icon }) => (
               <TabsTrigger key={value} value={value} className="flex items-center gap-2">
                 <Icon className="h-4 w-4" />
@@ -98,6 +100,7 @@ const Administration = () => {
           <TabsContent value="projects"><AdminProjects /></TabsContent>
           <TabsContent value="design"><AdminDesignPortfolio /></TabsContent>
           <TabsContent value="skills"><AdminSkills /></TabsContent>
+          <TabsContent value="photo"><AdminHeroImage /></TabsContent>
         </Tabs>
       </main>
 
@@ -106,7 +109,7 @@ const Administration = () => {
         className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-background/90 backdrop-blur-xl border-t border-border/50 pb-[env(safe-area-inset-bottom)]"
         aria-label="Navigation administration"
       >
-        <ul className="grid grid-cols-5">
+        <ul className="grid grid-cols-6">
           {TABS.map(({ value, label, icon: Icon }) => {
             const isActive = active === value;
             return (
