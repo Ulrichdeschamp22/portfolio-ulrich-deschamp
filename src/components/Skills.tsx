@@ -307,28 +307,42 @@ const Skills = () => {
                       }
                     }}
                   >
-                    <span className="text-xs uppercase tracking-widest text-primary/60 mb-1 block">
-                      Compétence {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">
-                      {category.title}
-                    </h3>
-                    <p className="text-primary text-sm md:text-base mb-4 font-medium">
-                      {category.subtitle}
-                    </p>
-                    <ul className="space-y-2">
-                      {category.skills.map((skill, skillIndex) => (
-                        <li 
-                          key={skillIndex}
-                          className="flex items-start gap-2 group"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          <span className="text-muted-foreground text-xs md:text-sm group-hover:text-foreground transition-colors duration-200">
-                            {skill}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="relative rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm p-5 md:p-7 shadow-lg shadow-primary/5 hover:border-primary/30 hover:shadow-primary/10 transition-all duration-500 overflow-hidden group/card">
+                      {/* Subtle corner glow */}
+                      <div className="absolute -top-16 -right-16 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover/card:bg-primary/20 transition-colors duration-500" />
+
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary/15 text-primary text-sm font-bold border border-primary/20">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent" />
+                      </div>
+
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-1.5">
+                        {category.title}
+                      </h3>
+                      <p className="text-primary text-sm md:text-base mb-5 font-medium">
+                        {category.subtitle}
+                      </p>
+
+                      <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-2.5">
+                        {category.skills.map((skill, skillIndex) => (
+                          <li
+                            key={skillIndex}
+                            className="flex items-start gap-2.5 group"
+                          >
+                            <span className="flex items-center justify-center w-4 h-4 rounded-full bg-primary/15 mt-0.5 flex-shrink-0 group-hover:bg-primary/30 transition-colors duration-200">
+                              <svg className="w-2.5 h-2.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                            </span>
+                            <span className="text-muted-foreground text-xs md:text-sm group-hover:text-foreground transition-colors duration-200">
+                              {skill}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </motion.div>
                   
                   {/* 3D Visual */}
