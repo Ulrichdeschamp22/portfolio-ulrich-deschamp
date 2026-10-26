@@ -220,22 +220,6 @@ const Skills = () => {
     }
   ];
 
-  // Universe colors for each skill section
-  const universeColors = [
-    { from: 'from-violet-950/30', via: 'via-purple-900/20', to: 'to-background', glow: 'bg-violet-500/20' },
-    { from: 'from-blue-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-blue-500/20' },
-    { from: 'from-cyan-950/30', via: 'via-sky-900/20', to: 'to-background', glow: 'bg-cyan-500/20' },
-    { from: 'from-purple-950/30', via: 'via-violet-900/20', to: 'to-background', glow: 'bg-purple-500/20' },
-    { from: 'from-sky-950/30', via: 'via-blue-900/20', to: 'to-background', glow: 'bg-sky-500/20' },
-    { from: 'from-pink-950/30', via: 'via-rose-900/20', to: 'to-background', glow: 'bg-pink-500/20' },
-    { from: 'from-indigo-950/30', via: 'via-cyan-900/20', to: 'to-background', glow: 'bg-indigo-500/20' },
-    { from: 'from-emerald-950/30', via: 'via-green-900/20', to: 'to-background', glow: 'bg-emerald-500/20' },
-    { from: 'from-amber-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-amber-500/20' },
-    { from: 'from-fuchsia-950/30', via: 'via-pink-900/20', to: 'to-background', glow: 'bg-fuchsia-500/20' },
-    { from: 'from-violet-950/30', via: 'via-fuchsia-900/20', to: 'to-background', glow: 'bg-violet-500/20' },
-    { from: 'from-orange-950/30', via: 'via-amber-900/20', to: 'to-background', glow: 'bg-orange-500/20' },
-    { from: 'from-rose-950/30', via: 'via-orange-900/20', to: 'to-background', glow: 'bg-rose-500/20' },
-  ];
 
   return (
     <section 
@@ -268,7 +252,7 @@ const Skills = () => {
                         return (
               <div 
                 key={index}
-                className={`skill-universe relative py-6 md:py-8 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20`}
+                className={`skill-universe relative py-8 md:py-12 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20`}
               >
                 
                 {/* Separator line */}
