@@ -250,20 +250,20 @@ const Projects = () => {
           {isDesignGraphique ? (
             <motion.div
               key="design-marquee"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
             >
               <DesignMarquee onImageClick={openLightbox} />
             </motion.div>
           ) : (
             <motion.div 
               key={activeFilter}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
             >
               {/* Design Graphique marquee FIRST when "Tous" is active */}
               {activeFilter === 'Tous' && (
