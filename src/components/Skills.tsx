@@ -257,7 +257,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="text-gradient">Mes Compétences</span>
@@ -275,7 +275,7 @@ const Skills = () => {
             return (
               <div 
                 key={index}
-                className={`relative py-6 md:py-8 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
+                className={`skill-universe relative py-6 md:py-8 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
               >
                 {/* Universe glow effect */}
                 <div className={`absolute inset-0 ${universe.glow} opacity-5 blur-3xl pointer-events-none`} />
@@ -295,14 +295,14 @@ const Skills = () => {
                   <motion.div 
                     className={`${category.textLeft ? 'md:order-1' : 'md:order-2'}`}
                     variants={{
-                      hidden: { opacity: 0, x: category.textLeft ? -60 : 60 },
+                      hidden: { opacity: 0, x: category.textLeft ? -30 : 30 },
                       visible: { 
                         opacity: 1, 
                         x: 0,
                         transition: { 
-                          duration: 0.8, 
+                          duration: 0.5, 
                           ease: [0.22, 1, 0.36, 1],
-                          delay: 0.1
+                          delay: 0
                         }
                       }
                     }}
@@ -349,14 +349,14 @@ const Skills = () => {
                   <motion.div 
                     className={`${category.textLeft ? 'md:order-2' : 'md:order-1'}`}
                     variants={{
-                      hidden: { opacity: 0, x: category.textLeft ? 90 : -90 },
+                      hidden: { opacity: 0, x: category.textLeft ? 40 : -40 },
                       visible: { 
                         opacity: 1, 
                         x: 0,
                         transition: { 
-                          duration: 0.85, 
+                          duration: 0.5, 
                           ease: [0.22, 1, 0.36, 1],
-                          delay: 0.75
+                          delay: 0.15
                         }
                       }
                     }}
