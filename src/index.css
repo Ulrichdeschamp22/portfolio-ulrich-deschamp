@@ -66,56 +66,45 @@ All colors MUST be HSL.
   }
 
   .light {
-    /* Palette "tech violet sombre" - appliquée au mode jour */
-    --background: 252 50% 4%;        /* #07050F */
-    --foreground: 250 100% 98%;      /* #F5F3FF */
-    
-    --card: 255 60% 8%;              /* #0D0820 */
-    --card-foreground: 252 95% 90%;
-    
-    --popover: 257 54% 12%;          /* #150E2E */
-    --popover-foreground: 250 100% 98%;
-    
-    --primary: 262 83% 58%;          /* #7C3AED violet vif CTA */
+    /* Mode jour : blanc, violet, noir */
+    --background: 0 0% 100%;
+    --foreground: 260 30% 6%;
+    --card: 0 0% 100%;
+    --card-foreground: 260 30% 6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 30% 6%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
-    
-    --secondary: 189 94% 43%;        /* #06B6D4 cyan tech */
+    --secondary: 260 30% 6%;
     --secondary-foreground: 0 0% 100%;
-    
-    --muted: 258 53% 17%;            /* #1F1542 */
-    --muted-foreground: 250 17% 58%; /* #6B6490 */
-    
-    --accent: 250 92% 76%;           /* #A78BFA accent liens */
-    --accent-foreground: 252 50% 4%;
-    
-    --destructive: 330 81% 60%;      /* #EC4899 rose néon */
+    --muted: 260 40% 96%;
+    --muted-foreground: 260 10% 38%;
+    --accent: 262 90% 96%;
+    --accent-foreground: 262 83% 45%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    
-    --border: 257 50% 24%;           /* #2E1F5E */
-    --input: 258 53% 17%;
+    --border: 260 25% 90%;
+    --input: 260 25% 90%;
     --ring: 262 83% 58%;
-    
-    --sidebar-background: 255 60% 8%;
-    --sidebar-foreground: 252 95% 85%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 260 30% 6%;
     --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 257 54% 12%;
-    --sidebar-accent-foreground: 252 95% 85%;
-    --sidebar-border: 257 50% 24%;
+    --sidebar-accent: 260 40% 96%;
+    --sidebar-accent-foreground: 260 30% 6%;
+    --sidebar-border: 260 25% 90%;
     --sidebar-ring: 262 83% 58%;
-    
-    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(250 92% 76%));
-    --gradient-secondary: linear-gradient(135deg, hsl(189 94% 43%), hsl(262 83% 58%));
-    --gradient-accent: linear-gradient(135deg, hsl(262 83% 58% / 0.85), hsl(330 81% 60% / 0.85));
-    --gradient-dark: linear-gradient(180deg, hsl(252 50% 4%), hsl(255 60% 8%));
-    --gradient-glow: radial-gradient(circle at center, hsl(262 83% 58% / 0.25), transparent 70%);
-    
-    --shadow-sm: 0 1px 2px 0 hsl(252 50% 2% / 0.6);
-    --shadow-md: 0 4px 6px -1px hsl(252 50% 2% / 0.6);
-    --shadow-lg: 0 10px 15px -3px hsl(252 50% 2% / 0.6);
-    --shadow-xl: 0 20px 25px -5px hsl(252 50% 2% / 0.7);
-    --shadow-glow: 0 0 30px hsl(262 83% 58% / 0.4);
-    --shadow-glow-lg: 0 0 60px hsl(262 83% 58% / 0.5);
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(270 70% 40%));
+    --gradient-secondary: linear-gradient(135deg, hsl(260 30% 6%), hsl(262 83% 58%));
+    --gradient-accent: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 80% 55%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 100%), hsl(260 40% 98%));
+    --gradient-glow: radial-gradient(circle at center, hsl(262 83% 58% / 0.12), transparent 70%);
+    --shadow-sm: 0 1px 2px 0 hsl(260 30% 6% / 0.05);
+    --shadow-md: 0 4px 12px -2px hsl(260 30% 6% / 0.08);
+    --shadow-lg: 0 10px 24px -6px hsl(260 30% 6% / 0.1);
+    --shadow-xl: 0 20px 40px -10px hsl(262 50% 20% / 0.15);
+    --shadow-glow: 0 8px 24px -6px hsl(262 83% 58% / 0.35);
+    --shadow-glow-lg: 0 12px 36px -8px hsl(262 83% 58% / 0.45);
   }
 }
 
@@ -148,32 +137,32 @@ All colors MUST be HSL.
   
   .light .glass-card {
     @apply bg-card/70 backdrop-blur-md border border-border/40;
-    box-shadow: 0 8px 32px 0 hsl(252 50% 2% / 0.6);
+    box-shadow: 0 4px 20px -6px hsl(262 50% 20% / 0.1);
   }
 
   /* Light mode = palette tech violet sombre */
   .light #about {
-    background: linear-gradient(135deg, hsl(255 60% 8%), hsl(257 54% 12%));
+    background: hsl(260 40% 98%);
   }
   
   .light #skills {
-    background: hsl(252 50% 4%);
+    background: hsl(0 0% 100%);
   }
   
   .light .section-projects {
-    background: linear-gradient(135deg, hsl(257 54% 12%), hsl(258 53% 17%));
+    background: hsl(260 40% 98%);
   }
   
   .light #shop {
-    background: linear-gradient(135deg, hsl(255 60% 8%), hsl(257 50% 24% / 0.6));
+    background: hsl(0 0% 100%);
   }
   
   .light #faq {
-    background: linear-gradient(135deg, hsl(257 54% 12%), hsl(255 60% 8%));
+    background: hsl(260 40% 98%);
   }
   
   .light #contact {
-    background: linear-gradient(135deg, hsl(258 53% 17%), hsl(257 54% 12%));
+    background: hsl(0 0% 100%);
   }
 
   /* Navigation glass effect */
@@ -455,30 +444,33 @@ All colors MUST be HSL.
 
   /* Light mode - palette tech violet sombre (override final) */
   .light #hero {
-    background: linear-gradient(180deg, hsl(252 50% 4%), hsl(255 60% 8%));
+    background: hsl(0 0% 100%);
   }
 
   .light #about {
-    background: linear-gradient(135deg, hsl(255 60% 8%), hsl(257 54% 12%), hsl(258 53% 17%));
+    background: hsl(260 40% 98%);
   }
   
   .light #skills {
-    background: linear-gradient(135deg, hsl(252 50% 4%), hsl(255 60% 8%), hsl(257 54% 12%));
+    background: hsl(0 0% 100%);
   }
   
   .light .section-projects {
-    background: linear-gradient(135deg, hsl(257 54% 12%), hsl(258 53% 17%), hsl(257 50% 24%));
+    background: hsl(260 40% 98%);
   }
   
   .light #shop {
-    background: linear-gradient(135deg, hsl(255 60% 8%), hsl(257 54% 12%), hsl(258 53% 17%));
+    background: hsl(0 0% 100%);
   }
   
   .light #faq {
-    background: linear-gradient(135deg, hsl(257 54% 12%), hsl(255 60% 8%), hsl(252 50% 4%));
+    background: hsl(260 40% 98%);
   }
   
   .light #contact {
-    background: linear-gradient(135deg, hsl(258 53% 17%), hsl(257 54% 12%), hsl(255 60% 8%));
+    background: hsl(0 0% 100%);
   }
+
+  .light .skill-universe { background-image: none; }
+  .light .text-gradient { background-image: linear-gradient(135deg, hsl(260 30% 6%), hsl(262 83% 58%)); }
 }
