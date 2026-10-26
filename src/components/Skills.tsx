@@ -1,25 +1,19 @@
 import { motion } from 'framer-motion';
-import { lazy, Suspense, useRef } from 'react';
+import { useRef } from 'react';
 
-const Skill3DLaptop = lazy(() => import('./skills/Skill3DLaptop'));
-const Skill3DMegaphone = lazy(() => import('./skills/Skill3DMegaphone'));
-const Skill3DSaaS = lazy(() => import('./skills/Skill3DSaaS'));
-const Skill3DMobile = lazy(() => import('./skills/Skill3DMobile'));
-const Skill3DWebApp = lazy(() => import('./skills/Skill3DWebApp'));
-const Skill3DSmartphone = lazy(() => import('./skills/Skill3DSmartphone'));
-const Skill3DVote = lazy(() => import('./skills/Skill3DVote'));
-const Skill3DEcommerce = lazy(() => import('./skills/Skill3DEcommerce'));
-const Skill3DTunnel = lazy(() => import('./skills/Skill3DTunnel'));
-const Skill3DTablet = lazy(() => import('./skills/Skill3DTablet'));
-const Skill3DCamera = lazy(() => import('./skills/Skill3DCamera'));
-const Skill3DTicket = lazy(() => import('./skills/Skill3DTicket'));
-const Skill3DLanding = lazy(() => import('./skills/Skill3DLanding'));
-
-const VisualFallback = () => (
-  <div className="w-full h-64 md:h-80 flex items-center justify-center">
-    <div className="w-16 h-16 rounded-full bg-primary/10 animate-pulse" />
-  </div>
-);
+import imgweb from '@/assets/skills/web.webp';
+import imgmarketing from '@/assets/skills/marketing.webp';
+import imgsaas from '@/assets/skills/saas.webp';
+import imgmobile from '@/assets/skills/mobile.webp';
+import imgwebapp from '@/assets/skills/webapp.webp';
+import imgevents from '@/assets/skills/events.webp';
+import imgvote from '@/assets/skills/vote.webp';
+import imgecommerce from '@/assets/skills/ecommerce.webp';
+import imgfunnel from '@/assets/skills/funnel.webp';
+import imgdesign from '@/assets/skills/design.webp';
+import imgcamera from '@/assets/skills/camera.webp';
+import imgticket from '@/assets/skills/ticket.webp';
+import imglanding from '@/assets/skills/landing.webp';
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -37,7 +31,7 @@ const Skills = () => {
         "API & bases de données",
         "Sécurisation & hébergement"
       ],
-      Visual: Skill3DLaptop,
+      Visual: imgweb,
       textLeft: true
     },
     {
@@ -51,7 +45,7 @@ const Skills = () => {
         "Animation de communautés",
         "Calendrier éditorial & reporting"
       ],
-      Visual: Skill3DMegaphone,
+      Visual: imgmarketing,
       textLeft: false
     },
     {
@@ -67,7 +61,7 @@ const Skills = () => {
         "Sécurité & conformité RGPD",
         "Support technique & maintenance"
       ],
-      Visual: Skill3DSaaS,
+      Visual: imgsaas,
       textLeft: true
     },
     {
@@ -83,7 +77,7 @@ const Skills = () => {
         "Publication App Store & Play Store",
         "Maintenance & mises à jour"
       ],
-      Visual: Skill3DMobile,
+      Visual: imgmobile,
       textLeft: false
     },
     {
@@ -99,7 +93,7 @@ const Skills = () => {
         "Tests automatisés & CI/CD",
         "Optimisation performance & SEO"
       ],
-      Visual: Skill3DWebApp,
+      Visual: imgwebapp,
       textLeft: true
     },
     {
@@ -113,7 +107,7 @@ const Skills = () => {
         "Intégration d'outils métiers",
         "Transformation digitale avancée"
       ],
-      Visual: Skill3DSmartphone,
+      Visual: imgevents,
       textLeft: false
     },
     {
@@ -129,7 +123,7 @@ const Skills = () => {
         "Anti-fraude & vérification des votes",
         "Statistiques & reporting avancés"
       ],
-      Visual: Skill3DVote,
+      Visual: imgvote,
       textLeft: true
     },
     {
@@ -145,7 +139,7 @@ const Skills = () => {
         "Promotions, coupons & fidélisation",
         "SEO e-commerce & visibilité"
       ],
-      Visual: Skill3DEcommerce,
+      Visual: imgecommerce,
       textLeft: false
     },
     {
@@ -161,7 +155,7 @@ const Skills = () => {
         "Billets électroniques personnalisés",
         "Reporting ventes & fréquentation"
       ],
-      Visual: Skill3DTicket,
+      Visual: imgticket,
       textLeft: true
     },
     {
@@ -177,7 +171,7 @@ const Skills = () => {
         "Pages de vente & webinaires",
         "SEO technique & vitesse de chargement"
       ],
-      Visual: Skill3DLanding,
+      Visual: imglanding,
       textLeft: false
     },
     {
@@ -193,7 +187,7 @@ const Skills = () => {
         "Webinaires & formations en ligne",
         "Suivi analytics & ROI"
       ],
-      Visual: Skill3DTunnel,
+      Visual: imgfunnel,
       textLeft: true
     },
     {
@@ -207,7 +201,7 @@ const Skills = () => {
         "Mockups & retouche photo",
         "Packaging & supports print"
       ],
-      Visual: Skill3DTablet,
+      Visual: imgdesign,
       textLeft: false
     },
     {
@@ -221,7 +215,7 @@ const Skills = () => {
         "Montage dynamique",
         "Vidéos promotionnelles"
       ],
-      Visual: Skill3DCamera,
+      Visual: imgcamera,
       textLeft: true
     }
   ];
@@ -271,14 +265,11 @@ const Skills = () => {
         {/* Skill sections */}
         <div className="space-y-0">
           {skillCategories.map((category, index) => {
-            const universe = universeColors[index % universeColors.length];
-            return (
+                        return (
               <div 
                 key={index}
-                className={`skill-universe relative py-6 md:py-8 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 bg-gradient-to-b ${universe.from} ${universe.via} ${universe.to}`}
+                className={`skill-universe relative py-6 md:py-8 -mx-6 sm:-mx-8 md:-mx-12 lg:-mx-16 xl:-mx-20 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20`}
               >
-                {/* Universe glow effect */}
-                <div className={`absolute inset-0 ${universe.glow} opacity-5 blur-3xl pointer-events-none`} />
                 
                 {/* Separator line */}
                 {index > 0 && (
@@ -307,7 +298,7 @@ const Skills = () => {
                       }
                     }}
                   >
-                    <div className="relative rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm p-5 md:p-7 shadow-lg shadow-primary/5 hover:border-primary/30 hover:shadow-primary/10 transition-all duration-500 overflow-hidden group/card">
+                    <div className="relative rounded-3xl border border-border bg-card p-6 md:p-8 shadow-sm hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 transition-[border-color,box-shadow] duration-300 overflow-hidden group/card">
                       {/* Subtle corner glow */}
                       <div className="absolute -top-16 -right-16 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover/card:bg-primary/20 transition-colors duration-500" />
 
@@ -361,9 +352,21 @@ const Skills = () => {
                       }
                     }}
                   >
-                    <Suspense fallback={<VisualFallback />}>
-                      <category.Visual />
-                    </Suspense>
+                    <div className="relative flex items-center justify-center h-64 md:h-96">
+                      <div className="absolute w-3/4 h-3/4 rounded-full bg-primary/15 blur-3xl" />
+                      <motion.img
+                        src={category.Visual}
+                        alt={`${category.title} - Ulrich Deschamp KOSSONOU`}
+                        width={720}
+                        height={720}
+                        loading="lazy"
+                        decoding="async"
+                        draggable={false}
+                        className="relative z-10 h-full w-auto max-w-full object-contain drop-shadow-2xl"
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                      />
+                    </div>
                   </motion.div>
                 </motion.div>
               </div>
